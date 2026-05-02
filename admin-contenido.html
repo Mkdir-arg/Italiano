@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Alta de contenido para Veronica Italiano. Acceso exclusivo para super admin.">
+<title>Veronica Italiano | Alta de contenido</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+<script src="assets/auth.js"></script>
+<script src="assets/catalog.js"></script>
+<script>
+  if (window.ItalianoAuth) {
+    window.ItalianoAuth.requireSuperAdmin();
+  }
+</script>
+<style>
+  :root {
+    --paper: rgba(255, 255, 255, 0.8);
+    --paper-strong: #ffffff;
+    --ink: #202532;
+    --muted: #667083;
+    --line: rgba(32, 37, 50, 0.1);
+    --navy: #17324f;
+    --navy-soft: #dfeaf8;
+    --green: #1f6a55;
+    --green-soft: #ddf2ea;
+    --gold: #b48b35;
+    --gold-soft: #f7edd5;
+    --terracotta: #a65544;
+    --terracotta-soft: #f6e1db;
+    --shadow: 0 24px 60px rgba(22, 30, 42, 0.12);
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    min-height: 100vh;
+    font-family: 'Manrope', sans-serif;
+    color: var(--ink);
+    background:
+      radial-gradient(circle at top left, rgba(223, 234, 248, 0.9), transparent 22%),
+      radial-gradient(circle at 100% 12%, rgba(247, 237, 213, 0.92), transparent 20%),
+      linear-gradient(180deg, #fbfaf6 0%, #eff2f5 100%);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+  }
+
+  .shell {
+    width: min(1180px, calc(100% - 2rem));
+    margin: 0 auto;
+  }
+
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    backdrop-filter: blur(18px);
+    background: rgba(244, 243, 239, 0.82);
+    border-bottom: 1px solid rgba(32, 37, 50, 0.08);
+  }
+
+  .topbar-inner {
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+  }
+
+  .brand-mark {
+    width: 48px;
+    height: 48px;
+    border-radius: 17px;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(140deg, #17324f, #275886);
+    color: #fff;
+    font-weight: 800;
+    box-shadow: 0 14px 28px rgba(23, 50, 79, 0.2);
+  }
+
+  .brand-copy strong,
+  .brand-copy span {
+    display: block;
+  }
+
+  .brand-copy strong {
+    font-size: 1rem;
+  }
+
+  .brand-copy span {
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+
+  .top-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .session-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 0.9rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.74);
+    border: 1px solid rgba(32, 37, 50, 0.08);
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .admin-nav {
+    display: flex;
+    gap: 0.55rem;
+    flex-wrap: wrap;
+  }
+
+  .admin-link {
+    padding: 0.78rem 1rem;
+    border-radius: 999px;
+    border: 1px solid rgba(32, 37, 50, 0.08);
+    background: rgba(255, 255, 255, 0.78);
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+
+  .admin-link.active {
+    background: var(--navy);
+    border-color: var(--navy);
+    color: #fff;
+  }
+
+  .btn {
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+
+  .btn:hover {
+    transform: translateY(-1px);
+  }
+
+  .btn-primary {
+    padding: 0.85rem 1.25rem;
+    background: linear-gradient(135deg, #17324f, #275886);
+    color: #fff;
+    box-shadow: 0 14px 28px rgba(23, 50, 79, 0.18);
+  }
+
+  .btn-secondary {
+    padding: 0.85rem 1.25rem;
+    background: rgba(255, 255, 255, 0.84);
+    color: var(--ink);
+    border: 1px solid rgba(32, 37, 50, 0.1);
+  }
+
+  .hero {
+    padding: 2rem 0 1rem;
+  }
+
+  .hero-grid,
+  .admin-grid,
+  .stats-grid,
+  .mini-list {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .hero-grid {
+    grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+  }
+
+  .hero-copy,
+  .hero-side,
+  .panel,
+  .footer-card,
+  .stat-card,
+  .mini-item {
+    background: var(--paper);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.58);
+    box-shadow: var(--shadow);
+  }
+
+  .hero-copy,
+  .hero-side,
+  .panel,
+  .footer-card {
+    border-radius: 30px;
+    padding: 1.5rem;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    padding: 0.45rem 0.82rem;
+    border-radius: 999px;
+    background: var(--gold-soft);
+    color: var(--gold);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  h1 {
+    font-size: clamp(2.9rem, 5vw, 4.8rem);
+    line-height: 0.95;
+    margin-bottom: 0.9rem;
+    max-width: 10ch;
+  }
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 0.45rem;
+  }
+
+  h3 {
+    font-size: 1.65rem;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    color: #4b5568;
+    line-height: 1.75;
+  }
+
+  .hero-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, max-content));
+    gap: 1rem;
+    justify-content: start;
+    margin-top: 1.4rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: 1.5rem;
+  }
+
+  .stat-card {
+    border-radius: 24px;
+    padding: 1rem;
+  }
+
+  .stat-card strong {
+    display: block;
+    font-size: 1.45rem;
+    margin-bottom: 0.15rem;
+  }
+
+  .stat-card span {
+    color: var(--muted);
+    font-size: 0.84rem;
+    line-height: 1.5;
+  }
+
+  .hero-side {
+    display: grid;
+    gap: 1rem;
+    align-content: start;
+  }
+
+  .side-note {
+    border-radius: 24px;
+    padding: 1.2rem;
+    background: rgba(255, 255, 255, 0.68);
+    border: 1px solid rgba(32, 37, 50, 0.08);
+  }
+
+  .side-note:nth-child(1) {
+    background: linear-gradient(145deg, rgba(180, 139, 53, 0.14), rgba(255, 255, 255, 0.74));
+  }
+
+  .side-note:nth-child(2) {
+    background: linear-gradient(145deg, rgba(31, 106, 85, 0.12), rgba(255, 255, 255, 0.74));
+  }
+
+  .admin-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
+    padding-bottom: 2rem;
+  }
+
+  .field {
+    display: grid;
+    gap: 0.42rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .field label {
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: #3f495b;
+  }
+
+  .field input,
+  .field select,
+  .field textarea {
+    width: 100%;
+    padding: 0.84rem 0.95rem;
+    border-radius: 18px;
+    border: 1px solid rgba(32, 37, 50, 0.12);
+    background: rgba(255, 255, 255, 0.9);
+  }
+
+  .field textarea {
+    min-height: 110px;
+    resize: vertical;
+  }
+
+  .inline-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.7rem;
+  }
+
+  .submit {
+    width: 100%;
+    margin-top: 0.1rem;
+  }
+
+  .panel-message {
+    display: none;
+    margin-top: 0.85rem;
+    border-radius: 16px;
+    padding: 0.85rem 0.95rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .panel-message.visible {
+    display: block;
+  }
+
+  .panel-message.success {
+    background: rgba(31, 106, 85, 0.12);
+    color: var(--green);
+  }
+
+  .panel-message.error {
+    background: rgba(166, 85, 68, 0.12);
+    color: var(--terracotta);
+  }
+
+  .list-copy {
+    margin-bottom: 1rem;
+  }
+
+  .mini-list {
+    gap: 0.7rem;
+  }
+
+  .mini-item {
+    border-radius: 20px;
+    padding: 0.95rem 1rem;
+    border: 1px solid rgba(32, 37, 50, 0.08);
+  }
+
+  .mini-item strong,
+  .mini-item span {
+    display: block;
+  }
+
+  .mini-item strong {
+    font-size: 1rem;
+  }
+
+  .mini-item span {
+    color: var(--muted);
+    margin-top: 0.2rem;
+    font-size: 0.85rem;
+    word-break: break-word;
+  }
+
+  .footer-card {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 980px) {
+    .hero-grid,
+    .admin-grid,
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .topbar-inner,
+    .top-actions,
+    .hero-actions,
+    .footer-card,
+    .inline-grid {
+      flex-direction: column;
+      align-items: stretch;
+      grid-template-columns: 1fr;
+    }
+
+    .hero-copy,
+    .hero-side,
+    .panel,
+    .footer-card {
+      padding: 1.15rem;
+      border-radius: 24px;
+    }
+
+    h1 {
+      max-width: none;
+    }
+
+    .session-pill {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand" href="home.html">
+        <div class="brand-mark">V</div>
+        <div class="brand-copy">
+          <strong>Veronica Italiano</strong>
+          <span>Panel privado de gestion</span>
+        </div>
+      </a>
+      <div class="top-actions">
+        <div class="session-pill" id="sessionPill">Super admin</div>
+        <nav class="admin-nav" aria-label="Navegacion admin">
+          <a class="admin-link" href="admin-usuarios.html">Alta de usuarios</a>
+          <a class="admin-link active" href="admin-contenido.html">Alta de contenido</a>
+        </nav>
+        <button class="btn btn-primary" id="logoutBtn" type="button">Cerrar sesion</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="hero">
+      <div class="hero-grid">
+        <article class="hero-copy">
+          <div class="eyebrow">Catalogo y rutas</div>
+          <h1>Alta de contenido nuevo.</h1>
+          <p>Desde esta pantalla sumas nuevos items al catalogo que aparece en la home privada. Cargas titulo, categoria, nivel y la ruta HTML o URL que se debe abrir desde la biblioteca.</p>
+          <div class="hero-actions">
+            <a class="btn btn-secondary" href="home.html">Volver a la home</a>
+            <a class="btn btn-primary" href="admin-usuarios.html">Ir a usuarios</a>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <strong id="totalTopics">0</strong>
+              <span>contenidos visibles en la home privada.</span>
+            </div>
+            <div class="stat-card">
+              <strong id="totalCategories">0</strong>
+              <span>bloques activos para filtrar y ordenar.</span>
+            </div>
+            <div class="stat-card">
+              <strong id="latestContent">-</strong>
+              <span>ultimo contenido detectado en el catalogo.</span>
+            </div>
+          </div>
+        </article>
+
+        <aside class="hero-side">
+          <div class="side-note">
+            <h3>Que hace esta pagina</h3>
+            <p>Da de alta la ficha dentro del catalogo. El archivo HTML real tiene que existir en el proyecto o en una URL valida para que el enlace funcione.</p>
+          </div>
+          <div class="side-note">
+            <h3>Camino futuro</h3>
+            <p>Cuando quieras subir archivos desde el panel, hara falta backend o un flujo de deploy. La UI ya queda separada y lista para esa evolucion.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="admin-grid">
+      <article class="panel">
+        <h2>Registrar contenido</h2>
+        <p>Completa los datos del item. El formulario acepta rutas HTML locales y URLs externas con http o https.</p>
+        <form id="contentForm">
+          <div class="field">
+            <label for="contentTitle">Titulo</label>
+            <input id="contentTitle" name="title" type="text" placeholder="Nuevo modulo" required>
+          </div>
+          <div class="inline-grid">
+            <div class="field">
+              <label for="contentCategory">Categoria</label>
+              <select id="contentCategory" name="category">
+                <option value="pres">Presente</option>
+                <option value="pass">Passato</option>
+                <option value="fut">Futuro</option>
+                <option value="rif">Biblioteca</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="contentLevel">Nivel</label>
+              <input id="contentLevel" name="level" type="text" placeholder="A2-B1" value="A1">
+            </div>
+          </div>
+          <div class="field">
+            <label for="contentHref">Ruta HTML o URL</label>
+            <input id="contentHref" name="href" type="text" placeholder="apuntes/nuevo-modulo.html" required>
+          </div>
+          <div class="inline-grid">
+            <div class="field">
+              <label for="contentSubtitle">Subtitulo</label>
+              <input id="contentSubtitle" name="subtitle" type="text" placeholder="explicacion breve">
+            </div>
+            <div class="field">
+              <label for="contentIcon">Icono</label>
+              <input id="contentIcon" name="icon" type="text" placeholder="📄" value="📄">
+            </div>
+          </div>
+          <div class="field">
+            <label for="contentDescription">Descripcion</label>
+            <textarea id="contentDescription" name="description" placeholder="Que va a encontrar el alumno en este contenido"></textarea>
+          </div>
+          <div class="field">
+            <label for="contentTags">Tags</label>
+            <input id="contentTags" name="tags" type="text" placeholder="tag1, tag2, tag3">
+          </div>
+          <button class="btn btn-primary submit" type="submit">Dar de alta contenido</button>
+          <div class="panel-message" id="contentMessage"></div>
+        </form>
+      </article>
+
+      <article class="panel">
+        <div class="list-copy">
+          <h2>Ultimos contenidos</h2>
+          <p>Vista rapida de los items mas recientes del catalogo. Sirve para confirmar que el alta impacta en la home sin volver a recorrer toda la biblioteca.</p>
+        </div>
+        <div class="mini-list" id="contentList"></div>
+      </article>
+    </section>
+
+    <footer class="footer-card">
+      <span>El alta valida que la ruta termine en .html o que sea una URL http/https antes de guardarla.</span>
+      <span>La publicacion fisica del archivo sigue dependiendo de tu deploy o de un backend futuro.</span>
+    </footer>
+  </main>
+
+  <script>
+    const session = window.ItalianoAuth.getSession();
+    const sessionPill = document.getElementById('sessionPill');
+    const logoutBtn = document.getElementById('logoutBtn');
+    const contentForm = document.getElementById('contentForm');
+    const contentMessage = document.getElementById('contentMessage');
+    const contentList = document.getElementById('contentList');
+    const totalTopics = document.getElementById('totalTopics');
+    const totalCategories = document.getElementById('totalCategories');
+    const latestContent = document.getElementById('latestContent');
+
+    function escapeHtml(value) {
+      return String(value || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function showMessage(type, message) {
+      contentMessage.className = `panel-message visible ${type}`;
+      contentMessage.textContent = message;
+    }
+
+    function updateSessionPill() {
+      sessionPill.textContent = `Super admin · ${session ? session.email : ''}`;
+    }
+
+    function renderSummary() {
+      const stats = window.ItalianoCatalog.stats();
+      const items = window.ItalianoCatalog.list()
+        .slice()
+        .sort((left, right) => Number(right.id) - Number(left.id));
+      const latestItem = items[0];
+
+      totalTopics.textContent = String(stats.totalTopics);
+      totalCategories.textContent = String(stats.categories);
+      latestContent.textContent = latestItem ? escapeHtml(latestItem.title) : '-';
+
+      contentList.innerHTML = items
+        .slice(0, 8)
+        .map((item) => {
+          const section = window.ItalianoCatalog.sectionMeta[item.category];
+          return `
+            <div class="mini-item">
+              <strong>${escapeHtml(item.title)}</strong>
+              <span>${escapeHtml(item.level)} · ${escapeHtml(section ? section.label : 'Biblioteca')}</span>
+              <span>${escapeHtml(item.href)}</span>
+            </div>
+          `;
+        })
+        .join('');
+    }
+
+    logoutBtn.addEventListener('click', () => {
+      window.ItalianoAuth.logout();
+      window.location.href = 'index.html';
+    });
+
+    contentForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const formData = new FormData(contentForm);
+      const tags = String(formData.get('tags') || '')
+        .split(',')
+        .map((tag) => tag.trim())
+        .filter(Boolean);
+
+      const result = window.ItalianoCatalog.addContent({
+        title: formData.get('title'),
+        category: formData.get('category'),
+        level: formData.get('level'),
+        href: formData.get('href'),
+        subtitle: formData.get('subtitle'),
+        icon: formData.get('icon'),
+        description: formData.get('description'),
+        tags
+      });
+
+      if (!result.ok) {
+        showMessage('error', result.message);
+        return;
+      }
+
+      contentForm.reset();
+      document.getElementById('contentCategory').value = 'pres';
+      document.getElementById('contentLevel').value = 'A1';
+      document.getElementById('contentIcon').value = '📄';
+      showMessage('success', 'Contenido agregado al catalogo correctamente.');
+      renderSummary();
+    });
+
+    updateSessionPill();
+    renderSummary();
+  </script>
+</body>
+</html>

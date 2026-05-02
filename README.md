@@ -6,7 +6,13 @@ Apuntes completos de gramática italiana · A1 → B1
 
 ```
 italiano-apuntes/
-├── index.html              ← Home con todas las cards
+├── index.html              ← Landing principal con login
+├── home.html               ← Home privada luego del login
+├── admin-usuarios.html     ← Alta de usuarios solo para super admin
+├── admin-contenido.html    ← Alta de contenido solo para super admin
+├── assets/
+│   ├── auth.js             ← Sesión, usuarios demo y base para super admin
+│   └── catalog.js          ← Catálogo desacoplado de contenidos HTML
 ├── vercel.json             ← Config para Vercel
 └── apuntes/
     ├── verbi-regolari-presente.html
@@ -79,8 +85,24 @@ Seguí los prompts y en 1 minuto está online.
 
 ## Navegación
 
+- La landing vive en `index.html` y presenta a Veronica
+- Si el usuario inicia sesión entra a `home.html`
+- Si el super admin abre `Opciones admin`, ahora navega a paginas separadas para usuarios y contenido
+- Cada apunte sigue volviendo a `index.html`, pero si hay sesión activa se redirige a la home privada
+- Credenciales demo iniciales:
+    - Alumna: `alumna@veronica-italiano.com` / `ciaoitalia`
+    - Super admin: `admin@veronica-italiano.com` / `veronica2026`
+
 - Cada apunte tiene un botón **"← Inicio"** en la parte superior para volver al home
 - El home tiene filtros por categoría (Presente / Passato / Futuro / Riferimento)
+
+## Panel admin actual
+
+- `admin-usuarios.html` concentra el alta y la vista de usuarios
+- `admin-contenido.html` concentra el alta de nuevos contenidos y la vista de ultimos items del catalogo
+- `assets/auth.js` ya soporta login, logout, lectura de sesión y guard de super admin
+- `assets/catalog.js` ya soporta alta de nuevos contenidos HTML dentro del catálogo de la home
+- Hoy el proyecto sigue siendo 100% estático. Para “subir” archivos HTML al servidor sigue haciendo falta un backend, storage o pipeline de deploy
 
 ---
 

@@ -1,848 +1,1637 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Apuntes completos de gramática italiana. Verbos, tiempos y conjugaciones desde A1 hasta B1.">
-<title>Italiano — Apuntes Completos</title>
+<meta name="description" content="Clases y materiales de italiano con Veronica, profesora que vive hace mas de 20 anos en Italia.">
+<title>Veronica Italiano | Landing</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+<script src="assets/auth.js"></script>
+<script src="assets/catalog.js"></script>
+<script>
+  if (window.ItalianoAuth) {
+    window.ItalianoAuth.redirectIfAuthenticated();
+  }
+</script>
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --blue:   #1a4a8a;
-    --teal:   #1a6a5a;
-    --indigo: #3a1a8a;
-    --amber:  #7a4800;
-    --rose:   #7a1a5a;
-    --blue-l:   #eaf0fc;
-    --teal-l:   #e0f4ec;
-    --indigo-l: #f0ecfc;
-    --amber-l:  #fdf0e0;
+    --bg: #fbf6ef;
+    --paper: rgba(255, 255, 255, 0.7);
+    --paper-strong: rgba(255, 255, 255, 0.9);
+    --ink: #18202d;
+    --muted: #657286;
+    --line: rgba(24, 32, 45, 0.12);
+    --green: #1b6b54;
+    --green-deep: #123c34;
+    --green-soft: #d7eee6;
+    --amber: #d6a85d;
+    --amber-soft: #f6e9cf;
+    --terracotta: #b76a52;
+    --terracotta-soft: #f3dfd8;
+    --navy: #1d2f4d;
+    --navy-soft: #dfe7f8;
+    --shadow-xl: 0 34px 100px rgba(19, 25, 35, 0.18);
+    --shadow-md: 0 18px 48px rgba(19, 25, 35, 0.12);
+    --radius-xl: 36px;
+    --radius-lg: 24px;
   }
 
-  html { scroll-behavior: smooth; }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
 
   body {
-    font-family: 'Source Sans 3', sans-serif;
-    background: #f4f6f8;
-    color: #1e2228;
     min-height: 100vh;
+    font-family: 'Sora', sans-serif;
+    color: var(--ink);
+    background:
+      radial-gradient(circle at 12% 8%, rgba(214, 168, 93, 0.26), transparent 24%),
+      radial-gradient(circle at 88% 10%, rgba(27, 107, 84, 0.18), transparent 22%),
+      radial-gradient(circle at 50% 100%, rgba(183, 106, 82, 0.18), transparent 24%),
+      linear-gradient(180deg, #fbf6ef 0%, #f4ece0 52%, #faf8f3 100%);
+    overflow-x: hidden;
   }
 
-  /* ===================== HERO ===================== */
-  .hero {
-    background: #0a0f1c;
-    background-image:
-      radial-gradient(ellipse at 20% 50%, rgba(26,74,138,0.35) 0%, transparent 60%),
-      radial-gradient(ellipse at 80% 20%, rgba(58,26,138,0.25) 0%, transparent 55%),
-      radial-gradient(ellipse at 60% 80%, rgba(26,106,90,0.2) 0%, transparent 50%);
-    padding: 0 1rem;
-    position: relative;
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      linear-gradient(rgba(255, 255, 255, 0.14) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.14) 1px, transparent 1px);
+    background-size: 28px 28px;
+    mask-image: radial-gradient(circle at center, black 46%, transparent 88%);
+    pointer-events: none;
+    opacity: 0.28;
+  }
+
+  body.modal-open {
     overflow: hidden;
   }
 
-  /* Italian flag stripe */
-  .flag-stripe {
-    display: flex;
-    height: 4px;
-    position: absolute;
-    top: 0; left: 0; right: 0;
+  a {
+    color: inherit;
+    text-decoration: none;
   }
-  .flag-stripe span { flex: 1; }
-  .flag-stripe span:nth-child(1) { background: #009246; }
-  .flag-stripe span:nth-child(2) { background: #fff; }
-  .flag-stripe span:nth-child(3) { background: #ce2b37; }
 
-  .hero-inner {
-    max-width: 900px;
+  button,
+  input {
+    font: inherit;
+  }
+
+  .shell {
+    width: min(1220px, calc(100% - 2rem));
     margin: 0 auto;
-    padding: 4rem 0 4.5rem;
-    text-align: center;
-    position: relative;
   }
 
-  .hero-badge {
+  .notice-bar {
+    position: relative;
+    z-index: 15;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid rgba(24, 32, 45, 0.06);
+    background: rgba(255, 255, 255, 0.36);
+    backdrop-filter: blur(14px);
+  }
+
+  .notice-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .notice-copy {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    flex-wrap: wrap;
+    color: var(--muted);
+    font-size: 0.88rem;
+  }
+
+  .notice-pill {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 20px;
-    padding: 0.3rem 1rem;
-    font-size: 0.78rem;
-    color: #90a8c8;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-    font-weight: 600;
-  }
-
-  .hero h1 {
-    font-family: 'Lora', serif;
-    font-size: clamp(2.8rem, 8vw, 5rem);
-    font-weight: 600;
-    color: #ffffff;
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    margin-bottom: 0.5rem;
-  }
-
-  .hero h1 span {
-    background: linear-gradient(135deg, #70b8f8, #7af0c0);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .hero-sub {
-    font-size: 1.05rem;
-    color: #7090b0;
-    margin-bottom: 2.5rem;
-    font-style: italic;
-  }
-
-  .hero-stats {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-  }
-
-  .stat {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.2rem;
-  }
-  .stat-num {
-    font-family: 'Lora', serif;
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: #70b8f8;
-    line-height: 1;
-  }
-  .stat-label {
-    font-size: 0.75rem;
-    color: #5a7090;
-    text-transform: uppercase;
+    padding: 0.38rem 0.72rem;
+    border-radius: 999px;
+    background: rgba(24, 32, 45, 0.08);
+    color: var(--navy);
+    font-size: 0.74rem;
+    font-weight: 700;
     letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
 
-  .stat-divider {
-    width: 1px;
-    height: 40px;
-    background: rgba(255,255,255,0.08);
-    align-self: center;
+  .notice-link {
+    border: none;
+    background: transparent;
+    color: var(--green);
+    font-size: 0.84rem;
+    font-weight: 700;
+    cursor: pointer;
   }
 
-  /* ===================== FILTERS ===================== */
-  .filters-wrap {
-    background: #fff;
-    border-bottom: 1px solid #e0e4ec;
+  .topbar {
     position: sticky;
     top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    z-index: 20;
+    backdrop-filter: blur(18px);
+    background: rgba(251, 246, 239, 0.74);
+    border-bottom: 1px solid rgba(24, 32, 45, 0.08);
   }
 
-  .filters-inner {
-    max-width: 1060px;
-    margin: 0 auto;
-    padding: 0.75rem 1.5rem;
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-
-  .filter-label {
-    font-size: 0.74rem;
-    font-weight: 600;
-    color: #8898b0;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-right: 0.3rem;
-  }
-
-  .f-btn {
-    font-family: 'Source Sans 3', sans-serif;
-    font-size: 0.8rem;
-    font-weight: 600;
-    padding: 0.32rem 0.85rem;
-    border: 1.5px solid transparent;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.18s ease;
-    letter-spacing: 0.02em;
-    white-space: nowrap;
-  }
-
-  .f-btn.all    { background:#f0f2f8; color:#3a4870; border-color:#d8dce8; }
-  .f-btn.pres   { background:#eaf0fc; color:var(--blue); border-color:#c0d4f0; }
-  .f-btn.pass   { background:#e0f4ec; color:var(--teal); border-color:#b0dcc8; }
-  .f-btn.fut    { background:#f0ecfc; color:var(--indigo); border-color:#c8c0e8; }
-  .f-btn.rif    { background:var(--amber-l); color:var(--amber); border-color:#dcc898; }
-
-  .f-btn.active { color:#fff; }
-  .f-btn.all.active    { background:#2a3a5a; border-color:#2a3a5a; }
-  .f-btn.pres.active   { background:var(--blue); border-color:var(--blue); }
-  .f-btn.pass.active   { background:var(--teal); border-color:var(--teal); }
-  .f-btn.fut.active    { background:var(--indigo); border-color:var(--indigo); }
-  .f-btn.rif.active    { background:var(--amber); border-color:var(--amber); }
-
-  .f-btn:hover:not(.active) { filter: brightness(0.95); transform: translateY(-1px); }
-
-  .filter-count {
-    margin-left: auto;
-    font-size: 0.78rem;
-    color: #8898b0;
-    font-weight: 600;
-  }
-
-  /* ===================== MAIN CONTENT ===================== */
-  .main-content {
-    max-width: 1060px;
-    margin: 0 auto;
-    padding: 2.5rem 1.5rem 4rem;
-  }
-
-  /* category section */
-  .category-section { margin-bottom: 2.8rem; }
-
-  .cat-header {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    margin-bottom: 1.2rem;
-  }
-
-  .cat-line {
-    flex: 1;
-    height: 1px;
-    background: #e0e4ec;
-  }
-
-  .cat-title {
-    font-family: 'Lora', serif;
-    font-size: 0.8rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    padding: 0.28rem 0.9rem;
-    border-radius: 20px;
-    white-space: nowrap;
-  }
-
-  .cat-title.pres  { background:var(--blue-l); color:var(--blue); }
-  .cat-title.pass  { background:var(--teal-l); color:var(--teal); }
-  .cat-title.fut   { background:var(--indigo-l); color:var(--indigo); }
-  .cat-title.rif   { background:var(--amber-l); color:var(--amber); }
-
-  /* cards grid */
-  .cards-grid {
+  .topbar-inner {
+    min-height: 88px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
     gap: 1rem;
   }
 
-  /* ===================== CARD ===================== */
-  .card {
-    background: #fff;
-    border: 1px solid #dce2ec;
-    border-radius: 12px;
-    padding: 1.3rem 1.3rem 1rem;
-    cursor: pointer;
-    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
-    text-decoration: none;
-    color: inherit;
+  .brand {
     display: flex;
-    flex-direction: column;
-    position: relative;
-    overflow: hidden;
+    align-items: center;
+    gap: 0.95rem;
   }
 
-  .card::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 4px;
-    border-radius: 12px 0 0 12px;
-    transition: width 0.18s ease;
+  .brand-mark {
+    width: 50px;
+    height: 50px;
+    border-radius: 18px;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(145deg, #184537, #275d4a);
+    color: #fff8ef;
+    font-weight: 800;
+    box-shadow: 0 14px 32px rgba(27, 107, 84, 0.22);
   }
 
-  .card.pres::before  { background: var(--blue); }
-  .card.pass::before  { background: var(--teal); }
-  .card.fut::before   { background: var(--indigo); }
-  .card.rif::before   { background: var(--amber); }
-
-  .card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-  }
-  .card:hover::before { width: 6px; }
-  .card.pres:hover  { border-color: #c0d4f0; }
-  .card.pass:hover  { border-color: #b0dcc8; }
-  .card.fut:hover   { border-color: #c8c0e8; }
-  .card.rif:hover   { border-color: #dcc898; }
-
-  /* card top */
-  .card-top {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    margin-bottom: 0.7rem;
-    gap: 0.5rem;
+  .brand-copy strong,
+  .brand-copy span {
+    display: block;
   }
 
-  .card-icon {
-    font-size: 1.6rem;
-    line-height: 1;
-    flex-shrink: 0;
-  }
-
-  .card-level {
-    font-size: 0.68rem;
-    font-weight: 600;
-    letter-spacing: 0.07em;
-    padding: 0.15rem 0.5rem;
-    border-radius: 4px;
-    white-space: nowrap;
-    align-self: flex-start;
-  }
-
-  .pres .card-level  { background:var(--blue-l); color:var(--blue); }
-  .pass .card-level  { background:var(--teal-l); color:var(--teal); }
-  .fut  .card-level  { background:var(--indigo-l); color:var(--indigo); }
-  .rif  .card-level  { background:var(--amber-l); color:var(--amber); }
-
-  /* card content */
-  .card-title {
-    font-family: 'Lora', serif;
+  .brand-copy strong {
     font-size: 1rem;
-    font-weight: 600;
-    color: #0a0f1c;
-    line-height: 1.25;
-    margin-bottom: 0.2rem;
   }
 
-  .card-subtitle {
+  .brand-copy span {
+    color: var(--muted);
     font-size: 0.8rem;
-    color: #6878a0;
-    font-style: italic;
-    margin-bottom: 0.65rem;
   }
 
-  .card-desc {
-    font-size: 0.83rem;
-    color: #4a5870;
-    line-height: 1.55;
-    margin-bottom: 0.85rem;
-    flex: 1;
-  }
-
-  /* tags */
-  .card-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.3rem;
-    margin-bottom: 1rem;
-  }
-
-  .tag {
-    font-size: 0.68rem;
-    font-weight: 600;
-    padding: 0.12rem 0.45rem;
-    border-radius: 4px;
-    letter-spacing: 0.03em;
-    background: #f0f2f8;
-    color: #4a5870;
-    border: 1px solid #d8dce8;
-  }
-
-  /* card footer */
-  .card-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 0.75rem;
-    border-top: 1px solid #f0f2f8;
-  }
-
-  .card-num {
-    font-size: 0.7rem;
-    color: #c0c8d8;
-    font-weight: 600;
-  }
-
-  .card-cta {
-    font-size: 0.78rem;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 0.35rem;
-    transition: gap 0.15s ease;
-  }
-
-  .card.pres .card-cta  { color: var(--blue); }
-  .card.pass .card-cta  { color: var(--teal); }
-  .card.fut  .card-cta  { color: var(--indigo); }
-  .card.rif  .card-cta  { color: var(--amber); }
-
-  .card:hover .card-cta { gap: 0.55rem; }
-
-  /* ===================== FOOTER ===================== */
-  footer {
-    background: #0a0f1c;
-    padding: 2rem 1.5rem;
-    text-align: center;
-  }
-
-  .footer-inner { max-width: 600px; margin: 0 auto; }
-
-  .footer-logo {
-    font-family: 'Lora', serif;
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #fff;
-    margin-bottom: 0.4rem;
-  }
-  .footer-logo span { color: #70b8f8; }
-
-  .footer-sub {
-    font-size: 0.78rem;
-    color: #4a6080;
-    margin-bottom: 1rem;
-  }
-
-  .footer-flag {
+  .top-nav {
     display: flex;
     justify-content: center;
-    gap: 0;
-    margin: 0 auto;
-    width: 48px;
-    height: 6px;
-    border-radius: 3px;
+    gap: 0.55rem;
+    flex-wrap: wrap;
+  }
+
+  .top-link {
+    padding: 0.62rem 0.92rem;
+    border-radius: 999px;
+    color: var(--muted);
+    font-size: 0.88rem;
+    font-weight: 600;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  }
+
+  .top-link:hover {
+    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.56);
+    color: var(--ink);
+  }
+
+  .top-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .btn {
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .btn:hover {
+    transform: translateY(-1px);
+  }
+
+  .btn-primary {
+    padding: 0.95rem 1.38rem;
+    background: linear-gradient(135deg, #184537, #2f6b57);
+    color: #fff;
+    box-shadow: 0 18px 36px rgba(27, 107, 84, 0.22);
+  }
+
+  .btn-secondary {
+    padding: 0.95rem 1.38rem;
+    background: rgba(255, 255, 255, 0.58);
+    color: var(--ink);
+    border: 1px solid rgba(24, 32, 45, 0.1);
+  }
+
+  .hero {
+    padding: 1.4rem 0 2rem;
+  }
+
+  .hero-shell {
+    position: relative;
     overflow: hidden;
+    border-radius: 42px;
+    padding: 1.1rem;
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.08)),
+      linear-gradient(135deg, rgba(24, 32, 45, 0.04), rgba(255, 255, 255, 0));
+    border: 1px solid rgba(255, 255, 255, 0.48);
+    box-shadow: var(--shadow-xl);
+  }
+
+  .hero-shell::before,
+  .hero-shell::after {
+    content: '';
+    position: absolute;
+    border-radius: 999px;
+    filter: blur(8px);
+    pointer-events: none;
+  }
+
+  .hero-shell::before {
+    width: 260px;
+    height: 260px;
+    right: -56px;
+    top: -48px;
+    background: radial-gradient(circle, rgba(214, 168, 93, 0.28), transparent 64%);
+    animation: floatSlow 12s ease-in-out infinite;
+  }
+
+  .hero-shell::after {
+    width: 240px;
+    height: 240px;
+    left: -90px;
+    bottom: -100px;
+    background: radial-gradient(circle, rgba(27, 107, 84, 0.22), transparent 62%);
+    animation: floatSlow 14s ease-in-out infinite reverse;
+  }
+
+  .hero-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.92fr);
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .hero-copy,
+  .hero-stage,
+  .method-card,
+  .audience-card,
+  .preview-card,
+  .cta-panel,
+  .modal-card {
+    background: var(--paper);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.56);
+    box-shadow: var(--shadow-md);
+  }
+
+  .hero-copy,
+  .hero-stage,
+  .method-card,
+  .audience-card,
+  .preview-card,
+  .cta-panel {
+    border-radius: var(--radius-xl);
+    padding: 1.7rem;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem 0.9rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.7);
+    color: var(--green);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+  }
+
+  h1 {
+    font-size: clamp(3.3rem, 7vw, 6rem);
+    line-height: 0.92;
+    margin-bottom: 1rem;
+    max-width: 10ch;
+  }
+
+  h1 .highlight {
+    display: inline-block;
+    color: var(--green-deep);
+    text-shadow: 0 10px 30px rgba(27, 107, 84, 0.1);
+  }
+
+  .hero-copy p,
+  .hero-stage p,
+  .method-card p,
+  .audience-card p,
+  .preview-card p,
+  .cta-panel p,
+  .modal-card p {
+    color: #485464;
+    line-height: 1.8;
+  }
+
+  .hero-lead {
+    font-size: 1.04rem;
+    max-width: 60ch;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1.45rem;
+  }
+
+  .hero-points {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin-top: 1rem;
+  }
+
+  .hero-point {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.55rem 0.85rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.66);
+    border: 1px solid rgba(24, 32, 45, 0.08);
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.8rem;
+    margin-top: 1.6rem;
+  }
+
+  .stat-card {
+    border-radius: 24px;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(24, 32, 45, 0.08);
+  }
+
+  .stat-card strong {
+    display: block;
+    font-size: 1.4rem;
+    margin-bottom: 0.18rem;
+  }
+
+  .stat-card span {
+    display: block;
+    color: var(--muted);
+    font-size: 0.82rem;
+    line-height: 1.5;
+  }
+
+  .hero-stage {
+    position: relative;
+    overflow: hidden;
+    align-self: start;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem;
+  }
+
+  .hero-stage::before {
+    content: '';
+    position: absolute;
+    inset: auto -20% -30% auto;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(214, 168, 93, 0.18), transparent 66%);
+  }
+
+  .stage-main {
+    position: relative;
+    z-index: 2;
+    grid-column: 1 / -1;
+    padding: 1.45rem;
+    border-radius: 30px;
+    background:
+      radial-gradient(circle at top right, rgba(214, 168, 93, 0.12), transparent 26%),
+      linear-gradient(145deg, rgba(16, 36, 53, 0.96), rgba(24, 65, 53, 0.92));
+    color: #fbf8f1;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+
+  .stage-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .stage-kicker,
+  .stage-badge,
+  .floating-card span {
+    display: inline-flex;
+    padding: 0.42rem 0.72rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.12);
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .stage-main h2 {
+    font-size: clamp(2.25rem, 4.2vw, 3.3rem);
+    line-height: 0.93;
+    margin: 1rem 0 0.7rem;
+    max-width: 8.5ch;
+  }
+
+  .stage-main p {
+    color: rgba(251, 248, 241, 0.82);
+  }
+
+  .stage-list {
+    display: grid;
+    gap: 0.8rem;
+    margin-top: 1.3rem;
+  }
+
+  .stage-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.8rem;
+    padding: 0.82rem 0.92rem;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .stage-number {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: rgba(255, 255, 255, 0.12);
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+
+  .stage-item strong {
+    display: block;
+    margin-bottom: 0.16rem;
+    font-size: 0.96rem;
+  }
+
+  .stage-item small {
+    display: block;
+    color: rgba(251, 248, 241, 0.72);
+    line-height: 1.6;
+  }
+
+  .floating-card {
+    position: relative;
+    z-index: 3;
+    min-width: 0;
+    padding: 0.95rem;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(24, 32, 45, 0.08);
+    box-shadow: 0 18px 40px rgba(19, 25, 35, 0.14);
+    animation: floatCard 8s ease-in-out infinite;
+  }
+
+  .floating-card strong,
+  .floating-card em {
+    display: block;
+  }
+
+  .floating-card strong {
+    margin-top: 0.45rem;
+    font-size: 1rem;
+  }
+
+  .floating-card em {
+    color: var(--muted);
+    font-style: normal;
+    font-size: 0.8rem;
+    line-height: 1.55;
+  }
+
+  .floating-card.one {
+    grid-column: 1 / -1;
+  }
+
+  .floating-card.two {
+    animation-delay: -2s;
+  }
+
+  .floating-card.three {
+    animation-delay: -4s;
+  }
+
+  .ticker-section {
+    overflow: hidden;
+    margin: 0.5rem 0 0.8rem;
+  }
+
+  .ticker {
+    display: flex;
+    gap: 1rem;
+    width: max-content;
+    animation: tickerMove 24s linear infinite;
+  }
+
+  .ticker-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.86rem 1.1rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.48);
+    border: 1px solid rgba(24, 32, 45, 0.08);
+    color: var(--muted);
+    white-space: nowrap;
+    backdrop-filter: blur(10px);
+  }
+
+  .ticker-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--amber), var(--terracotta));
+  }
+
+  .section {
+    padding: 1rem 0 0;
+  }
+
+  .section-head {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1rem;
     margin-bottom: 1rem;
   }
-  .footer-flag span { flex: 1; }
-  .footer-flag span:nth-child(1) { background: #009246; }
-  .footer-flag span:nth-child(2) { background: #fff; }
-  .footer-flag span:nth-child(3) { background: #ce2b37; }
 
-  .footer-copy {
-    font-size: 0.72rem;
-    color: #3a4a5a;
+  .section-head p {
+    max-width: 58ch;
+    color: var(--muted);
+    line-height: 1.75;
   }
 
-  /* ===================== RESPONSIVE ===================== */
-  @media(max-width:600px) {
-    .hero-inner { padding: 2.5rem 0 3rem; }
-    .hero-stats { gap: 1.2rem; }
-    .stat-divider { display: none; }
-    .main-content { padding: 1.5rem 1rem 3rem; }
-    .filters-inner { padding: 0.6rem 1rem; gap: 0.35rem; }
-    .filter-label { display: none; }
+  .section-kicker {
+    display: inline-flex;
+    margin-bottom: 0.8rem;
+    padding: 0.38rem 0.72rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.66);
+    border: 1px solid rgba(24, 32, 45, 0.08);
+    color: var(--muted);
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
 
-  /* hidden class for filter */
-  .card-wrap.hidden { display: none; }
+  .section h2 {
+    font-size: clamp(2.4rem, 4.8vw, 4rem);
+    margin-bottom: 0.35rem;
+    line-height: 0.95;
+  }
+
+  .method-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: 1rem;
+  }
+
+  .method-card {
+    min-height: 100%;
+  }
+
+  .method-card.featured {
+    background:
+      radial-gradient(circle at top right, rgba(214, 168, 93, 0.18), transparent 22%),
+      linear-gradient(145deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.58));
+  }
+
+  .quote-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    margin-bottom: 1rem;
+    border-radius: 18px;
+    background: var(--green-soft);
+    color: var(--green);
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .method-bullets,
+  .steps,
+  .audience-grid,
+  .preview-grid,
+  .access-grid {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .method-bullets {
+    margin-top: 1.2rem;
+  }
+
+  .method-bullet {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.85rem;
+    align-items: start;
+    padding: 0.92rem 1rem;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.56);
+    border: 1px solid rgba(24, 32, 45, 0.08);
+  }
+
+  .method-bullet-index {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: rgba(24, 32, 45, 0.08);
+    color: var(--navy);
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+
+  .method-bullet strong {
+    display: block;
+    margin-bottom: 0.18rem;
+    font-size: 0.96rem;
+  }
+
+  .steps {
+    margin-top: 1.2rem;
+  }
+
+  .step {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.95rem;
+    padding: 1rem;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.58);
+    border: 1px solid rgba(24, 32, 45, 0.08);
+  }
+
+  .step-index {
+    width: 38px;
+    height: 38px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, rgba(29, 47, 77, 0.12), rgba(214, 168, 93, 0.18));
+    color: var(--navy);
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+
+  .step strong {
+    display: block;
+    margin-bottom: 0.18rem;
+    font-size: 1rem;
+  }
+
+  .audience-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .audience-card {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+  }
+
+  .audience-card::before {
+    content: '';
+    position: absolute;
+    inset: auto -40px -90px auto;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(214, 168, 93, 0.22), transparent 68%);
+    transition: transform 0.22s ease;
+  }
+
+  .audience-card:hover,
+  .preview-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 50px rgba(19, 25, 35, 0.16);
+  }
+
+  .audience-card:hover::before {
+    transform: scale(1.08);
+  }
+
+  .audience-tag,
+  .preview-meta,
+  .access-role {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.38rem 0.72rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(24, 32, 45, 0.08);
+    color: var(--muted);
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+
+  .audience-card h3,
+  .preview-card h3,
+  .cta-panel h2,
+  .modal-card h2 {
+    font-size: 1.95rem;
+    line-height: 0.98;
+    margin: 0.9rem 0 0.55rem;
+  }
+
+  .preview-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .preview-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    min-height: 100%;
+  }
+
+  .preview-top {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 0.8rem;
+  }
+
+  .preview-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 16px;
+    display: grid;
+    place-items: center;
+    background: rgba(255, 255, 255, 0.78);
+    border: 1px solid rgba(24, 32, 45, 0.08);
+    font-size: 1.12rem;
+  }
+
+  .preview-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.8rem;
+    margin-top: auto;
+    padding-top: 0.9rem;
+    border-top: 1px solid rgba(24, 32, 45, 0.08);
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .preview-footnote {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.42rem;
+  }
+
+  .cta-panel {
+    margin: 1.4rem 0 4rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 1rem;
+    align-items: center;
+    background:
+      radial-gradient(circle at top right, rgba(214, 168, 93, 0.16), transparent 24%),
+      linear-gradient(145deg, rgba(17, 28, 42, 0.96), rgba(24, 69, 55, 0.94));
+    color: #fbf8f1;
+  }
+
+  .cta-panel p {
+    color: rgba(251, 248, 241, 0.78);
+  }
+
+  .cta-kicker {
+    display: inline-flex;
+    margin-bottom: 0.8rem;
+    padding: 0.42rem 0.78rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.1);
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+  }
+
+  .cta-panel .btn-secondary {
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.18);
+  }
+
+  .footer {
+    padding: 0 0 2rem;
+  }
+
+  .footer-card {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 1.6rem;
+    border-top: 1px solid rgba(24, 32, 45, 0.08);
+    color: var(--muted);
+    font-size: 0.88rem;
+  }
+
+  .modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background: rgba(10, 16, 24, 0.54);
+    backdrop-filter: blur(8px);
+    z-index: 50;
+  }
+
+  .modal.open {
+    display: flex;
+  }
+
+  .modal-card {
+    width: min(720px, 100%);
+    border-radius: 34px;
+    background: var(--paper-strong);
+    box-shadow: 0 38px 110px rgba(10, 16, 24, 0.32);
+    padding: 1.8rem;
+    position: relative;
+    animation: modalIn 0.28s ease;
+  }
+
+  .close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(24, 32, 45, 0.12);
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+  }
+
+  .modal-card h2 {
+    font-size: 2.35rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .login-accesses {
+    margin: 1.2rem 0 1.4rem;
+  }
+
+  .access-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .access-card {
+    border-radius: 24px;
+    padding: 1rem 1.05rem;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(24, 32, 45, 0.08);
+  }
+
+  .access-card.admin {
+    background: linear-gradient(145deg, rgba(27, 107, 84, 0.08), rgba(255, 255, 255, 0.78));
+  }
+
+  .access-card strong,
+  .access-card span {
+    display: block;
+  }
+
+  .access-card strong {
+    margin: 0.6rem 0 0.22rem;
+  }
+
+  .access-card span {
+    color: var(--muted);
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+
+  .field {
+    display: grid;
+    gap: 0.45rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .field label {
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .field input {
+    width: 100%;
+    padding: 0.95rem 1rem;
+    border-radius: 18px;
+    border: 1px solid rgba(24, 32, 45, 0.12);
+    background: #fff;
+  }
+
+  .login-submit {
+    width: 100%;
+    margin-top: 0.2rem;
+  }
+
+  .feedback {
+    display: none;
+    margin-top: 0.85rem;
+    border-radius: 16px;
+    padding: 0.85rem 1rem;
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .feedback.visible {
+    display: block;
+  }
+
+  .feedback.error {
+    background: rgba(183, 106, 82, 0.14);
+    color: #874332;
+  }
+
+  .feedback.success {
+    background: rgba(27, 107, 84, 0.12);
+    color: var(--green);
+  }
+
+  .has-motion [data-reveal] {
+    opacity: 0;
+    transform: translateY(30px) scale(0.985);
+    transition:
+      opacity 0.72s ease,
+      transform 0.72s cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  .has-motion [data-reveal].is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  @keyframes floatSlow {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+    50% {
+      transform: translate3d(0, 18px, 0);
+    }
+  }
+
+  @keyframes floatCard {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+    50% {
+      transform: translate3d(0, -12px, 0);
+    }
+  }
+
+  @keyframes tickerMove {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes modalIn {
+    from {
+      opacity: 0;
+      transform: translateY(16px) scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+
+  @media (max-width: 1080px) {
+    .topbar-inner,
+    .hero-grid,
+    .method-grid,
+    .audience-grid,
+    .preview-grid,
+    .hero-stats,
+    .cta-panel {
+      grid-template-columns: 1fr;
+    }
+
+    .topbar-inner {
+      grid-template-columns: 1fr;
+      padding: 0.9rem 0;
+    }
+
+    .top-nav,
+    .top-actions {
+      justify-content: flex-start;
+    }
+
+    .floating-card.one,
+    .floating-card.two,
+    .floating-card.three {
+      position: static;
+      margin-top: 0.8rem;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .shell {
+      width: min(100%, calc(100% - 1rem));
+    }
+
+    .notice-inner,
+    .top-actions,
+    .footer-card,
+    .hero-actions,
+    .cta-actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .top-nav {
+      justify-content: flex-start;
+    }
+
+    .top-link {
+      width: max-content;
+    }
+
+    .hero-shell,
+    .hero-copy,
+    .hero-stage,
+    .method-card,
+    .audience-card,
+    .preview-card,
+    .cta-panel,
+    .modal-card {
+      border-radius: 28px;
+    }
+
+    .hero-shell,
+    .hero-copy,
+    .hero-stage,
+    .method-card,
+    .audience-card,
+    .preview-card,
+    .cta-panel {
+      padding: 1.2rem;
+    }
+
+    h1 {
+      max-width: none;
+      font-size: clamp(2.8rem, 12vw, 4rem);
+    }
+
+    .hero-point,
+    .notice-link,
+    .btn,
+    .btn-secondary,
+    .btn-primary {
+      width: 100%;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .access-grid {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>
 </head>
 <body>
-
-<!-- HERO -->
-<header class="hero">
-  <div class="flag-stripe">
-    <span></span><span></span><span></span>
-  </div>
-  <div class="hero-inner">
-    <div class="hero-badge">
-      🇮🇹 &nbsp; Gramática Italiana
-    </div>
-    <h1><span>Italiano</span></h1>
-    <p class="hero-sub">Apuntes completos de gramática · verbos · tiempos · conjugaciones</p>
-    <div class="hero-stats">
-      <div class="stat">
-        <span class="stat-num">11</span>
-        <span class="stat-label">Temas</span>
+  <div class="notice-bar">
+    <div class="shell notice-inner">
+      <div class="notice-copy">
+        <span class="notice-pill">Nuevas inscripciones</span>
+        <span>Italiano para hispanohablantes con una propuesta mas actual, clara y lista para sostener el estudio.</span>
       </div>
-      <div class="stat-divider"></div>
-      <div class="stat">
-        <span class="stat-num">5</span>
-        <span class="stat-label">Tiempos verbales</span>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat">
-        <span class="stat-num">50</span>
-        <span class="stat-label">Verbos conjugados</span>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat">
-        <span class="stat-num">A1→B1</span>
-        <span class="stat-label">Nivel</span>
-      </div>
+      <button class="notice-link" type="button" data-open-login>Reservar acceso</button>
     </div>
   </div>
-</header>
 
-<!-- FILTERS -->
-<div class="filters-wrap">
-  <div class="filters-inner">
-    <span class="filter-label">Filtrar</span>
-    <button class="f-btn all active" onclick="filter('all',this)">Todos</button>
-    <button class="f-btn pres" onclick="filter('pres',this)">🔵 Presente</button>
-    <button class="f-btn pass" onclick="filter('pass',this)">🟢 Passato</button>
-    <button class="f-btn fut" onclick="filter('fut',this)">🟣 Futuro</button>
-    <button class="f-btn rif" onclick="filter('rif',this)">🟡 Riferimento</button>
-    <span class="filter-count" id="filterCount">11 temas</span>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand" href="#inicio">
+        <div class="brand-mark">V</div>
+        <div class="brand-copy">
+          <strong>Veronica Italiano</strong>
+          <span>Profesora viviendo en Italia hace mas de 20 anos</span>
+        </div>
+      </a>
+      <nav class="top-nav" aria-label="Navegacion principal">
+        <a class="top-link" href="#metodo">Metodo</a>
+        <a class="top-link" href="#para-quien">Para quien</a>
+        <a class="top-link" href="#programa">Programa</a>
+      </nav>
+      <div class="top-actions">
+        <a class="btn btn-secondary" href="#programa">Ver recorrido</a>
+        <button class="btn btn-primary" type="button" data-open-login>Entrar</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="inicio">
+    <section class="hero shell">
+      <div class="hero-shell">
+        <div class="hero-grid">
+          <article class="hero-copy" data-reveal>
+            <div class="eyebrow">Italiano vivo desde Italia</div>
+            <h1>Una forma <span class="highlight">mas moderna</span> de aprender italiano.</h1>
+            <p class="hero-lead">Soy Veronica y enseño italiano para hispanohablantes con una mezcla que hoy cuesta encontrar: explicacion clara en espanol, sensibilidad real del idioma vivido en Italia y una biblioteca privada que ordena el estudio para no perderse.</p>
+            <p>No es una landing generica. Es una entrada pensada para atraer mejor, transmitir criterio y mostrar desde el primer segundo una experiencia mas premium, mas humana y mas facil de seguir.</p>
+            <div class="hero-actions">
+              <button class="btn btn-primary" type="button" data-open-login>Quiero entrar</button>
+              <a class="btn btn-secondary" href="#metodo">Descubrir el metodo</a>
+            </div>
+            <div class="hero-points">
+              <span class="hero-point">Italiano real</span>
+              <span class="hero-point">Explicado para hispanohablantes</span>
+              <span class="hero-point">Biblioteca privada ordenada</span>
+            </div>
+            <div class="hero-stats" id="heroStats"></div>
+          </article>
+
+          <aside class="hero-stage" data-reveal style="--reveal-delay: 120ms;">
+            <article class="stage-main">
+              <div class="stage-top">
+                <span class="stage-kicker">Landing publica</span>
+                <span class="stage-badge">Veronica desde Italia</span>
+              </div>
+              <h2>Entrar, entender y volver a estudiar sin ruido.</h2>
+              <p>La primera impresion ahora tiene mas fuerza: header editorial, capas visuales, movimiento suave y un mensaje mas atractivo para gente nueva que todavia no conoce tu propuesta.</p>
+              <div class="stage-list">
+                <div class="stage-item">
+                  <div class="stage-number">01</div>
+                  <div>
+                    <strong>Explicacion clara</strong>
+                    <small>Reglas bien contadas, sin tecnicismos innecesarios y con comparaciones utiles.</small>
+                  </div>
+                </div>
+                <div class="stage-item">
+                  <div class="stage-number">02</div>
+                  <div>
+                    <strong>Italiano cotidiano</strong>
+                    <small>No solo gramatica: contexto, vida diaria y uso real para sonar mejor.</small>
+                  </div>
+                </div>
+                <div class="stage-item">
+                  <div class="stage-number">03</div>
+                  <div>
+                    <strong>Ruta privada</strong>
+                    <small>Entrar a la home, filtrar bloques y estudiar con continuidad en una sola base.</small>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <div class="floating-card one">
+              <span>20+ anos</span>
+              <strong>Experiencia real</strong>
+              <em>viviendo en Italia y enseñando con contexto humano.</em>
+            </div>
+            <div class="floating-card two">
+              <span>Acceso privado</span>
+              <strong>Biblioteca ordenada</strong>
+              <em>material por bloques para estudiar con ritmo y continuidad.</em>
+            </div>
+            <div class="floating-card three">
+              <span>Metodo</span>
+              <strong>Menos ruido, mas criterio</strong>
+              <em>una propuesta mas elegante para atraer a publico nuevo.</em>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="ticker-section">
+      <div class="ticker">
+        <div class="ticker-item"><span class="ticker-dot"></span><span>Italiano claro y actual</span></div>
+        <div class="ticker-item"><span class="ticker-dot"></span><span>Explicacion en espanol</span></div>
+        <div class="ticker-item"><span class="ticker-dot"></span><span>Contexto real desde Italia</span></div>
+        <div class="ticker-item"><span class="ticker-dot"></span><span>Biblioteca privada</span></div>
+        <div class="ticker-item"><span class="ticker-dot"></span><span>Estudio por bloques</span></div>
+        <div class="ticker-item"><span class="ticker-dot"></span><span>Italiano claro y actual</span></div>
+        <div class="ticker-item"><span class="ticker-dot"></span><span>Explicacion en espanol</span></div>
+        <div class="ticker-item"><span class="ticker-dot"></span><span>Contexto real desde Italia</span></div>
+        <div class="ticker-item"><span class="ticker-dot"></span><span>Biblioteca privada</span></div>
+        <div class="ticker-item"><span class="ticker-dot"></span><span>Estudio por bloques</span></div>
+      </div>
+    </section>
+
+    <section class="section shell" id="metodo">
+      <div class="section-head" data-reveal>
+        <div>
+          <span class="section-kicker">Metodo</span>
+          <h2>Una propuesta que suena mas actual y se entiende mejor.</h2>
+          <p>La landing ahora comunica mejor lo que haces: cercania, criterio, experiencia real y una sensacion mas premium para captar a quien entra por primera vez.</p>
+        </div>
+      </div>
+      <div class="method-grid">
+        <article class="method-card featured" data-reveal>
+          <div class="quote-mark">V</div>
+          <h3>Italiano bien explicado, sin rigidez y sin relleno.</h3>
+          <p>Trabajo para que la persona entienda rapido, retenga mejor y sienta que esta estudiando con una guia real, no con una pagina impersonal. La forma de enseñar y la forma de presentar tienen que empujar en la misma direccion.</p>
+          <div class="method-bullets">
+            <div class="method-bullet">
+              <div class="method-bullet-index">01</div>
+              <div>
+                <strong>Base gramatical solida</strong>
+                <p>Reglas claras, comparaciones utiles y menos tecnicismo innecesario.</p>
+              </div>
+            </div>
+            <div class="method-bullet">
+              <div class="method-bullet-index">02</div>
+              <div>
+                <strong>Uso real del idioma</strong>
+                <p>Conectar la estructura con la vida cotidiana para hablar con mas naturalidad.</p>
+              </div>
+            </div>
+            <div class="method-bullet">
+              <div class="method-bullet-index">03</div>
+              <div>
+                <strong>Continuidad de estudio</strong>
+                <p>Entrar, retomar y seguir sin perder tiempo buscando donde habias quedado.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="method-card" data-reveal style="--reveal-delay: 120ms;">
+          <span class="section-kicker">Experiencia</span>
+          <h3>Como se vive el recorrido</h3>
+          <div class="steps">
+            <div class="step">
+              <div class="step-index">01</div>
+              <div>
+                <strong>Entrar con una promesa clara</strong>
+                <p>La landing deja de verse basica y empieza a transmitir criterio, belleza y orden desde el header.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-index">02</div>
+              <div>
+                <strong>Descubrir la propuesta rapido</strong>
+                <p>Bloques, cards, movimiento sutil y textos mas aspiracionales para enganchar mejor a publico nuevo.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-index">03</div>
+              <div>
+                <strong>Pasar a la home privada</strong>
+                <p>El login sigue intacto, pero ahora esta envuelto en una entrada mucho mas moderna y atractiva.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section shell" id="para-quien">
+      <div class="section-head" data-reveal>
+        <div>
+          <span class="section-kicker">Para quien</span>
+          <h2>Ideal para quien busca aprender con mas identidad y menos improvisacion.</h2>
+          <p>No importa si recien arrancas o si necesitas ordenar lo que ya viste. El foco esta en entrar rapido, entender mejor y sentir una guia concreta detras del contenido.</p>
+        </div>
+      </div>
+      <div class="audience-grid">
+        <article class="audience-card" data-reveal>
+          <span class="audience-tag">Desde cero</span>
+          <h3>Quien quiere empezar bien.</h3>
+          <p>Una entrada clara, visual y amable para dar el primer paso sin sentir que todo es teoria desordenada.</p>
+        </article>
+        <article class="audience-card" data-reveal style="--reveal-delay: 100ms;">
+          <span class="audience-tag">Retomar</span>
+          <h3>Quien necesita volver con orden.</h3>
+          <p>La biblioteca privada ayuda a retomar sin caos, con bloques que hacen mas facil decidir por donde seguir.</p>
+        </article>
+        <article class="audience-card" data-reveal style="--reveal-delay: 200ms;">
+          <span class="audience-tag">Hablar mejor</span>
+          <h3>Quien busca italiano real.</h3>
+          <p>Contexto cotidiano, matices de uso y una mirada mas viva del idioma para que la teoria no quede aislada.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section shell" id="programa">
+      <div class="section-head" data-reveal>
+        <div>
+          <span class="section-kicker">Programa</span>
+          <h2>Lo que la persona descubre al ingresar.</h2>
+          <p>El acceso privado sigue siendo el corazon de la experiencia. Estos contenidos destacados muestran el tipo de recorrido que encuentra quien entra a estudiar.</p>
+        </div>
+      </div>
+      <div class="preview-grid" id="previewGrid"></div>
+    </section>
+
+    <section class="section shell">
+      <div class="cta-panel" data-reveal>
+        <div>
+          <span class="cta-kicker">Acceso directo</span>
+          <h2>Una landing mas fuerte para atraer. Una home privada para retener.</h2>
+          <p>El frente publico ahora tiene mas presencia, mejores animaciones y una narrativa mas moderna. Detras, el flujo de login y la biblioteca privada siguen funcionando igual de simple.</p>
+        </div>
+        <div class="cta-actions">
+          <button class="btn btn-primary" type="button" data-open-login>Ir al login</button>
+          <a class="btn btn-secondary" href="#para-quien">Ver a quien ayuda</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell footer-card">
+      <span>Veronica Italiano · Plataforma de estudio para hispanohablantes</span>
+      <span>Landing publica rediseñada + home privada + base lista para crecer a futuro</span>
+    </div>
+  </footer>
+
+  <div class="modal" id="loginModal" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+      <button class="close-modal" type="button" aria-label="Cerrar" data-close-login>×</button>
+      <h2 id="loginTitle">Ingresar</h2>
+      <p>Usa uno de los accesos demo para entrar. El usuario super admin ya ve el espacio futuro de gestion dentro de la home.</p>
+      <div class="login-accesses" id="loginAccesses"></div>
+      <form id="loginForm">
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" value="alumna@veronica-italiano.com" required>
+        </div>
+        <div class="field">
+          <label for="password">Contrasena</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" value="ciaoitalia" required>
+        </div>
+        <button class="btn btn-primary login-submit" type="submit">Entrar a la home</button>
+        <div class="feedback error" id="loginError"></div>
+        <div class="feedback success" id="loginSuccess">Ingreso correcto. Redirigiendo a la home...</div>
+      </form>
+    </div>
   </div>
-</div>
 
-<!-- MAIN -->
-<main class="main-content" id="main">
+  <script>
+    const modal = document.getElementById('loginModal');
+    const loginForm = document.getElementById('loginForm');
+    const loginError = document.getElementById('loginError');
+    const loginSuccess = document.getElementById('loginSuccess');
+    const openButtons = document.querySelectorAll('[data-open-login]');
+    const closeButtons = document.querySelectorAll('[data-close-login]');
+    const emailField = document.getElementById('email');
+    const heroStats = document.getElementById('heroStats');
+    const previewGrid = document.getElementById('previewGrid');
+    const loginAccesses = document.getElementById('loginAccesses');
 
-  <!-- ===== PRESENTE ===== -->
-  <section class="category-section" data-cat="pres">
-    <div class="cat-header">
-      <div class="cat-line"></div>
-      <span class="cat-title pres">Presente Indicativo</span>
-      <div class="cat-line"></div>
-    </div>
-    <div class="cards-grid">
+    function escapeHtml(value) {
+      return String(value || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
 
-      <div class="card-wrap" data-cat="pres">
-        <a class="card pres" href="apuntes/verbi-regolari-presente.html">
-          <div class="card-top">
-            <span class="card-icon">📐</span>
-            <span class="card-level">A1</span>
-          </div>
-          <div class="card-title">Verbi Regolari — Presente</div>
-          <div class="card-subtitle">Verbos regulares en presente</div>
-          <div class="card-desc">Las 3 conjugaciones (-are/-ere/-ire), desinencias completas, particolarità ortograficas y verbos con -isc-.</div>
-          <div class="card-tags">
-            <span class="tag">-ARE</span>
-            <span class="tag">-ERE</span>
-            <span class="tag">-IRE</span>
-            <span class="tag">Desinenze</span>
-            <span class="tag">-ISC-</span>
-          </div>
-          <div class="card-footer">
-            <span class="card-num">01</span>
-            <span class="card-cta">Apri <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
-          </div>
-        </a>
-      </div>
+    function openModal() {
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('modal-open');
+      window.setTimeout(() => emailField.focus(), 80);
+    }
 
-      <div class="card-wrap" data-cat="pres">
-        <a class="card pres" href="apuntes/verbi-irregolari-presente.html">
-          <div class="card-top">
-            <span class="card-icon">⚡</span>
-            <span class="card-level">A1–A2</span>
-          </div>
-          <div class="card-title">40 Verbi Irregolari — Presente</div>
-          <div class="card-subtitle">40 verbos irregulares en presente</div>
-          <div class="card-desc">Los 40 verbos irregolari esenciales organizados por familias de cambio, con todas las 6 personas y traducción.</div>
-          <div class="card-tags">
-            <span class="tag">40 Verbi</span>
-            <span class="tag">Famiglie</span>
-            <span class="tag">Andare</span>
-            <span class="tag">Fare</span>
-            <span class="tag">Venire</span>
-          </div>
-          <div class="card-footer">
-            <span class="card-num">02</span>
-            <span class="card-cta">Apri <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
-          </div>
-        </a>
-      </div>
+    function closeModal() {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('modal-open');
+      loginError.classList.remove('visible');
+      loginSuccess.classList.remove('visible');
+    }
 
-      <div class="card-wrap" data-cat="pres">
-        <a class="card pres" href="apuntes/verbi-modali.html">
-          <div class="card-top">
-            <span class="card-icon">🎯</span>
-            <span class="card-level">A1–A2</span>
-          </div>
-          <div class="card-title">Verbi Modali</div>
-          <div class="card-subtitle">Verbos modales</div>
-          <div class="card-desc">Potere, dovere, volere, sapere. Conjugación, 6 usos detallados, diferencias clave y 50 combinaciones frecuentes.</div>
-          <div class="card-tags">
-            <span class="tag">Potere</span>
-            <span class="tag">Dovere</span>
-            <span class="tag">Volere</span>
-            <span class="tag">Sapere</span>
-            <span class="tag">Vorrei</span>
-          </div>
-          <div class="card-footer">
-            <span class="card-num">03</span>
-            <span class="card-cta">Apri <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
-          </div>
-        </a>
-      </div>
+    function renderHeroStats() {
+      const stats = window.ItalianoCatalog.stats();
+      heroStats.innerHTML = `
+        <div class="stat-card">
+          <strong>20+ anos</strong>
+          <span>viviendo en Italia y enseñando con contexto real.</span>
+        </div>
+        <div class="stat-card">
+          <strong>${stats.totalTopics}</strong>
+          <span>modulos ya listos dentro de la home privada.</span>
+        </div>
+        <div class="stat-card">
+          <strong>${stats.categories}</strong>
+          <span>rutas para organizar presente, passato, futuro y repaso.</span>
+        </div>
+        <div class="stat-card">
+          <strong>A1-B1</strong>
+          <span>recorrido pensado para avanzar sin saltos raros.</span>
+        </div>
+      `;
+    }
 
-      <div class="card-wrap" data-cat="pres">
-        <a class="card pres" href="apuntes/verbi-riflessivi.html">
-          <div class="card-top">
-            <span class="card-icon">🔄</span>
-            <span class="card-level">A2</span>
-          </div>
-          <div class="card-title">Verbi Riflessivi, Reciproci e Fraseologici</div>
-          <div class="card-subtitle">Reflexivos, recíprocos y fraseológicos</div>
-          <div class="card-desc">Pronomi riflessivi, routine quotidiana, verbi reciproci y fraseológicos (cominciare a, smettere di, stare per...).</div>
-          <div class="card-tags">
-            <span class="tag">Riflessivi</span>
-            <span class="tag">Reciproci</span>
-            <span class="tag">Fraseologici</span>
-            <span class="tag">mi/ti/si/ci/vi</span>
-          </div>
-          <div class="card-footer">
-            <span class="card-num">04</span>
-            <span class="card-cta">Apri <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
-          </div>
-        </a>
-      </div>
+    function renderPreview() {
+      const items = window.ItalianoCatalog.list().slice(0, 4);
+      previewGrid.innerHTML = items
+        .map(
+          (item, index) => `
+            <article class="preview-card" data-reveal style="--reveal-delay: ${index * 90}ms;">
+              <div class="preview-top">
+                <div class="preview-icon">${escapeHtml(item.icon)}</div>
+                <div class="preview-meta">${escapeHtml(item.level)} · ${escapeHtml(window.ItalianoCatalog.sectionMeta[item.category].label)}</div>
+              </div>
+              <h3>${escapeHtml(item.title)}</h3>
+              <p>${escapeHtml(item.description)}</p>
+              <div class="preview-footer">
+                <span class="preview-footnote">Biblioteca privada</span>
+                <span>Abrir al ingresar</span>
+              </div>
+            </article>
+          `
+        )
+        .join('');
+    }
 
-    </div>
-  </section>
+    function renderAccesses() {
+      const users = window.ItalianoAuth.listUsers();
+      loginAccesses.innerHTML = `
+        <div class="access-grid">
+          ${users
+            .map(
+              (user) => `
+                <article class="access-card ${user.role === 'superadmin' ? 'admin' : ''}">
+                  <span class="access-role">${user.role === 'superadmin' ? 'Super admin demo' : 'Alumno demo'}</span>
+                  <strong>${escapeHtml(user.email)}</strong>
+                  <span>Clave inicial: ${escapeHtml(user.role === 'superadmin' ? 'veronica2026' : 'ciaoitalia')}</span>
+                </article>
+              `
+            )
+            .join('')}
+        </div>
+      `;
+    }
 
-  <!-- ===== PASSATO ===== -->
-  <section class="category-section" data-cat="pass">
-    <div class="cat-header">
-      <div class="cat-line"></div>
-      <span class="cat-title pass">Il Passato</span>
-      <div class="cat-line"></div>
-    </div>
-    <div class="cards-grid">
+    function initRevealAnimations() {
+      const elements = Array.from(document.querySelectorAll('[data-reveal]'));
+      if (!elements.length) {
+        return;
+      }
 
-      <div class="card-wrap" data-cat="pass">
-        <a class="card pass" href="apuntes/passato-prossimo-completo.html">
-          <div class="card-top">
-            <span class="card-icon">📚</span>
-            <span class="card-level">A1–A2</span>
-          </div>
-          <div class="card-title">Passato Prossimo — Completo</div>
-          <div class="card-subtitle">Pasado compuesto completo</div>
-          <div class="card-desc">Estructura, elección avere/essere, acuerdo del participio, pronombres lo/la/li/le, verbos modales al passato y verbos de doble auxiliar.</div>
-          <div class="card-tags">
-            <span class="tag">Avere</span>
-            <span class="tag">Essere</span>
-            <span class="tag">Accordo</span>
-            <span class="tag">Pronomi</span>
-            <span class="tag">Modali</span>
-          </div>
-          <div class="card-footer">
-            <span class="card-num">05</span>
-            <span class="card-cta">Apri <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
-          </div>
-        </a>
-      </div>
+      if (!('IntersectionObserver' in window)) {
+        elements.forEach((element) => element.classList.add('is-visible'));
+        return;
+      }
 
-      <div class="card-wrap" data-cat="pass">
-        <a class="card pass" href="apuntes/passato-prossimo-irregolari.html">
-          <div class="card-top">
-            <span class="card-icon">🧩</span>
-            <span class="card-level">A2</span>
-          </div>
-          <div class="card-title">Passato Prossimo — Participi Irregolari</div>
-          <div class="card-subtitle">Participios pasados irregulares</div>
-          <div class="card-desc">7 familias de participios irregolari (fatto, detto, scritto, preso...) con más de 50 ejemplos y conjugaciones completas.</div>
-          <div class="card-tags">
-            <span class="tag">7 Famiglie</span>
-            <span class="tag">50+ Participi</span>
-            <span class="tag">Fatto</span>
-            <span class="tag">Detto</span>
-            <span class="tag">Visto</span>
-          </div>
-          <div class="card-footer">
-            <span class="card-num">06</span>
-            <span class="card-cta">Apri <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
-          </div>
-        </a>
-      </div>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) {
+              return;
+            }
 
-      <div class="card-wrap" data-cat="pass">
-        <a class="card pass" href="apuntes/passato-prossimo-tabella.html">
-          <div class="card-top">
-            <span class="card-icon">📊</span>
-            <span class="card-level">A1–A2</span>
-          </div>
-          <div class="card-title">Tabella Passato Prossimo</div>
-          <div class="card-subtitle">Tabla completa — 50 verbos</div>
-          <div class="card-desc">Los 50 verbos más usados en passato prossimo en una sola tabla. Buscador integrado y filtro por avere/essere.</div>
-          <div class="card-tags">
-            <span class="tag">50 Verbi</span>
-            <span class="tag">Tabella</span>
-            <span class="tag">Ricerca</span>
-            <span class="tag">6 Persone</span>
-          </div>
-          <div class="card-footer">
-            <span class="card-num">07</span>
-            <span class="card-cta">Apri <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
-          </div>
-        </a>
-      </div>
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          });
+        },
+        {
+          threshold: 0.16,
+          rootMargin: '0px 0px -10% 0px'
+        }
+      );
 
-      <div class="card-wrap" data-cat="pass">
-        <a class="card pass" href="apuntes/imperfetto.html">
-          <div class="card-top">
-            <span class="card-icon">⏳</span>
-            <span class="card-level">A2</span>
-          </div>
-          <div class="card-title">Imperfetto</div>
-          <div class="card-subtitle">Pretérito imperfecto</div>
-          <div class="card-desc">6 usos (hábito, descripción, acción en curso, estados...), formación regular e irregular, contrasto con il passato prossimo.</div>
-          <div class="card-tags">
-            <span class="tag">6 Usi</span>
-            <span class="tag">Abitudine</span>
-            <span class="tag">Descrizione</span>
-            <span class="tag">vs P. Prossimo</span>
-          </div>
-          <div class="card-footer">
-            <span class="card-num">08</span>
-            <span class="card-cta">Apri <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
-          </div>
-        </a>
-      </div>
+      elements.forEach((element) => observer.observe(element));
+    }
 
-    </div>
-  </section>
+    openButtons.forEach((button) => {
+      button.addEventListener('click', openModal);
+    });
 
-  <!-- ===== FUTURO ===== -->
-  <section class="category-section" data-cat="fut">
-    <div class="cat-header">
-      <div class="cat-line"></div>
-      <span class="cat-title fut">Futuro e Condizionale</span>
-      <div class="cat-line"></div>
-    </div>
-    <div class="cards-grid">
+    closeButtons.forEach((button) => {
+      button.addEventListener('click', closeModal);
+    });
 
-      <div class="card-wrap" data-cat="fut">
-        <a class="card fut" href="apuntes/futuro-semplice.html">
-          <div class="card-top">
-            <span class="card-icon">🚀</span>
-            <span class="card-level">A2–B1</span>
-          </div>
-          <div class="card-title">Futuro Semplice</div>
-          <div class="card-subtitle">Futuro simple</div>
-          <div class="card-desc">Formación, 7 familias de irregolari, 6 usos incluyendo el futuro epistemico, y la regla obligatoria de quando/se/appena.</div>
-          <div class="card-tags">
-            <span class="tag">6 Usi</span>
-            <span class="tag">Irregolari</span>
-            <span class="tag">Futuro Epistemico</span>
-            <span class="tag">Quando/Se</span>
-            <span class="tag">Condizionale</span>
-          </div>
-          <div class="card-footer">
-            <span class="card-num">09</span>
-            <span class="card-cta">Apri <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
-          </div>
-        </a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ===== RIFERIMENTO ===== -->
-  <section class="category-section" data-cat="rif">
-    <div class="cat-header">
-      <div class="cat-line"></div>
-      <span class="cat-title rif">Riferimento Rapido</span>
-      <div class="cat-line"></div>
-    </div>
-    <div class="cards-grid">
-
-      <div class="card-wrap" data-cat="rif">
-        <a class="card rif" href="apuntes/50-verbi-coniugazioni.html">
-          <div class="card-top">
-            <span class="card-icon">📋</span>
-            <span class="card-level">A1–B1</span>
-          </div>
-          <div class="card-title">50 Verbi — Tutte le Coniugazioni</div>
-          <div class="card-subtitle">50 verbos en todos los tiempos</div>
-          <div class="card-desc">Los 50 verbos más usados conjugados en 5 tiempos: presente, passato prossimo, imperfetto, futuro y condizionale. Con búsqueda y filtros.</div>
-          <div class="card-tags">
-            <span class="tag">50 Verbi</span>
-            <span class="tag">5 Tempi</span>
-            <span class="tag">Ricerca</span>
-            <span class="tag">Avere/Essere</span>
-          </div>
-          <div class="card-footer">
-            <span class="card-num">10</span>
-            <span class="card-cta">Apri <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
-          </div>
-        </a>
-      </div>
-
-      <div class="card-wrap" data-cat="rif">
-        <a class="card rif" href="apuntes/riassunto-tempi.html">
-          <div class="card-top">
-            <span class="card-icon">🗺️</span>
-            <span class="card-level">A1–B1</span>
-          </div>
-          <div class="card-title">Riassunto dei Tempi</div>
-          <div class="card-subtitle">Resumen de todos los tiempos</div>
-          <div class="card-desc">Guía rápida de los 5 tiempos: cómo identificar cada uno, cómo formarlo y cuándo usarlo. Incluye árbol de decisión y tabla comparativa.</div>
-          <div class="card-tags">
-            <span class="tag">5 Tempi</span>
-            <span class="tag">Riassunto</span>
-            <span class="tag">Regole</span>
-            <span class="tag">Confronto</span>
-          </div>
-          <div class="card-footer">
-            <span class="card-num">11</span>
-            <span class="card-cta">Apri <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
-          </div>
-        </a>
-      </div>
-
-    </div>
-  </section>
-
-</main>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-logo">Italiano <span>Apuntes</span></div>
-    <div class="footer-sub">Gramática italiana · A1 → B1</div>
-    <div class="footer-flag">
-      <span></span><span></span><span></span>
-    </div>
-    <div class="footer-copy">11 temas · 5 tiempos verbales · 200+ ejemplos</div>
-  </div>
-</footer>
-
-<script>
-  function filter(cat, btn) {
-    // update buttons
-    document.querySelectorAll('.f-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-
-    // show/hide cards
-    const wraps = document.querySelectorAll('.card-wrap');
-    let visible = 0;
-    wraps.forEach(w => {
-      if (cat === 'all' || w.dataset.cat === cat) {
-        w.classList.remove('hidden');
-        visible++;
-      } else {
-        w.classList.add('hidden');
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        closeModal();
       }
     });
 
-    // show/hide sections
-    document.querySelectorAll('.category-section').forEach(s => {
-      if (cat === 'all' || s.dataset.cat === cat) {
-        s.style.display = '';
-      } else {
-        s.style.display = 'none';
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && modal.classList.contains('open')) {
+        closeModal();
       }
     });
 
-    document.getElementById('filterCount').textContent = `${visible} tema${visible !== 1 ? 's' : ''}`;
-  }
-</script>
+    loginForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      loginError.classList.remove('visible');
+      loginSuccess.classList.remove('visible');
+
+      const formData = new FormData(loginForm);
+      const result = window.ItalianoAuth.login(formData.get('email'), formData.get('password'));
+
+      if (!result.ok) {
+        loginError.textContent = result.message;
+        loginError.classList.add('visible');
+        return;
+      }
+
+      loginSuccess.classList.add('visible');
+      window.setTimeout(() => {
+        window.location.href = 'home.html';
+      }, 450);
+    });
+
+    renderHeroStats();
+    renderPreview();
+    renderAccesses();
+
+    window.requestAnimationFrame(() => {
+      document.body.classList.add('has-motion');
+      initRevealAnimations();
+    });
+  </script>
 </body>
 </html>
