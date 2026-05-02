@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Passato Prossimo – Verbi Irregolari</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: #f7f4ef;
+    color: #26241c;
+    padding: 2rem 1rem;
+    line-height: 1.65;
+  }
+
+  .page { max-width: 940px; margin: 0 auto; }
+
+  /* ---- COVER ---- */
+  .cover { border-left: 5px solid #7a2a1a; padding-left: 1.2rem; margin-bottom: 2.5rem; }
+  .cover h1 { font-family:'Lora',serif; font-size:1.9rem; font-weight:600; color:#12100a; line-height:1.2; }
+  .cover .sub { font-size:0.92rem; color:#5a5040; margin-top:0.4rem; font-style:italic; }
+  .cover .tags { display:flex; gap:0.5rem; margin-top:0.7rem; flex-wrap:wrap; }
+  .tag { padding:0.15rem 0.6rem; border-radius:4px; font-size:0.78rem; font-weight:600; letter-spacing:0.05em; }
+  .tag-red   { background:#7a1a1a; color:#f8d8d8; }
+  .tag-blue  { background:#1a4a7a; color:#d8eaf8; }
+  .tag-teal  { background:#1a6a5a; color:#c8f0e8; }
+  .tag-amber { background:#7a4a00; color:#f8e8c0; }
+
+  /* ---- LANG BADGE ---- */
+  .lang-badge { display:inline-flex; align-items:center; gap:0.5rem; padding:0.28rem 0.85rem; border-radius:4px; font-size:0.8rem; font-weight:600; letter-spacing:0.07em; text-transform:uppercase; margin:2.5rem 0 1rem; }
+  .lang-it { background:#1a3a1a; color:#c8e8c0; }
+  .lang-es { background:#3a1a1a; color:#e8c8c0; }
+
+  /* ---- HEADINGS ---- */
+  h2 { font-family:'Lora',serif; font-size:1.18rem; font-weight:600; color:#12100a; border-left:4px solid #7a2a1a; padding-left:0.75rem; margin:2rem 0 0.7rem; }
+  h3 { font-size:0.88rem; font-weight:600; color:#7a2a1a; text-transform:uppercase; letter-spacing:0.09em; margin:1.5rem 0 0.5rem; display:flex; align-items:center; gap:0.6rem; }
+  h3::after { content:''; flex:1; height:1px; background:#d0cac0; }
+
+  p { margin-bottom:0.7rem; font-size:0.95rem; }
+  ul { margin:0.3rem 0 0.9rem 1.3rem; }
+  ul li { font-size:0.94rem; margin-bottom:0.35rem; }
+
+  /* ---- BOXES ---- */
+  .note  { background:#eaf0f8; border-left:4px solid #2a5c8a; border-radius:0 6px 6px 0; padding:0.65rem 1rem; font-size:0.9rem; color:#1a2a40; margin:0.6rem 0 1rem; }
+  .note strong { color:#1a4a7a; }
+  .warn  { background:#fdf4e4; border-left:4px solid #b07820; border-radius:0 6px 6px 0; padding:0.65rem 1rem; font-size:0.9rem; color:#5a3800; margin:0.6rem 0 1rem; }
+  .warn strong { color:#8a5200; }
+  .ok    { background:#e8f6ec; border-left:4px solid #1a7a30; border-radius:0 6px 6px 0; padding:0.65rem 1rem; font-size:0.9rem; color:#0a3a18; margin:0.6rem 0 1rem; }
+  .ok strong { color:#1a6a28; }
+  .tip   { background:#fdf0f8; border-left:4px solid #8a2a6a; border-radius:0 6px 6px 0; padding:0.65rem 1rem; font-size:0.9rem; color:#4a0a3a; margin:0.6rem 0 1rem; }
+  .tip strong { color:#7a1a5a; }
+
+  /* ---- TABLES ---- */
+  .table-wrap { overflow-x:auto; margin-bottom:1.2rem; }
+  table { width:100%; border-collapse:collapse; font-size:0.9rem; }
+  thead tr { background:#1a1208; color:#ece8e0; }
+  thead th { padding:0.55rem 0.7rem; text-align:left; font-weight:600; font-size:0.82rem; letter-spacing:0.04em; white-space:nowrap; }
+  thead th.av  { background:#1a4a7a; }
+  thead th.es  { background:#1a6a5a; }
+  thead th.gr1 { background:#5a2a8a; }
+  thead th.gr2 { background:#1a4a7a; }
+  thead th.gr3 { background:#1a6a5a; }
+  thead th.gr4 { background:#7a4a00; }
+  thead th.gr5 { background:#4a1a6a; }
+
+  tbody tr:nth-child(even) { background:#eee9e0; }
+  tbody tr:nth-child(odd)  { background:#f7f4ef; }
+  tbody tr:hover { background:#e4ddd0; }
+
+  td { padding:0.46rem 0.7rem; border-bottom:1px solid #dbd5c8; vertical-align:middle; }
+  td.person { font-weight:600; color:#26241c; white-space:nowrap; }
+  td.inf    { font-family:'Lora',serif; color:#26241c; font-weight:600; }
+  td.pp     { font-family:'Lora',serif; font-weight:600; }
+  td.av     { font-family:'Lora',serif; font-weight:600; color:#1a4a7a; }
+  td.es     { font-family:'Lora',serif; font-weight:600; color:#1a6a5a; }
+  td.tr     { font-size:0.84rem; color:#7a6858; font-style:italic; }
+  td.ex     { font-size:0.88rem; color:#2a2418; }
+  td.right  { color:#1a6a20; font-family:'Lora',serif; font-weight:600; }
+  td.wrong  { color:#9a1a1a; text-decoration:line-through; font-family:'Lora',serif; }
+  td.rule   { font-size:0.84rem; color:#5a4a38; }
+
+  td.pp.gr1 { color:#5a2a8a; }
+  td.pp.gr2 { color:#1a4a7a; }
+  td.pp.gr3 { color:#1a6a5a; }
+  td.pp.gr4 { color:#8a5a00; }
+  td.pp.gr5 { color:#5a1a8a; }
+
+  /* ---- FAMILY CARDS ---- */
+  .fam-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-bottom:1.4rem; }
+  @media(max-width:640px){ .fam-grid { grid-template-columns:1fr; } }
+  .fam-grid2 { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin-bottom:1.4rem; }
+  @media(max-width:560px){ .fam-grid2 { grid-template-columns:1fr; } }
+
+  .fam-card { border-radius:8px; overflow:hidden; border:1px solid #d4cdc4; }
+  .fam-head { padding:0.55rem 0.85rem; }
+  .fam-head.gr1 { background:#5a2a8a; color:#ede0f8; }
+  .fam-head.gr2 { background:#1a4a7a; color:#d8e8f8; }
+  .fam-head.gr3 { background:#1a6a5a; color:#d0f0e8; }
+  .fam-head.gr4 { background:#7a4a00; color:#f8e8c0; }
+  .fam-head.gr5 { background:#4a1a6a; color:#e8d8f8; }
+  .fam-head.gr6 { background:#1a5a6a; color:#d0eef8; }
+  .fam-head.gr7 { background:#6a1a3a; color:#f8d8e8; }
+  .fam-htitle { font-family:'Lora',serif; font-weight:600; font-size:1rem; }
+  .fam-hsub   { font-size:0.78rem; font-style:italic; opacity:0.85; margin-top:0.1rem; }
+  .fam-body { background:#f7f4ef; }
+  .fam-row { display:flex; justify-content:space-between; align-items:baseline; padding:0.32rem 0.85rem; border-bottom:1px solid #e4ddd0; font-size:0.9rem; }
+  .fam-row:last-child { border-bottom:none; }
+  .fam-inf  { color:#3a3028; }
+  .fam-pp   { font-family:'Lora',serif; font-weight:600; }
+  .fam-pp.gr1 { color:#5a2a8a; }
+  .fam-pp.gr2 { color:#1a4a7a; }
+  .fam-pp.gr3 { color:#1a6a5a; }
+  .fam-pp.gr4 { color:#8a5a00; }
+  .fam-pp.gr5 { color:#5a1a8a; }
+  .fam-pp.gr6 { color:#1a5a6a; }
+  .fam-pp.gr7 { color:#7a1a3a; }
+  .fam-tr  { font-size:0.78rem; color:#9a8878; font-style:italic; }
+
+  /* ---- CONJ CARD ---- */
+  .conj-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-bottom:1.3rem; }
+  @media(max-width:620px){ .conj-grid { grid-template-columns:1fr; } }
+  .conj-card { border-radius:8px; overflow:hidden; border:1px solid #d4cdc4; }
+  .conj-head { padding:0.5rem 0.85rem; }
+  .conj-head.gr1 { background:#5a2a8a; color:#ede0f8; }
+  .conj-head.gr2 { background:#1a4a7a; color:#d8e8f8; }
+  .conj-head.gr3 { background:#1a6a5a; color:#d0f0e8; }
+  .conj-head.gr4 { background:#7a4a00; color:#f8e8c0; }
+  .conj-head.gr5 { background:#1a5a6a; color:#d0eef8; }
+  .conj-htitle { font-family:'Lora',serif; font-weight:600; font-size:1rem; }
+  .conj-hsub   { font-size:0.78rem; font-style:italic; opacity:0.82; }
+  .conj-body { background:#f7f4ef; }
+  .conj-row { display:flex; justify-content:space-between; align-items:baseline; padding:0.3rem 0.85rem; border-bottom:1px solid #e4ddd0; font-size:0.88rem; }
+  .conj-row:last-child { border-bottom:none; }
+  .conj-pro { color:#7a6858; font-size:0.8rem; flex:0 0 60px; }
+  .conj-av  { font-family:'Lora',serif; font-weight:600; }
+  .conj-av.av { color:#1a4a7a; }
+  .conj-av.es { color:#1a6a5a; }
+  .conj-pp  { font-family:'Lora',serif; }
+  .conj-pp.gr1 { color:#5a2a8a; font-weight:600; }
+  .conj-pp.gr2 { color:#1a4a7a; }
+  .conj-pp.gr3 { color:#1a6a5a; }
+  .conj-pp.gr4 { color:#8a5a00; }
+  .conj-plus { color:#b0a898; font-size:0.8rem; margin:0 0.3rem; }
+
+  /* ---- EX GRID ---- */
+  .ex-grid { display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin-bottom:1.2rem; }
+  @media(max-width:540px){ .ex-grid { grid-template-columns:1fr; } }
+  .ex-card { background:#f7f4ef; border:1px solid #d4cdc4; border-radius:8px; padding:0.7rem 0.9rem; }
+  .ex-label { font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.5rem; padding-bottom:0.3rem; border-bottom:1px solid #e4ddd0; }
+  .ex-label.gr1 { color:#5a2a8a; }
+  .ex-label.gr2 { color:#1a4a7a; }
+  .ex-label.gr3 { color:#1a6a5a; }
+  .ex-label.gr4 { color:#8a5a00; }
+  .ex-label.av  { color:#1a4a7a; }
+  .ex-label.es  { color:#1a6a5a; }
+  .ex-item { margin-bottom:0.4rem; }
+  .ex-it { font-family:'Lora',serif; font-size:0.91rem; color:#12100a; font-weight:600; }
+  .ex-es { font-size:0.82rem; color:#7a6858; font-style:italic; }
+
+  /* ---- FORMULA ---- */
+  .formula { background:#12100a; color:#f0e8d8; border-radius:8px; padding:1.1rem 1.4rem; margin:0.8rem 0 1.2rem; text-align:center; }
+  .formula .line { font-family:'Lora',serif; font-size:1.1rem; margin-bottom:0.3rem; }
+  .formula .line span.h  { color:#6ac0f0; font-weight:600; }
+  .formula .line span.e  { color:#6af0a8; font-weight:600; }
+  .formula .line span.ir { color:#f0a060; font-weight:600; }
+  .formula .line span.pl { color:#a09080; margin:0 0.6rem; }
+  .formula .sub { font-family:'Source Sans 3',sans-serif; font-size:0.82rem; color:#a09080; margin-top:0.4rem; font-style:italic; }
+
+  /* ---- SUMMARY ---- */
+  .summary { background:#12100a; color:#e8e0d0; border-radius:8px; padding:1.3rem 1.5rem; margin-top:3rem; }
+  .summary h4 { font-family:'Lora',serif; font-size:1.05rem; color:#f0c870; margin-bottom:1rem; border-bottom:1px solid #3a3028; padding-bottom:0.5rem; }
+  .sum-step { display:grid; grid-template-columns:28px 1fr; gap:0.5rem; margin-bottom:0.65rem; align-items:start; }
+  .sum-n { width:28px; height:28px; border-radius:50%; background:#7a2a1a; color:#f8d8c8; font-weight:600; font-size:0.88rem; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .sum-desc { font-size:0.9rem; color:#c8c0b0; padding-top:0.25rem; }
+  .sum-desc code { background:#2a2418; padding:0.1rem 0.4rem; border-radius:3px; font-family:monospace; font-size:0.85rem; color:#f0c080; }
+  .sum-desc strong { color:#f0e8d0; }
+
+  @media print {
+    body { background:white; padding:1rem; }
+    .fam-grid,.fam-grid2,.conj-grid,.ex-grid { page-break-inside:avoid; }
+  }
+</style>
+</head>
+<body>
+<div id="site-nav" style="background:#0f1422;padding:0.52rem 1.4rem;display:flex;align-items:center;gap:0.7rem;font-family:'Source Sans 3',sans-serif;font-size:0.82rem;border-bottom:1px solid #1e2c44;position:sticky;top:0;z-index:9999;box-shadow:0 2px 8px rgba(0,0,0,0.25)">
+  <a href="/" style="color:#70b8f8;text-decoration:none;font-weight:600;display:flex;align-items:center;gap:0.35rem;transition:opacity 0.2s" onmouseover="this.style.opacity=0.75" onmouseout="this.style.opacity=1">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#70b8f8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+    Inicio
+  </a>
+  <span style="color:#2a3a54">|</span>
+  <span style="color:#6878a0;letter-spacing:0.03em">Italiano Apuntes</span>
+</div>
+
+<div class="page">
+
+<!-- COVER -->
+<div class="cover">
+  <h1>Passato Prossimo — Verbi Irregolari</h1>
+  <p class="sub">Participi passati irregolari · organizados por familias · con conjugaciones completas y ejemplos</p>
+  <div class="tags">
+    <span class="tag tag-red">A2</span>
+    <span class="tag tag-blue">Indicativo Passato</span>
+    <span class="tag tag-teal">Avere + Essere</span>
+    <span class="tag tag-amber">7 Famiglie</span>
+  </div>
+</div>
+
+<!-- ========================= ITALIANO ========================= -->
+<div class="lang-badge lang-it">🇮🇹 Italiano</div>
+
+<h2>Perché esistono participi irregolari?</h2>
+<p>La maggior parte dei verbi irregolari appartiene alla <strong>2ª coniugazione (-ERE)</strong>. Questi verbi non seguono il pattern regolare <em>-uto</em> ma conservano forme antiche del latino. Conoscerli a memoria è indispensabile perché sono i verbi più frequenti della lingua.</p>
+<p>I verbi irregolari si organizzano in <strong>famiglie di terminazione</strong>: imparare un gruppo facilita l'apprendimento di tutti i verbi che lo compongono.</p>
+
+<div class="formula">
+  <div class="line">soggetto <span class="pl">+</span> <span class="h">AVERE</span> / <span class="e">ESSERE</span> <span class="pl">+</span> <span class="ir">participio passato irregolare</span></div>
+  <div class="sub">La struttura è identica ai verbi regolari · solo il participio passato cambia</div>
+</div>
+
+<!-- ===== FAMIGLIE ===== -->
+<h2>Le 7 famiglie del participio irregolare</h2>
+
+<h3>Famiglia 1 — terminazione -TO (radicale modificata)</h3>
+<div class="fam-grid">
+  <div class="fam-card">
+    <div class="fam-head gr1">
+      <div class="fam-htitle">Gruppo -ETTO / -ITTO</div>
+      <div class="fam-hsub">radice breve + -to</div>
+    </div>
+    <div class="fam-body">
+      <div class="fam-row"><span class="fam-inf">dire</span><span class="fam-pp gr1">detto</span><span class="fam-tr">dicho</span></div>
+      <div class="fam-row"><span class="fam-inf">fare</span><span class="fam-pp gr1">fatto</span><span class="fam-tr">hecho</span></div>
+      <div class="fam-row"><span class="fam-inf">scrivere</span><span class="fam-pp gr1">scritto</span><span class="fam-tr">escrito</span></div>
+      <div class="fam-row"><span class="fam-inf">descrivere</span><span class="fam-pp gr1">descritto</span><span class="fam-tr">descrito</span></div>
+      <div class="fam-row"><span class="fam-inf">riscrivere</span><span class="fam-pp gr1">riscritto</span><span class="fam-tr">reescrito</span></div>
+      <div class="fam-row"><span class="fam-inf">leggere</span><span class="fam-pp gr1">letto</span><span class="fam-tr">leído</span></div>
+      <div class="fam-row"><span class="fam-inf">rileggere</span><span class="fam-pp gr1">riletto</span><span class="fam-tr">releído</span></div>
+      <div class="fam-row"><span class="fam-inf">eleggere</span><span class="fam-pp gr1">eletto</span><span class="fam-tr">elegido</span></div>
+      <div class="fam-row"><span class="fam-inf">mettere</span><span class="fam-pp gr1">messo</span><span class="fam-tr">puesto</span></div>
+      <div class="fam-row"><span class="fam-inf">permettere</span><span class="fam-pp gr1">permesso</span><span class="fam-tr">permitido</span></div>
+      <div class="fam-row"><span class="fam-inf">smettere</span><span class="fam-pp gr1">smesso</span><span class="fam-tr">dejado (de hacer)</span></div>
+      <div class="fam-row"><span class="fam-inf">promettere</span><span class="fam-pp gr1">promesso</span><span class="fam-tr">prometido</span></div>
+    </div>
+  </div>
+  <div class="fam-card">
+    <div class="fam-head gr2">
+      <div class="fam-htitle">Grupo -NTO / -NTO</div>
+      <div class="fam-hsub">nasal + -to</div>
+    </div>
+    <div class="fam-body">
+      <div class="fam-row"><span class="fam-inf">vincere</span><span class="fam-pp gr2">vinto</span><span class="fam-tr">ganado</span></div>
+      <div class="fam-row"><span class="fam-inf">convincere</span><span class="fam-pp gr2">convinto</span><span class="fam-tr">convencido</span></div>
+      <div class="fam-row"><span class="fam-inf">spingere</span><span class="fam-pp gr2">spinto</span><span class="fam-tr">empujado</span></div>
+      <div class="fam-row"><span class="fam-inf">giungere</span><span class="fam-pp gr2">giunto</span><span class="fam-tr">llegado (a)</span></div>
+      <div class="fam-row"><span class="fam-inf">aggiungere</span><span class="fam-pp gr2">aggiunto</span><span class="fam-tr">añadido</span></div>
+      <div class="fam-row"><span class="fam-inf">piangere</span><span class="fam-pp gr2">pianto</span><span class="fam-tr">llorado</span></div>
+      <div class="fam-row"><span class="fam-inf">dipingere</span><span class="fam-pp gr2">dipinto</span><span class="fam-tr">pintado</span></div>
+      <div class="fam-row"><span class="fam-inf">fingere</span><span class="fam-pp gr2">finto</span><span class="fam-tr">fingido</span></div>
+      <div class="fam-row"><span class="fam-inf">tingere</span><span class="fam-pp gr2">tinto</span><span class="fam-tr">teñido</span></div>
+      <div class="fam-row"><span class="fam-inf">stringere</span><span class="fam-pp gr2">stretto</span><span class="fam-tr">apretado</span></div>
+      <div class="fam-row"><span class="fam-inf">ungere</span><span class="fam-pp gr2">unto</span><span class="fam-tr">untado</span></div>
+      <div class="fam-row"><span class="fam-inf">fungere</span><span class="fam-pp gr2">funto</span><span class="fam-tr">fungido</span></div>
+    </div>
+  </div>
+  <div class="fam-card">
+    <div class="fam-head gr3">
+      <div class="fam-htitle">Grupo -SSO / -STO</div>
+      <div class="fam-hsub">sibilante + -to → fusión</div>
+    </div>
+    <div class="fam-body">
+      <div class="fam-row"><span class="fam-inf">perdere</span><span class="fam-pp gr3">perso</span><span class="fam-tr">perdido</span></div>
+      <div class="fam-row"><span class="fam-inf">rispondere</span><span class="fam-pp gr3">risposto</span><span class="fam-tr">respondido</span></div>
+      <div class="fam-row"><span class="fam-inf">nascondere</span><span class="fam-pp gr3">nascosto</span><span class="fam-tr">escondido</span></div>
+      <div class="fam-row"><span class="fam-inf">chiedere</span><span class="fam-pp gr3">chiesto</span><span class="fam-tr">pedido</span></div>
+      <div class="fam-row"><span class="fam-inf">richiedere</span><span class="fam-pp gr3">richiesto</span><span class="fam-tr">solicitado</span></div>
+      <div class="fam-row"><span class="fam-inf">prendere</span><span class="fam-pp gr3">preso</span><span class="fam-tr">tomado</span></div>
+      <div class="fam-row"><span class="fam-inf">sorprendere</span><span class="fam-pp gr3">sorpreso</span><span class="fam-tr">sorprendido</span></div>
+      <div class="fam-row"><span class="fam-inf">accendere</span><span class="fam-pp gr3">acceso</span><span class="fam-tr">encendido</span></div>
+      <div class="fam-row"><span class="fam-inf">spendere</span><span class="fam-pp gr3">speso</span><span class="fam-tr">gastado</span></div>
+      <div class="fam-row"><span class="fam-inf">scendere</span><span class="fam-pp gr3">sceso</span><span class="fam-tr">bajado</span></div>
+      <div class="fam-row"><span class="fam-inf">rendere</span><span class="fam-pp gr3">reso</span><span class="fam-tr">dado / rendido</span></div>
+      <div class="fam-row"><span class="fam-inf">difendere</span><span class="fam-pp gr3">difeso</span><span class="fam-tr">defendido</span></div>
+    </div>
+  </div>
+</div>
+
+<h3>Famiglia 2 — terminazione -SO</h3>
+<div class="fam-grid2">
+  <div class="fam-card">
+    <div class="fam-head gr4">
+      <div class="fam-htitle">Grupo -SO directo</div>
+      <div class="fam-hsub">raíz + -so (sin modificación)</div>
+    </div>
+    <div class="fam-body">
+      <div class="fam-row"><span class="fam-inf">decidere</span><span class="fam-pp gr4">deciso</span><span class="fam-tr">decidido</span></div>
+      <div class="fam-row"><span class="fam-inf">dividere</span><span class="fam-pp gr4">diviso</span><span class="fam-tr">dividido</span></div>
+      <div class="fam-row"><span class="fam-inf">ridere</span><span class="fam-pp gr4">riso</span><span class="fam-tr">reído</span></div>
+      <div class="fam-row"><span class="fam-inf">sorridere</span><span class="fam-pp gr4">sorriso</span><span class="fam-tr">sonreído</span></div>
+      <div class="fam-row"><span class="fam-inf">uccidere</span><span class="fam-pp gr4">ucciso</span><span class="fam-tr">matado</span></div>
+      <div class="fam-row"><span class="fam-inf">chiudere</span><span class="fam-pp gr4">chiuso</span><span class="fam-tr">cerrado</span></div>
+      <div class="fam-row"><span class="fam-inf">includere</span><span class="fam-pp gr4">incluso</span><span class="fam-tr">incluido</span></div>
+      <div class="fam-row"><span class="fam-inf">escludere</span><span class="fam-pp gr4">escluso</span><span class="fam-tr">excluido</span></div>
+    </div>
+  </div>
+  <div class="fam-card">
+    <div class="fam-head gr5">
+      <div class="fam-htitle">Grupo -RSO / -STO especiales</div>
+      <div class="fam-hsub">variaciones con raíz corta</div>
+    </div>
+    <div class="fam-body">
+      <div class="fam-row"><span class="fam-inf">correre</span><span class="fam-pp gr5">corso</span><span class="fam-tr">corrido</span></div>
+      <div class="fam-row"><span class="fam-inf">percorrere</span><span class="fam-pp gr5">percorso</span><span class="fam-tr">recorrido</span></div>
+      <div class="fam-row"><span class="fam-inf">soccorrere</span><span class="fam-pp gr5">soccorso</span><span class="fam-tr">socorrido</span></div>
+      <div class="fam-row"><span class="fam-inf">esistere</span><span class="fam-pp gr5">esistito</span><span class="fam-tr">existido</span></div>
+      <div class="fam-row"><span class="fam-inf">esplodere</span><span class="fam-pp gr5">esploso</span><span class="fam-tr">explotado</span></div>
+      <div class="fam-row"><span class="fam-inf">muovere</span><span class="fam-pp gr5">mosso</span><span class="fam-tr">movido</span></div>
+      <div class="fam-row"><span class="fam-inf">commuovere</span><span class="fam-pp gr5">commosso</span><span class="fam-tr">conmovido</span></div>
+      <div class="fam-row"><span class="fam-inf">discutere</span><span class="fam-pp gr5">discusso</span><span class="fam-tr">discutido</span></div>
+    </div>
+  </div>
+</div>
+
+<h3>Famiglia 3 — Verbi ausiliari e copulativi</h3>
+<div class="fam-grid">
+  <div class="fam-card">
+    <div class="fam-head gr6">
+      <div class="fam-htitle">essere / stare</div>
+      <div class="fam-hsub">ambos → stato/a/i/e</div>
+    </div>
+    <div class="fam-body">
+      <div class="fam-row"><span class="fam-inf">essere</span><span class="fam-pp gr6">stato/a/i/e</span><span class="fam-tr">sido / estado</span></div>
+      <div class="fam-row"><span class="fam-inf">stare</span><span class="fam-pp gr6">stato/a/i/e</span><span class="fam-tr">estado</span></div>
+    </div>
+  </div>
+  <div class="fam-card">
+    <div class="fam-head gr7">
+      <div class="fam-htitle">avere / sapere</div>
+      <div class="fam-hsub">formas propias</div>
+    </div>
+    <div class="fam-body">
+      <div class="fam-row"><span class="fam-inf">avere</span><span class="fam-pp gr7">avuto</span><span class="fam-tr">tenido / habido</span></div>
+      <div class="fam-row"><span class="fam-inf">sapere</span><span class="fam-pp gr7">saputo</span><span class="fam-tr">sabido</span></div>
+    </div>
+  </div>
+  <div class="fam-card">
+    <div class="fam-head gr1">
+      <div class="fam-htitle">venire / tenere y derivados</div>
+      <div class="fam-hsub">-enuto</div>
+    </div>
+    <div class="fam-body">
+      <div class="fam-row"><span class="fam-inf">venire</span><span class="fam-pp gr1">venuto</span><span class="fam-tr">venido</span></div>
+      <div class="fam-row"><span class="fam-inf">diventare</span><span class="fam-pp gr1">diventato</span><span class="fam-tr">llegado a ser</span></div>
+      <div class="fam-row"><span class="fam-inf">tenere</span><span class="fam-pp gr1">tenuto</span><span class="fam-tr">tenido / sujetado</span></div>
+      <div class="fam-row"><span class="fam-inf">ottenere</span><span class="fam-pp gr1">ottenuto</span><span class="fam-tr">obtenido</span></div>
+      <div class="fam-row"><span class="fam-inf">mantenere</span><span class="fam-pp gr1">mantenuto</span><span class="fam-tr">mantenido</span></div>
+      <div class="fam-row"><span class="fam-inf">contenere</span><span class="fam-pp gr1">contenuto</span><span class="fam-tr">contenido</span></div>
+    </div>
+  </div>
+</div>
+
+<h3>Famiglia 4 — terminazione -OSTO / -APERTO / -OFFERTO</h3>
+<div class="fam-grid2">
+  <div class="fam-card">
+    <div class="fam-head gr4">
+      <div class="fam-htitle">Grupo -OSTO (porre e derivados)</div>
+      <div class="fam-hsub">radicale: -posto</div>
+    </div>
+    <div class="fam-body">
+      <div class="fam-row"><span class="fam-inf">porre</span><span class="fam-pp gr4">posto</span><span class="fam-tr">puesto / colocado</span></div>
+      <div class="fam-row"><span class="fam-inf">proporre</span><span class="fam-pp gr4">proposto</span><span class="fam-tr">propuesto</span></div>
+      <div class="fam-row"><span class="fam-inf">comporre</span><span class="fam-pp gr4">composto</span><span class="fam-tr">compuesto</span></div>
+      <div class="fam-row"><span class="fam-inf">disporre</span><span class="fam-pp gr4">disposto</span><span class="fam-tr">dispuesto</span></div>
+      <div class="fam-row"><span class="fam-inf">imporre</span><span class="fam-pp gr4">imposto</span><span class="fam-tr">impuesto</span></div>
+      <div class="fam-row"><span class="fam-inf">esporre</span><span class="fam-pp gr4">esposto</span><span class="fam-tr">expuesto</span></div>
+      <div class="fam-row"><span class="fam-inf">supporre</span><span class="fam-pp gr4">supposto</span><span class="fam-tr">supuesto</span></div>
+    </div>
+  </div>
+  <div class="fam-card">
+    <div class="fam-head gr3">
+      <div class="fam-htitle">Grupo -ERTO / -ERTO (aprire / offrire)</div>
+      <div class="fam-hsub">vocal abierta</div>
+    </div>
+    <div class="fam-body">
+      <div class="fam-row"><span class="fam-inf">aprire</span><span class="fam-pp gr3">aperto</span><span class="fam-tr">abierto</span></div>
+      <div class="fam-row"><span class="fam-inf">coprire</span><span class="fam-pp gr3">coperto</span><span class="fam-tr">cubierto</span></div>
+      <div class="fam-row"><span class="fam-inf">scoprire</span><span class="fam-pp gr3">scoperto</span><span class="fam-tr">descubierto</span></div>
+      <div class="fam-row"><span class="fam-inf">offrire</span><span class="fam-pp gr3">offerto</span><span class="fam-tr">ofrecido</span></div>
+      <div class="fam-row"><span class="fam-inf">soffrire</span><span class="fam-pp gr3">sofferto</span><span class="fam-tr">sufrido</span></div>
+      <div class="fam-row"><span class="fam-inf">morire</span><span class="fam-pp gr3">morto</span><span class="fam-tr">muerto</span></div>
+      <div class="fam-row"><span class="fam-inf">nascere</span><span class="fam-pp gr3">nato</span><span class="fam-tr">nacido</span></div>
+    </div>
+  </div>
+</div>
+
+<h3>Famiglia 5 — terminazione -ATTO / -ROTTO / -OTTO</h3>
+<div class="fam-grid2">
+  <div class="fam-card">
+    <div class="fam-head gr1">
+      <div class="fam-htitle">trarre / tradurre e derivados</div>
+      <div class="fam-hsub">-atto / -otto</div>
+    </div>
+    <div class="fam-body">
+      <div class="fam-row"><span class="fam-inf">trarre</span><span class="fam-pp gr1">tratto</span><span class="fam-tr">extraído / tratado</span></div>
+      <div class="fam-row"><span class="fam-inf">attrarre</span><span class="fam-pp gr1">attratto</span><span class="fam-tr">atraído</span></div>
+      <div class="fam-row"><span class="fam-inf">distrarre</span><span class="fam-pp gr1">distratto</span><span class="fam-tr">distraído</span></div>
+      <div class="fam-row"><span class="fam-inf">tradurre</span><span class="fam-pp gr1">tradotto</span><span class="fam-tr">traducido</span></div>
+      <div class="fam-row"><span class="fam-inf">produrre</span><span class="fam-pp gr1">prodotto</span><span class="fam-tr">producido</span></div>
+      <div class="fam-row"><span class="fam-inf">ridurre</span><span class="fam-pp gr1">ridotto</span><span class="fam-tr">reducido</span></div>
+    </div>
+  </div>
+  <div class="fam-card">
+    <div class="fam-head gr2">
+      <div class="fam-htitle">rompere / scegliere / togliere</div>
+      <div class="fam-hsub">formas propias</div>
+    </div>
+    <div class="fam-body">
+      <div class="fam-row"><span class="fam-inf">rompere</span><span class="fam-pp gr2">rotto</span><span class="fam-tr">roto</span></div>
+      <div class="fam-row"><span class="fam-inf">scegliere</span><span class="fam-pp gr2">scelto</span><span class="fam-tr">elegido</span></div>
+      <div class="fam-row"><span class="fam-inf">togliere</span><span class="fam-pp gr2">tolto</span><span class="fam-tr">quitado</span></div>
+      <div class="fam-row"><span class="fam-inf">sciogliere</span><span class="fam-pp gr2">sciolto</span><span class="fam-tr">disuelto</span></div>
+      <div class="fam-row"><span class="fam-inf">cogliere</span><span class="fam-pp gr2">colto</span><span class="fam-tr">recogido</span></div>
+      <div class="fam-row"><span class="fam-inf">volgere</span><span class="fam-pp gr2">volto</span><span class="fam-tr">girado / dirigido</span></div>
+    </div>
+  </div>
+</div>
+
+<h3>Famiglia 6 — Verbi di movimento con participio irregolare</h3>
+<div class="fam-grid">
+  <div class="fam-card">
+    <div class="fam-head gr6">
+      <div class="fam-htitle">andare / venire e derivati</div>
+      <div class="fam-hsub">→ ESSERE</div>
+    </div>
+    <div class="fam-body">
+      <div class="fam-row"><span class="fam-inf">venire</span><span class="fam-pp gr6">venuto/a/i/e</span><span class="fam-tr">venido</span></div>
+      <div class="fam-row"><span class="fam-inf">andare</span><span class="fam-pp gr6">andato/a/i/e</span><span class="fam-tr">ido (regular)</span></div>
+      <div class="fam-row"><span class="fam-inf">rimanere</span><span class="fam-pp gr6">rimasto/a/i/e</span><span class="fam-tr">quedado</span></div>
+      <div class="fam-row"><span class="fam-inf">cadere</span><span class="fam-pp gr6">caduto/a/i/e</span><span class="fam-tr">caído (regular)</span></div>
+    </div>
+  </div>
+  <div class="fam-card">
+    <div class="fam-head gr7">
+      <div class="fam-htitle">verbi di stato e crescita</div>
+      <div class="fam-hsub">→ ESSERE</div>
+    </div>
+    <div class="fam-body">
+      <div class="fam-row"><span class="fam-inf">nascere</span><span class="fam-pp gr7">nato/a/i/e</span><span class="fam-tr">nacido</span></div>
+      <div class="fam-row"><span class="fam-inf">morire</span><span class="fam-pp gr7">morto/a/i/e</span><span class="fam-tr">muerto</span></div>
+      <div class="fam-row"><span class="fam-inf">crescere</span><span class="fam-pp gr7">cresciuto/a/i/e</span><span class="fam-tr">crecido</span></div>
+      <div class="fam-row"><span class="fam-inf">comparire</span><span class="fam-pp gr7">comparso/a/i/e</span><span class="fam-tr">aparecido</span></div>
+    </div>
+  </div>
+  <div class="fam-card">
+    <div class="fam-head gr5">
+      <div class="fam-htitle">verbi di percezione</div>
+      <div class="fam-hsub">→ AVERE</div>
+    </div>
+    <div class="fam-body">
+      <div class="fam-row"><span class="fam-inf">vedere</span><span class="fam-pp gr5">visto</span><span class="fam-tr">visto</span></div>
+      <div class="fam-row"><span class="fam-inf">rivedere</span><span class="fam-pp gr5">rivisto</span><span class="fam-tr">vuelto a ver</span></div>
+      <div class="fam-row"><span class="fam-inf">prevedere</span><span class="fam-pp gr5">previsto</span><span class="fam-tr">previsto</span></div>
+      <div class="fam-row"><span class="fam-inf">bere</span><span class="fam-pp gr5">bevuto</span><span class="fam-tr">bebido</span></div>
+      <div class="fam-row"><span class="fam-inf">vivere</span><span class="fam-pp gr5">vissuto</span><span class="fam-tr">vivido</span></div>
+    </div>
+  </div>
+</div>
+
+<h3>Familia 7 — Tabla maestra (los 50 más frecuentes)</h3>
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>Infinito</th><th>Participio</th><th>Aux.</th><th>Español</th>
+      <th>Infinito</th><th>Participio</th><th>Aux.</th><th>Español</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td class="inf">essere</td><td class="pp gr6">stato/a</td><td class="es">essere</td><td class="tr">sido/estado</td><td class="inf">avere</td><td class="pp gr7">avuto</td><td class="av">avere</td><td class="tr">tenido</td></tr>
+    <tr><td class="inf">fare</td><td class="pp gr1">fatto</td><td class="av">avere</td><td class="tr">hecho</td><td class="inf">dire</td><td class="pp gr1">detto</td><td class="av">avere</td><td class="tr">dicho</td></tr>
+    <tr><td class="inf">vedere</td><td class="pp gr5">visto</td><td class="av">avere</td><td class="tr">visto</td><td class="inf">venire</td><td class="pp gr6">venuto/a</td><td class="es">essere</td><td class="tr">venido</td></tr>
+    <tr><td class="inf">mettere</td><td class="pp gr1">messo</td><td class="av">avere</td><td class="tr">puesto</td><td class="inf">prendere</td><td class="pp gr3">preso</td><td class="av">avere</td><td class="tr">tomado</td></tr>
+    <tr><td class="inf">scrivere</td><td class="pp gr1">scritto</td><td class="av">avere</td><td class="tr">escrito</td><td class="inf">leggere</td><td class="pp gr1">letto</td><td class="av">avere</td><td class="tr">leído</td></tr>
+    <tr><td class="inf">aprire</td><td class="pp gr3">aperto</td><td class="av">avere</td><td class="tr">abierto</td><td class="inf">offrire</td><td class="pp gr3">offerto</td><td class="av">avere</td><td class="tr">ofrecido</td></tr>
+    <tr><td class="inf">chiedere</td><td class="pp gr3">chiesto</td><td class="av">avere</td><td class="tr">pedido</td><td class="inf">rispondere</td><td class="pp gr3">risposto</td><td class="av">avere</td><td class="tr">respondido</td></tr>
+    <tr><td class="inf">nascere</td><td class="pp gr7">nato/a</td><td class="es">essere</td><td class="tr">nacido</td><td class="inf">morire</td><td class="pp gr7">morto/a</td><td class="es">essere</td><td class="tr">muerto</td></tr>
+    <tr><td class="inf">rimanere</td><td class="pp gr6">rimasto/a</td><td class="es">essere</td><td class="tr">quedado</td><td class="inf">scegliere</td><td class="pp gr2">scelto</td><td class="av">avere</td><td class="tr">elegido</td></tr>
+    <tr><td class="inf">decidere</td><td class="pp gr4">deciso</td><td class="av">avere</td><td class="tr">decidido</td><td class="inf">chiudere</td><td class="pp gr4">chiuso</td><td class="av">avere</td><td class="tr">cerrado</td></tr>
+    <tr><td class="inf">perdere</td><td class="pp gr3">perso</td><td class="av">avere</td><td class="tr">perdido</td><td class="inf">vincere</td><td class="pp gr2">vinto</td><td class="av">avere</td><td class="tr">ganado</td></tr>
+    <tr><td class="inf">rompere</td><td class="pp gr2">rotto</td><td class="av">avere</td><td class="tr">roto</td><td class="inf">correre</td><td class="pp gr5">corso</td><td class="av">avere</td><td class="tr">corrido</td></tr>
+    <tr><td class="inf">bere</td><td class="pp gr5">bevuto</td><td class="av">avere</td><td class="tr">bebido</td><td class="inf">vivere</td><td class="pp gr5">vissuto</td><td class="av">avere</td><td class="tr">vivido</td></tr>
+    <tr><td class="inf">tradurre</td><td class="pp gr1">tradotto</td><td class="av">avere</td><td class="tr">traducido</td><td class="inf">produrre</td><td class="pp gr1">prodotto</td><td class="av">avere</td><td class="tr">producido</td></tr>
+    <tr><td class="inf">proporre</td><td class="pp gr4">proposto</td><td class="av">avere</td><td class="tr">propuesto</td><td class="inf">scoprire</td><td class="pp gr3">scoperto</td><td class="av">avere</td><td class="tr">descubierto</td></tr>
+    <tr><td class="inf">spendere</td><td class="pp gr3">speso</td><td class="av">avere</td><td class="tr">gastado</td><td class="inf">nascondere</td><td class="pp gr3">nascosto</td><td class="av">avere</td><td class="tr">escondido</td></tr>
+    <tr><td class="inf">piangere</td><td class="pp gr2">pianto</td><td class="av">avere</td><td class="tr">llorado</td><td class="inf">dipingere</td><td class="pp gr2">dipinto</td><td class="av">avere</td><td class="tr">pintado</td></tr>
+    <tr><td class="inf">ridere</td><td class="pp gr4">riso</td><td class="av">avere</td><td class="tr">reído</td><td class="inf">muovere</td><td class="pp gr5">mosso</td><td class="av">avere</td><td class="tr">movido</td></tr>
+    <tr><td class="inf">spingere</td><td class="pp gr2">spinto</td><td class="av">avere</td><td class="tr">empujado</td><td class="inf">accendere</td><td class="pp gr3">acceso</td><td class="av">avere</td><td class="tr">encendido</td></tr>
+    <tr><td class="inf">smettere</td><td class="pp gr1">smesso</td><td class="av">avere</td><td class="tr">dejado de hacer</td><td class="inf">permettere</td><td class="pp gr1">permesso</td><td class="av">avere</td><td class="tr">permitido</td></tr>
+    <tr><td class="inf">soffrire</td><td class="pp gr3">sofferto</td><td class="av">avere</td><td class="tr">sufrido</td><td class="inf">convincere</td><td class="pp gr2">convinto</td><td class="av">avere</td><td class="tr">convencido</td></tr>
+    <tr><td class="inf">discutere</td><td class="pp gr5">discusso</td><td class="av">avere</td><td class="tr">discutido</td><td class="inf">sorprendere</td><td class="pp gr3">sorpreso</td><td class="av">avere</td><td class="tr">sorprendido</td></tr>
+    <tr><td class="inf">togliere</td><td class="pp gr2">tolto</td><td class="av">avere</td><td class="tr">quitado</td><td class="inf">aggiungere</td><td class="pp gr2">aggiunto</td><td class="av">avere</td><td class="tr">añadido</td></tr>
+    <tr><td class="inf">coprire</td><td class="pp gr3">coperto</td><td class="av">avere</td><td class="tr">cubierto</td><td class="inf">prevedere</td><td class="pp gr5">previsto</td><td class="av">avere</td><td class="tr">previsto</td></tr>
+    <tr><td class="inf">crescere</td><td class="pp gr7">cresciuto/a</td><td class="es">essere</td><td class="tr">crecido</td><td class="inf">escludere</td><td class="pp gr4">escluso</td><td class="av">avere</td><td class="tr">excluido</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===== CONIUGAZIONE ===== -->
+<h2>Coniugazione completa — cinque verbi modello</h2>
+
+<div class="conj-grid">
+  <div class="conj-card">
+    <div class="conj-head gr1"><div class="conj-htitle">fare</div><div class="conj-hsub">pp: fatto · avere</div></div>
+    <div class="conj-body">
+      <div class="conj-row"><span class="conj-pro">io</span><span class="conj-av av">ho</span><span class="conj-plus">+</span><span class="conj-pp gr1">fatto</span></div>
+      <div class="conj-row"><span class="conj-pro">tu</span><span class="conj-av av">hai</span><span class="conj-plus">+</span><span class="conj-pp gr1">fatto</span></div>
+      <div class="conj-row"><span class="conj-pro">lui/lei</span><span class="conj-av av">ha</span><span class="conj-plus">+</span><span class="conj-pp gr1">fatto</span></div>
+      <div class="conj-row"><span class="conj-pro">noi</span><span class="conj-av av">abbiamo</span><span class="conj-plus">+</span><span class="conj-pp gr1">fatto</span></div>
+      <div class="conj-row"><span class="conj-pro">voi</span><span class="conj-av av">avete</span><span class="conj-plus">+</span><span class="conj-pp gr1">fatto</span></div>
+      <div class="conj-row"><span class="conj-pro">loro</span><span class="conj-av av">hanno</span><span class="conj-plus">+</span><span class="conj-pp gr1">fatto</span></div>
+    </div>
+  </div>
+  <div class="conj-card">
+    <div class="conj-head gr3"><div class="conj-htitle">aprire</div><div class="conj-hsub">pp: aperto · avere</div></div>
+    <div class="conj-body">
+      <div class="conj-row"><span class="conj-pro">io</span><span class="conj-av av">ho</span><span class="conj-plus">+</span><span class="conj-pp gr3">aperto</span></div>
+      <div class="conj-row"><span class="conj-pro">tu</span><span class="conj-av av">hai</span><span class="conj-plus">+</span><span class="conj-pp gr3">aperto</span></div>
+      <div class="conj-row"><span class="conj-pro">lui/lei</span><span class="conj-av av">ha</span><span class="conj-plus">+</span><span class="conj-pp gr3">aperto</span></div>
+      <div class="conj-row"><span class="conj-pro">noi</span><span class="conj-av av">abbiamo</span><span class="conj-plus">+</span><span class="conj-pp gr3">aperto</span></div>
+      <div class="conj-row"><span class="conj-pro">voi</span><span class="conj-av av">avete</span><span class="conj-plus">+</span><span class="conj-pp gr3">aperto</span></div>
+      <div class="conj-row"><span class="conj-pro">loro</span><span class="conj-av av">hanno</span><span class="conj-plus">+</span><span class="conj-pp gr3">aperto</span></div>
+    </div>
+  </div>
+  <div class="conj-card">
+    <div class="conj-head gr6"><div class="conj-htitle">venire</div><div class="conj-hsub">pp: venuto/a · essere</div></div>
+    <div class="conj-body">
+      <div class="conj-row"><span class="conj-pro">io (m)</span><span class="conj-av es">sono</span><span class="conj-plus">+</span><span class="conj-pp gr6">venuto</span></div>
+      <div class="conj-row"><span class="conj-pro">io (f)</span><span class="conj-av es">sono</span><span class="conj-plus">+</span><span class="conj-pp gr6">venuta</span></div>
+      <div class="conj-row"><span class="conj-pro">lui</span><span class="conj-av es">è</span><span class="conj-plus">+</span><span class="conj-pp gr6">venuto</span></div>
+      <div class="conj-row"><span class="conj-pro">lei</span><span class="conj-av es">è</span><span class="conj-plus">+</span><span class="conj-pp gr6">venuta</span></div>
+      <div class="conj-row"><span class="conj-pro">noi</span><span class="conj-av es">siamo</span><span class="conj-plus">+</span><span class="conj-pp gr6">venuti/e</span></div>
+      <div class="conj-row"><span class="conj-pro">loro</span><span class="conj-av es">sono</span><span class="conj-plus">+</span><span class="conj-pp gr6">venuti/e</span></div>
+    </div>
+  </div>
+</div>
+<div class="conj-grid">
+  <div class="conj-card">
+    <div class="conj-head gr4"><div class="conj-htitle">decidere</div><div class="conj-hsub">pp: deciso · avere</div></div>
+    <div class="conj-body">
+      <div class="conj-row"><span class="conj-pro">io</span><span class="conj-av av">ho</span><span class="conj-plus">+</span><span class="conj-pp gr4">deciso</span></div>
+      <div class="conj-row"><span class="conj-pro">tu</span><span class="conj-av av">hai</span><span class="conj-plus">+</span><span class="conj-pp gr4">deciso</span></div>
+      <div class="conj-row"><span class="conj-pro">lui/lei</span><span class="conj-av av">ha</span><span class="conj-plus">+</span><span class="conj-pp gr4">deciso</span></div>
+      <div class="conj-row"><span class="conj-pro">noi</span><span class="conj-av av">abbiamo</span><span class="conj-plus">+</span><span class="conj-pp gr4">deciso</span></div>
+      <div class="conj-row"><span class="conj-pro">voi</span><span class="conj-av av">avete</span><span class="conj-plus">+</span><span class="conj-pp gr4">deciso</span></div>
+      <div class="conj-row"><span class="conj-pro">loro</span><span class="conj-av av">hanno</span><span class="conj-plus">+</span><span class="conj-pp gr4">deciso</span></div>
+    </div>
+  </div>
+  <div class="conj-card">
+    <div class="conj-head gr7"><div class="conj-htitle">nascere</div><div class="conj-hsub">pp: nato/a · essere</div></div>
+    <div class="conj-body">
+      <div class="conj-row"><span class="conj-pro">io (m)</span><span class="conj-av es">sono</span><span class="conj-plus">+</span><span class="conj-pp gr7">nato</span></div>
+      <div class="conj-row"><span class="conj-pro">io (f)</span><span class="conj-av es">sono</span><span class="conj-plus">+</span><span class="conj-pp gr7">nata</span></div>
+      <div class="conj-row"><span class="conj-pro">lui</span><span class="conj-av es">è</span><span class="conj-plus">+</span><span class="conj-pp gr7">nato</span></div>
+      <div class="conj-row"><span class="conj-pro">lei</span><span class="conj-av es">è</span><span class="conj-plus">+</span><span class="conj-pp gr7">nata</span></div>
+      <div class="conj-row"><span class="conj-pro">noi</span><span class="conj-av es">siamo</span><span class="conj-plus">+</span><span class="conj-pp gr7">nati/e</span></div>
+      <div class="conj-row"><span class="conj-pro">loro</span><span class="conj-av es">sono</span><span class="conj-plus">+</span><span class="conj-pp gr7">nati/e</span></div>
+    </div>
+  </div>
+  <div class="conj-card">
+    <div class="conj-head gr5"><div class="conj-htitle">vivere</div><div class="conj-hsub">pp: vissuto · avere</div></div>
+    <div class="conj-body">
+      <div class="conj-row"><span class="conj-pro">io</span><span class="conj-av av">ho</span><span class="conj-plus">+</span><span class="conj-pp gr5">vissuto</span></div>
+      <div class="conj-row"><span class="conj-pro">tu</span><span class="conj-av av">hai</span><span class="conj-plus">+</span><span class="conj-pp gr5">vissuto</span></div>
+      <div class="conj-row"><span class="conj-pro">lui/lei</span><span class="conj-av av">ha</span><span class="conj-plus">+</span><span class="conj-pp gr5">vissuto</span></div>
+      <div class="conj-row"><span class="conj-pro">noi</span><span class="conj-av av">abbiamo</span><span class="conj-plus">+</span><span class="conj-pp gr5">vissuto</span></div>
+      <div class="conj-row"><span class="conj-pro">voi</span><span class="conj-av av">avete</span><span class="conj-plus">+</span><span class="conj-pp gr5">vissuto</span></div>
+      <div class="conj-row"><span class="conj-pro">loro</span><span class="conj-av av">hanno</span><span class="conj-plus">+</span><span class="conj-pp gr5">vissuto</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ESEMPI ===== -->
+<h2>Esempi per contesto</h2>
+
+<div class="ex-grid">
+  <div class="ex-card">
+    <div class="ex-label gr1">fare / dire / scrivere / leggere</div>
+    <div class="ex-item"><div class="ex-it">Che cosa hai fatto ieri?</div><div class="ex-es">¿Qué hiciste ayer?</div></div>
+    <div class="ex-item"><div class="ex-it">Ho detto la verità.</div><div class="ex-es">Dije la verdad.</div></div>
+    <div class="ex-item"><div class="ex-it">Ha scritto un libro bellissimo.</div><div class="ex-es">Escribió un libro hermoso.</div></div>
+    <div class="ex-item"><div class="ex-it">Non ho letto ancora il giornale.</div><div class="ex-es">Todavía no leí el diario.</div></div>
+  </div>
+  <div class="ex-card">
+    <div class="ex-label gr3">aprire / chiudere / rispondere / chiedere</div>
+    <div class="ex-item"><div class="ex-it">Hai aperto la finestra?</div><div class="ex-es">¿Abriste la ventana?</div></div>
+    <div class="ex-item"><div class="ex-it">Ho chiuso la porta a chiave.</div><div class="ex-es">Cerré la puerta con llave.</div></div>
+    <div class="ex-item"><div class="ex-it">Non ha ancora risposto alla mail.</div><div class="ex-es">Todavía no respondió el correo.</div></div>
+    <div class="ex-item"><div class="ex-it">Abbiamo chiesto informazioni.</div><div class="ex-es">Pedimos información.</div></div>
+  </div>
+  <div class="ex-card">
+    <div class="ex-label gr2">vincere / perdere / rompere / scegliere</div>
+    <div class="ex-item"><div class="ex-it">La squadra ha vinto il campionato.</div><div class="ex-es">El equipo ganó el campeonato.</div></div>
+    <div class="ex-item"><div class="ex-it">Ho perso le chiavi di casa.</div><div class="ex-es">Perdí las llaves de casa.</div></div>
+    <div class="ex-item"><div class="ex-it">Ha rotto il telefono.</div><div class="ex-es">Rompió el teléfono.</div></div>
+    <div class="ex-item"><div class="ex-it">Hanno scelto un ristorante ottimo.</div><div class="ex-es">Eligieron un restaurante excelente.</div></div>
+  </div>
+  <div class="ex-card">
+    <div class="ex-label gr4">decidere / prendere / vedere / bere</div>
+    <div class="ex-item"><div class="ex-it">Abbiamo deciso di partire domani.</div><div class="ex-es">Decidimos partir mañana.</div></div>
+    <div class="ex-item"><div class="ex-it">Ho preso un taxi.</div><div class="ex-es">Tomé un taxi.</div></div>
+    <div class="ex-item"><div class="ex-it">Hai visto quel film?</div><div class="ex-es">¿Viste esa película?</div></div>
+    <div class="ex-item"><div class="ex-it">Abbiamo bevuto un ottimo vino.</div><div class="ex-es">Bebimos un vino excelente.</div></div>
+  </div>
+  <div class="ex-card">
+    <div class="ex-label es">con essere — nascere / morire / venire / rimanere</div>
+    <div class="ex-item"><div class="ex-it">Mio nonno è nato a Napoli nel 1938.</div><div class="ex-es">Mi abuelo nació en Nápoles en 1938.</div></div>
+    <div class="ex-item"><div class="ex-it">Il poeta è morto giovane.</div><div class="ex-es">El poeta murió joven.</div></div>
+    <div class="ex-item"><div class="ex-it">Sono venuti tutti alla festa.</div><div class="ex-es">Vinieron todos a la fiesta.</div></div>
+    <div class="ex-item"><div class="ex-it">Siamo rimasti a casa per il maltempo.</div><div class="ex-es">Nos quedamos en casa por el mal tiempo.</div></div>
+  </div>
+  <div class="ex-card">
+    <div class="ex-label gr1">mettere / smettere / proporre / tradurre</div>
+    <div class="ex-item"><div class="ex-it">Dove hai messo le chiavi?</div><div class="ex-es">¿Dónde pusiste las llaves?</div></div>
+    <div class="ex-item"><div class="ex-it">Ha smesso di fumare due anni fa.</div><div class="ex-es">Dejó de fumar hace dos años.</div></div>
+    <div class="ex-item"><div class="ex-it">Il capo ha proposto un nuovo progetto.</div><div class="ex-es">El jefe propuso un nuevo proyecto.</div></div>
+    <div class="ex-item"><div class="ex-it">Hanno tradotto il romanzo in spagnolo.</div><div class="ex-es">Tradujeron la novela al español.</div></div>
+  </div>
+</div>
+
+<!-- ===== NEGAZIONE ===== -->
+<h2>Negazione</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Affermativo</th><th style="background:#3a1a1a">Negativo</th><th>Traduzione</th></tr></thead>
+  <tbody>
+    <tr><td class="av"><em>Ho fatto i compiti.</em></td><td style="color:#9a3030;font-family:'Lora',serif;font-weight:600"><em>Non ho fatto i compiti.</em></td><td class="tr">No hice la tarea.</td></tr>
+    <tr><td class="av"><em>Ha detto la verità.</em></td><td style="color:#9a3030;font-family:'Lora',serif;font-weight:600"><em>Non ha detto la verità.</em></td><td class="tr">No dijo la verdad.</td></tr>
+    <tr><td class="es"><em>È venuto alla festa.</em></td><td style="color:#9a3030;font-family:'Lora',serif;font-weight:600"><em>Non è venuto alla festa.</em></td><td class="tr">No vino a la fiesta.</td></tr>
+    <tr><td class="av"><em>Hanno visto quel film.</em></td><td style="color:#9a3030;font-family:'Lora',serif;font-weight:600"><em>Non hanno visto quel film.</em></td><td class="tr">No vieron esa película.</td></tr>
+    <tr><td class="av"><em>Ho perso il treno.</em></td><td style="color:#9a3030;font-family:'Lora',serif;font-weight:600"><em>Non ho perso il treno.</em></td><td class="tr">No perdí el tren.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===== ERRORI ===== -->
+<h2>Errori frequenti</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th style="background:#3a1a1a">❌ Errato</th><th style="background:#1a4a28">✔ Corretto</th><th>Problema</th></tr></thead>
+  <tbody>
+    <tr><td class="wrong">Ho fato la spesa.</td><td class="right">Ho fatto la spesa.</td><td class="rule">fare → fatto (doppia T)</td></tr>
+    <tr><td class="wrong">Ho diceto tutto.</td><td class="right">Ho detto tutto.</td><td class="rule">dire → detto (no -uto)</td></tr>
+    <tr><td class="wrong">Ho scriviuto una lettera.</td><td class="right">Ho scritto una lettera.</td><td class="rule">scrivere → scritto (no -uto)</td></tr>
+    <tr><td class="wrong">Ho aprito la finestra.</td><td class="right">Ho aperto la finestra.</td><td class="rule">aprire → aperto (no -ito)</td></tr>
+    <tr><td class="wrong">Ho prenduto un taxi.</td><td class="right">Ho preso un taxi.</td><td class="rule">prendere → preso (no -uto)</td></tr>
+    <tr><td class="wrong">Ho veduto quel film.</td><td class="right">Ho visto quel film.</td><td class="rule">vedere → visto (no -uto)</td></tr>
+    <tr><td class="wrong">Sono venuto a casa. (ella)</td><td class="right">Sono venuta a casa.</td><td class="rule">essere → accordo: venuta (f.)</td></tr>
+    <tr><td class="wrong">Ho nascuto nel 1990.</td><td class="right">Sono nato nel 1990.</td><td class="rule">nascere → essere + nato/a</td></tr>
+    <tr><td class="wrong">Ho romputo il vetro.</td><td class="right">Ho rotto il vetro.</td><td class="rule">rompere → rotto (no -uto)</td></tr>
+    <tr><td class="wrong">Ho rispostato la mail.</td><td class="right">Ho risposto alla mail.</td><td class="rule">rispondere → risposto</td></tr>
+    <tr><td class="wrong">Ho mettuto le chiavi qui.</td><td class="right">Ho messo le chiavi qui.</td><td class="rule">mettere → messo (no -uto)</td></tr>
+    <tr><td class="wrong">Ha decisto di partire.</td><td class="right">Ha deciso di partire.</td><td class="rule">decidere → deciso (no -sto)</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ========================= ESPAÑOL ========================= -->
+<div class="lang-badge lang-es" style="margin-top:3rem">🇪🇸 Español</div>
+
+<h2>¿Qué son los participios irregulares?</h2>
+<p>Son verbos que en lugar de seguir el patrón regular <strong>-ato / -uto / -ito</strong>, tienen una forma propia heredada del latín. La estructura del passato prossimo es idéntica — solo cambia el participio.</p>
+
+<h2>Resumen de las 7 familias</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Familia</th><th>Terminación pp.</th><th>Verbos representativos</th></tr></thead>
+  <tbody>
+    <tr><td><strong>1 — -ETTO / -ITTO / -ESSO</strong></td><td class="pp gr1">-etto, -itto, -esso</td><td class="ex">fare→fatto · dire→detto · scrivere→scritto · leggere→letto · mettere→messo</td></tr>
+    <tr><td><strong>2 — -NTO / -NTO</strong></td><td class="pp gr2">-into, -into, -iunto</td><td class="ex">vincere→vinto · spingere→spinto · piangere→pianto · aggiungere→aggiunto</td></tr>
+    <tr><td><strong>3 — -SO / -STO / -SO</strong></td><td class="pp gr3">-eso, -osto, -iso</td><td class="ex">prendere→preso · rispondere→risposto · chiedere→chiesto · perdere→perso</td></tr>
+    <tr><td><strong>4 — -SO directo</strong></td><td class="pp gr4">-iso, -uso, -oso</td><td class="ex">decidere→deciso · chiudere→chiuso · ridere→riso · correre→corso</td></tr>
+    <tr><td><strong>5 — -OSTO (porre)</strong></td><td class="pp gr4">-osto</td><td class="ex">porre→posto · proporre→proposto · comporre→composto · esporre→esposto</td></tr>
+    <tr><td><strong>6 — -ERTO / -ERTO</strong></td><td class="pp gr3">-erto</td><td class="ex">aprire→aperto · coprire→coperto · offrire→offerto · soffrire→sofferto</td></tr>
+    <tr><td><strong>7 — formas propias</strong></td><td class="pp gr5">variadas</td><td class="ex">vedere→visto · bere→bevuto · vivere→vissuto · venire→venuto · nascere→nato</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>Regla del acuerdo — igual que los regulares</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Auxiliar</th><th>Acuerdo del participio</th><th>Ejemplo</th></tr></thead>
+  <tbody>
+    <tr><td class="av">avere</td><td class="rule">No acuerda (invariable) — salvo con pronombres lo/la/li/le</td><td class="av"><em>Ho fatto · hai fatto · ha fatto · abbiamo fatto</em></td></tr>
+    <tr><td class="es">essere</td><td class="rule">Sí acuerda en género y número</td><td class="es"><em>sono venuto/a · siamo venuti/e</em></td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>Los 20 participios irregolari más importantes</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Infinito</th><th>Participio</th><th>Aux.</th><th>Infinito</th><th>Participio</th><th>Aux.</th></tr></thead>
+  <tbody>
+    <tr><td class="inf">fare</td><td class="pp gr1">fatto</td><td class="av">avere</td><td class="inf">dire</td><td class="pp gr1">detto</td><td class="av">avere</td></tr>
+    <tr><td class="inf">vedere</td><td class="pp gr5">visto</td><td class="av">avere</td><td class="inf">scrivere</td><td class="pp gr1">scritto</td><td class="av">avere</td></tr>
+    <tr><td class="inf">leggere</td><td class="pp gr1">letto</td><td class="av">avere</td><td class="inf">mettere</td><td class="pp gr1">messo</td><td class="av">avere</td></tr>
+    <tr><td class="inf">prendere</td><td class="pp gr3">preso</td><td class="av">avere</td><td class="inf">aprire</td><td class="pp gr3">aperto</td><td class="av">avere</td></tr>
+    <tr><td class="inf">chiedere</td><td class="pp gr3">chiesto</td><td class="av">avere</td><td class="inf">rispondere</td><td class="pp gr3">risposto</td><td class="av">avere</td></tr>
+    <tr><td class="inf">decidere</td><td class="pp gr4">deciso</td><td class="av">avere</td><td class="inf">chiudere</td><td class="pp gr4">chiuso</td><td class="av">avere</td></tr>
+    <tr><td class="inf">perdere</td><td class="pp gr3">perso</td><td class="av">avere</td><td class="inf">vincere</td><td class="pp gr2">vinto</td><td class="av">avere</td></tr>
+    <tr><td class="inf">rompere</td><td class="pp gr2">rotto</td><td class="av">avere</td><td class="inf">bere</td><td class="pp gr5">bevuto</td><td class="av">avere</td></tr>
+    <tr><td class="inf">venire</td><td class="pp gr6">venuto/a</td><td class="es">essere</td><td class="inf">nascere</td><td class="pp gr7">nato/a</td><td class="es">essere</td></tr>
+    <tr><td class="inf">morire</td><td class="pp gr7">morto/a</td><td class="es">essere</td><td class="inf">rimanere</td><td class="pp gr6">rimasto/a</td><td class="es">essere</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===== SUMMARY ===== -->
+<div class="summary">
+  <h4>Claves para dominar los participios irregolari</h4>
+  <div class="sum-step">
+    <div class="sum-n">1</div>
+    <div class="sum-desc"><strong>Aprende por familias</strong>, no de memoria individual. <code>-etto/-itto/-esso</code> agrupa a fare, dire, scrivere, leggere, mettere y sus derivados.</div>
+  </div>
+  <div class="sum-step">
+    <div class="sum-n">2</div>
+    <div class="sum-desc"><strong>Los derivados heredan</strong> el participio del verbo base: mettere→messo, quindi <code>permettere→permesso · smettere→smesso · promettere→promesso</code>.</div>
+  </div>
+  <div class="sum-step">
+    <div class="sum-n">3</div>
+    <div class="sum-desc"><strong>La estructura es idéntica</strong> a los regulares: <code>ausiliare + participio</code>. Solo cambia el participio — las reglas de accordo y elección de auxiliar son las mismas.</div>
+  </div>
+  <div class="sum-step">
+    <div class="sum-n">4</div>
+    <div class="sum-desc"><strong>Con essere → acuerda siempre</strong>: <code>nato/nata/nati/nate · venuto/venuta/venuti/venute · rimasto/rimasta/rimasti/rimaste</code>.</div>
+  </div>
+  <div class="sum-step">
+    <div class="sum-n">5</div>
+    <div class="sum-desc"><strong>Prioridad absoluta:</strong> fare→fatto · dire→detto · vedere→visto · mettere→messo · prendere→preso · aprire→aperto · chiedere→chiesto · venire→venuto · nascere→nato · morire→morto.</div>
+  </div>
+</div>
+
+<p style="margin-top:1.5rem; font-size:0.79rem; color:#9a8868; text-align:center;">Passato prossimo · Verbi irregolari · A2 · 7 famiglie · 50+ participi</p>
+
+</div>
+</body>
+</html>

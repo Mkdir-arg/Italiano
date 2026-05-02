@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verbi Modali – Presente Indicativo</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: #f8f6f2;
+    color: #28261e;
+    padding: 2rem 1rem;
+    line-height: 1.65;
+  }
+
+  .page { max-width: 900px; margin: 0 auto; }
+
+  /* ---- HEADER ---- */
+  .cover {
+    border-left: 5px solid #8b1a1a;
+    padding-left: 1.2rem;
+    margin-bottom: 2.5rem;
+  }
+  .cover h1 {
+    font-family: 'Lora', serif;
+    font-size: 1.9rem;
+    font-weight: 600;
+    color: #1a1208;
+    line-height: 1.2;
+  }
+  .cover .sub {
+    font-size: 0.92rem;
+    color: #6a5840;
+    margin-top: 0.4rem;
+    font-style: italic;
+  }
+  .cover .tags {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.7rem;
+    flex-wrap: wrap;
+  }
+  .tag {
+    background: #8b1a1a;
+    color: #f8ede8;
+    padding: 0.15rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+  .tag.blue { background: #1a3a8b; }
+  .tag.green { background: #1a6a30; }
+
+  /* ---- LANG BADGE ---- */
+  .lang-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.28rem 0.85rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    margin: 2.5rem 0 1rem;
+  }
+  .lang-it { background: #1a3a1a; color: #c8e8c0; }
+  .lang-es { background: #3a1a1a; color: #e8c8c0; }
+
+  /* ---- HEADINGS ---- */
+  h2 {
+    font-family: 'Lora', serif;
+    font-size: 1.18rem;
+    font-weight: 600;
+    color: #1a1208;
+    border-left: 4px solid #8b1a1a;
+    padding-left: 0.75rem;
+    margin: 2rem 0 0.7rem;
+  }
+
+  h3 {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #8b1a1a;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    margin: 1.5rem 0 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  h3::after { content:''; flex:1; height:1px; background:#d8c8b8; }
+
+  p { margin-bottom: 0.7rem; font-size: 0.95rem; }
+  ul { margin: 0.3rem 0 0.9rem 1.3rem; }
+  ul li { font-size: 0.94rem; margin-bottom: 0.35rem; }
+
+  /* ---- NOTE BOXES ---- */
+  .note {
+    background: #f0ecf8;
+    border-left: 4px solid #6a3a9a;
+    border-radius: 0 6px 6px 0;
+    padding: 0.65rem 1rem;
+    font-size: 0.9rem;
+    color: #3a2050;
+    margin: 0.6rem 0 1rem;
+  }
+  .note strong { color: #5a1a8a; }
+
+  .warn {
+    background: #fdf4e4;
+    border-left: 4px solid #b07820;
+    border-radius: 0 6px 6px 0;
+    padding: 0.65rem 1rem;
+    font-size: 0.9rem;
+    color: #5a3800;
+    margin: 0.6rem 0 1rem;
+  }
+  .warn strong { color: #8a5200; }
+
+  .ok {
+    background: #e8f6ec;
+    border-left: 4px solid #1a7a30;
+    border-radius: 0 6px 6px 0;
+    padding: 0.65rem 1rem;
+    font-size: 0.9rem;
+    color: #0a3a18;
+    margin: 0.6rem 0 1rem;
+  }
+
+  .danger {
+    background: #fbe8e8;
+    border-left: 4px solid #9a1a1a;
+    border-radius: 0 6px 6px 0;
+    padding: 0.65rem 1rem;
+    font-size: 0.9rem;
+    color: #5a0a0a;
+    margin: 0.6rem 0 1rem;
+  }
+
+  /* ---- TABLES ---- */
+  .table-wrap { overflow-x: auto; margin-bottom: 1.2rem; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+
+  thead tr { background: #2a1a10; color: #f0e8dc; }
+  thead th {
+    padding: 0.55rem 0.7rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+  thead th.pot { background: #8b1a1a; }
+  thead th.dov { background: #1a3a8b; }
+  thead th.vol { background: #1a6a30; }
+  thead th.sap { background: #6a4a1a; }
+
+  tbody tr:nth-child(even) { background: #f0ede6; }
+  tbody tr:nth-child(odd)  { background: #f8f6f2; }
+  tbody tr:hover { background: #e8e0d4; }
+
+  td {
+    padding: 0.46rem 0.7rem;
+    border-bottom: 1px solid #ddd8cc;
+    vertical-align: middle;
+  }
+  td.person { font-weight: 600; color: #28261e; white-space: nowrap; }
+  td.pro { font-size: 0.8rem; color: #7a6a58; }
+  td.pot { font-family: 'Lora', serif; font-weight: 600; color: #8b1a1a; }
+  td.dov { font-family: 'Lora', serif; font-weight: 600; color: #1a3a8b; }
+  td.vol { font-family: 'Lora', serif; font-weight: 600; color: #1a6a30; }
+  td.sap { font-family: 'Lora', serif; font-weight: 600; color: #6a4a1a; }
+  td.neg { font-family: 'Lora', serif; font-weight: 600; color: #9a1a1a; }
+  td.ex  { font-size: 0.88rem; color: #3a3028; }
+  td.tr  { font-size: 0.85rem; color: #7a6858; font-style: italic; }
+  td.right { color: #1a6a20; font-family:'Lora',serif; font-weight:600; }
+  td.wrong { color: #9a1a1a; text-decoration: line-through; font-family:'Lora',serif; }
+  td.rule  { font-size: 0.84rem; color: #5a4a38; }
+
+  /* ---- CONIUGAZIONE TRIO ---- */
+  .trio {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.4rem;
+  }
+  @media(max-width:620px){ .trio { grid-template-columns: 1fr; } }
+
+  .trio-card { border-radius: 8px; overflow: hidden; border: 1px solid #d4cfc6; }
+  .trio-head {
+    padding: 0.55rem 0.8rem;
+    font-family: 'Lora', serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+  }
+  .trio-head .mean { font-size: 0.78rem; font-weight:400; font-style:italic; display:block; opacity:0.85; }
+  .trio-head.pot { background: #8b1a1a; color: #f8e8e0; }
+  .trio-head.dov { background: #1a3a8b; color: #d8e4f8; }
+  .trio-head.vol { background: #1a6a30; color: #d0f0dc; }
+  .trio-head.sap { background: #6a4a1a; color: #f0e8d8; }
+
+  .trio-body { background: #f8f6f2; }
+  .trio-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.32rem 0.8rem;
+    border-bottom: 1px solid #e8e2d8;
+    font-size: 0.92rem;
+  }
+  .trio-row:last-child { border-bottom: none; }
+  .trio-pro { color: #7a6858; font-size: 0.8rem; }
+  .trio-form { font-family: 'Lora', serif; font-weight: 600; }
+  .trio-form.pot { color: #8b1a1a; }
+  .trio-form.dov { color: #1a3a8b; }
+  .trio-form.vol { color: #1a6a30; }
+  .trio-form.sap { color: #6a4a1a; }
+
+  /* ---- ESEMPI GRID ---- */
+  .ex-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+    margin-bottom: 1.2rem;
+  }
+  @media(max-width:560px){ .ex-grid { grid-template-columns: 1fr; } }
+
+  .ex-card {
+    background: #f8f6f2;
+    border: 1px solid #d4cfc6;
+    border-radius: 8px;
+    padding: 0.7rem 0.9rem;
+  }
+  .ex-card .verb-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid #e0d8cc;
+  }
+  .ex-card.pot .verb-label { color: #8b1a1a; }
+  .ex-card.dov .verb-label { color: #1a3a8b; }
+  .ex-card.vol .verb-label { color: #1a6a30; }
+  .ex-card.sap .verb-label { color: #6a4a1a; }
+
+  .ex-item { margin-bottom: 0.45rem; }
+  .ex-it {
+    font-family: 'Lora', serif;
+    font-size: 0.9rem;
+    color: #1a1208;
+    font-weight: 600;
+  }
+  .ex-es { font-size: 0.82rem; color: #7a6858; font-style: italic; }
+
+  /* ---- CONTRAST TABLE ---- */
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.4rem;
+  }
+  @media(max-width:580px){ .compare { grid-template-columns: 1fr; } }
+
+  .cmp-card {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #d4cfc6;
+  }
+  .cmp-head {
+    padding: 0.45rem 0.75rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .cmp-head.pot { background: #8b1a1a; color: #f8e8e0; }
+  .cmp-head.dov { background: #1a3a8b; color: #d8e4f8; }
+  .cmp-head.vol { background: #1a6a30; color: #d0f0dc; }
+  .cmp-body { background: #f8f6f2; padding: 0.6rem 0.75rem; font-size: 0.88rem; }
+  .cmp-body ul { margin-left: 1rem; }
+  .cmp-body ul li { margin-bottom: 0.3rem; color: #3a3028; }
+
+  /* ---- FORMULA BOX ---- */
+  .formula {
+    background: #1a1208;
+    color: #f0e8dc;
+    border-radius: 8px;
+    padding: 1rem 1.3rem;
+    margin: 0.8rem 0 1.2rem;
+    font-family: 'Lora', serif;
+    font-size: 1.05rem;
+    text-align: center;
+    letter-spacing: 0.04em;
+  }
+  .formula span { color: #e8a060; font-weight: 600; }
+  .formula .plus { color: #8ad0a8; margin: 0 0.6rem; }
+  .formula .sub { display: block; font-family: 'Source Sans 3', sans-serif; font-size: 0.8rem; color: #a09080; margin-top: 0.4rem; font-style: italic; }
+
+  /* ---- NEGATION BOX ---- */
+  .neg-formula {
+    background: #3a0a0a;
+    color: #f8e0e0;
+    border-radius: 8px;
+    padding: 1rem 1.3rem;
+    margin: 0.8rem 0 1.2rem;
+    font-family: 'Lora', serif;
+    font-size: 1.05rem;
+    text-align: center;
+  }
+  .neg-formula span { color: #f08080; font-weight: 600; }
+  .neg-formula .plus { color: #f0a090; margin: 0 0.5rem; }
+  .neg-formula .sub { display:block; font-family:'Source Sans 3',sans-serif; font-size:0.8rem; color:#c09090; margin-top:0.4rem; font-style:italic; }
+
+  /* ---- SUMMARY ---- */
+  .summary {
+    background: #1a1208;
+    color: #e8e0d0;
+    border-radius: 8px;
+    padding: 1.3rem 1.5rem;
+    margin-top: 3rem;
+  }
+  .summary h4 {
+    font-family: 'Lora', serif;
+    font-size: 1.05rem;
+    color: #f0c080;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #3a3028;
+    padding-bottom: 0.5rem;
+  }
+  .sum-row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 0.5rem;
+    margin-bottom: 0.6rem;
+    font-size: 0.9rem;
+    align-items: start;
+  }
+  .sum-verb { font-family:'Lora',serif; font-weight:600; }
+  .sum-verb.pot { color: #f08080; }
+  .sum-verb.dov { color: #80a0f8; }
+  .sum-verb.vol { color: #80c890; }
+  .sum-verb.sap { color: #c8a070; }
+  .sum-desc { color: #c8c0b0; }
+
+  @media print {
+    body { background:white; padding:1rem; }
+    .trio, .compare, .ex-grid { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div id="site-nav" style="background:#0f1422;padding:0.52rem 1.4rem;display:flex;align-items:center;gap:0.7rem;font-family:'Source Sans 3',sans-serif;font-size:0.82rem;border-bottom:1px solid #1e2c44;position:sticky;top:0;z-index:9999;box-shadow:0 2px 8px rgba(0,0,0,0.25)">
+  <a href="/" style="color:#70b8f8;text-decoration:none;font-weight:600;display:flex;align-items:center;gap:0.35rem;transition:opacity 0.2s" onmouseover="this.style.opacity=0.75" onmouseout="this.style.opacity=1">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#70b8f8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+    Inicio
+  </a>
+  <span style="color:#2a3a54">|</span>
+  <span style="color:#6878a0;letter-spacing:0.03em">Italiano Apuntes</span>
+</div>
+
+<div class="page">
+
+<!-- COVER -->
+<div class="cover">
+  <h1>Verbi Modali — Presente Indicativo</h1>
+  <p class="sub">Verbos modales · potere · dovere · volere · sapere</p>
+  <div class="tags">
+    <span class="tag">A1 – A2</span>
+    <span class="tag blue">Indicativo Presente</span>
+    <span class="tag green">Verbi Irregolari</span>
+  </div>
+</div>
+
+<!-- ========================= ITALIANO ========================= -->
+<div class="lang-badge lang-it">🇮🇹 Italiano</div>
+
+<h2>Che cosa sono i verbi modali?</h2>
+<p>I verbi modali sono verbi <strong>ausiliari di modo</strong>: non indicano un'azione diretta, ma esprimono la <strong>modalità</strong> con cui il soggetto si relaziona a un'azione. In italiano i principali sono:</p>
+
+<div class="compare">
+  <div class="cmp-card">
+    <div class="cmp-head pot">POTERE</div>
+    <div class="cmp-body">
+      <ul>
+        <li>capacità fisica o mentale</li>
+        <li>possibilità concreta</li>
+        <li>permesso</li>
+        <li>richieste cortesi</li>
+      </ul>
+    </div>
+  </div>
+  <div class="cmp-card">
+    <div class="cmp-head dov">DOVERE</div>
+    <div class="cmp-body">
+      <ul>
+        <li>obbligo (regola, legge)</li>
+        <li>necessità</li>
+        <li>dovere morale</li>
+        <li>supposizione forte</li>
+      </ul>
+    </div>
+  </div>
+  <div class="cmp-card">
+    <div class="cmp-head vol">VOLERE</div>
+    <div class="cmp-body">
+      <ul>
+        <li>desiderio</li>
+        <li>intenzione</li>
+        <li>richiesta diretta</li>
+        <li>preferenza</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ===== STRUTTURA ===== -->
+<h2>Struttura fondamentale</h2>
+
+<div class="formula">
+  <span>verbo modale</span> <span class="plus">+</span> <span>infinito</span>
+  <span class="sub">Il verbo modale si coniuga · il verbo seguente rimane sempre all'infinito</span>
+</div>
+
+<div class="note"><strong>Attenzione:</strong> tra il verbo modale e l'infinito <strong>non si mette nessuna preposizione</strong>. ❌ <em>Voglio di mangiare</em> &nbsp;→&nbsp; ✔ <em>Voglio mangiare</em></div>
+
+<!-- ===== CONIUGAZIONI ===== -->
+<h2>Coniugazioni complete</h2>
+
+<div class="trio">
+  <div class="trio-card">
+    <div class="trio-head pot">potere <span class="mean">poder</span></div>
+    <div class="trio-body">
+      <div class="trio-row"><span class="trio-pro">io</span><span class="trio-form pot">posso</span></div>
+      <div class="trio-row"><span class="trio-pro">tu</span><span class="trio-form pot">puoi</span></div>
+      <div class="trio-row"><span class="trio-pro">lui/lei</span><span class="trio-form pot">può</span></div>
+      <div class="trio-row"><span class="trio-pro">noi</span><span class="trio-form pot">possiamo</span></div>
+      <div class="trio-row"><span class="trio-pro">voi</span><span class="trio-form pot">potete</span></div>
+      <div class="trio-row"><span class="trio-pro">loro</span><span class="trio-form pot">possono</span></div>
+    </div>
+  </div>
+  <div class="trio-card">
+    <div class="trio-head dov">dovere <span class="mean">deber / tener que</span></div>
+    <div class="trio-body">
+      <div class="trio-row"><span class="trio-pro">io</span><span class="trio-form dov">devo</span></div>
+      <div class="trio-row"><span class="trio-pro">tu</span><span class="trio-form dov">devi</span></div>
+      <div class="trio-row"><span class="trio-pro">lui/lei</span><span class="trio-form dov">deve</span></div>
+      <div class="trio-row"><span class="trio-pro">noi</span><span class="trio-form dov">dobbiamo</span></div>
+      <div class="trio-row"><span class="trio-pro">voi</span><span class="trio-form dov">dovete</span></div>
+      <div class="trio-row"><span class="trio-pro">loro</span><span class="trio-form dov">devono</span></div>
+    </div>
+  </div>
+  <div class="trio-card">
+    <div class="trio-head vol">volere <span class="mean">querer</span></div>
+    <div class="trio-body">
+      <div class="trio-row"><span class="trio-pro">io</span><span class="trio-form vol">voglio</span></div>
+      <div class="trio-row"><span class="trio-pro">tu</span><span class="trio-form vol">vuoi</span></div>
+      <div class="trio-row"><span class="trio-pro">lui/lei</span><span class="trio-form vol">vuole</span></div>
+      <div class="trio-row"><span class="trio-pro">noi</span><span class="trio-form vol">vogliamo</span></div>
+      <div class="trio-row"><span class="trio-pro">voi</span><span class="trio-form vol">volete</span></div>
+      <div class="trio-row"><span class="trio-pro">loro</span><span class="trio-form vol">vogliono</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="warn">
+  <strong>Forme alternative di dovere:</strong> alle persone io / tu / lui / loro esiste anche la forma <em>debbo / debbi / debbe / debbono</em>, ma sono arcaiche. <strong>Usare sempre: devo / devi / deve / devono.</strong>
+</div>
+
+<!-- ===== SAPERE ===== -->
+<h2>Il quarto modale: SAPERE</h2>
+<p><em>Sapere</em> funziona come modale quando esprime <strong>capacità acquisita</strong> (saber hacer algo). È distinto da <em>potere</em>.</p>
+
+<div class="trio" style="grid-template-columns: 1fr 2fr; gap: 1rem;">
+  <div class="trio-card">
+    <div class="trio-head sap">sapere <span class="mean">saber (hacer)</span></div>
+    <div class="trio-body">
+      <div class="trio-row"><span class="trio-pro">io</span><span class="trio-form sap">so</span></div>
+      <div class="trio-row"><span class="trio-pro">tu</span><span class="trio-form sap">sai</span></div>
+      <div class="trio-row"><span class="trio-pro">lui/lei</span><span class="trio-form sap">sa</span></div>
+      <div class="trio-row"><span class="trio-pro">noi</span><span class="trio-form sap">sappiamo</span></div>
+      <div class="trio-row"><span class="trio-pro">voi</span><span class="trio-form sap">sapete</span></div>
+      <div class="trio-row"><span class="trio-pro">loro</span><span class="trio-form sap">sanno</span></div>
+    </div>
+  </div>
+  <div style="background:#f8f6f2; border:1px solid #d4cfc6; border-radius:8px; padding:0.9rem 1rem;">
+    <p style="font-size:0.88rem; font-weight:600; color:#6a4a1a; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:0.6rem;">SAPERE vs POTERE</p>
+    <div class="table-wrap" style="margin:0;">
+    <table style="font-size:0.87rem;">
+      <thead><tr><th style="background:#6a4a1a">Verbo</th><th style="background:#6a4a1a">Significato</th><th style="background:#6a4a1a">Esempio</th></tr></thead>
+      <tbody>
+        <tr><td class="sap">sapere</td><td class="rule">habilidad aprendida (saber hacer)</td><td class="ex"><em>So nuotare</em> — sé nadar</td></tr>
+        <tr><td class="pot">potere</td><td class="rule">posibilidad física / permiso</td><td class="ex"><em>Posso nuotare</em> — puedo nadar (ahora, tengo permiso)</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="warn" style="margin-top:0.8rem; margin-bottom:0">
+      <strong>Diferencia clave:</strong> <em>So guidare</em> (sé manejar — aprendí) ≠ <em>Posso guidare</em> (puedo manejar — tengo el auto / tengo permiso ahora)
+    </div>
+  </div>
+</div>
+
+<!-- ===== USI DETTAGLIATI ===== -->
+<h2>Usi dettagliati — POTERE</h2>
+
+<h3>1 · Capacità / possibilità</h3>
+<div class="ex-grid">
+  <div class="ex-card pot">
+    <div class="verb-label">capacità fisica</div>
+    <div class="ex-item"><div class="ex-it">Posso sollevare 80 kg.</div><div class="ex-es">Puedo levantar 80 kg.</div></div>
+    <div class="ex-item"><div class="ex-it">Lei non può correre — ha il ginocchio rotto.</div><div class="ex-es">Ella no puede correr — tiene la rodilla rota.</div></div>
+  </div>
+  <div class="ex-card pot">
+    <div class="verb-label">possibilità concreta</div>
+    <div class="ex-item"><div class="ex-it">Possiamo prendere il treno delle 8.</div><div class="ex-es">Podemos tomar el tren de las 8.</div></div>
+    <div class="ex-item"><div class="ex-it">Non potete venire stasera?</div><div class="ex-es">¿No pueden venir esta noche?</div></div>
+  </div>
+</div>
+
+<h3>2 · Permesso</h3>
+<div class="ex-grid">
+  <div class="ex-card pot">
+    <div class="verb-label">chiedere permesso</div>
+    <div class="ex-item"><div class="ex-it">Posso entrare?</div><div class="ex-es">¿Puedo entrar?</div></div>
+    <div class="ex-item"><div class="ex-it">Posso usare il tuo telefono?</div><div class="ex-es">¿Puedo usar tu teléfono?</div></div>
+    <div class="ex-item"><div class="ex-it">Posso aprire la finestra?</div><div class="ex-es">¿Puedo abrir la ventana?</div></div>
+  </div>
+  <div class="ex-card pot">
+    <div class="verb-label">dare / negare permesso</div>
+    <div class="ex-item"><div class="ex-it">Qui non si può fumare.</div><div class="ex-es">Aquí no se puede fumar.</div></div>
+    <div class="ex-item"><div class="ex-it">I bambini non possono entrare.</div><div class="ex-es">Los niños no pueden entrar.</div></div>
+    <div class="ex-item"><div class="ex-it">Puoi usare la mia macchina.</div><div class="ex-es">Puedes usar mi auto.</div></div>
+  </div>
+</div>
+
+<h3>3 · Richieste cortesi (forma interrogativa)</h3>
+<div class="note">
+  Con <em>potere</em> in forma interrogativa si fanno richieste gentili. È l'equivalente del "¿podrías...?" in spagnolo.
+</div>
+<div class="ex-grid">
+  <div class="ex-card pot">
+    <div class="verb-label">richieste — tu</div>
+    <div class="ex-item"><div class="ex-it">Puoi ripetere, per favore?</div><div class="ex-es">¿Puedes repetir, por favor?</div></div>
+    <div class="ex-item"><div class="ex-it">Puoi parlare più lentamente?</div><div class="ex-es">¿Puedes hablar más despacio?</div></div>
+    <div class="ex-item"><div class="ex-it">Puoi aiutarmi?</div><div class="ex-es">¿Puedes ayudarme?</div></div>
+  </div>
+  <div class="ex-card pot">
+    <div class="verb-label">richieste — Lei (formale)</div>
+    <div class="ex-item"><div class="ex-it">Può parlare più piano?</div><div class="ex-es">¿Puede hablar más despacio? (formal)</div></div>
+    <div class="ex-item"><div class="ex-it">Può portare il conto?</div><div class="ex-es">¿Puede traer la cuenta?</div></div>
+    <div class="ex-item"><div class="ex-it">Può firmare qui?</div><div class="ex-es">¿Puede firmar aquí?</div></div>
+  </div>
+</div>
+
+<!-- ===== DOVERE ===== -->
+<h2>Usi dettagliati — DOVERE</h2>
+
+<h3>1 · Obbligo</h3>
+<div class="ex-grid">
+  <div class="ex-card dov">
+    <div class="verb-label">regole e leggi</div>
+    <div class="ex-item"><div class="ex-it">Devi mettere la cintura.</div><div class="ex-es">Tienes que ponerte el cinturón.</div></div>
+    <div class="ex-item"><div class="ex-it">I passeggeri devono avere il biglietto.</div><div class="ex-es">Los pasajeros deben tener el boleto.</div></div>
+    <div class="ex-item"><div class="ex-it">Dovete rispettare le regole.</div><div class="ex-es">Deben respetar las reglas.</div></div>
+  </div>
+  <div class="ex-card dov">
+    <div class="verb-label">necessità personale</div>
+    <div class="ex-item"><div class="ex-it">Devo studiare per l'esame.</div><div class="ex-es">Tengo que estudiar para el examen.</div></div>
+    <div class="ex-item"><div class="ex-it">Dobbiamo partire alle sette.</div><div class="ex-es">Tenemos que salir a las siete.</div></div>
+    <div class="ex-item"><div class="ex-it">Devo comprare il pane.</div><div class="ex-es">Tengo que comprar el pan.</div></div>
+  </div>
+</div>
+
+<h3>2 · Dovere morale</h3>
+<div class="ex-grid">
+  <div class="ex-card dov">
+    <div class="verb-label">obbligo etico</div>
+    <div class="ex-item"><div class="ex-it">Devi dire la verità.</div><div class="ex-es">Debes decir la verdad.</div></div>
+    <div class="ex-item"><div class="ex-it">Dobbiamo aiutare i nonni.</div><div class="ex-es">Debemos ayudar a los abuelos.</div></div>
+    <div class="ex-item"><div class="ex-it">Non devi mentire.</div><div class="ex-es">No debes mentir.</div></div>
+  </div>
+  <div class="ex-card dov">
+    <div class="verb-label">supposizione / deduzione</div>
+    <div class="ex-item"><div class="ex-it">Deve essere tardi.</div><div class="ex-es">Debe ser tarde. (supongo)</div></div>
+    <div class="ex-item"><div class="ex-it">Devono essere già arrivati.</div><div class="ex-es">Deben haber llegado ya.</div></div>
+    <div class="ex-item"><div class="ex-it">Deve avere fame.</div><div class="ex-es">Debe tener hambre.</div></div>
+  </div>
+</div>
+
+<!-- ===== VOLERE ===== -->
+<h2>Usi dettagliati — VOLERE</h2>
+
+<h3>1 · Desiderio e intenzione</h3>
+<div class="ex-grid">
+  <div class="ex-card vol">
+    <div class="verb-label">desiderio + infinito</div>
+    <div class="ex-item"><div class="ex-it">Voglio viaggiare in Giappone.</div><div class="ex-es">Quiero viajar a Japón.</div></div>
+    <div class="ex-item"><div class="ex-it">Vuole imparare il pianoforte.</div><div class="ex-es">Quiere aprender el piano.</div></div>
+    <div class="ex-item"><div class="ex-it">Vogliono vivere in Italia.</div><div class="ex-es">Quieren vivir en Italia.</div></div>
+  </div>
+  <div class="ex-card vol">
+    <div class="verb-label">intenzione</div>
+    <div class="ex-item"><div class="ex-it">Voglio smettere di fumare.</div><div class="ex-es">Quiero dejar de fumar.</div></div>
+    <div class="ex-item"><div class="ex-it">Vogliamo aprire un ristorante.</div><div class="ex-es">Queremos abrir un restaurante.</div></div>
+    <div class="ex-item"><div class="ex-it">Non vuole cambiare lavoro.</div><div class="ex-es">No quiere cambiar de trabajo.</div></div>
+  </div>
+</div>
+
+<h3>2 · Volere + nome (senza infinito)</h3>
+<div class="note"><em>Volere</em> può reggere anche un <strong>sostantivo</strong> direttamente, senza infinito. In questo caso funziona come verbo normale.</div>
+<div class="ex-grid">
+  <div class="ex-card vol">
+    <div class="verb-label">al ristorante / bar</div>
+    <div class="ex-item"><div class="ex-it">Voglio un caffè.</div><div class="ex-es">Quiero un café.</div></div>
+    <div class="ex-item"><div class="ex-it">Vuole un tavolo per due.</div><div class="ex-es">Quiere una mesa para dos.</div></div>
+    <div class="ex-item"><div class="ex-it">Volete ancora vino?</div><div class="ex-es">¿Quieren más vino?</div></div>
+  </div>
+  <div class="ex-card vol">
+    <div class="verb-label">negozio / servizi</div>
+    <div class="ex-item"><div class="ex-it">Voglio questi pantaloni.</div><div class="ex-es">Quiero estos pantalones.</div></div>
+    <div class="ex-item"><div class="ex-it">Vogliamo una camera doppia.</div><div class="ex-es">Queremos una habitación doble.</div></div>
+    <div class="ex-item"><div class="ex-it">Vuole un sacchetto?</div><div class="ex-es">¿Quiere una bolsa?</div></div>
+  </div>
+</div>
+
+<h3>3 · Volere cortese — "Vorrei" (il condizionale)</h3>
+<div class="warn">
+  <strong>Attenzione:</strong> nella vita reale, per fare richieste educate al bar, al ristorante o in un negozio si usa il condizionale <em>vorrei</em> (querría / quisiera), non <em>voglio</em>, che suona molto diretto. È importante conoscere entrambi.
+</div>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Diretto (informale)</th><th>Cortese (condizionale)</th><th>Traduzione cortese</th></tr></thead>
+  <tbody>
+    <tr><td class="vol">Voglio un caffè.</td><td class="right">Vorrei un caffè.</td><td class="tr">Quisiera un café.</td></tr>
+    <tr><td class="vol">Voglio prenotare.</td><td class="right">Vorrei prenotare.</td><td class="tr">Quisiera reservar.</td></tr>
+    <tr><td class="vol">Voglio parlare con il direttore.</td><td class="right">Vorrei parlare con il direttore.</td><td class="tr">Quisiera hablar con el director.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===== NEGAZIONE ===== -->
+<h2>Negazione</h2>
+
+<div class="neg-formula">
+  <span>non</span> <span class="plus">+</span> <span>verbo modale</span> <span class="plus">+</span> <span>infinito</span>
+  <span class="sub">Il "non" si mette sempre subito prima del verbo modale</span>
+</div>
+
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Affermativo</th><th>Negativo</th><th>Traduzione</th></tr></thead>
+  <tbody>
+    <tr><td class="pot">Posso uscire.</td><td class="neg">Non posso uscire.</td><td class="tr">No puedo salir.</td></tr>
+    <tr><td class="pot">Puoi parlare.</td><td class="neg">Non puoi parlare.</td><td class="tr">No puedes hablar.</td></tr>
+    <tr><td class="dov">Devo lavorare.</td><td class="neg">Non devo lavorare.</td><td class="tr">No tengo que trabajar.</td></tr>
+    <tr><td class="dov">Devono partire.</td><td class="neg">Non devono partire.</td><td class="tr">No deben partir.</td></tr>
+    <tr><td class="vol">Voglio dormire.</td><td class="neg">Non voglio dormire.</td><td class="tr">No quiero dormir.</td></tr>
+    <tr><td class="vol">Vuole mangiare.</td><td class="neg">Non vuole mangiare.</td><td class="tr">No quiere comer.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="warn">
+  <strong>Trappola frequente:</strong> <em>Non devo</em> ≠ <em>Non posso</em>. <br>
+  <em>Non devo andare</em> = No tengo que ir (no hay obligación) — es libre de no ir.<br>
+  <em>Non posso andare</em> = No puedo ir (imposibilidad) — algo lo impide.
+</div>
+
+<!-- ===== 50 VERBI COMBINATI ===== -->
+<h2>50 combinazioni comuni (modale + infinito)</h2>
+<p>Questi sono i collocati più frequenti e utili a livello A1–A2:</p>
+
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th class="pot">POTERE +</th>
+      <th class="dov">DOVERE +</th>
+      <th class="vol">VOLERE +</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td class="pro">1</td><td class="ex">p. <span class="pot" style="font-weight:600">venire</span> — poder venir</td><td class="ex">d. <span class="dov" style="font-weight:600">andare</span> — tener que ir</td><td class="ex">v. <span class="vol" style="font-weight:600">mangiare</span> — querer comer</td></tr>
+    <tr><td class="pro">2</td><td class="ex">p. <span class="pot" style="font-weight:600">uscire</span> — poder salir</td><td class="ex">d. <span class="dov" style="font-weight:600">lavorare</span> — tener que trabajar</td><td class="ex">v. <span class="vol" style="font-weight:600">dormire</span> — querer dormir</td></tr>
+    <tr><td class="pro">3</td><td class="ex">p. <span class="pot" style="font-weight:600">parlare</span> — poder hablar</td><td class="ex">d. <span class="dov" style="font-weight:600">studiare</span> — tener que estudiar</td><td class="ex">v. <span class="vol" style="font-weight:600">partire</span> — querer salir / partir</td></tr>
+    <tr><td class="pro">4</td><td class="ex">p. <span class="pot" style="font-weight:600">aiutare</span> — poder ayudar</td><td class="ex">d. <span class="dov" style="font-weight:600">partire</span> — tener que partir</td><td class="ex">v. <span class="vol" style="font-weight:600">viaggiare</span> — querer viajar</td></tr>
+    <tr><td class="pro">5</td><td class="ex">p. <span class="pot" style="font-weight:600">aspettare</span> — poder esperar</td><td class="ex">d. <span class="dov" style="font-weight:600">pagare</span> — tener que pagar</td><td class="ex">v. <span class="vol" style="font-weight:600">studiare</span> — querer estudiar</td></tr>
+    <tr><td class="pro">6</td><td class="ex">p. <span class="pot" style="font-weight:600">entrare</span> — poder entrar</td><td class="ex">d. <span class="dov" style="font-weight:600">tornare</span> — tener que volver</td><td class="ex">v. <span class="vol" style="font-weight:600">comprare</span> — querer comprar</td></tr>
+    <tr><td class="pro">7</td><td class="ex">p. <span class="pot" style="font-weight:600">capire</span> — poder entender</td><td class="ex">d. <span class="dov" style="font-weight:600">finire</span> — tener que terminar</td><td class="ex">v. <span class="vol" style="font-weight:600">imparare</span> — querer aprender</td></tr>
+    <tr><td class="pro">8</td><td class="ex">p. <span class="pot" style="font-weight:600">provare</span> — poder intentar</td><td class="ex">d. <span class="dov" style="font-weight:600">aspettare</span> — tener que esperar</td><td class="ex">v. <span class="vol" style="font-weight:600">giocare</span> — querer jugar</td></tr>
+    <tr><td class="pro">9</td><td class="ex">p. <span class="pot" style="font-weight:600">chiamare</span> — poder llamar</td><td class="ex">d. <span class="dov" style="font-weight:600">chiamare</span> — tener que llamar</td><td class="ex">v. <span class="vol" style="font-weight:600">parlare</span> — querer hablar</td></tr>
+    <tr><td class="pro">10</td><td class="ex">p. <span class="pot" style="font-weight:600">usare</span> — poder usar</td><td class="ex">d. <span class="dov" style="font-weight:600">stare</span> a casa — tener que quedarse</td><td class="ex">v. <span class="vol" style="font-weight:600">vedere</span> — querer ver</td></tr>
+    <tr><td class="pro">11</td><td class="ex">p. <span class="pot" style="font-weight:600">prendere</span> — poder tomar</td><td class="ex">d. <span class="dov" style="font-weight:600">mangiare</span> — tener que comer</td><td class="ex">v. <span class="vol" style="font-weight:600">leggere</span> — querer leer</td></tr>
+    <tr><td class="pro">12</td><td class="ex">p. <span class="pot" style="font-weight:600">mangiare</span> — poder comer</td><td class="ex">d. <span class="dov" style="font-weight:600">comprare</span> — tener que comprar</td><td class="ex">v. <span class="vol" style="font-weight:600">uscire</span> — querer salir</td></tr>
+    <tr><td class="pro">13</td><td class="ex">p. <span class="pot" style="font-weight:600">dormire</span> — poder dormir</td><td class="ex">d. <span class="dov" style="font-weight:600">scrivere</span> — tener que escribir</td><td class="ex">v. <span class="vol" style="font-weight:600">cucinare</span> — querer cocinar</td></tr>
+    <tr><td class="pro">14</td><td class="ex">p. <span class="pot" style="font-weight:600">portare</span> — poder llevar</td><td class="ex">d. <span class="dov" style="font-weight:600">dormire</span> — tener que dormir</td><td class="ex">v. <span class="vol" style="font-weight:600">ballare</span> — querer bailar</td></tr>
+    <tr><td class="pro">15</td><td class="ex">p. <span class="pot" style="font-weight:600">chiedere</span> — poder pedir</td><td class="ex">d. <span class="dov" style="font-weight:600">pulire</span> — tener que limpiar</td><td class="ex">v. <span class="vol" style="font-weight:600">cantare</span> — querer cantar</td></tr>
+    <tr><td class="pro">16</td><td class="ex">p. <span class="pot" style="font-weight:600">restare</span> — poder quedarse</td><td class="ex">d. <span class="dov" style="font-weight:600">riposare</span> — tener que descansar</td><td class="ex">v. <span class="vol" style="font-weight:600">nuotare</span> — querer nadar</td></tr>
+    <tr><td class="pro">17</td><td class="ex">p. <span class="pot" style="font-weight:600">rispondere</span> — poder responder</td><td class="ex">d. <span class="dov" style="font-weight:600">rispettare</span> — tener que respetar</td><td class="ex">v. <span class="vol" style="font-weight:600">correre</span> — querer correr</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===== REGISTRO FORMALE / INFORMALE ===== -->
+<h2>Registro formale vs informale</h2>
+<p>In italiano esiste il <strong>Lei</strong> (come usted in spagnolo), usato in contesti formali. I modali si coniugano alla terza persona singolare.</p>
+
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Informale (tu)</th><th>Formale (Lei)</th><th>Traduzione</th></tr></thead>
+  <tbody>
+    <tr><td class="pot">Puoi venire domani?</td><td class="right">Può venire domani?</td><td class="tr">¿Puede venir mañana?</td></tr>
+    <tr><td class="pot">Puoi aspettare un momento?</td><td class="right">Può aspettare un momento?</td><td class="tr">¿Puede esperar un momento?</td></tr>
+    <tr><td class="dov">Devi compilare questo modulo.</td><td class="right">Deve compilare questo modulo.</td><td class="tr">Debe completar este formulario.</td></tr>
+    <tr><td class="vol">Vuoi qualcosa?</td><td class="right">Vuole qualcosa?</td><td class="tr">¿Desea algo?</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===== ERRORI FREQUENTI ===== -->
+<h2>Errori frequenti</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th style="background:#6a1a1a">❌ Errato</th><th style="background:#1a5a2a">✔ Corretto</th><th>Problema</th></tr></thead>
+  <tbody>
+    <tr><td class="wrong">Voglio di mangiare.</td><td class="right">Voglio mangiare.</td><td class="rule">No preposición entre modal + infinito</td></tr>
+    <tr><td class="wrong">Devo a lavorare.</td><td class="right">Devo lavorare.</td><td class="rule">No preposición</td></tr>
+    <tr><td class="wrong">Io voglo dormire.</td><td class="right">Voglio dormire.</td><td class="rule">Forma incorrecta: io → voglio</td></tr>
+    <tr><td class="wrong">Noi possiamo a uscire.</td><td class="right">Possiamo uscire.</td><td class="rule">No preposición + no pronombre obligatorio</td></tr>
+    <tr><td class="wrong">Loro voglono venire.</td><td class="right">Vogliono venire.</td><td class="rule">loro → vogliono (no voglono)</td></tr>
+    <tr><td class="wrong">Lui puo parlare.</td><td class="right">Può parlare.</td><td class="rule">lui/lei → può (con accento)</td></tr>
+    <tr><td class="wrong">Noi dovemo studiare.</td><td class="right">Dobbiamo studiare.</td><td class="rule">noi → dobbiamo (forma irregolare)</td></tr>
+    <tr><td class="wrong">Posso saper guidare.</td><td class="right">So guidare.</td><td class="rule">sapere non si combina con potere per capacità acquisita</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ========================= ESPAÑOL ========================= -->
+<div class="lang-badge lang-es" style="margin-top:3rem">🇪🇸 Español</div>
+
+<h2>¿Qué son los verbos modales?</h2>
+<p>Son verbos que <strong>no expresan una acción directa</strong>, sino la <em>actitud del sujeto</em> frente a una acción. Siempre van seguidos de un <strong>infinitivo sin preposición</strong>.</p>
+
+<h2>Resumen de conjugaciones</h2>
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>Persona</th>
+      <th class="pot">POTERE (poder)</th>
+      <th class="dov">DOVERE (deber)</th>
+      <th class="vol">VOLERE (querer)</th>
+      <th class="sap">SAPERE (saber hacer)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td class="person">io</td><td class="pot">posso</td><td class="dov">devo</td><td class="vol">voglio</td><td class="sap">so</td></tr>
+    <tr><td class="person">tu</td><td class="pot">puoi</td><td class="dov">devi</td><td class="vol">vuoi</td><td class="sap">sai</td></tr>
+    <tr><td class="person">lui/lei</td><td class="pot">può</td><td class="dov">deve</td><td class="vol">vuole</td><td class="sap">sa</td></tr>
+    <tr><td class="person">noi</td><td class="pot">possiamo</td><td class="dov">dobbiamo</td><td class="vol">vogliamo</td><td class="sap">sappiamo</td></tr>
+    <tr><td class="person">voi</td><td class="pot">potete</td><td class="dov">dovete</td><td class="vol">volete</td><td class="sap">sapete</td></tr>
+    <tr><td class="person">loro</td><td class="pot">possono</td><td class="dov">devono</td><td class="vol">vogliono</td><td class="sap">sanno</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>Regla fundamental</h2>
+<div class="formula">
+  <span>modale coniugato</span> <span class="plus">+</span> <span>infinito</span> <span style="color:#a09080;font-size:0.85rem;margin-left:1rem">(sin preposición)</span>
+  <span class="sub">Voglio mangiare · Devo studiare · Posso venire · So guidare</span>
+</div>
+
+<h2>Cuándo usar cada modal</h2>
+<div class="compare">
+  <div class="cmp-card">
+    <div class="cmp-head pot">POTERE</div>
+    <div class="cmp-body">
+      <ul>
+        <li>Capacidad física/mental</li>
+        <li>Posibilidad concreta</li>
+        <li>Pedir/dar permiso</li>
+        <li>Pedidos corteses (¿Puoi/Può...?)</li>
+      </ul>
+    </div>
+  </div>
+  <div class="cmp-card">
+    <div class="cmp-head dov">DOVERE</div>
+    <div class="cmp-body">
+      <ul>
+        <li>Obligación (regla/ley)</li>
+        <li>Necesidad práctica</li>
+        <li>Deber moral</li>
+        <li>Suposición / deducción</li>
+      </ul>
+    </div>
+  </div>
+  <div class="cmp-card">
+    <div class="cmp-head vol">VOLERE</div>
+    <div class="cmp-body">
+      <ul>
+        <li>Deseo o intención</li>
+        <li>Pedido directo</li>
+        <li>Con sustantivo (sin infinitivo)</li>
+        <li>Vorrei = forma cortés</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<h2>Diferencia clave: non devo vs non posso</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Italiano</th><th>Significado</th><th>Equivalente español</th></tr></thead>
+  <tbody>
+    <tr><td class="neg">Non devo lavorare domani.</td><td class="rule">No hay obligación de trabajar</td><td class="tr">No tengo que trabajar mañana.</td></tr>
+    <tr><td class="neg">Non posso lavorare domani.</td><td class="rule">Algo me lo impide</td><td class="tr">No puedo trabajar mañana.</td></tr>
+    <tr><td class="neg">Non voglio lavorare domani.</td><td class="rule">No tengo deseos</td><td class="tr">No quiero trabajar mañana.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===== SUMMARY FINALE ===== -->
+<div class="summary">
+  <h4>Puntos clave para dominar los modales</h4>
+  <div class="sum-row">
+    <span class="sum-verb pot">POTERE</span>
+    <span class="sum-desc">posso / puoi / può / possiamo / potete / possono — capacidad, permiso, posibilidad, pedidos corteses</span>
+  </div>
+  <div class="sum-row">
+    <span class="sum-verb dov">DOVERE</span>
+    <span class="sum-desc">devo / devi / deve / dobbiamo / dovete / devono — obligación, necesidad, deber moral, suposición</span>
+  </div>
+  <div class="sum-row">
+    <span class="sum-verb vol">VOLERE</span>
+    <span class="sum-desc">voglio / vuoi / vuole / vogliamo / volete / vogliono — deseo, intención, pedido; vorrei = forma cortés</span>
+  </div>
+  <div class="sum-row">
+    <span class="sum-verb sap">SAPERE</span>
+    <span class="sum-desc">so / sai / sa / sappiamo / sapete / sanno — habilidad aprendida (saber hacer algo)</span>
+  </div>
+  <div style="margin-top:1rem; padding-top:0.8rem; border-top:1px solid #3a3028; font-size:0.88rem; color:#c0b8a8;">
+    Regla de oro: modal coniugato + infinito, <strong style="color:#f0c080">senza preposizione</strong>. Il "non" va sempre prima del modale.
+  </div>
+</div>
+
+<p style="margin-top:1.5rem; font-size:0.79rem; color:#9a8868; text-align:center;">Verbi modali · Presente indicativo · A1–A2 · potere · dovere · volere · sapere</p>
+
+</div>
+</body>
+</html>

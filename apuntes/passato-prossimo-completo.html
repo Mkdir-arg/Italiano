@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Passato Prossimo – Completo</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: #f7f5f0;
+    color: #26241c;
+    padding: 2rem 1rem;
+    line-height: 1.65;
+  }
+
+  .page { max-width: 940px; margin: 0 auto; }
+
+  /* ---- COVER ---- */
+  .cover { border-left: 5px solid #2a5c8a; padding-left: 1.2rem; margin-bottom: 2.5rem; }
+  .cover h1 { font-family:'Lora',serif; font-size:1.9rem; font-weight:600; color:#12100a; line-height:1.2; }
+  .cover .sub { font-size:0.92rem; color:#5a5040; margin-top:0.4rem; font-style:italic; }
+  .cover .tags { display:flex; gap:0.5rem; margin-top:0.7rem; flex-wrap:wrap; }
+  .tag { padding:0.15rem 0.6rem; border-radius:4px; font-size:0.78rem; font-weight:600; letter-spacing:0.05em; }
+  .tag-blue  { background:#1a4a7a; color:#d8eaf8; }
+  .tag-teal  { background:#1a6a5a; color:#c8f0e8; }
+  .tag-amber { background:#7a4a00; color:#f8e8c0; }
+  .tag-red   { background:#7a1a1a; color:#f8d8d8; }
+
+  /* ---- LANG BADGE ---- */
+  .lang-badge { display:inline-flex; align-items:center; gap:0.5rem; padding:0.28rem 0.85rem; border-radius:4px; font-size:0.8rem; font-weight:600; letter-spacing:0.07em; text-transform:uppercase; margin:2.5rem 0 1rem; }
+  .lang-it { background:#1a3a1a; color:#c8e8c0; }
+  .lang-es { background:#3a1a1a; color:#e8c8c0; }
+
+  /* ---- HEADINGS ---- */
+  h2 { font-family:'Lora',serif; font-size:1.18rem; font-weight:600; color:#12100a; border-left:4px solid #2a5c8a; padding-left:0.75rem; margin:2rem 0 0.7rem; }
+  h3 { font-size:0.88rem; font-weight:600; color:#2a5c8a; text-transform:uppercase; letter-spacing:0.09em; margin:1.5rem 0 0.5rem; display:flex; align-items:center; gap:0.6rem; }
+  h3::after { content:''; flex:1; height:1px; background:#d0cac0; }
+
+  p { margin-bottom:0.7rem; font-size:0.95rem; }
+  ul { margin:0.3rem 0 0.9rem 1.3rem; }
+  ul li { font-size:0.94rem; margin-bottom:0.35rem; }
+
+  /* ---- BOXES ---- */
+  .note   { background:#eaf0f8; border-left:4px solid #2a5c8a; border-radius:0 6px 6px 0; padding:0.65rem 1rem; font-size:0.9rem; color:#1a2a40; margin:0.6rem 0 1rem; }
+  .note strong { color:#1a4a7a; }
+  .warn   { background:#fdf4e4; border-left:4px solid #b07820; border-radius:0 6px 6px 0; padding:0.65rem 1rem; font-size:0.9rem; color:#5a3800; margin:0.6rem 0 1rem; }
+  .warn strong { color:#8a5200; }
+  .ok     { background:#e8f6ec; border-left:4px solid #1a7a30; border-radius:0 6px 6px 0; padding:0.65rem 1rem; font-size:0.9rem; color:#0a3a18; margin:0.6rem 0 1rem; }
+  .ok strong { color:#1a6a28; }
+  .new-badge { display:inline-block; background:#7a1a1a; color:#f8d8d8; font-size:0.72rem; font-weight:600; padding:0.1rem 0.45rem; border-radius:3px; letter-spacing:0.05em; vertical-align:middle; margin-left:0.4rem; }
+
+  /* ---- TABLES ---- */
+  .table-wrap { overflow-x:auto; margin-bottom:1.2rem; }
+  table { width:100%; border-collapse:collapse; font-size:0.9rem; }
+  thead tr { background:#1a2a3a; color:#dce8f0; }
+  thead th { padding:0.55rem 0.7rem; text-align:left; font-weight:600; font-size:0.82rem; letter-spacing:0.04em; white-space:nowrap; }
+  thead th.av  { background:#1a4a7a; }
+  thead th.es  { background:#1a6a5a; }
+  thead th.bo  { background:#6a3a1a; }
+  thead th.are { background:#5a2a8a; }
+  thead th.ere { background:#1a4a7a; }
+  thead th.ire { background:#1a6a5a; }
+
+  tbody tr:nth-child(even) { background:#eeebe4; }
+  tbody tr:nth-child(odd)  { background:#f7f5f0; }
+  tbody tr:hover { background:#e4e0d4; }
+
+  td { padding:0.46rem 0.7rem; border-bottom:1px solid #dbd6cc; vertical-align:middle; }
+  td.person  { font-weight:600; color:#26241c; white-space:nowrap; }
+  td.pro     { font-size:0.8rem; color:#7a7060; }
+  td.av      { font-family:'Lora',serif; font-weight:600; color:#1a4a7a; }
+  td.es      { font-family:'Lora',serif; font-weight:600; color:#1a6a5a; }
+  td.bo      { font-family:'Lora',serif; font-weight:600; color:#8a5a20; }
+  td.are-pp  { font-family:'Lora',serif; font-weight:600; color:#5a2a8a; }
+  td.ere-pp  { font-family:'Lora',serif; font-weight:600; color:#1a4a7a; }
+  td.ire-pp  { font-family:'Lora',serif; font-weight:600; color:#1a6a5a; }
+  td.ex      { font-size:0.88rem; color:#2a2820; }
+  td.tr      { font-size:0.84rem; color:#7a6858; font-style:italic; }
+  td.right   { color:#1a6a20; font-family:'Lora',serif; font-weight:600; }
+  td.wrong   { color:#9a1a1a; text-decoration:line-through; font-family:'Lora',serif; }
+  td.rule    { font-size:0.84rem; color:#5a4a38; }
+  td.inf     { font-family:'Lora',serif; color:#26241c; }
+  td.pp      { font-family:'Lora',serif; font-weight:600; }
+  td.time    { font-family:'Lora',serif; font-weight:600; color:#2a5c8a; }
+
+  /* ---- FORMULA ---- */
+  .formula { background:#12100a; color:#f0e8d8; border-radius:8px; padding:1.1rem 1.4rem; margin:0.8rem 0 1.2rem; text-align:center; letter-spacing:0.03em; }
+  .formula .line { font-family:'Lora',serif; font-size:1.1rem; margin-bottom:0.3rem; }
+  .formula .line span.h { color:#6ac0f0; font-weight:600; }
+  .formula .line span.e { color:#6af0a8; font-weight:600; }
+  .formula .line span.pp-clr { color:#f0c060; font-weight:600; }
+  .formula .line span.plus { color:#a09080; margin:0 0.6rem; }
+  .formula .sub { font-family:'Source Sans 3',sans-serif; font-size:0.82rem; color:#a09080; margin-top:0.4rem; font-style:italic; }
+
+  /* ---- USI BOXES ---- */
+  .uso-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1.3rem; }
+  @media(max-width:560px){ .uso-grid { grid-template-columns:1fr; } }
+  .uso-card { border-radius:8px; border:1px solid #d0cac0; overflow:hidden; }
+  .uso-head { padding:0.5rem 0.85rem; background:#2a4a6a; color:#d0e4f8; font-size:0.82rem; font-weight:600; letter-spacing:0.05em; text-transform:uppercase; }
+  .uso-body { background:#f7f5f0; padding:0.7rem 0.85rem; }
+  .uso-body p { font-size:0.9rem; margin-bottom:0.5rem; color:#2a2820; }
+  .uso-ex { font-family:'Lora',serif; font-weight:600; font-size:0.95rem; color:#12100a; }
+  .uso-tr { font-size:0.82rem; color:#7a6858; font-style:italic; margin-top:0.2rem; }
+
+  /* ---- PARTICIPIO TRIO ---- */
+  .pp-trio { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-bottom:1.3rem; }
+  @media(max-width:580px){ .pp-trio { grid-template-columns:1fr; } }
+  .pp-card { border-radius:8px; overflow:hidden; border:1px solid #d0cac0; }
+  .pp-head { padding:0.55rem 0.8rem; font-family:'Lora',serif; font-weight:600; font-size:1rem; }
+  .pp-head .arrow { font-size:0.85rem; font-weight:400; margin:0 0.4rem; opacity:0.7; }
+  .pp-head .result { font-size:1.1rem; }
+  .pp-head.are { background:#5a2a8a; color:#ede0f8; }
+  .pp-head.ere { background:#1a4a7a; color:#d8e8f8; }
+  .pp-head.ire { background:#1a6a5a; color:#d0f0e8; }
+  .pp-body { background:#f7f5f0; }
+  .pp-row { display:flex; justify-content:space-between; padding:0.32rem 0.8rem; border-bottom:1px solid #e0dbd0; font-size:0.9rem; }
+  .pp-row:last-child { border-bottom:none; }
+  .pp-inf { color:#7a6858; }
+  .pp-form { font-family:'Lora',serif; font-weight:600; }
+  .pp-form.are { color:#5a2a8a; }
+  .pp-form.ere { color:#1a4a7a; }
+  .pp-form.ire { color:#1a6a5a; }
+  .pp-tr { font-size:0.78rem; color:#9a8878; font-style:italic; }
+
+  /* ---- AUX SPLIT ---- */
+  .aux-split { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1.3rem; }
+  @media(max-width:560px){ .aux-split { grid-template-columns:1fr; } }
+  .aux-card { border-radius:8px; overflow:hidden; border:1px solid #d0cac0; }
+  .aux-head { padding:0.5rem 0.8rem; font-size:0.82rem; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; }
+  .aux-head.av { background:#1a4a7a; color:#d0e4f8; }
+  .aux-head.es { background:#1a6a5a; color:#c8f0e4; }
+  .aux-body { background:#f7f5f0; padding:0.6rem 0.8rem; font-size:0.88rem; }
+  .aux-body ul { margin-left:1rem; }
+  .aux-body ul li { margin-bottom:0.3rem; }
+
+  /* ---- ACCORDO GRID ---- */
+  .acc-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0.6rem; margin-bottom:1.2rem; }
+  @media(max-width:500px){ .acc-grid { grid-template-columns:repeat(2,1fr); } }
+  .acc-cell { background:#f7f5f0; border:1px solid #d0cac0; border-radius:6px; padding:0.55rem 0.6rem; text-align:center; }
+  .acc-label { font-size:0.76rem; color:#7a6858; margin-bottom:0.25rem; text-transform:uppercase; letter-spacing:0.06em; }
+  .acc-form  { font-family:'Lora',serif; font-size:1.1rem; font-weight:600; }
+  .acc-form.m { color:#1a4a7a; }
+  .acc-form.f { color:#8a1a5a; }
+  .acc-ex { font-size:0.8rem; color:#5a5040; font-style:italic; margin-top:0.2rem; }
+
+  /* ---- PRONOMI DIRETTI (NEW) ---- */
+  .pron-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0.7rem; margin-bottom:1.3rem; }
+  @media(max-width:500px){ .pron-grid { grid-template-columns:repeat(2,1fr); } }
+  .pron-card { border-radius:8px; overflow:hidden; border:2px solid #1a4a7a; }
+  .pron-head { background:#1a4a7a; color:#d0e4f8; padding:0.4rem 0.6rem; text-align:center; font-family:'Lora',serif; font-size:1.1rem; font-weight:600; }
+  .pron-head .sub { display:block; font-size:0.75rem; font-weight:400; font-style:italic; opacity:0.85; }
+  .pron-body { background:#f7f5f0; padding:0.5rem 0.6rem; }
+  .pron-ex { font-family:'Lora',serif; font-weight:600; color:#1a4a7a; font-size:0.88rem; display:block; margin-bottom:0.2rem; }
+  .pron-tr { font-size:0.78rem; color:#7a6858; font-style:italic; }
+
+  /* ---- 3-COL TABLE (avere/essere/entrambi) ---- */
+  .three-col { display:grid; grid-template-columns:1fr 1fr 1fr; gap:1rem; margin-bottom:1.3rem; }
+  @media(max-width:640px){ .three-col { grid-template-columns:1fr; } }
+  .tc-card { border-radius:8px; overflow:hidden; border:1px solid #d0cac0; }
+  .tc-head { padding:0.5rem 0.75rem; font-size:0.8rem; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; }
+  .tc-head.av { background:#1a4a7a; color:#d0e4f8; }
+  .tc-head.es { background:#1a6a5a; color:#c8f0e4; }
+  .tc-head.bo { background:#6a3a1a; color:#f0e0c8; }
+  .tc-body { background:#f7f5f0; padding:0.5rem 0.75rem; }
+  .tc-cat { font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.06em; margin:0.6rem 0 0.25rem; padding-top:0.5rem; border-top:1px solid #e0dbd0; }
+  .tc-cat:first-child { margin-top:0; border-top:none; padding-top:0; }
+  .tc-cat.av { color:#1a4a7a; }
+  .tc-cat.es { color:#1a6a5a; }
+  .tc-cat.bo { color:#8a5a20; }
+  .tc-verb { font-family:'Lora',serif; font-size:0.87rem; color:#26241c; display:flex; flex-wrap:wrap; gap:0.3rem; }
+  .v { background:#f0ede6; border:1px solid #dbd6cc; border-radius:4px; padding:0.1rem 0.4rem; font-size:0.84rem; font-family:'Lora',serif; }
+  .v.av { color:#1a4a7a; background:#eaf2fc; border-color:#c0d8f0; }
+  .v.es { color:#1a6a5a; background:#e0f4ec; border-color:#b0dcc8; }
+  .v.bo { color:#8a5a20; background:#f8f0e0; border-color:#dcc898; }
+
+  /* ---- MODALI SECTION ---- */
+  .mod-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1.3rem; }
+  @media(max-width:560px){ .mod-grid { grid-template-columns:1fr; } }
+  .mod-card { border-radius:8px; overflow:hidden; border:1px solid #d0cac0; }
+  .mod-head { padding:0.5rem 0.8rem; font-size:0.82rem; font-weight:600; letter-spacing:0.05em; text-transform:uppercase; }
+  .mod-head.av { background:#1a4a7a; color:#d0e4f8; }
+  .mod-head.es { background:#1a6a5a; color:#c8f0e4; }
+  .mod-head.ne { background:#3a2a1a; color:#e8dac8; }
+  .mod-body { background:#f7f5f0; padding:0.65rem 0.8rem; }
+  .mod-body .rule-line { font-size:0.86rem; color:#2a2820; margin-bottom:0.4rem; }
+  .mod-body .rule-line strong { color:#1a3a5a; }
+  .mod-ex { font-family:'Lora',serif; font-weight:600; font-size:0.9rem; color:#12100a; display:block; margin-bottom:0.15rem; }
+  .mod-tr { font-size:0.8rem; color:#7a6858; font-style:italic; }
+
+  /* ---- CONIUGAZIONE COMPLETA ---- */
+  .conj-trio { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-bottom:1.3rem; }
+  @media(max-width:620px){ .conj-trio { grid-template-columns:1fr; } }
+  .conj-card { border-radius:8px; overflow:hidden; border:1px solid #d0cac0; }
+  .conj-head { padding:0.5rem 0.8rem; }
+  .conj-head.are { background:#5a2a8a; color:#ede0f8; }
+  .conj-head.ere { background:#1a4a7a; color:#d8e8f8; }
+  .conj-head.ire { background:#1a6a5a; color:#d0f0e8; }
+  .conj-htitle { font-family:'Lora',serif; font-weight:600; font-size:1rem; }
+  .conj-hsub   { font-size:0.78rem; font-style:italic; opacity:0.8; }
+  .conj-body { background:#f7f5f0; }
+  .conj-row { display:flex; justify-content:space-between; align-items:baseline; padding:0.3rem 0.8rem; border-bottom:1px solid #e0dbd0; font-size:0.88rem; }
+  .conj-row:last-child { border-bottom:none; }
+  .conj-pro { color:#7a6858; font-size:0.8rem; flex:0 0 64px; }
+  .conj-aux { font-family:'Lora',serif; }
+  .conj-aux.av { color:#1a4a7a; font-weight:600; }
+  .conj-aux.es { color:#1a6a5a; font-weight:600; }
+  .conj-pp  { font-family:'Lora',serif; }
+  .conj-pp.are { color:#5a2a8a; font-weight:600; }
+  .conj-pp.ere { color:#1a4a7a; }
+  .conj-pp.ire { color:#1a6a5a; }
+  .conj-plus { color:#b0a898; font-size:0.8rem; margin:0 0.3rem; }
+
+  /* ---- ESEMPI CARDS ---- */
+  .ex-grid { display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin-bottom:1.2rem; }
+  @media(max-width:540px){ .ex-grid { grid-template-columns:1fr; } }
+  .ex-card { background:#f7f5f0; border:1px solid #d0cac0; border-radius:8px; padding:0.7rem 0.9rem; }
+  .ex-card .ex-label { font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.5rem; padding-bottom:0.3rem; border-bottom:1px solid #e0dbd0; }
+  .ex-card.av .ex-label { color:#1a4a7a; }
+  .ex-card.es .ex-label { color:#1a6a5a; }
+  .ex-item { margin-bottom:0.4rem; }
+  .ex-it { font-family:'Lora',serif; font-size:0.91rem; color:#12100a; font-weight:600; }
+  .ex-es { font-size:0.82rem; color:#7a6858; font-style:italic; }
+
+  /* ---- TIME GRID ---- */
+  .time-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0.6rem; margin-bottom:1.3rem; }
+  @media(max-width:520px){ .time-grid { grid-template-columns:repeat(2,1fr); } }
+  .time-cell { background:#f7f5f0; border:1px solid #d0cac0; border-radius:6px; padding:0.5rem 0.65rem; }
+  .time-it { font-family:'Lora',serif; font-weight:600; color:#2a5c8a; font-size:0.95rem; }
+  .time-es { font-size:0.82rem; color:#7a6858; font-style:italic; }
+
+  /* ---- NEGAZIONE ---- */
+  .neg-formula { background:#3a0a0a; color:#f8e0e0; border-radius:8px; padding:1rem 1.3rem; margin:0.8rem 0 1.2rem; font-family:'Lora',serif; font-size:1.05rem; text-align:center; }
+  .neg-formula span.r { color:#f08080; font-weight:600; }
+  .neg-formula span.p { color:#f0a090; margin:0 0.5rem; }
+  .neg-formula .sub { font-family:'Source Sans 3',sans-serif; font-size:0.8rem; color:#c09090; margin-top:0.4rem; font-style:italic; }
+
+  /* ---- SUMMARY ---- */
+  .summary { background:#12100a; color:#e8e0d0; border-radius:8px; padding:1.3rem 1.5rem; margin-top:3rem; }
+  .summary h4 { font-family:'Lora',serif; font-size:1.05rem; color:#f0c870; margin-bottom:1rem; border-bottom:1px solid #3a3028; padding-bottom:0.5rem; }
+  .sum-step { display:grid; grid-template-columns:28px 1fr; gap:0.5rem; margin-bottom:0.65rem; align-items:start; }
+  .sum-n { width:28px; height:28px; border-radius:50%; background:#2a5c8a; color:#d8eaf8; font-weight:600; font-size:0.88rem; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .sum-desc { font-size:0.9rem; color:#c8c0b0; padding-top:0.25rem; }
+  .sum-desc code { background:#2a2820; padding:0.1rem 0.4rem; border-radius:3px; font-family:monospace; font-size:0.85rem; color:#a8d0e8; }
+  .sum-desc strong { color:#f0e8d0; }
+
+  @media print {
+    body { background:white; padding:1rem; }
+    .pp-trio,.conj-trio,.aux-split,.acc-grid,.ex-grid,.time-grid,.three-col,.pron-grid { page-break-inside:avoid; }
+  }
+</style>
+</head>
+<body>
+<div id="site-nav" style="background:#0f1422;padding:0.52rem 1.4rem;display:flex;align-items:center;gap:0.7rem;font-family:'Source Sans 3',sans-serif;font-size:0.82rem;border-bottom:1px solid #1e2c44;position:sticky;top:0;z-index:9999;box-shadow:0 2px 8px rgba(0,0,0,0.25)">
+  <a href="/" style="color:#70b8f8;text-decoration:none;font-weight:600;display:flex;align-items:center;gap:0.35rem;transition:opacity 0.2s" onmouseover="this.style.opacity=0.75" onmouseout="this.style.opacity=1">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#70b8f8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+    Inicio
+  </a>
+  <span style="color:#2a3a54">|</span>
+  <span style="color:#6878a0;letter-spacing:0.03em">Italiano Apuntes</span>
+</div>
+
+<div class="page">
+
+<!-- COVER -->
+<div class="cover">
+  <h1>Passato Prossimo — Indicativo<br>Verbi Regolari</h1>
+  <p class="sub">El pasado compuesto del italiano · versión completa con verbos modales y pronombres</p>
+  <div class="tags">
+    <span class="tag tag-blue">A1 – A2</span>
+    <span class="tag tag-teal">Indicativo Passato</span>
+    <span class="tag tag-amber">Avere + Essere</span>
+    <span class="tag tag-red">Verbi Modali</span>
+  </div>
+</div>
+
+<!-- ========================= ITALIANO ========================= -->
+<div class="lang-badge lang-it">🇮🇹 Italiano</div>
+
+<!-- ===== USI ===== -->
+<h2>Quando si usa il passato prossimo</h2>
+
+<div class="uso-grid">
+  <div class="uso-card">
+    <div class="uso-head">Uso 1 — Azione recente</div>
+    <div class="uso-body">
+      <p>Azione completata nel passato <strong>molto vicina al momento attuale</strong>.</p>
+      <div class="uso-ex">Ho incontrato Paolo poco fa.</div>
+      <div class="uso-tr">Me encontré con Paolo hace un momento.</div>
+      <div class="uso-ex" style="margin-top:0.5rem">Ho appena finito di lavorare.</div>
+      <div class="uso-tr">Acabo de terminar de trabajar.</div>
+    </div>
+  </div>
+  <div class="uso-card">
+    <div class="uso-head">Uso 2 — Consecuencias presentes</div>
+    <div class="uso-body">
+      <p>Azione avvenuta nel passato le cui <strong>conseguenze durano nel presente</strong>.</p>
+      <div class="uso-ex">Ho conosciuto Maria un anno fa.</div>
+      <div class="uso-tr">Conocí a María hace un año. (y sigue siendo mi amiga)</div>
+      <div class="uso-ex" style="margin-top:0.5rem">Ho studiato italiano per tre anni.</div>
+      <div class="uso-tr">Estudié italiano por tres años. (y sé italiano hoy)</div>
+    </div>
+  </div>
+</div>
+
+<div class="note"><strong>In sintesi:</strong> il passato prossimo è il tempo del passato più usato nel parlato. Sostituisce spesso il passato remoto nelle regioni del nord e centro Italia.</div>
+
+<!-- ===== STRUTTURA ===== -->
+<h2>Struttura fondamentale</h2>
+
+<div class="formula">
+  <div class="line">soggetto <span class="plus">+</span> <span class="h">AVERE</span> / <span class="e">ESSERE</span> <span class="plus">+</span> <span class="pp-clr">participio passato</span></div>
+  <div class="sub">Il verbo ausiliare si coniuga al presente indicativo · il participio passato segue le regole di accordo</div>
+</div>
+
+<!-- ===== PARTICIPIO ===== -->
+<h2>Come si forma il participio passato</h2>
+
+<div class="pp-trio">
+  <div class="pp-card">
+    <div class="pp-head are">-ARE <span class="arrow">→</span> <span class="result">-ATO</span></div>
+    <div class="pp-body">
+      <div class="pp-row"><span class="pp-inf">parlare</span><span class="pp-form are">parlato</span><span class="pp-tr">hablado</span></div>
+      <div class="pp-row"><span class="pp-inf">mangiare</span><span class="pp-form are">mangiato</span><span class="pp-tr">comido</span></div>
+      <div class="pp-row"><span class="pp-inf">lavorare</span><span class="pp-form are">lavorato</span><span class="pp-tr">trabajado</span></div>
+      <div class="pp-row"><span class="pp-inf">studiare</span><span class="pp-form are">studiato</span><span class="pp-tr">estudiado</span></div>
+      <div class="pp-row"><span class="pp-inf">comprare</span><span class="pp-form are">comprato</span><span class="pp-tr">comprado</span></div>
+      <div class="pp-row"><span class="pp-inf">guardare</span><span class="pp-form are">guardato</span><span class="pp-tr">mirado</span></div>
+      <div class="pp-row"><span class="pp-inf">chiamare</span><span class="pp-form are">chiamato</span><span class="pp-tr">llamado</span></div>
+      <div class="pp-row"><span class="pp-inf">trovare</span><span class="pp-form are">trovato</span><span class="pp-tr">encontrado</span></div>
+      <div class="pp-row"><span class="pp-inf">aspettare</span><span class="pp-form are">aspettato</span><span class="pp-tr">esperado</span></div>
+      <div class="pp-row"><span class="pp-inf">amare</span><span class="pp-form are">amato</span><span class="pp-tr">amado</span></div>
+      <div class="pp-row"><span class="pp-inf">pagare</span><span class="pp-form are">pagato</span><span class="pp-tr">pagado</span></div>
+      <div class="pp-row"><span class="pp-inf">salutare</span><span class="pp-form are">salutato</span><span class="pp-tr">saludado</span></div>
+      <div class="pp-row"><span class="pp-inf">viaggiare</span><span class="pp-form are">viaggiato</span><span class="pp-tr">viajado</span></div>
+      <div class="pp-row"><span class="pp-inf">camminare</span><span class="pp-form are">camminato</span><span class="pp-tr">caminado</span></div>
+      <div class="pp-row"><span class="pp-inf">portare</span><span class="pp-form are">portato</span><span class="pp-tr">llevado</span></div>
+    </div>
+  </div>
+  <div class="pp-card">
+    <div class="pp-head ere">-ERE <span class="arrow">→</span> <span class="result">-UTO</span></div>
+    <div class="pp-body">
+      <div class="pp-row"><span class="pp-inf">credere</span><span class="pp-form ere">creduto</span><span class="pp-tr">creído</span></div>
+      <div class="pp-row"><span class="pp-inf">vendere</span><span class="pp-form ere">venduto</span><span class="pp-tr">vendido</span></div>
+      <div class="pp-row"><span class="pp-inf">ricevere</span><span class="pp-form ere">ricevuto</span><span class="pp-tr">recibido</span></div>
+      <div class="pp-row"><span class="pp-inf">temere</span><span class="pp-form ere">temuto</span><span class="pp-tr">temido</span></div>
+      <div class="pp-row"><span class="pp-inf">potere</span><span class="pp-form ere">potuto</span><span class="pp-tr">podido</span></div>
+      <div class="pp-row"><span class="pp-inf">volere</span><span class="pp-form ere">voluto</span><span class="pp-tr">querido</span></div>
+      <div class="pp-row"><span class="pp-inf">dovere</span><span class="pp-form ere">dovuto</span><span class="pp-tr">debido</span></div>
+      <div class="pp-row"><span class="pp-inf">cadere</span><span class="pp-form ere">caduto</span><span class="pp-tr">caído</span></div>
+      <div class="pp-row"><span class="pp-inf">tenere</span><span class="pp-form ere">tenuto</span><span class="pp-tr">tenido</span></div>
+      <div class="pp-row"><span class="pp-inf">sapere</span><span class="pp-form ere">saputo</span><span class="pp-tr">sabido</span></div>
+      <div class="pp-row"><span class="pp-inf">battere</span><span class="pp-form ere">battuto</span><span class="pp-tr">golpeado</span></div>
+      <div class="pp-row"><span class="pp-inf">godere</span><span class="pp-form ere">goduto</span><span class="pp-tr">disfrutado</span></div>
+      <div class="pp-row"><span class="pp-inf">valere</span><span class="pp-form ere">valuto</span><span class="pp-tr">valido</span></div>
+      <div class="pp-row"><span class="pp-inf">mettere ⚠</span><span class="pp-form ere">messo</span><span class="pp-tr">puesto (irreg.)</span></div>
+      <div class="pp-row"><span class="pp-inf">perdere ⚠</span><span class="pp-form ere">perso</span><span class="pp-tr">perdido (irreg.)</span></div>
+    </div>
+  </div>
+  <div class="pp-card">
+    <div class="pp-head ire">-IRE <span class="arrow">→</span> <span class="result">-ITO</span></div>
+    <div class="pp-body">
+      <div class="pp-row"><span class="pp-inf">dormire</span><span class="pp-form ire">dormito</span><span class="pp-tr">dormido</span></div>
+      <div class="pp-row"><span class="pp-inf">sentire</span><span class="pp-form ire">sentito</span><span class="pp-tr">sentido/oído</span></div>
+      <div class="pp-row"><span class="pp-inf">capire</span><span class="pp-form ire">capito</span><span class="pp-tr">entendido</span></div>
+      <div class="pp-row"><span class="pp-inf">finire</span><span class="pp-form ire">finito</span><span class="pp-tr">terminado</span></div>
+      <div class="pp-row"><span class="pp-inf">pulire</span><span class="pp-form ire">pulito</span><span class="pp-tr">limpiado</span></div>
+      <div class="pp-row"><span class="pp-inf">preferire</span><span class="pp-form ire">preferito</span><span class="pp-tr">preferido</span></div>
+      <div class="pp-row"><span class="pp-inf">seguire</span><span class="pp-form ire">seguito</span><span class="pp-tr">seguido</span></div>
+      <div class="pp-row"><span class="pp-inf">spedire</span><span class="pp-form ire">spedito</span><span class="pp-tr">enviado</span></div>
+      <div class="pp-row"><span class="pp-inf">guarire</span><span class="pp-form ire">guarito</span><span class="pp-tr">sanado</span></div>
+      <div class="pp-row"><span class="pp-inf">costruire</span><span class="pp-form ire">costruito</span><span class="pp-tr">construido</span></div>
+      <div class="pp-row"><span class="pp-inf">servire</span><span class="pp-form ire">servito</span><span class="pp-tr">servido</span></div>
+      <div class="pp-row"><span class="pp-inf">obbedire</span><span class="pp-form ire">obbedito</span><span class="pp-tr">obedecido</span></div>
+      <div class="pp-row"><span class="pp-inf">agire</span><span class="pp-form ire">agito</span><span class="pp-tr">actuado</span></div>
+      <div class="pp-row"><span class="pp-inf">bollire</span><span class="pp-form ire">bollito</span><span class="pp-tr">hervido</span></div>
+      <div class="pp-row"><span class="pp-inf">digerire</span><span class="pp-form ire">digerito</span><span class="pp-tr">digerido</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="warn"><strong>⚠ Participi irregolari nei verbi -ERE:</strong> molti verbi della 2ª coniugazione hanno participio irregolare (messo, perso, letto, scritto, fatto, detto…). Quelli marcati con ⚠ sono i più comuni — appartengono al tema dei verbi irregolari.</div>
+
+<!-- ===== AUSILIARE ===== -->
+<h2>Scegliere l'ausiliare: AVERE o ESSERE?</h2>
+
+<div class="aux-split">
+  <div class="aux-card">
+    <div class="aux-head av">AVERE — regola generale</div>
+    <div class="aux-body">
+      <p style="font-size:0.88rem;margin-bottom:0.5rem;">Verbi che possono rispondere a <strong>chi? / che cosa?</strong> (oggetto diretto):</p>
+      <ul>
+        <li>tutti i verbi <strong>transitivi</strong></li>
+        <li>molti verbi <strong>intransitivi</strong>: dormire, ridere, giocare, parlare, lavorare, guidare, nuotare, viaggiare, camminare, ballare</li>
+      </ul>
+    </div>
+  </div>
+  <div class="aux-card">
+    <div class="aux-head es">ESSERE — categorie principali</div>
+    <div class="aux-body">
+      <p style="font-size:0.88rem;margin-bottom:0.5rem;">Principalmente:</p>
+      <ul>
+        <li>verbi di <strong>movimento con destinazione</strong>: andare, venire, partire, arrivare, entrare, uscire, tornare, cadere</li>
+        <li>verbi di <strong>stato in luogo</strong>: stare, essere, restare, rimanere</li>
+        <li>verbi di <strong>cambio / evoluzione</strong>: nascere, morire, crescere, diventare, dimagrire, ingrassare</li>
+        <li>tutti i verbi <strong>riflessivi</strong></li>
+        <li>verbi <strong>impersonali</strong>: succedere, piacere, sembrare, bastare, mancare, servire, durare</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ACCORDO CON ESSERE ===== -->
+<h2>Accordo del participio con ESSERE</h2>
+<p>Quando si usa <strong>essere</strong>, il participio concorda in genere e numero con il soggetto.</p>
+
+<div class="acc-grid">
+  <div class="acc-cell"><div class="acc-label">maschile singolare</div><div class="acc-form m">-o</div><div class="acc-ex">lui è arrivat<strong>o</strong></div></div>
+  <div class="acc-cell"><div class="acc-label">femminile singolare</div><div class="acc-form f">-a</div><div class="acc-ex">lei è arrivat<strong>a</strong></div></div>
+  <div class="acc-cell"><div class="acc-label">maschile plurale</div><div class="acc-form m">-i</div><div class="acc-ex">loro sono arrivat<strong>i</strong></div></div>
+  <div class="acc-cell"><div class="acc-label">femminile plurale</div><div class="acc-form f">-e</div><div class="acc-ex">loro sono arrivat<strong>e</strong></div></div>
+</div>
+
+<div class="ok"><strong>Con AVERE:</strong> il participio non cambia mai — <em>ho mangiato / hai mangiato / ha mangiato / abbiamo mangiato</em> → sempre <em>mangiato</em>. <strong>Eccezione: con i pronomi diretti</strong> → vedi sezione successiva.</div>
+
+<!-- ===== ACCORDO CON PRONOMI DIRETTI (NEW) ===== -->
+<h2>Accordo del participio con pronomi diretti (avere) <span class="new-badge">AVANZATO</span></h2>
+<p>Con il verbo <strong>avere</strong>, il participio normalmente non cambia. Ma quando il complemento oggetto è sostituito dai pronomi diretti <strong>lo / la / li / le</strong>, l'accordo diventa <strong>obbligatorio</strong>.</p>
+
+<div class="pron-grid">
+  <div class="pron-card">
+    <div class="pron-head">lo <span class="sub">masc. sing.</span></div>
+    <div class="pron-body">
+      <span class="pron-ex">L'ho vist<strong>o</strong>.</span>
+      <span class="pron-tr">Lo vi. (a él)</span>
+      <span class="pron-ex" style="margin-top:0.35rem">Il film? L'ho guardat<strong>o</strong>.</span>
+      <span class="pron-tr">¿La peli? La vi.</span>
+    </div>
+  </div>
+  <div class="pron-card">
+    <div class="pron-head">la <span class="sub">fem. sing.</span></div>
+    <div class="pron-body">
+      <span class="pron-ex">L'ho vist<strong>a</strong>.</span>
+      <span class="pron-tr">La vi. (a ella)</span>
+      <span class="pron-ex" style="margin-top:0.35rem">La pizza? L'ho mangiat<strong>a</strong>.</span>
+      <span class="pron-tr">¿La pizza? Me la comí.</span>
+    </div>
+  </div>
+  <div class="pron-card">
+    <div class="pron-head">li <span class="sub">masc. plur.</span></div>
+    <div class="pron-body">
+      <span class="pron-ex">Li ho vist<strong>i</strong>.</span>
+      <span class="pron-tr">Los vi. (a ellos)</span>
+      <span class="pron-ex" style="margin-top:0.35rem">I libri? Li ho comprat<strong>i</strong>.</span>
+      <span class="pron-tr">¿Los libros? Los compré.</span>
+    </div>
+  </div>
+  <div class="pron-card">
+    <div class="pron-head">le <span class="sub">fem. plur.</span></div>
+    <div class="pron-body">
+      <span class="pron-ex">Le ho vist<strong>e</strong>.</span>
+      <span class="pron-tr">Las vi. (a ellas)</span>
+      <span class="pron-ex" style="margin-top:0.35rem">Le chiavi? Le ho troват<strong>e</strong>.</span>
+      <span class="pron-tr">¿Las llaves? Las encontré.</span>
+    </div>
+  </div>
+</div>
+
+<div class="warn">
+  <strong>Lo / La si apostrofano</strong> davanti a vocale o H: <em>lo ho visto</em> → <em><strong>l'</strong>ho visto</em> · <em>la ho vista</em> → <em><strong>l'</strong>ho vista</em>.<br>
+  <strong>Li / Le non si apostrofano mai</strong>: <em>li ho visti</em> ✔ (non <em>l'ho visti</em>).
+</div>
+
+<!-- ===== CONIUGAZIONE COMPLETA ===== -->
+<h2>Coniugazione completa — tre verbi modello</h2>
+
+<div class="conj-trio">
+  <div class="conj-card">
+    <div class="conj-head are"><div class="conj-htitle">amare</div><div class="conj-hsub">1ª -ARE · avere</div></div>
+    <div class="conj-body">
+      <div class="conj-row"><span class="conj-pro">io</span><span class="conj-aux av">ho</span><span class="conj-plus">+</span><span class="conj-pp are">amato</span></div>
+      <div class="conj-row"><span class="conj-pro">tu</span><span class="conj-aux av">hai</span><span class="conj-plus">+</span><span class="conj-pp are">amato</span></div>
+      <div class="conj-row"><span class="conj-pro">lui/lei</span><span class="conj-aux av">ha</span><span class="conj-plus">+</span><span class="conj-pp are">amato</span></div>
+      <div class="conj-row"><span class="conj-pro">noi</span><span class="conj-aux av">abbiamo</span><span class="conj-plus">+</span><span class="conj-pp are">amato</span></div>
+      <div class="conj-row"><span class="conj-pro">voi</span><span class="conj-aux av">avete</span><span class="conj-plus">+</span><span class="conj-pp are">amato</span></div>
+      <div class="conj-row"><span class="conj-pro">loro</span><span class="conj-aux av">hanno</span><span class="conj-plus">+</span><span class="conj-pp are">amato</span></div>
+    </div>
+  </div>
+  <div class="conj-card">
+    <div class="conj-head ere"><div class="conj-htitle">credere</div><div class="conj-hsub">2ª -ERE · avere</div></div>
+    <div class="conj-body">
+      <div class="conj-row"><span class="conj-pro">io</span><span class="conj-aux av">ho</span><span class="conj-plus">+</span><span class="conj-pp ere">creduto</span></div>
+      <div class="conj-row"><span class="conj-pro">tu</span><span class="conj-aux av">hai</span><span class="conj-plus">+</span><span class="conj-pp ere">creduto</span></div>
+      <div class="conj-row"><span class="conj-pro">lui/lei</span><span class="conj-aux av">ha</span><span class="conj-plus">+</span><span class="conj-pp ere">creduto</span></div>
+      <div class="conj-row"><span class="conj-pro">noi</span><span class="conj-aux av">abbiamo</span><span class="conj-plus">+</span><span class="conj-pp ere">creduto</span></div>
+      <div class="conj-row"><span class="conj-pro">voi</span><span class="conj-aux av">avete</span><span class="conj-plus">+</span><span class="conj-pp ere">creduto</span></div>
+      <div class="conj-row"><span class="conj-pro">loro</span><span class="conj-aux av">hanno</span><span class="conj-plus">+</span><span class="conj-pp ere">creduto</span></div>
+    </div>
+  </div>
+  <div class="conj-card">
+    <div class="conj-head ire"><div class="conj-htitle">partire</div><div class="conj-hsub">3ª -IRE · essere (acuerda)</div></div>
+    <div class="conj-body">
+      <div class="conj-row"><span class="conj-pro">io (m/f)</span><span class="conj-aux es">sono</span><span class="conj-plus">+</span><span class="conj-pp ire">partito/a</span></div>
+      <div class="conj-row"><span class="conj-pro">tu (m/f)</span><span class="conj-aux es">sei</span><span class="conj-plus">+</span><span class="conj-pp ire">partito/a</span></div>
+      <div class="conj-row"><span class="conj-pro">lui</span><span class="conj-aux es">è</span><span class="conj-plus">+</span><span class="conj-pp ire">partito</span></div>
+      <div class="conj-row"><span class="conj-pro">lei</span><span class="conj-aux es">è</span><span class="conj-plus">+</span><span class="conj-pp ire">partita</span></div>
+      <div class="conj-row"><span class="conj-pro">noi</span><span class="conj-aux es">siamo</span><span class="conj-plus">+</span><span class="conj-pp ire">partiti/e</span></div>
+      <div class="conj-row"><span class="conj-pro">voi</span><span class="conj-aux es">siete</span><span class="conj-plus">+</span><span class="conj-pp ire">partiti/e</span></div>
+      <div class="conj-row"><span class="conj-pro">loro</span><span class="conj-aux es">sono</span><span class="conj-plus">+</span><span class="conj-pp ire">partiti/e</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 3 COLONNE ===== -->
+<h2>Lista verbi: AVERE / ESSERE / ENTRAMBI</h2>
+
+<div class="three-col">
+  <div class="tc-card">
+    <div class="tc-head av">AVERE</div>
+    <div class="tc-body">
+      <div class="tc-cat av">Transitivi (azione su qualcosa)</div>
+      <div class="tc-verb">
+        <span class="v av">salutare</span><span class="v av">ringraziare</span><span class="v av">pregare</span>
+        <span class="v av">vedere</span><span class="v av">mangiare</span><span class="v av">aiutare</span>
+        <span class="v av">amare</span><span class="v av">leggere</span><span class="v av">scrivere</span>
+        <span class="v av">comprare</span><span class="v av">vendere</span><span class="v av">trovare</span>
+        <span class="v av">cercare</span><span class="v av">pagare</span><span class="v av">portare</span>
+        <span class="v av">mettere</span><span class="v av">perdere</span><span class="v av">bere</span>
+        <span class="v av">chiedere</span><span class="v av">accendere</span><span class="v av">muovere</span>
+        <span class="v av">nascondere</span><span class="v av">uccidere</span><span class="v av">concludere</span>
+        <span class="v av">riempire</span><span class="v av">soffrire</span>
+      </div>
+      <div class="tc-cat av">Intransitivi (usano avere)</div>
+      <div class="tc-verb">
+        <span class="v av">dormire</span><span class="v av">ridere</span><span class="v av">giocare</span>
+        <span class="v av">parlare</span><span class="v av">lavorare</span><span class="v av">guidare</span>
+        <span class="v av">nuotare</span><span class="v av">viaggiare</span><span class="v av">camminare</span>
+        <span class="v av">passeggiare</span><span class="v av">ballare</span><span class="v av">studiare</span>
+        <span class="v av">sapere</span><span class="v av">credere</span><span class="v av">capire</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="tc-card">
+    <div class="tc-head es">ESSERE</div>
+    <div class="tc-body">
+      <div class="tc-cat es">Movimento con destinazione</div>
+      <div class="tc-verb">
+        <span class="v es">entrare</span><span class="v es">andare</span><span class="v es">venire</span>
+        <span class="v es">partire</span><span class="v es">tornare</span><span class="v es">cadere</span>
+        <span class="v es">uscire</span><span class="v es">arrivare</span><span class="v es">scappare</span>
+      </div>
+      <div class="tc-cat es">Stato in luogo</div>
+      <div class="tc-verb">
+        <span class="v es">essere</span><span class="v es">stare</span><span class="v es">restare</span>
+        <span class="v es">rimanere</span><span class="v es">sedere</span><span class="v es">esistere</span>
+      </div>
+      <div class="tc-cat es">Cambio / evoluzione</div>
+      <div class="tc-verb">
+        <span class="v es">nascere</span><span class="v es">morire</span><span class="v es">crescere</span>
+        <span class="v es">diventare</span><span class="v es">dimagrire</span><span class="v es">ingrassare</span>
+        <span class="v es">comparire</span><span class="v es">scoppiare</span>
+      </div>
+      <div class="tc-cat es">Riflessivi e reciproci (-si)</div>
+      <div class="tc-verb">
+        <span class="v es">lavarsi</span><span class="v es">alzarsi</span><span class="v es">mettersi</span>
+        <span class="v es">chiamarsi</span><span class="v es">abbassarsi</span>
+      </div>
+      <div class="tc-cat es">Impersonali (3ª pers.)</div>
+      <div class="tc-verb">
+        <span class="v es">succedere</span><span class="v es">piacere</span><span class="v es">accadere</span>
+        <span class="v es">sembrare</span><span class="v es">bastare</span><span class="v es">mancare</span>
+        <span class="v es">capitare</span><span class="v es">servire</span><span class="v es">durare</span>
+      </div>
+      <div class="tc-cat es">Forma passiva</div>
+      <div class="tc-verb">
+        <span class="v es">essere + pp</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="tc-card">
+    <div class="tc-head bo">AVERE / ESSERE</div>
+    <div class="tc-body">
+      <p style="font-size:0.83rem;color:#5a4a38;margin-bottom:0.5rem;">Cambia il significato según il uso:</p>
+      <div class="tc-cat bo">Transitivo → avere · Intransitivo → essere</div>
+      <div class="tc-verb">
+        <span class="v bo">cambiare</span><span class="v bo">aumentare</span><span class="v bo">finire</span>
+        <span class="v bo">cominciare</span><span class="v bo">salire</span><span class="v bo">scendere</span>
+        <span class="v bo">bruciare</span><span class="v bo">guarire</span><span class="v bo">passare</span>
+        <span class="v bo">saltare</span><span class="v bo">sfuggire</span><span class="v bo">correre</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h3>Esempi verbi con entrambi gli ausiliari</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Verbo</th><th class="av">Con AVERE (transitivo)</th><th class="es">Con ESSERE (intransitivo)</th></tr></thead>
+  <tbody>
+    <tr>
+      <td class="inf">cambiare</td>
+      <td class="av"><em>Ho cambiato idea.</em> — Cambié de idea.</td>
+      <td class="es"><em>Marco è cambiato molto.</em> — Marco ha cambiado mucho.</td>
+    </tr>
+    <tr>
+      <td class="inf">finire</td>
+      <td class="av"><em>Ho finito il lavoro.</em> — Terminé el trabajo.</td>
+      <td class="es"><em>La festa è finita tardi.</em> — La fiesta terminó tarde.</td>
+    </tr>
+    <tr>
+      <td class="inf">salire</td>
+      <td class="av"><em>Ho salito le scale.</em> — Subí las escaleras.</td>
+      <td class="es"><em>Sono salito sul treno.</em> — Subí al tren.</td>
+    </tr>
+    <tr>
+      <td class="inf">scendere</td>
+      <td class="av"><em>Ho sceso le valigie.</em> — Bajé las valijas.</td>
+      <td class="es"><em>Siamo scesi alla fermata.</em> — Bajamos en la parada.</td>
+    </tr>
+    <tr>
+      <td class="inf">correre</td>
+      <td class="av"><em>Ho corso una maratona.</em> — Corrí una maratón.</td>
+      <td class="es"><em>Sono corso a prendere l'autobus.</em> — Corrí a tomar el colectivo.</td>
+    </tr>
+    <tr>
+      <td class="inf">bruciare</td>
+      <td class="av"><em>Ho bruciato la camicia.</em> — Quemé la camisa.</td>
+      <td class="es"><em>La campagna è bruciata.</em> — El campo se quemó.</td>
+    </tr>
+    <tr>
+      <td class="inf">passare</td>
+      <td class="av"><em>Ho passato le vacanze al mare.</em> — Pasé las vacaciones en el mar.</td>
+      <td class="es"><em>Il treno è passato alle 8.</em> — El tren pasó a las 8.</td>
+    </tr>
+    <tr>
+      <td class="inf">cominciare</td>
+      <td class="av"><em>Ho cominciato il libro.</em> — Empecé el libro.</td>
+      <td class="es"><em>Il film è cominciato.</em> — La película empezó.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===== VERBI MODALI (NEW) ===== -->
+<h2>Verbi modali nel passato prossimo <span class="new-badge">SEZIONE NUOVA</span></h2>
+<p>I verbi modali (<em>potere, dovere, volere</em>) nel passato prossimo hanno una regola speciale per la scelta dell'ausiliare:</p>
+
+<div class="mod-grid">
+  <div class="mod-card">
+    <div class="mod-head es">ESSERE — quando il verbo all'infinito usa essere</div>
+    <div class="mod-body">
+      <p class="rule-line">Se il verbo che segue il modale <strong>usa essere</strong> al passato, il modale prende <strong>essere</strong>.</p>
+      <p class="rule-line">Il participio del modale <strong>concorda</strong> con il soggetto.</p>
+      <span class="mod-ex">Sono dovut<strong>o</strong> andare. (masc.)</span>
+      <span class="mod-tr">Tuve que ir.</span>
+      <span class="mod-ex">È volut<strong>a</strong> venire. (fem.)</span>
+      <span class="mod-tr">Quiso venir.</span>
+      <span class="mod-ex">Siamo potat<strong>i</strong> uscire. (masc. pl.)</span>
+      <span class="mod-tr">Pudimos salir.</span>
+    </div>
+  </div>
+  <div class="mod-card">
+    <div class="mod-head av">AVERE — quando il verbo all'infinito usa avere</div>
+    <div class="mod-body">
+      <p class="rule-line">Se il verbo che segue il modale <strong>usa avere</strong>, il modale prende <strong>avere</strong>.</p>
+      <p class="rule-line">Il participio del modale <strong>non cambia</strong>.</p>
+      <span class="mod-ex">Ho dovuto lavorare.</span>
+      <span class="mod-tr">Tuve que trabajar.</span>
+      <span class="mod-ex">Ha voluto fare una torta.</span>
+      <span class="mod-tr">Quiso hacer una torta.</span>
+      <span class="mod-ex">Abbiamo potuto mangiare.</span>
+      <span class="mod-tr">Pudimos comer.</span>
+    </div>
+  </div>
+</div>
+
+<div class="mod-card" style="border-radius:8px;overflow:hidden;border:1px solid #d0cac0;margin-bottom:1.3rem;">
+  <div class="mod-head ne">SENZA INFINITO — sempre avere</div>
+  <div class="mod-body">
+    <p class="rule-line">Quando il verbo modale è usato <strong>senza infinito</strong> (da solo), prende <strong>sempre avere</strong>:</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.8rem;margin-top:0.4rem;">
+      <div><span class="mod-ex">Non ho potuto.</span><span class="mod-tr">No pude.</span></div>
+      <div><span class="mod-ex">Non abbiamo voluto.</span><span class="mod-tr">No quisimos.</span></div>
+      <div><span class="mod-ex">Non ha dovuto.</span><span class="mod-tr">No tuvo que.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ESEMPI ===== -->
+<h2>Esempi per contesto</h2>
+
+<div class="ex-grid">
+  <div class="ex-card av">
+    <div class="ex-label">azioni quotidiane</div>
+    <div class="ex-item"><div class="ex-it">Ho mangiato la pizza ieri sera.</div><div class="ex-es">Comí pizza anoche.</div></div>
+    <div class="ex-item"><div class="ex-it">Hai chiamato tua madre?</div><div class="ex-es">¿Llamaste a tu mamá?</div></div>
+    <div class="ex-item"><div class="ex-it">Abbiamo guardato un film.</div><div class="ex-es">Vimos una película.</div></div>
+    <div class="ex-item"><div class="ex-it">Ho lavorato tutto il giorno.</div><div class="ex-es">Trabajé todo el día.</div></div>
+  </div>
+  <div class="ex-card av">
+    <div class="ex-label">studiare / capire</div>
+    <div class="ex-item"><div class="ex-it">Hai studiato per l'esame?</div><div class="ex-es">¿Estudiaste para el examen?</div></div>
+    <div class="ex-item"><div class="ex-it">Ho capito la lezione.</div><div class="ex-es">Entendí la lección.</div></div>
+    <div class="ex-item"><div class="ex-it">Ho finito il progetto.</div><div class="ex-es">Terminé el proyecto.</div></div>
+    <div class="ex-item"><div class="ex-it">Ha ricevuto una lettera.</div><div class="ex-es">Recibió una carta.</div></div>
+  </div>
+  <div class="ex-card es">
+    <div class="ex-label">movimento</div>
+    <div class="ex-item"><div class="ex-it">Sono andato al mercato stamattina.</div><div class="ex-es">Fui al mercado esta mañana.</div></div>
+    <div class="ex-item"><div class="ex-it">È venuta a casa mia.</div><div class="ex-es">Vino a mi casa.</div></div>
+    <div class="ex-item"><div class="ex-it">Siamo partiti alle sette.</div><div class="ex-es">Salimos a las siete.</div></div>
+    <div class="ex-item"><div class="ex-it">Il treno è arrivato in orario.</div><div class="ex-es">El tren llegó a tiempo.</div></div>
+  </div>
+  <div class="ex-card es">
+    <div class="ex-label">stato / cambio</div>
+    <div class="ex-item"><div class="ex-it">Mio nonno è nato nel 1940.</div><div class="ex-es">Mi abuelo nació en 1940.</div></div>
+    <div class="ex-item"><div class="ex-it">È diventata medico.</div><div class="ex-es">Se convirtió en médica.</div></div>
+    <div class="ex-item"><div class="ex-it">Siamo restati a casa tutto il giorno.</div><div class="ex-es">Nos quedamos en casa todo el día.</div></div>
+    <div class="ex-item"><div class="ex-it">Mi sono alzata tardi. (rifl.)</div><div class="ex-es">Me levanté tarde.</div></div>
+  </div>
+</div>
+
+<!-- ===== NEGAZIONE ===== -->
+<h2>Negazione</h2>
+
+<div class="neg-formula">
+  <span class="r">non</span> <span class="p">+</span> ausiliare <span class="p">+</span> participio
+  <div class="sub">Il "non" si mette sempre prima dell'ausiliare</div>
+</div>
+
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Affermativo</th><th style="background:#3a1a1a">Negativo</th><th>Traduzione negativa</th></tr></thead>
+  <tbody>
+    <tr><td class="av">Ho mangiato.</td><td class="wrong" style="text-decoration:none;color:#9a3030;font-family:'Lora',serif;font-weight:600">Non ho mangiato.</td><td class="tr">No comí.</td></tr>
+    <tr><td class="av">Hai studiato.</td><td class="wrong" style="text-decoration:none;color:#9a3030;font-family:'Lora',serif;font-weight:600">Non hai studiato.</td><td class="tr">No estudiaste.</td></tr>
+    <tr><td class="es">È arrivata.</td><td class="wrong" style="text-decoration:none;color:#9a3030;font-family:'Lora',serif;font-weight:600">Non è arrivata.</td><td class="tr">No llegó.</td></tr>
+    <tr><td class="es">Siamo usciti.</td><td class="wrong" style="text-decoration:none;color:#9a3030;font-family:'Lora',serif;font-weight:600">Non siamo usciti.</td><td class="tr">No salimos.</td></tr>
+    <tr><td class="av">Ho potuto venire.</td><td class="wrong" style="text-decoration:none;color:#9a3030;font-family:'Lora',serif;font-weight:600">Non ho potuto venire.</td><td class="tr">No pude venir.</td></tr>
+    <tr><td class="es">È dovuta partire.</td><td class="wrong" style="text-decoration:none;color:#9a3030;font-family:'Lora',serif;font-weight:600">Non è dovuta partire.</td><td class="tr">No tuvo que partir.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===== ESPRESSIONI TEMPORALI ===== -->
+<h2>Espressioni temporali</h2>
+
+<div class="time-grid">
+  <div class="time-cell"><div class="time-it">ieri</div><div class="time-es">ayer</div></div>
+  <div class="time-cell"><div class="time-it">stamattina</div><div class="time-es">esta mañana</div></div>
+  <div class="time-cell"><div class="time-it">ieri sera</div><div class="time-es">anoche</div></div>
+  <div class="time-cell"><div class="time-it">poco fa</div><div class="time-es">hace un momento</div></div>
+  <div class="time-cell"><div class="time-it">oggi</div><div class="time-es">hoy (acción completada)</div></div>
+  <div class="time-cell"><div class="time-it">la settimana scorsa</div><div class="time-es">la semana pasada</div></div>
+  <div class="time-cell"><div class="time-it">il mese scorso</div><div class="time-es">el mes pasado</div></div>
+  <div class="time-cell"><div class="time-it">l'anno scorso</div><div class="time-es">el año pasado</div></div>
+  <div class="time-cell"><div class="time-it">due giorni fa</div><div class="time-es">hace dos días</div></div>
+  <div class="time-cell"><div class="time-it">già</div><div class="time-es">ya (entre aus. y pp.)</div></div>
+  <div class="time-cell"><div class="time-it">non ancora</div><div class="time-es">todavía no</div></div>
+  <div class="time-cell"><div class="time-it">appena</div><div class="time-es">recién / acabar de</div></div>
+  <div class="time-cell"><div class="time-it">mai</div><div class="time-es">nunca (con non)</div></div>
+  <div class="time-cell"><div class="time-it">finalmente</div><div class="time-es">por fin</div></div>
+  <div class="time-cell"><div class="time-it">questa settimana</div><div class="time-es">esta semana</div></div>
+</div>
+
+<!-- ===== ERRORI ===== -->
+<h2>Errori frequenti</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th style="background:#3a1a1a">❌ Errato</th><th style="background:#1a4a28">✔ Corretto</th><th>Problema</th></tr></thead>
+  <tbody>
+    <tr><td class="wrong">Ho andato al mercato.</td><td class="right">Sono andato al mercato.</td><td class="rule">andare → essere</td></tr>
+    <tr><td class="wrong">Sono mangiato la pasta.</td><td class="right">Ho mangiato la pasta.</td><td class="rule">mangiare → avere (transitivo)</td></tr>
+    <tr><td class="wrong">È arrivato tardi Maria.</td><td class="right">Maria è arrivata tardi.</td><td class="rule">Maria (f.) → arrivata</td></tr>
+    <tr><td class="wrong">Ho dormito bene → Sono dormito.</td><td class="right">Ho dormito bene.</td><td class="rule">dormire → avere (intransitivo)</td></tr>
+    <tr><td class="wrong">L'ho visto (refiriéndose a lei).</td><td class="right">L'ho vista.</td><td class="rule">pronome la → accordo obbligatorio</td></tr>
+    <tr><td class="wrong">Li ho visto. (masc. pl.)</td><td class="right">Li ho visti.</td><td class="rule">li → participio -i</td></tr>
+    <tr><td class="wrong">Ho dovuto andare. (andare = essere)</td><td class="right">Sono dovuto andare.</td><td class="rule">modale eredita ausiliare del verbo</td></tr>
+    <tr><td class="wrong">Non ho già mangiato.</td><td class="right">Non ho ancora mangiato.</td><td class="rule">già = ya · ancora non = todavía no</td></tr>
+    <tr><td class="wrong">Noi dovemo studiare.</td><td class="right">Abbiamo dovuto studiare.</td><td class="rule">forma del passato, non presente</td></tr>
+    <tr><td class="wrong">La camicia ho bruciato.</td><td class="right">Ho bruciato la camicia.</td><td class="rule">bruciare trans. → avere; intrans. → essere</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ========================= ESPAÑOL ========================= -->
+<div class="lang-badge lang-es" style="margin-top:3rem">🇪🇸 Español</div>
+
+<h2>Cuándo usar el passato prossimo</h2>
+<div class="uso-grid">
+  <div class="uso-card">
+    <div class="uso-head">Acción reciente o cercana</div>
+    <div class="uso-body">
+      <p>Acción completada en el pasado <strong>cercana al presente</strong>.</p>
+      <div class="uso-ex">Ho incontrato Paolo poco fa.</div>
+      <div class="uso-tr">Me encontré con Paolo hace un momento.</div>
+    </div>
+  </div>
+  <div class="uso-card">
+    <div class="uso-head">Consecuencias que duran</div>
+    <div class="uso-body">
+      <p>Acción pasada cuyas <strong>consecuencias siguen vigentes</strong> en el presente.</p>
+      <div class="uso-ex">Ho conosciuto Maria un anno fa.</div>
+      <div class="uso-tr">Conocí a María hace un año. (y la sigo conociendo)</div>
+    </div>
+  </div>
+</div>
+
+<h2>Resumen completo de la estructura</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Tipo de verbo</th><th class="av">Auxiliar</th><th>Participio</th><th>¿Acuerda?</th></tr></thead>
+  <tbody>
+    <tr><td>transitivos (la mayoría)</td><td class="av">avere conjugado</td><td class="are-pp">-ARE→-ato · -ERE→-uto · -IRE→-ito</td><td class="rule"><strong>No</strong> — salvo con lo/la/li/le</td></tr>
+    <tr><td>movimiento, estado, cambio, reflexivos</td><td class="es">essere conjugado</td><td class="es">igual</td><td class="rule"><strong>Sí</strong> — género y número</td></tr>
+    <tr><td>verbos modales (con infinito essere)</td><td class="es">essere</td><td class="rule">dovuto/a/i/e · voluto/a/i/e · potuto/a/i/e</td><td class="rule"><strong>Sí</strong></td></tr>
+    <tr><td>verbos modales (con infinito avere)</td><td class="av">avere</td><td class="rule">dovuto · voluto · potuto</td><td class="rule"><strong>No</strong></td></tr>
+    <tr><td>verbos modales (sin infinito)</td><td class="av">siempre avere</td><td class="rule">dovuto · voluto · potuto</td><td class="rule"><strong>No</strong></td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>Acuerdo con pronombres directos (avere)</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Pronombre</th><th>Terminación participio</th><th>Ejemplo</th><th>Traducción</th></tr></thead>
+  <tbody>
+    <tr><td class="av">lo (masc. sing.)</td><td class="av">-o</td><td class="av"><em>L'ho visto.</em></td><td class="tr">Lo vi.</td></tr>
+    <tr><td class="av">la (fem. sing.)</td><td class="av">-a</td><td class="av"><em>L'ho vista.</em></td><td class="tr">La vi.</td></tr>
+    <tr><td class="av">li (masc. plur.)</td><td class="av">-i</td><td class="av"><em>Li ho visti.</em></td><td class="tr">Los vi.</td></tr>
+    <tr><td class="av">le (fem. plur.)</td><td class="av">-e</td><td class="av"><em>Le ho viste.</em></td><td class="tr">Las vi.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===== SUMMARY ===== -->
+<div class="summary">
+  <h4>Pasos completos para construir el passato prossimo</h4>
+  <div class="sum-step">
+    <div class="sum-n">1</div>
+    <div class="sum-desc"><strong>¿Qué tipo de verbo es?</strong> Movimiento/estado/cambio/reflexivo → <code>essere</code>. Transitivo o intransitivo de acción → <code>avere</code>. ¿Puede usar ambos? → ver uso concreto.</div>
+  </div>
+  <div class="sum-step">
+    <div class="sum-n">2</div>
+    <div class="sum-desc"><strong>Conjugar el auxiliar</strong> en presente: <code>ho/hai/ha/abbiamo/avete/hanno</code> o <code>sono/sei/è/siamo/siete/sono</code></div>
+  </div>
+  <div class="sum-step">
+    <div class="sum-n">3</div>
+    <div class="sum-desc"><strong>Formar el participio:</strong> <code>-ARE→-ato</code> · <code>-ERE→-uto</code> · <code>-IRE→-ito</code></div>
+  </div>
+  <div class="sum-step">
+    <div class="sum-n">4</div>
+    <div class="sum-desc">Con <code>essere</code>: acordar participio con el sujeto → <strong>-o/-a/-i/-e</strong>. Con <code>avere</code>: no acordar, salvo con pronombres directos <code>lo/la/li/le</code>.</div>
+  </div>
+  <div class="sum-step">
+    <div class="sum-n">5</div>
+    <div class="sum-desc"><strong>Verbos modales:</strong> heredan el auxiliar del verbo infinito que les sigue. Sin infinito → siempre <code>avere</code>.</div>
+  </div>
+  <div class="sum-step">
+    <div class="sum-n">6</div>
+    <div class="sum-desc"><strong>Negación:</strong> <code>non</code> antes del auxiliar. Avverbios <code>già / ancora / mai / appena</code> van entre auxiliar y participio.</div>
+  </div>
+</div>
+
+<p style="margin-top:1.5rem; font-size:0.79rem; color:#9a8868; text-align:center;">Passato prossimo · Indicativo · Verbi regolari · A1–A2 · Versione completa</p>
+
+</div>
+</body>
+</html>

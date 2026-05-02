@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Riassunto dei Tempi — Italiano</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: #f4f5f7;
+    color: #1e2028;
+    padding: 1.5rem 1rem 3rem;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .page { max-width: 960px; margin: 0 auto; }
+
+  /* ---- COVER ---- */
+  .cover {
+    border-left: 5px solid #2a2a3a;
+    padding-left: 1.2rem;
+    margin-bottom: 1.8rem;
+  }
+  .cover h1 { font-family:'Lora',serif; font-size:1.7rem; font-weight:600; color:#080c18; line-height:1.2; }
+  .cover .sub { font-size:0.87rem; color:#3a4060; margin-top:0.3rem; font-style:italic; }
+
+  /* ---- VISTA GENERAL ---- */
+  .overview {
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+  @media(max-width:680px){ .overview { grid-template-columns: repeat(3,1fr); } }
+  @media(max-width:420px){ .overview { grid-template-columns: 1fr 1fr; } }
+
+  .ov-cell {
+    border-radius: 7px;
+    overflow: hidden;
+    text-align: center;
+    border: 1px solid #d0d4dc;
+  }
+  .ov-top {
+    padding: 0.45rem 0.4rem;
+    font-family: 'Lora', serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #fff;
+  }
+  .ov-bot {
+    background: #fff;
+    padding: 0.35rem 0.3rem;
+    font-size: 0.72rem;
+    color: #5a6080;
+    font-style: italic;
+  }
+  .ov-key {
+    background: #f4f5f7;
+    padding: 0.25rem 0.3rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    border-top: 1px solid #e0e4ec;
+    color: #3a4060;
+  }
+
+  /* ---- TENSE CARDS ---- */
+  .tense-card {
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #d4d8e4;
+    margin-bottom: 1.4rem;
+    overflow: hidden;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.06);
+  }
+
+  .tense-header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.7rem 1rem;
+    color: #fff;
+  }
+  .th-num {
+    font-size: 1.4rem;
+    font-weight: 600;
+    font-family: 'Lora', serif;
+    opacity: 0.7;
+    line-height: 1;
+  }
+  .th-info {}
+  .th-name { font-family:'Lora',serif; font-size:1.1rem; font-weight:600; line-height:1.1; }
+  .th-equiv { font-size:0.78rem; opacity:0.85; font-style:italic; margin-top:0.1rem; }
+  .th-badge {
+    font-size:0.7rem;
+    font-weight:600;
+    padding:0.2rem 0.55rem;
+    border-radius:4px;
+    background:rgba(255,255,255,0.2);
+    letter-spacing:0.05em;
+    white-space:nowrap;
+  }
+
+  /* ---- CARD BODY ---- */
+  .tense-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+  }
+  @media(max-width:640px){ .tense-body { grid-template-columns: 1fr; } }
+
+  .tb-section {
+    padding: 0.85rem 1rem;
+    border-right: 1px solid #e4e8f0;
+  }
+  .tb-section:last-child { border-right: none; }
+
+  .tb-title {
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.55rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid #e4e8f0;
+  }
+
+  /* ---- DESINENZE TABLE ---- */
+  .des-table { width:100%; border-collapse:collapse; font-size:0.82rem; margin-bottom:0.5rem; }
+  .des-table th {
+    padding: 0.2rem 0.35rem;
+    text-align: left;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    background: #f4f5f7;
+    color: #5a6080;
+    border-bottom: 1px solid #e0e4ec;
+  }
+  .des-table td {
+    padding: 0.22rem 0.35rem;
+    border-bottom: 1px solid #eef0f4;
+    font-family: 'Lora', serif;
+    vertical-align: middle;
+  }
+  .des-table td.pro { font-family:'Source Sans 3',sans-serif; color:#5a6080; font-size:0.76rem; font-weight:600; }
+  .des-table td.d1 { color:#5a2a8a; font-weight:600; }
+  .des-table td.d2 { color:#1a4a8a; font-weight:600; }
+  .des-table td.d3 { color:#1a6a5a; font-weight:600; }
+  .des-table td.dc { color:#555; }
+
+  /* quando / marker pills */
+  .markers { display:flex; flex-wrap:wrap; gap:0.3rem; margin-top:0.3rem; }
+  .marker {
+    display: inline-block;
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
+    font-family: 'Lora', serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    background: #f0f2f8;
+    border: 1px solid #d8dcec;
+    color: #2a3060;
+  }
+
+  /* rule items */
+  .rule-list { list-style: none; }
+  .rule-list li {
+    font-size: 0.82rem;
+    padding: 0.22rem 0;
+    border-bottom: 1px solid #f0f2f8;
+    display: flex;
+    gap: 0.4rem;
+    align-items: flex-start;
+  }
+  .rule-list li:last-child { border-bottom: none; }
+  .rule-list li::before { content: '→'; color: #8898c0; flex-shrink:0; font-size:0.75rem; margin-top:0.1rem; }
+
+  /* irr table */
+  .irr-table { width:100%; border-collapse:collapse; font-size:0.8rem; }
+  .irr-table td { padding:0.2rem 0.35rem; border-bottom:1px solid #f0f2f8; }
+  .irr-table td:last-child { border-bottom:1px solid #f0f2f8; }
+  .irr-table td.irr-inf { font-family:'Lora',serif; color:#2a2840; font-weight:600; }
+  .irr-table td.irr-form { font-family:'Lora',serif; font-weight:600; color:#8a3800; }
+
+  /* vs box */
+  .vs-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    margin-top: 0.4rem;
+  }
+  .vs-col { background:#f8f9fc; border-radius:5px; padding:0.45rem 0.6rem; border:1px solid #e0e4f0; }
+  .vs-label { font-size:0.68rem; font-weight:600; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:0.3rem; }
+  .vs-item { font-family:'Lora',serif; font-size:0.78rem; color:#2a2840; display:block; margin-bottom:0.1rem; }
+  .vs-tr { font-size:0.7rem; color:#8898b0; font-style:italic; }
+
+  /* formula bar */
+  .formula-bar {
+    font-family: 'Lora', serif;
+    font-size: 0.9rem;
+    color: #fff;
+    background: rgba(0,0,0,0.15);
+    padding: 0.35rem 0.75rem;
+    border-radius: 5px;
+    margin-top: 0.3rem;
+    display: inline-block;
+  }
+
+  /* color themes */
+  .c-pres  { --h: #1a4a8a; --hl: #3a6aaa; }
+  .c-pp    { --h: #1a6a4a; --hl: #2a8a60; }
+  .c-imp   { --h: #7a3a10; --hl: #9a5a20; }
+  .c-fut   { --h: #2a1a7a; --hl: #4a3a9a; }
+  .c-cond  { --h: #6a1a5a; --hl: #8a3a7a; }
+
+  .tense-card.c-pres .tense-header { background: linear-gradient(135deg, #1a4a8a, #2a6aaa); }
+  .tense-card.c-pp   .tense-header { background: linear-gradient(135deg, #1a6a4a, #2a8a60); }
+  .tense-card.c-imp  .tense-header { background: linear-gradient(135deg, #7a3a10, #9a5a20); }
+  .tense-card.c-fut  .tense-header { background: linear-gradient(135deg, #2a1a7a, #4a3a9a); }
+  .tense-card.c-cond .tense-header { background: linear-gradient(135deg, #6a1a5a, #8a3a7a); }
+
+  .tense-card.c-pres .tb-title { color:#1a4a8a; }
+  .tense-card.c-pp   .tb-title { color:#1a6a4a; }
+  .tense-card.c-imp  .tb-title { color:#7a3a10; }
+  .tense-card.c-fut  .tb-title { color:#2a1a7a; }
+  .tense-card.c-cond .tb-title { color:#6a1a5a; }
+
+  .tense-card.c-pres .marker { background:#eaf0fc; border-color:#c0d4f0; color:#1a4a8a; }
+  .tense-card.c-pp   .marker { background:#e0f4ec; border-color:#b0dcc8; color:#1a6a4a; }
+  .tense-card.c-imp  .marker { background:#fdf0e4; border-color:#e0c898; color:#7a3a10; }
+  .tense-card.c-fut  .marker { background:#f0ecfc; border-color:#c8c0e8; color:#2a1a7a; }
+  .tense-card.c-cond .marker { background:#faeef8; border-color:#dcc8d8; color:#6a1a5a; }
+
+  .tense-card.c-pres .irr-table td.irr-form { color:#1a4a8a; }
+  .tense-card.c-pp   .irr-table td.irr-form { color:#1a6a4a; }
+  .tense-card.c-imp  .irr-table td.irr-form { color:#7a3a10; }
+  .tense-card.c-fut  .irr-table td.irr-form { color:#2a1a7a; }
+  .tense-card.c-cond .irr-table td.irr-form { color:#6a1a5a; }
+
+  /* ov colors */
+  .ov-pres .ov-top { background:#1a4a8a; }
+  .ov-pp   .ov-top { background:#1a6a4a; }
+  .ov-imp  .ov-top { background:#7a3a10; }
+  .ov-fut  .ov-top { background:#2a1a7a; }
+  .ov-cond .ov-top { background:#6a1a5a; }
+
+  /* bottom strip */
+  .tense-footer {
+    padding: 0.5rem 1rem;
+    background: #f8f9fc;
+    border-top: 1px solid #e4e8f0;
+    font-size: 0.78rem;
+    color: #5a6080;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .footer-item strong { color: #2a3060; }
+
+  @media print {
+    body { background:white; padding:0.5rem; font-size:11px; }
+    .tense-card { page-break-inside:avoid; margin-bottom:1rem; }
+    .overview { display:none; }
+  }
+</style>
+</head>
+<body>
+<div id="site-nav" style="background:#0f1422;padding:0.52rem 1.4rem;display:flex;align-items:center;gap:0.7rem;font-family:'Source Sans 3',sans-serif;font-size:0.82rem;border-bottom:1px solid #1e2c44;position:sticky;top:0;z-index:9999;box-shadow:0 2px 8px rgba(0,0,0,0.25)">
+  <a href="/" style="color:#70b8f8;text-decoration:none;font-weight:600;display:flex;align-items:center;gap:0.35rem;transition:opacity 0.2s" onmouseover="this.style.opacity=0.75" onmouseout="this.style.opacity=1">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#70b8f8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+    Inicio
+  </a>
+  <span style="color:#2a3a54">|</span>
+  <span style="color:#6878a0;letter-spacing:0.03em">Italiano Apuntes</span>
+</div>
+
+<div class="page">
+
+<!-- COVER -->
+<div class="cover">
+  <h1>Riassunto dei Tempi — Indicativo</h1>
+  <p class="sub">Cómo identificar cada tiempo · cómo se conjuga · sus reglas clave · irregolari esenciales</p>
+</div>
+
+<!-- OVERVIEW -->
+<div class="overview">
+  <div class="ov-cell ov-pres">
+    <div class="ov-top">Presente</div>
+    <div class="ov-bot">hablo / como</div>
+    <div class="ov-key">Ahora · siempre</div>
+  </div>
+  <div class="ov-cell ov-pp">
+    <div class="ov-top">Passato Prossimo</div>
+    <div class="ov-bot">hablé / he hablado</div>
+    <div class="ov-key">Ayer · pasado cerrado</div>
+  </div>
+  <div class="ov-cell ov-imp">
+    <div class="ov-top">Imperfetto</div>
+    <div class="ov-bot">hablaba / solía</div>
+    <div class="ov-key">Siempre · descripción</div>
+  </div>
+  <div class="ov-cell ov-fut">
+    <div class="ov-top">Futuro Semplice</div>
+    <div class="ov-bot">hablaré</div>
+    <div class="ov-key">Mañana · hipótesis</div>
+  </div>
+  <div class="ov-cell ov-cond">
+    <div class="ov-top">Condizionale</div>
+    <div class="ov-bot">hablaría</div>
+    <div class="ov-key">Quisiera · si...</div>
+  </div>
+</div>
+
+<!-- ===================== PRESENTE ===================== -->
+<div class="tense-card c-pres">
+  <div class="tense-header">
+    <div class="th-num">1</div>
+    <div class="th-info">
+      <div class="th-name">Presente Indicativo</div>
+      <div class="th-equiv">presente de indicativo · hablo, como, vivo</div>
+    </div>
+    <div class="th-badge">A1</div>
+  </div>
+
+  <div class="tense-body">
+    <!-- QUANDO -->
+    <div class="tb-section">
+      <div class="tb-title">¿Cuándo usarlo?</div>
+      <ul class="rule-list">
+        <li>Acciones que ocurren <strong>ahora</strong></li>
+        <li>Hábitos y rutinas actuales</li>
+        <li>Verdades generales</li>
+        <li>Futuro próximo programado</li>
+      </ul>
+      <div class="markers" style="margin-top:0.6rem">
+        <span class="marker">adesso</span>
+        <span class="marker">ogni giorno</span>
+        <span class="marker">sempre</span>
+        <span class="marker">di solito</span>
+        <span class="marker">domani (progr.)</span>
+      </div>
+    </div>
+
+    <!-- FORMAZIONE -->
+    <div class="tb-section">
+      <div class="tb-title">¿Cómo se forma?</div>
+      <p style="font-size:0.8rem;margin-bottom:0.5rem;color:#3a4060">Radice + desinenza. La radice = infinito sin <strong>-are/-ere/-ire</strong></p>
+      <table class="des-table">
+        <thead><tr><th>Persona</th><th style="color:#5a2a8a">-ARE</th><th style="color:#1a4a8a">-ERE</th><th style="color:#1a6a5a">-IRE</th></tr></thead>
+        <tbody>
+          <tr><td class="pro">io</td><td class="d1">-o</td><td class="d2">-o</td><td class="d3">-o</td></tr>
+          <tr><td class="pro">tu</td><td class="d1">-i</td><td class="d2">-i</td><td class="d3">-i</td></tr>
+          <tr><td class="pro">lui/lei</td><td class="d1">-a</td><td class="d2">-e</td><td class="d3">-e</td></tr>
+          <tr><td class="pro">noi</td><td class="d1">-iamo</td><td class="d2">-iamo</td><td class="d3">-iamo</td></tr>
+          <tr><td class="pro">voi</td><td class="d1">-ate</td><td class="d2">-ete</td><td class="d3">-ite</td></tr>
+          <tr><td class="pro">loro</td><td class="d1">-ano</td><td class="d2">-ono</td><td class="d3">-ono</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- IRREGOLARI -->
+    <div class="tb-section">
+      <div class="tb-title">Irregolari clave + reglas</div>
+      <table class="irr-table">
+        <tr><td class="irr-inf">essere</td><td class="irr-form">sono / sei / è / siamo / siete / sono</td></tr>
+        <tr><td class="irr-inf">avere</td><td class="irr-form">ho / hai / ha / abbiamo / avete / hanno</td></tr>
+        <tr><td class="irr-inf">fare</td><td class="irr-form">faccio / fai / fa / facciamo / fate / fanno</td></tr>
+        <tr><td class="irr-inf">andare</td><td class="irr-form">vado / vai / va / andiamo / andate / vanno</td></tr>
+        <tr><td class="irr-inf">venire</td><td class="irr-form">vengo / vieni / viene / veniamo / venite / vengono</td></tr>
+        <tr><td class="irr-inf">dire</td><td class="irr-form">dico / dici / dice / diciamo / dite / dicono</td></tr>
+      </table>
+      <p style="font-size:0.76rem;color:#7a3060;margin-top:0.4rem">⚠ -ISC-: capisco/capisci/capisce · capiamo/capite · capiscono</p>
+    </div>
+  </div>
+
+  <div class="tense-footer">
+    <span><strong>Nota:</strong> noi → siempre <em>-iamo</em> en las 3 conjugaciones</span>
+    <span><strong>-care/-gare:</strong> agregan H ante -i → giocare: giochi/giochiamo</span>
+  </div>
+</div>
+
+<!-- ===================== PASSATO PROSSIMO ===================== -->
+<div class="tense-card c-pp">
+  <div class="tense-header">
+    <div class="th-num">2</div>
+    <div class="th-info">
+      <div class="th-name">Passato Prossimo</div>
+      <div class="th-equiv">pretérito perfecto / indefinido · hablé / he hablado</div>
+    </div>
+    <div class="th-badge">A1–A2</div>
+  </div>
+
+  <div class="tense-body">
+    <!-- QUANDO -->
+    <div class="tb-section">
+      <div class="tb-title">¿Cuándo usarlo?</div>
+      <ul class="rule-list">
+        <li>Acción <strong>completada</strong> con inicio y fin precisos</li>
+        <li>Evento específico ocurrido una vez</li>
+        <li>Acción que interrumpe otra (imperfecto)</li>
+        <li>Secuencia de eventos (prima... poi...)</li>
+      </ul>
+      <div class="markers" style="margin-top:0.6rem">
+        <span class="marker">ieri</span>
+        <span class="marker">stamattina</span>
+        <span class="marker">due giorni fa</span>
+        <span class="marker">già</span>
+        <span class="marker">appena</span>
+        <span class="marker">non ancora</span>
+      </div>
+    </div>
+
+    <!-- FORMAZIONE -->
+    <div class="tb-section">
+      <div class="tb-title">¿Cómo se forma?</div>
+      <p style="font-size:0.8rem;margin-bottom:0.4rem;color:#3a4060"><strong>AVERE / ESSERE</strong> (presente) + participio passato</p>
+      <div class="vs-box">
+        <div class="vs-col">
+          <div class="vs-label" style="color:#1a4a8a">AVERE (transitivos)</div>
+          <span class="vs-item">-ARE → <strong>-ato</strong></span>
+          <span class="vs-item">-ERE → <strong>-uto</strong></span>
+          <span class="vs-item">-IRE → <strong>-ito</strong></span>
+          <span class="vs-tr" style="margin-top:0.2rem">Participio invariable</span>
+        </div>
+        <div class="vs-col">
+          <div class="vs-label" style="color:#1a6a4a">ESSERE (movim.)</div>
+          <span class="vs-item">pp acuerda: <strong>-o/a/i/e</strong></span>
+          <span class="vs-tr">andare → andato/a</span>
+          <span class="vs-tr">venire → venuto/a</span>
+          <span class="vs-tr">partire → partito/a</span>
+        </div>
+      </div>
+      <p style="font-size:0.76rem;color:#7a3060;margin-top:0.45rem">⚠ Con pronomi lo/la/li/le → accordo obbligatorio anche con avere: <em>L'ho vista</em></p>
+    </div>
+
+    <!-- IRREGOLARI PP -->
+    <div class="tb-section">
+      <div class="tb-title">Participi irregolari + regola essere</div>
+      <table class="irr-table">
+        <tr><td class="irr-inf">fare</td><td class="irr-form">fatto</td><td class="irr-inf">dire</td><td class="irr-form">detto</td></tr>
+        <tr><td class="irr-inf">scrivere</td><td class="irr-form">scritto</td><td class="irr-inf">leggere</td><td class="irr-form">letto</td></tr>
+        <tr><td class="irr-inf">vedere</td><td class="irr-form">visto</td><td class="irr-inf">mettere</td><td class="irr-form">messo</td></tr>
+        <tr><td class="irr-inf">aprire</td><td class="irr-form">aperto</td><td class="irr-inf">prendere</td><td class="irr-form">preso</td></tr>
+        <tr><td class="irr-inf">vivere</td><td class="irr-form">vissuto</td><td class="irr-inf">nascere</td><td class="irr-form">nato ★</td></tr>
+        <tr><td class="irr-inf">venire</td><td class="irr-form">venuto ★</td><td class="irr-inf">morire</td><td class="irr-form">morto ★</td></tr>
+      </table>
+      <p style="font-size:0.76rem;color:#1a6a4a;margin-top:0.35rem">★ Verbi con ESSERE → accordo obbligatorio</p>
+    </div>
+  </div>
+
+  <div class="tense-footer">
+    <span><strong>Essere:</strong> andare, venire, partire, arrivare, entrare, uscire, tornare, nascere, morire, riflessivi</span>
+    <span><strong>Verbi modali:</strong> heredan el aux. del infinito que les sigue · sin infinito → siempre avere</span>
+  </div>
+</div>
+
+<!-- ===================== IMPERFETTO ===================== -->
+<div class="tense-card c-imp">
+  <div class="tense-header">
+    <div class="th-num">3</div>
+    <div class="th-info">
+      <div class="th-name">Imperfetto</div>
+      <div class="th-equiv">pretérito imperfecto · hablaba / solía hablar</div>
+    </div>
+    <div class="th-badge">A2</div>
+  </div>
+
+  <div class="tense-body">
+    <!-- QUANDO -->
+    <div class="tb-section">
+      <div class="tb-title">¿Cuándo usarlo?</div>
+      <ul class="rule-list">
+        <li><strong>Hábito</strong> repetido en el pasado</li>
+        <li><strong>Descripción</strong> de personas, lugares, estados</li>
+        <li>Acción <strong>en curso</strong> cuando ocurrió otra</li>
+        <li>Estado mental/físico (volere, sapere, credere...)</li>
+        <li>Intención pasada no realizada</li>
+        <li>Cortesía (volevo un caffè)</li>
+      </ul>
+      <div class="markers" style="margin-top:0.5rem">
+        <span class="marker">da bambino</span>
+        <span class="marker">sempre</span>
+        <span class="marker">ogni giorno</span>
+        <span class="marker">di solito</span>
+        <span class="marker">mentre</span>
+        <span class="marker">quando</span>
+      </div>
+    </div>
+
+    <!-- FORMAZIONE -->
+    <div class="tb-section">
+      <div class="tb-title">¿Cómo se forma?</div>
+      <p style="font-size:0.8rem;margin-bottom:0.4rem;color:#3a4060">Radice (infinito sin -<strong>re</strong>) + desinenza. -ERE e -IRE usan el mismo esquema</p>
+      <table class="des-table">
+        <thead><tr><th>Persona</th><th style="color:#5a2a8a">-ARE</th><th style="color:#1a4a8a">-ERE / -IRE</th></tr></thead>
+        <tbody>
+          <tr><td class="pro">io</td><td class="d1">-vo</td><td class="d2">-vo</td></tr>
+          <tr><td class="pro">tu</td><td class="d1">-vi</td><td class="d2">-vi</td></tr>
+          <tr><td class="pro">lui/lei</td><td class="d1">-va</td><td class="d2">-va</td></tr>
+          <tr><td class="pro">noi</td><td class="d1">-vamo</td><td class="d2">-vamo</td></tr>
+          <tr><td class="pro">voi</td><td class="d1">-vate</td><td class="d2">-vate</td></tr>
+          <tr><td class="pro">loro</td><td class="d1">-vano</td><td class="d2">-vano</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.76rem;color:#7a3060;margin-top:0.35rem">parla<strong>re</strong> → parla + vo = <em>parlavo</em><br>crede<strong>re</strong> → crede + vo = <em>credevo</em><br>dormi<strong>re</strong> → dormi + vo = <em>dormivo</em></p>
+    </div>
+
+    <!-- IRREGOLARI + VS -->
+    <div class="tb-section">
+      <div class="tb-title">Irregolari + vs Passato Prossimo</div>
+      <table class="irr-table" style="margin-bottom:0.5rem">
+        <tr><td class="irr-inf">essere</td><td class="irr-form">ero / eri / era / eravamo / eravate / erano</td></tr>
+        <tr><td class="irr-inf">fare</td><td class="irr-form">facevo / facevi / faceva...</td></tr>
+        <tr><td class="irr-inf">dire</td><td class="irr-form">dicevo / dicevi / diceva...</td></tr>
+        <tr><td class="irr-inf">bere</td><td class="irr-form">bevevo / bevevi / beveva...</td></tr>
+      </table>
+      <div class="vs-box">
+        <div class="vs-col">
+          <div class="vs-label" style="color:#7a3a10">Imperfetto</div>
+          <span class="vs-tr">Fondo / sfondo</span>
+          <span class="vs-tr">Hábito continuo</span>
+          <span class="vs-tr">Descripción abierta</span>
+        </div>
+        <div class="vs-col">
+          <div class="vs-label" style="color:#1a4a8a">Passato Prossimo</div>
+          <span class="vs-tr">Evento puntual</span>
+          <span class="vs-tr">Acción completada</span>
+          <span class="vs-tr">Interrupción</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tense-footer">
+    <span><strong>Verbi -ISC-:</strong> al imperfetto NON usano -isc-: capire → cap<em>ivo</em> (no capisc-ivo)</span>
+    <span><strong>Sabere/conoscere:</strong> sapevo = sabía · ho saputo = me enteré · conoscevo = conocía · ho conosciuto = conocí</span>
+  </div>
+</div>
+
+<!-- ===================== FUTURO ===================== -->
+<div class="tense-card c-fut">
+  <div class="tense-header">
+    <div class="th-num">4</div>
+    <div class="th-info">
+      <div class="th-name">Futuro Semplice</div>
+      <div class="th-equiv">futuro simple · hablaré / hablarás</div>
+    </div>
+    <div class="th-badge">A2–B1</div>
+  </div>
+
+  <div class="tense-body">
+    <!-- QUANDO -->
+    <div class="tb-section">
+      <div class="tb-title">¿Cuándo usarlo?</div>
+      <ul class="rule-list">
+        <li>Acciones que ocurrirán en el <strong>futuro</strong></li>
+        <li><strong>Hipótesis / probabilidad</strong> en el presente (futuro epistemico)</li>
+        <li><strong>Promesas</strong> e intenciones formales</li>
+        <li>Obligatorio después de <em>quando / se / appena</em></li>
+        <li>Órdenes formales y normas</li>
+        <li>Concesión (<em>sarà anche bello, ma...</em>)</li>
+      </ul>
+      <div class="markers" style="margin-top:0.5rem">
+        <span class="marker">domani</span>
+        <span class="marker">tra poco</span>
+        <span class="marker">prossimo anno</span>
+        <span class="marker">quando</span>
+        <span class="marker">appena</span>
+        <span class="marker">forse</span>
+      </div>
+    </div>
+
+    <!-- FORMAZIONE -->
+    <div class="tb-section">
+      <div class="tb-title">¿Cómo se forma?</div>
+      <p style="font-size:0.8rem;margin-bottom:0.4rem;color:#3a4060"><strong>-ARE:</strong> la A se convierte en E → parla<strong>r</strong>e → parler-<br><strong>-ERE / -IRE:</strong> solo cae la -e final → creder- / dormir-</p>
+      <table class="des-table">
+        <thead><tr><th>Persona</th><th colspan="3" style="color:#2a1a7a">Todas las conjugaciones (mismas desinencias)</th></tr></thead>
+        <tbody>
+          <tr><td class="pro">io</td><td class="d2" colspan="3">-ò &nbsp; (parler<strong>ò</strong>)</td></tr>
+          <tr><td class="pro">tu</td><td class="d2" colspan="3">-ai &nbsp; (parler<strong>ai</strong>)</td></tr>
+          <tr><td class="pro">lui/lei</td><td class="d2" colspan="3">-à &nbsp; (parler<strong>à</strong>)</td></tr>
+          <tr><td class="pro">noi</td><td class="d2" colspan="3">-emo &nbsp; (parler<strong>emo</strong>)</td></tr>
+          <tr><td class="pro">voi</td><td class="d2" colspan="3">-ete &nbsp; (parler<strong>ete</strong>)</td></tr>
+          <tr><td class="pro">loro</td><td class="d2" colspan="3">-anno &nbsp; (parler<strong>anno</strong>)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- IRREGOLARI -->
+    <div class="tb-section">
+      <div class="tb-title">Irregolari clave (raíces propias)</div>
+      <table class="irr-table">
+        <tr><td class="irr-inf">essere</td><td class="irr-form">sarò</td><td class="irr-inf">avere</td><td class="irr-form">avrò</td></tr>
+        <tr><td class="irr-inf">fare</td><td class="irr-form">farò</td><td class="irr-inf">dire</td><td class="irr-form">dirò</td></tr>
+        <tr><td class="irr-inf">andare</td><td class="irr-form">andrò</td><td class="irr-inf">venire</td><td class="irr-form">verrò</td></tr>
+        <tr><td class="irr-inf">volere</td><td class="irr-form">vorrò</td><td class="irr-inf">potere</td><td class="irr-form">potrò</td></tr>
+        <tr><td class="irr-inf">dovere</td><td class="irr-form">dovrò</td><td class="irr-inf">sapere</td><td class="irr-form">saprò</td></tr>
+        <tr><td class="irr-inf">vedere</td><td class="irr-form">vedrò</td><td class="irr-inf">vivere</td><td class="irr-form">vivrò</td></tr>
+      </table>
+      <p style="font-size:0.76rem;color:#7a3060;margin-top:0.35rem">⚠ Futuro epistemico: <em>Sarà stanco</em> = probablemente está cansado (presente)</p>
+    </div>
+  </div>
+
+  <div class="tense-footer">
+    <span><strong>Regla quando/se/appena:</strong> en italiano el futuro es obligatorio en ambas proposiciones · <em>Quando arriverò, ti chiamerò</em> (en español se usa el presente de subjuntivo)</span>
+    <span><strong>-care/-gare:</strong> cercherò · pagherò &nbsp;|&nbsp; <strong>-ciare/-giare:</strong> mangerò · comincerò</span>
+  </div>
+</div>
+
+<!-- ===================== CONDIZIONALE ===================== -->
+<div class="tense-card c-cond">
+  <div class="tense-header">
+    <div class="th-num">5</div>
+    <div class="th-info">
+      <div class="th-name">Condizionale Presente</div>
+      <div class="th-equiv">condicional simple · hablaría / quisiera / me gustaría</div>
+    </div>
+    <div class="th-badge">A2–B1</div>
+  </div>
+
+  <div class="tense-body">
+    <!-- QUANDO -->
+    <div class="tb-section">
+      <div class="tb-title">¿Cuándo usarlo?</div>
+      <ul class="rule-list">
+        <li><strong>Deseo educado</strong> — vorrei (quisiera)</li>
+        <li>Hipótesis — <em>Se avessi tempo, viaggerei</em></li>
+        <li>Consejo — <em>Dovresti studiare di più</em></li>
+        <li>Pedido cortés — <em>Potresti aiutarmi?</em></li>
+        <li>Preferencia — <em>Preferirei il caffè</em></li>
+        <li>Información no confirmada — <em>Sarebbe arrivato</em></li>
+      </ul>
+      <div class="markers" style="margin-top:0.5rem">
+        <span class="marker">vorrei</span>
+        <span class="marker">se + condizione</span>
+        <span class="marker">dovresti</span>
+        <span class="marker">potresti</span>
+        <span class="marker">preferirei</span>
+      </div>
+    </div>
+
+    <!-- FORMAZIONE -->
+    <div class="tb-section">
+      <div class="tb-title">¿Cómo se forma?</div>
+      <p style="font-size:0.8rem;margin-bottom:0.4rem;color:#3a4060">Raíz del <strong>futuro</strong> + desinencias propias del condizionale</p>
+      <table class="des-table">
+        <thead><tr><th>Persona</th><th colspan="3" style="color:#6a1a5a">Todas las conjugaciones (mismas desinencias)</th></tr></thead>
+        <tbody>
+          <tr><td class="pro">io</td><td class="dc" colspan="3">-ei &nbsp; (parler<strong>ei</strong>)</td></tr>
+          <tr><td class="pro">tu</td><td class="dc" colspan="3">-esti &nbsp; (parler<strong>esti</strong>)</td></tr>
+          <tr><td class="pro">lui/lei</td><td class="dc" colspan="3">-ebbe &nbsp; (parler<strong>ebbe</strong>)</td></tr>
+          <tr><td class="pro">noi</td><td class="dc" colspan="3">-emmo &nbsp; (parler<strong>emmo</strong>)</td></tr>
+          <tr><td class="pro">voi</td><td class="dc" colspan="3">-este &nbsp; (parler<strong>este</strong>)</td></tr>
+          <tr><td class="pro">loro</td><td class="dc" colspan="3">-ebbero &nbsp; (parler<strong>ebbero</strong>)</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.76rem;color:#5a4060;margin-top:0.35rem">Raíz = misma que el futuro: essere → <em>sar</em>ei · avere → <em>avr</em>ei</p>
+    </div>
+
+    <!-- IRREGOLARI -->
+    <div class="tb-section">
+      <div class="tb-title">Irregolari clave (mismos que futuro)</div>
+      <table class="irr-table">
+        <tr><td class="irr-inf">essere</td><td class="irr-form">sarei / saresti / sarebbe...</td></tr>
+        <tr><td class="irr-inf">avere</td><td class="irr-form">avrei / avresti / avrebbe...</td></tr>
+        <tr><td class="irr-inf">fare</td><td class="irr-form">farei / faresti / farebbe...</td></tr>
+        <tr><td class="irr-inf">volere</td><td class="irr-form">vorrei / vorresti / vorrebbe...</td></tr>
+        <tr><td class="irr-inf">potere</td><td class="irr-form">potrei / potresti / potrebbe...</td></tr>
+        <tr><td class="irr-inf">dovere</td><td class="irr-form">dovrei / dovresti / dovrebbe...</td></tr>
+        <tr><td class="irr-inf">venire</td><td class="irr-form">verrei / verresti / verrebbe...</td></tr>
+        <tr><td class="irr-inf">andare</td><td class="irr-form">andrei / andresti / andrebbe...</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="tense-footer">
+    <span><strong>Uso más importante:</strong> <em>vorrei</em> = quisiera (más educado que <em>voglio</em>) · en bar/restaurante/tienda siempre vorrei</span>
+    <span><strong>Consejo:</strong> <em>Dovresti riposare</em> = Deberías descansar · <em>Potresti parlare più lento?</em> = ¿Podrías hablar más despacio?</span>
+  </div>
+</div>
+
+<!-- ===================== TABLA COMPARATIVA FINAL ===================== -->
+<div style="background:#fff;border-radius:10px;border:1px solid #d4d8e4;padding:1rem 1.2rem;box-shadow:0 1px 5px rgba(0,0,0,0.06);margin-bottom:1.4rem;">
+  <div style="font-family:'Lora',serif;font-size:1rem;font-weight:600;color:#080c18;margin-bottom:0.8rem;padding-bottom:0.5rem;border-bottom:2px solid #e4e8f0">
+    Tabla comparativa — un mismo verbo en todos los tiempos
+  </div>
+  <div style="overflow-x:auto;">
+  <table style="width:100%;border-collapse:collapse;font-size:0.82rem;min-width:620px;">
+    <thead>
+      <tr>
+        <th style="background:#1e2840;color:#c8d4f0;padding:0.38rem 0.6rem;text-align:left;font-size:0.72rem;letter-spacing:0.06em;text-transform:uppercase">Persona</th>
+        <th style="background:#1a4a8a;color:#d8e8f8;padding:0.38rem 0.6rem;font-size:0.72rem;letter-spacing:0.06em;text-transform:uppercase">Presente</th>
+        <th style="background:#1a6a4a;color:#d8f0e8;padding:0.38rem 0.6rem;font-size:0.72rem;letter-spacing:0.06em;text-transform:uppercase">Passato Prossimo</th>
+        <th style="background:#7a3a10;color:#f8e8d8;padding:0.38rem 0.6rem;font-size:0.72rem;letter-spacing:0.06em;text-transform:uppercase">Imperfetto</th>
+        <th style="background:#2a1a7a;color:#e0d8f8;padding:0.38rem 0.6rem;font-size:0.72rem;letter-spacing:0.06em;text-transform:uppercase">Futuro</th>
+        <th style="background:#6a1a5a;color:#f8d8ec;padding:0.38rem 0.6rem;font-size:0.72rem;letter-spacing:0.06em;text-transform:uppercase">Condizionale</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background:#f8f9fc"><td colspan="6" style="padding:0.3rem 0.6rem;font-size:0.75rem;font-weight:600;color:#3a4060;font-style:italic">parlare / hablar — avere · pp: parlato</td></tr>
+      <tr><td style="padding:0.3rem 0.6rem;font-weight:600;color:#3a4870;font-size:0.78rem;background:#f4f6fc;border-right:2px solid #d0d8ee">io</td><td style="padding:0.3rem 0.6rem;font-family:'Lora',serif;font-weight:600;color:#1a4a8a;border-bottom:1px solid #eef0f4">parlo</td><td style="padding:0.3rem 0.6rem;font-family:'Lora',serif;font-weight:600;color:#1a6a4a;border-bottom:1px solid #eef0f4">ho parlato</td><td style="padding:0.3rem 0.6rem;font-family:'Lora',serif;color:#7a4800;border-bottom:1px solid #eef0f4">parlavo</td><td style="padding:0.3rem 0.6rem;font-family:'Lora',serif;font-weight:600;color:#2a1a7a;border-bottom:1px solid #eef0f4">parlerò</td><td style="padding:0.3rem 0.6rem;font-family:'Lora',serif;color:#6a1a5a;border-bottom:1px solid #eef0f4">parlerei</td></tr>
+      <tr style="background:#f0f4fa"><td style="padding:0.3rem 0.6rem;font-weight:600;color:#3a4870;font-size:0.78rem;background:#f4f6fc;border-right:2px solid #d0d8ee">tu</td><td style="padding:0.3rem 0.6rem;font-family:'Lora',serif;font-weight:600;color:#1a4a8a;border-bottom:1px solid #eef0f4">parli</td><td style="padding:0.3rem 0.6rem;font-family:'Lora',serif;font-weight:600;color:#1a6a4a;border-bottom:1px solid #eef0f4">hai parlato</td><td style="padding:0.3rem 0.6rem;font-family:'Lora',serif;color:#7a4800;border-bottom:1px solid #eef0f4">parlavi</td><td style="padding:0.3rem 0.6rem;font-family:'Lora',serif;font-weight:600;color:#2a1a7a;border-bottom:1px solid #eef0f4">parlerai</td><td style="padding:0.3rem 0.6rem;font-family:'Lora',serif;color:#6a1a5a;border-bottom:1px solid #eef0f4">parleresti</td></tr>
+      <tr><td style="padding:0.3rem 0.6rem;font-weight:600;color:#3a4870;font-size:0.78rem;background:#f4f6fc;border-right:2px solid #d0d8ee">lui/lei</td><td style="padding:0.3rem 0.6rem;font-family:'Lora',serif;font-weight:600;color:#1a4a8a;border-bottom:1px solid #eef0f4">parla</td><td style="padding:0.3rem 0.6rem;font-family:'Lora',serif;font-weight:600;color:#1a6a4a;border-bottom:1px solid #eef0f4">ha parlato</td><td style="padding:0.3rem 0.6rem;font-family:'Lora',serif;color:#7a4800;border-bottom:1px solid #eef0f4">parlava</td><td style="padding:0.3rem 0.6rem;font-family:'Lora',serif;font-weight:600;color:#2a1a7a;border-bottom:1px solid #eef0f4">parlerà</td><td style="padding:0.3rem 0.6rem;font-family:'Lora',serif;color:#6a1a5a;border-bottom:1px solid #eef0f4">parlerebbe</td></tr>
+      <tr style="background:#f0f4fa"><td style="padding:0.3rem 0.6rem;font-weight:600;color:#3a4870;font-size:0.78rem;background:#f4f6fc;border-right:2px solid #d0d8ee">noi</td><td style="padding:0.3rem 0.6rem;font-family:'Lora',serif;font-weight:600;color:#1a4a8a;border-bottom:1px solid #eef0f4">parliamo</td><td style="padding:0.3rem 0.6rem;font-family:'Lora',serif;font-weight:600;color:#1a6a4a;border-bottom:1px solid #eef0f4">abbiamo parlato</td><td style="padding:0.3rem 0.6rem;font-family:'Lora',serif;color:#7a4800;border-bottom:1px solid #eef0f4">parlavamo</td><td style="padding:0.3rem 0.6rem;font-family:'Lora',serif;font-weight:600;color:#2a1a7a;border-bottom:1px solid #eef0f4">parleremo</td><td style="padding:0.3rem 0.6rem;font-family:'Lora',serif;color:#6a1a5a;border-bottom:1px solid #eef0f4">parleremmo</td></tr>
+      <tr><td style="padding:0.3rem 0.6rem;font-weight:600;color:#3a4870;font-size:0.78rem;background:#f4f6fc;border-right:2px solid #d0d8ee">voi</td><td style="padding:0.3rem 0.6rem;font-family:'Lora',serif;font-weight:600;color:#1a4a8a;border-bottom:1px solid #eef0f4">parlate</td><td style="padding:0.3rem 0.6rem;font-family:'Lora',serif;font-weight:600;color:#1a6a4a;border-bottom:1px solid #eef0f4">avete parlato</td><td style="padding:0.3rem 0.6rem;font-family:'Lora',serif;color:#7a4800;border-bottom:1px solid #eef0f4">parlavate</td><td style="padding:0.3rem 0.6rem;font-family:'Lora',serif;font-weight:600;color:#2a1a7a;border-bottom:1px solid #eef0f4">parlerete</td><td style="padding:0.3rem 0.6rem;font-family:'Lora',serif;color:#6a1a5a;border-bottom:1px solid #eef0f4">parlereste</td></tr>
+      <tr style="background:#f0f4fa"><td style="padding:0.3rem 0.6rem;font-weight:600;color:#3a4870;font-size:0.78rem;background:#f4f6fc;border-right:2px solid #d0d8ee">loro</td><td style="padding:0.3rem 0.6rem;font-family:'Lora',serif;font-weight:600;color:#1a4a8a">parlano</td><td style="padding:0.3rem 0.6rem;font-family:'Lora',serif;font-weight:600;color:#1a6a4a">hanno parlato</td><td style="padding:0.3rem 0.6rem;font-family:'Lora',serif;color:#7a4800">parlavano</td><td style="padding:0.3rem 0.6rem;font-family:'Lora',serif;font-weight:600;color:#2a1a7a">parleranno</td><td style="padding:0.3rem 0.6rem;font-family:'Lora',serif;color:#6a1a5a">parlerebbero</td></tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<!-- ===================== CLAVE DE ELECCIÓN ===================== -->
+<div style="background:#fff;border-radius:10px;border:1px solid #d4d8e4;padding:1rem 1.2rem;box-shadow:0 1px 5px rgba(0,0,0,0.06);">
+  <div style="font-family:'Lora',serif;font-size:1rem;font-weight:600;color:#080c18;margin-bottom:0.8rem;padding-bottom:0.5rem;border-bottom:2px solid #e4e8f0">
+    ¿Cómo elegir el tiempo correcto? — árbol de decisión
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.8rem;">
+    <div style="background:#f4f6fc;border-radius:7px;padding:0.7rem 0.85rem;border:1px solid #d0d8ee;">
+      <div style="font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:#1a4a8a;margin-bottom:0.4rem">¿Hablas del pasado?</div>
+      <p style="font-size:0.8rem;color:#3a4060;margin-bottom:0.3rem"><strong>Evento puntual / completado</strong> con fecha o número de veces precisos → <span style="color:#1a6a4a;font-weight:600">Passato Prossimo</span></p>
+      <p style="font-size:0.8rem;color:#3a4060"><strong>Hábito / descripción / estado / en curso</strong> → <span style="color:#7a3a10;font-weight:600">Imperfetto</span></p>
+    </div>
+    <div style="background:#f4f6fc;border-radius:7px;padding:0.7rem 0.85rem;border:1px solid #d0d8ee;">
+      <div style="font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:#2a1a7a;margin-bottom:0.4rem">¿Hablas del futuro?</div>
+      <p style="font-size:0.8rem;color:#3a4060;margin-bottom:0.3rem"><strong>Plan programado informal</strong> → Presente indicativo (<em>domani vado</em>)</p>
+      <p style="font-size:0.8rem;color:#3a4060"><strong>Predicción / promesa / hipótesis / dopo quando</strong> → <span style="color:#2a1a7a;font-weight:600">Futuro Semplice</span></p>
+    </div>
+    <div style="background:#f4f6fc;border-radius:7px;padding:0.7rem 0.85rem;border:1px solid #d0d8ee;">
+      <div style="font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:#6a1a5a;margin-bottom:0.4rem">¿Condición / cortesía?</div>
+      <p style="font-size:0.8rem;color:#3a4060;margin-bottom:0.3rem"><strong>Quisiera / me gustaría / podría</strong> → <span style="color:#6a1a5a;font-weight:600">Condizionale</span></p>
+      <p style="font-size:0.8rem;color:#3a4060"><strong>Consejo:</strong> <em>Dovresti...</em> · <strong>Pedido cortés:</strong> <em>Potresti...?</em> · <strong>Deseo:</strong> <em>Vorrei...</em></p>
+    </div>
+  </div>
+</div>
+
+<p style="margin-top:1.5rem;font-size:0.77rem;color:#8898c0;text-align:center;">Riassunto dei tempi · Presente · Passato Prossimo · Imperfetto · Futuro · Condizionale · A1–B1</p>
+
+</div>
+</body>
+</html>

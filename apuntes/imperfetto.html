@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Imperfetto – Indicativo</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: #f5f2ed;
+    color: #22201a;
+    padding: 2rem 1rem;
+    line-height: 1.65;
+  }
+
+  .page { max-width: 940px; margin: 0 auto; }
+
+  /* ---- COVER ---- */
+  .cover { border-left: 5px solid #6a3a1a; padding-left: 1.2rem; margin-bottom: 2.5rem; }
+  .cover h1 { font-family:'Lora',serif; font-size:1.9rem; font-weight:600; color:#10080a; line-height:1.2; }
+  .cover .sub { font-size:0.92rem; color:#5a4030; margin-top:0.4rem; font-style:italic; }
+  .cover .tags { display:flex; gap:0.5rem; margin-top:0.7rem; flex-wrap:wrap; }
+  .tag { padding:0.15rem 0.6rem; border-radius:4px; font-size:0.78rem; font-weight:600; letter-spacing:0.05em; }
+  .tag-brown { background:#6a3a1a; color:#f8e8d8; }
+  .tag-blue  { background:#1a3a7a; color:#d8e4f8; }
+  .tag-teal  { background:#1a5a5a; color:#c8f0f0; }
+  .tag-rose  { background:#7a1a4a; color:#f8d8ec; }
+  .tag-green { background:#2a5a1a; color:#d0f0c8; }
+
+  /* ---- LANG BADGE ---- */
+  .lang-badge { display:inline-flex; align-items:center; gap:0.5rem; padding:0.28rem 0.85rem; border-radius:4px; font-size:0.8rem; font-weight:600; letter-spacing:0.07em; text-transform:uppercase; margin:2.5rem 0 1rem; }
+  .lang-it { background:#1a3a1a; color:#c8e8c0; }
+  .lang-es { background:#3a1a1a; color:#e8c8c0; }
+
+  /* ---- HEADINGS ---- */
+  h2 { font-family:'Lora',serif; font-size:1.18rem; font-weight:600; color:#10080a; border-left:4px solid #6a3a1a; padding-left:0.75rem; margin:2rem 0 0.7rem; }
+  h3 { font-size:0.88rem; font-weight:600; color:#6a3a1a; text-transform:uppercase; letter-spacing:0.09em; margin:1.5rem 0 0.5rem; display:flex; align-items:center; gap:0.6rem; }
+  h3::after { content:''; flex:1; height:1px; background:#ccc8bc; }
+
+  p { margin-bottom:0.7rem; font-size:0.95rem; }
+  ul { margin:0.3rem 0 0.9rem 1.3rem; }
+  ul li { font-size:0.94rem; margin-bottom:0.35rem; }
+
+  /* ---- BOXES ---- */
+  .note  { background:#f0ebe0; border-left:4px solid #6a3a1a; border-radius:0 6px 6px 0; padding:0.65rem 1rem; font-size:0.9rem; color:#3a2010; margin:0.6rem 0 1rem; }
+  .note strong { color:#5a2a10; }
+  .warn  { background:#fdf4e4; border-left:4px solid #b07820; border-radius:0 6px 6px 0; padding:0.65rem 1rem; font-size:0.9rem; color:#5a3800; margin:0.6rem 0 1rem; }
+  .warn strong { color:#8a5200; }
+  .ok    { background:#e8f4ec; border-left:4px solid #1a7a3a; border-radius:0 6px 6px 0; padding:0.65rem 1rem; font-size:0.9rem; color:#0a3a18; margin:0.6rem 0 1rem; }
+  .ok strong { color:#1a6a28; }
+  .tip   { background:#eaf0f8; border-left:4px solid #2a5a9a; border-radius:0 6px 6px 0; padding:0.65rem 1rem; font-size:0.9rem; color:#1a2a4a; margin:0.6rem 0 1rem; }
+  .tip strong { color:#1a3a7a; }
+  .vs    { background:#f8f0fa; border-left:4px solid #7a1a6a; border-radius:0 6px 6px 0; padding:0.65rem 1rem; font-size:0.9rem; color:#3a0a30; margin:0.6rem 0 1rem; }
+  .vs strong { color:#6a0a5a; }
+
+  /* ---- TABLES ---- */
+  .table-wrap { overflow-x:auto; margin-bottom:1.2rem; }
+  table { width:100%; border-collapse:collapse; font-size:0.9rem; }
+  thead tr { background:#18100a; color:#ece4d8; }
+  thead th { padding:0.55rem 0.7rem; text-align:left; font-weight:600; font-size:0.82rem; letter-spacing:0.04em; white-space:nowrap; }
+  thead th.imp { background:#6a3a1a; }
+  thead th.are { background:#5a2a8a; }
+  thead th.ere { background:#1a4a7a; }
+  thead th.ire { background:#1a6a4a; }
+  thead th.pp  { background:#1a4a7a; }
+  thead th.bad { background:#3a1a1a; }
+  thead th.good{ background:#1a4a28; }
+
+  tbody tr:nth-child(even) { background:#edeae2; }
+  tbody tr:nth-child(odd)  { background:#f5f2ed; }
+  tbody tr:hover { background:#e2ddd5; }
+
+  td { padding:0.46rem 0.7rem; border-bottom:1px solid #d8d2c4; vertical-align:middle; }
+  td.person { font-weight:600; color:#22201a; white-space:nowrap; }
+  td.pro    { font-size:0.8rem; color:#78706a; }
+  td.imp    { font-family:'Lora',serif; font-weight:600; color:#6a3a1a; }
+  td.are    { font-family:'Lora',serif; font-weight:600; color:#5a2a8a; }
+  td.ere    { font-family:'Lora',serif; font-weight:600; color:#1a4a7a; }
+  td.ire    { font-family:'Lora',serif; font-weight:600; color:#1a6a4a; }
+  td.pp     { font-family:'Lora',serif; font-weight:600; color:#1a4a7a; }
+  td.inf    { font-family:'Lora',serif; color:#22201a; font-weight:600; }
+  td.ex     { font-size:0.88rem; color:#2a2018; }
+  td.tr     { font-size:0.84rem; color:#78685a; font-style:italic; }
+  td.right  { color:#1a6a28; font-family:'Lora',serif; font-weight:600; }
+  td.wrong  { color:#9a1a1a; text-decoration:line-through; font-family:'Lora',serif; }
+  td.rule   { font-size:0.84rem; color:#5a4a38; }
+  td.time   { font-family:'Lora',serif; font-weight:600; color:#6a3a1a; }
+
+  /* ---- FORMULA ---- */
+  .formula { background:#18100a; color:#f0e4d4; border-radius:8px; padding:1.1rem 1.4rem; margin:0.8rem 0 1.2rem; text-align:center; }
+  .formula .line { font-family:'Lora',serif; font-size:1.1rem; margin-bottom:0.3rem; }
+  .formula .line span.r  { color:#f0a860; font-weight:600; }
+  .formula .line span.d  { color:#f0e060; font-weight:600; }
+  .formula .line span.pl { color:#907860; margin:0 0.5rem; }
+  .formula .sub { font-family:'Source Sans 3',sans-serif; font-size:0.82rem; color:#907860; margin-top:0.4rem; font-style:italic; }
+
+  /* ---- DESINENZE GRID ---- */
+  .des-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-bottom:1.3rem; }
+  @media(max-width:620px){ .des-grid { grid-template-columns:1fr; } }
+  .des-card { border-radius:8px; overflow:hidden; border:1px solid #c8c2b8; }
+  .des-head { padding:0.55rem 0.85rem; font-family:'Lora',serif; font-weight:600; font-size:1rem; }
+  .des-head .arrow { font-size:0.85rem; font-weight:400; margin:0 0.4rem; opacity:0.7; }
+  .des-head.are { background:#5a2a8a; color:#ede0f8; }
+  .des-head.ere { background:#1a4a7a; color:#d8e8f8; }
+  .des-head.ire { background:#1a6a4a; color:#d0f4e8; }
+  .des-body { background:#f5f2ed; }
+  .des-row { display:flex; justify-content:space-between; align-items:baseline; padding:0.32rem 0.85rem; border-bottom:1px solid #e2ddd5; font-size:0.9rem; }
+  .des-row:last-child { border-bottom:none; }
+  .des-pro  { color:#78706a; font-size:0.8rem; }
+  .des-form { font-family:'Lora',serif; font-weight:600; font-size:1rem; }
+  .des-form.are { color:#5a2a8a; }
+  .des-form.ere { color:#1a4a7a; }
+  .des-form.ire { color:#1a6a4a; }
+  .des-tr   { font-size:0.8rem; color:#98887a; font-style:italic; }
+
+  /* ---- USI GRID ---- */
+  .usi-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-bottom:1.3rem; }
+  @media(max-width:640px){ .usi-grid { grid-template-columns:1fr; } }
+  .usi-grid2 { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin-bottom:1.3rem; }
+  @media(max-width:560px){ .usi-grid2 { grid-template-columns:1fr; } }
+  .uso-card { border-radius:8px; overflow:hidden; border:1px solid #c8c2b8; }
+  .uso-head { padding:0.5rem 0.85rem; }
+  .uso-head.u1 { background:#6a3a1a; color:#f8e8d8; }
+  .uso-head.u2 { background:#1a3a7a; color:#d8e4f8; }
+  .uso-head.u3 { background:#1a5a5a; color:#c8f0f0; }
+  .uso-head.u4 { background:#5a4a00; color:#f8f0c0; }
+  .uso-head.u5 { background:#4a1a5a; color:#ead8f8; }
+  .uso-head.u6 { background:#2a5a1a; color:#d0f0c8; }
+  .uso-htitle { font-family:'Lora',serif; font-weight:600; font-size:0.95rem; }
+  .uso-hsub   { font-size:0.76rem; font-style:italic; opacity:0.85; margin-top:0.1rem; }
+  .uso-body   { background:#f5f2ed; padding:0.65rem 0.85rem; }
+  .uso-body p { font-size:0.88rem; margin-bottom:0.5rem; color:#2a2018; }
+  .uso-ex { font-family:'Lora',serif; font-weight:600; font-size:0.9rem; color:#10080a; display:block; margin-bottom:0.15rem; }
+  .uso-tr { font-size:0.8rem; color:#78685a; font-style:italic; margin-bottom:0.35rem; display:block; }
+
+  /* ---- CONJ CARDS ---- */
+  .conj-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-bottom:1.3rem; }
+  @media(max-width:620px){ .conj-grid { grid-template-columns:1fr; } }
+  .conj-card { border-radius:8px; overflow:hidden; border:1px solid #c8c2b8; }
+  .conj-head { padding:0.5rem 0.85rem; }
+  .conj-head.are { background:#5a2a8a; color:#ede0f8; }
+  .conj-head.ere { background:#1a4a7a; color:#d8e8f8; }
+  .conj-head.ire { background:#1a6a4a; color:#d0f4e8; }
+  .conj-head.irr { background:#6a3a1a; color:#f8e8d8; }
+  .conj-htitle { font-family:'Lora',serif; font-weight:600; font-size:1rem; }
+  .conj-hsub   { font-size:0.78rem; font-style:italic; opacity:0.82; }
+  .conj-body   { background:#f5f2ed; }
+  .conj-row    { display:flex; justify-content:space-between; align-items:baseline; padding:0.3rem 0.85rem; border-bottom:1px solid #e2ddd5; font-size:0.88rem; }
+  .conj-row:last-child { border-bottom:none; }
+  .conj-pro    { color:#78706a; font-size:0.8rem; flex:0 0 55px; }
+  .conj-form   { font-family:'Lora',serif; font-weight:600; }
+  .conj-form.are { color:#5a2a8a; }
+  .conj-form.ere { color:#1a4a7a; }
+  .conj-form.ire { color:#1a6a4a; }
+  .conj-form.irr { color:#6a3a1a; }
+
+  /* ---- VS GRID ---- */
+  .vs-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1.3rem; }
+  @media(max-width:560px){ .vs-grid { grid-template-columns:1fr; } }
+  .vs-card { border-radius:8px; overflow:hidden; border:1px solid #c8c2b8; }
+  .vs-head { padding:0.45rem 0.8rem; font-size:0.8rem; font-weight:600; text-transform:uppercase; letter-spacing:0.06em; }
+  .vs-head.imp { background:#6a3a1a; color:#f8e8d8; }
+  .vs-head.pp  { background:#1a4a7a; color:#d8e4f8; }
+  .vs-body { background:#f5f2ed; padding:0.6rem 0.85rem; font-size:0.88rem; }
+  .vs-body ul { margin-left:1rem; }
+  .vs-body ul li { margin-bottom:0.35rem; }
+
+  /* ---- EX GRID ---- */
+  .ex-grid { display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin-bottom:1.2rem; }
+  @media(max-width:540px){ .ex-grid { grid-template-columns:1fr; } }
+  .ex-card { background:#f5f2ed; border:1px solid #c8c2b8; border-radius:8px; padding:0.7rem 0.9rem; }
+  .ex-label { font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.5rem; padding-bottom:0.3rem; border-bottom:1px solid #e2ddd5; }
+  .ex-label.u1 { color:#6a3a1a; }
+  .ex-label.u2 { color:#1a3a7a; }
+  .ex-label.u3 { color:#1a5a5a; }
+  .ex-label.u4 { color:#7a6000; }
+  .ex-label.u5 { color:#5a1a6a; }
+  .ex-label.u6 { color:#2a5a1a; }
+  .ex-item { margin-bottom:0.4rem; }
+  .ex-it { font-family:'Lora',serif; font-size:0.91rem; color:#10080a; font-weight:600; }
+  .ex-es { font-size:0.82rem; color:#78685a; font-style:italic; }
+
+  /* ---- TIME CELLS ---- */
+  .time-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0.6rem; margin-bottom:1.3rem; }
+  @media(max-width:520px){ .time-grid { grid-template-columns:repeat(2,1fr); } }
+  .time-cell { background:#f5f2ed; border:1px solid #c8c2b8; border-radius:6px; padding:0.5rem 0.65rem; }
+  .time-it { font-family:'Lora',serif; font-weight:600; color:#6a3a1a; font-size:0.95rem; }
+  .time-es { font-size:0.82rem; color:#78685a; font-style:italic; }
+
+  /* ---- SUMMARY ---- */
+  .summary { background:#18100a; color:#e8e0d0; border-radius:8px; padding:1.3rem 1.5rem; margin-top:3rem; }
+  .summary h4 { font-family:'Lora',serif; font-size:1.05rem; color:#f0c870; margin-bottom:1rem; border-bottom:1px solid #3a2a18; padding-bottom:0.5rem; }
+  .sum-step { display:grid; grid-template-columns:28px 1fr; gap:0.5rem; margin-bottom:0.65rem; align-items:start; }
+  .sum-n { width:28px; height:28px; border-radius:50%; background:#6a3a1a; color:#f8e8d8; font-weight:600; font-size:0.88rem; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .sum-desc { font-size:0.9rem; color:#c8c0b0; padding-top:0.25rem; }
+  .sum-desc code { background:#2a1a0a; padding:0.1rem 0.4rem; border-radius:3px; font-family:monospace; font-size:0.85rem; color:#f0c870; }
+  .sum-desc strong { color:#f0e8d0; }
+
+  @media print {
+    body { background:white; padding:1rem; }
+    .des-grid,.conj-grid,.usi-grid,.usi-grid2,.ex-grid,.vs-grid { page-break-inside:avoid; }
+  }
+</style>
+</head>
+<body>
+<div id="site-nav" style="background:#0f1422;padding:0.52rem 1.4rem;display:flex;align-items:center;gap:0.7rem;font-family:'Source Sans 3',sans-serif;font-size:0.82rem;border-bottom:1px solid #1e2c44;position:sticky;top:0;z-index:9999;box-shadow:0 2px 8px rgba(0,0,0,0.25)">
+  <a href="/" style="color:#70b8f8;text-decoration:none;font-weight:600;display:flex;align-items:center;gap:0.35rem;transition:opacity 0.2s" onmouseover="this.style.opacity=0.75" onmouseout="this.style.opacity=1">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#70b8f8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+    Inicio
+  </a>
+  <span style="color:#2a3a54">|</span>
+  <span style="color:#6878a0;letter-spacing:0.03em">Italiano Apuntes</span>
+</div>
+
+<div class="page">
+
+<!-- COVER -->
+<div class="cover">
+  <h1>Imperfetto — Indicativo</h1>
+  <p class="sub">Il tempo del passato continuo · abitudini · descrizioni · azioni in corso · contrasto con il passato prossimo</p>
+  <div class="tags">
+    <span class="tag tag-brown">A2 – B1</span>
+    <span class="tag tag-blue">Indicativo</span>
+    <span class="tag tag-teal">Regolare + Irregolare</span>
+    <span class="tag tag-rose">vs Passato Prossimo</span>
+    <span class="tag tag-green">6 Usi</span>
+  </div>
+</div>
+
+<div class="lang-badge lang-it">🇮🇹 Italiano</div>
+
+<!-- ===== DEFINIZIONE ===== -->
+<h2>Che cos'è l'imperfetto?</h2>
+<p>L'imperfetto è un tempo del passato che descrive azioni <strong>non completate</strong>, <strong>abituali</strong> o <strong>in corso di svolgimento</strong> nel passato. A differenza del passato prossimo (che indica azioni finite e precise), l'imperfetto esprime la <strong>continuità</strong> e la <strong>durata</strong>.</p>
+<ul>
+  <li>Non dice quando è iniziata o finita l'azione.</li>
+  <li>Si usa per <strong>descrivere</strong> persone, luoghi, stati d'animo nel passato.</li>
+  <li>Indica <strong>abitudini ripetute</strong> nel passato.</li>
+  <li>Descrive un'azione <strong>in corso</strong> quando un'altra è accaduta.</li>
+</ul>
+
+<!-- ===== STRUTTURA ===== -->
+<h2>Struttura — come si forma</h2>
+
+<div class="formula">
+  <div class="line"><span class="r">radice dell'infinito</span> <span class="pl">+</span> <span class="d">desinenza dell'imperfetto</span></div>
+  <div class="sub">La radice si ottiene togliendo -re dall'infinito · le desinenze sono uguali per -ERE e -IRE</div>
+</div>
+
+<div class="note"><strong>Regola d'oro:</strong> per trovare la radice dell'imperfetto, si toglie solo <em>-re</em> dall'infinito (non <em>-are / -ere / -ire</em> interi). Quindi: <em>parla-re → parla-</em> · <em>crede-re → crede-</em> · <em>dorme-re → dorme-</em></div>
+
+<h3>Desinenze complete</h3>
+
+<div class="des-grid">
+  <div class="des-card">
+    <div class="des-head are">-ARE <span class="arrow">→</span> radice: <em>parla-</em></div>
+    <div class="des-body">
+      <div class="des-row"><span class="des-pro">io</span><span class="des-form are">parlavo</span><span class="des-tr">hablaba</span></div>
+      <div class="des-row"><span class="des-pro">tu</span><span class="des-form are">parlavi</span><span class="des-tr">hablabas</span></div>
+      <div class="des-row"><span class="des-pro">lui/lei</span><span class="des-form are">parlava</span><span class="des-tr">hablaba</span></div>
+      <div class="des-row"><span class="des-pro">noi</span><span class="des-form are">parlavamo</span><span class="des-tr">hablábamos</span></div>
+      <div class="des-row"><span class="des-pro">voi</span><span class="des-form are">parlavate</span><span class="des-tr">hablabais</span></div>
+      <div class="des-row"><span class="des-pro">loro</span><span class="des-form are">parlavano</span><span class="des-tr">hablaban</span></div>
+    </div>
+  </div>
+  <div class="des-card">
+    <div class="des-head ere">-ERE <span class="arrow">→</span> radice: <em>crede-</em></div>
+    <div class="des-body">
+      <div class="des-row"><span class="des-pro">io</span><span class="des-form ere">credevo</span><span class="des-tr">creía</span></div>
+      <div class="des-row"><span class="des-pro">tu</span><span class="des-form ere">credevi</span><span class="des-tr">creías</span></div>
+      <div class="des-row"><span class="des-pro">lui/lei</span><span class="des-form ere">credeva</span><span class="des-tr">creía</span></div>
+      <div class="des-row"><span class="des-pro">noi</span><span class="des-form ere">credevamo</span><span class="des-tr">creíamos</span></div>
+      <div class="des-row"><span class="des-pro">voi</span><span class="des-form ere">credevate</span><span class="des-tr">creíais</span></div>
+      <div class="des-row"><span class="des-pro">loro</span><span class="des-form ere">credevano</span><span class="des-tr">creían</span></div>
+    </div>
+  </div>
+  <div class="des-card">
+    <div class="des-head ire">-IRE <span class="arrow">→</span> radice: <em>dorme-</em></div>
+    <div class="des-body">
+      <div class="des-row"><span class="des-pro">io</span><span class="des-form ire">dormivo</span><span class="des-tr">dormía</span></div>
+      <div class="des-row"><span class="des-pro">tu</span><span class="des-form ire">dormivi</span><span class="des-tr">dormías</span></div>
+      <div class="des-row"><span class="des-pro">lui/lei</span><span class="des-form ire">dormiva</span><span class="des-tr">dormía</span></div>
+      <div class="des-row"><span class="des-pro">noi</span><span class="des-form ire">dormivamo</span><span class="des-tr">dormíamos</span></div>
+      <div class="des-row"><span class="des-pro">voi</span><span class="des-form ire">dormivate</span><span class="des-tr">dormíais</span></div>
+      <div class="des-row"><span class="des-pro">loro</span><span class="des-form ire">dormivano</span><span class="des-tr">dormían</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="ok"><strong>Osservazione:</strong> le desinenze di <em>-ERE</em> e <em>-IRE</em> sono <strong>identiche</strong> all'imperfetto. L'unica differenza è la radice: <em>crede-vo</em> vs <em>dorme-vo</em>. Basta imparare un solo schema per entrambe.</div>
+
+<!-- ===== VERBI IRREGOLARI ===== -->
+<h2>Verbi irregolari all'imperfetto</h2>
+<p>I verbi irregolari all'imperfetto sono pochissimi e tutti molto comuni. La loro irregolarità riguarda solo la <strong>radice</strong>, non le desinenze — che rimangono sempre <em>-vo, -vi, -va, -vamo, -vate, -vano</em>.</p>
+
+<div class="conj-grid">
+  <div class="conj-card">
+    <div class="conj-head irr"><div class="conj-htitle">essere</div><div class="conj-hsub">ser / estar — radice: er-</div></div>
+    <div class="conj-body">
+      <div class="conj-row"><span class="conj-pro">io</span><span class="conj-form irr">ero</span></div>
+      <div class="conj-row"><span class="conj-pro">tu</span><span class="conj-form irr">eri</span></div>
+      <div class="conj-row"><span class="conj-pro">lui/lei</span><span class="conj-form irr">era</span></div>
+      <div class="conj-row"><span class="conj-pro">noi</span><span class="conj-form irr">eravamo</span></div>
+      <div class="conj-row"><span class="conj-pro">voi</span><span class="conj-form irr">eravate</span></div>
+      <div class="conj-row"><span class="conj-pro">loro</span><span class="conj-form irr">erano</span></div>
+    </div>
+  </div>
+  <div class="conj-card">
+    <div class="conj-head irr"><div class="conj-htitle">fare</div><div class="conj-hsub">hacer — radice: face-</div></div>
+    <div class="conj-body">
+      <div class="conj-row"><span class="conj-pro">io</span><span class="conj-form irr">facevo</span></div>
+      <div class="conj-row"><span class="conj-pro">tu</span><span class="conj-form irr">facevi</span></div>
+      <div class="conj-row"><span class="conj-pro">lui/lei</span><span class="conj-form irr">faceva</span></div>
+      <div class="conj-row"><span class="conj-pro">noi</span><span class="conj-form irr">facevamo</span></div>
+      <div class="conj-row"><span class="conj-pro">voi</span><span class="conj-form irr">facevate</span></div>
+      <div class="conj-row"><span class="conj-pro">loro</span><span class="conj-form irr">facevano</span></div>
+    </div>
+  </div>
+  <div class="conj-card">
+    <div class="conj-head irr"><div class="conj-htitle">dire</div><div class="conj-hsub">decir — radice: dice-</div></div>
+    <div class="conj-body">
+      <div class="conj-row"><span class="conj-pro">io</span><span class="conj-form irr">dicevo</span></div>
+      <div class="conj-row"><span class="conj-pro">tu</span><span class="conj-form irr">dicevi</span></div>
+      <div class="conj-row"><span class="conj-pro">lui/lei</span><span class="conj-form irr">diceva</span></div>
+      <div class="conj-row"><span class="conj-pro">noi</span><span class="conj-form irr">dicevamo</span></div>
+      <div class="conj-row"><span class="conj-pro">voi</span><span class="conj-form irr">dicevate</span></div>
+      <div class="conj-row"><span class="conj-pro">loro</span><span class="conj-form irr">dicevano</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="conj-grid">
+  <div class="conj-card">
+    <div class="conj-head irr"><div class="conj-htitle">bere</div><div class="conj-hsub">beber — radice: beve-</div></div>
+    <div class="conj-body">
+      <div class="conj-row"><span class="conj-pro">io</span><span class="conj-form irr">bevevo</span></div>
+      <div class="conj-row"><span class="conj-pro">tu</span><span class="conj-form irr">bevevi</span></div>
+      <div class="conj-row"><span class="conj-pro">lui/lei</span><span class="conj-form irr">beveva</span></div>
+      <div class="conj-row"><span class="conj-pro">noi</span><span class="conj-form irr">bevevamo</span></div>
+      <div class="conj-row"><span class="conj-pro">voi</span><span class="conj-form irr">bevevate</span></div>
+      <div class="conj-row"><span class="conj-pro">loro</span><span class="conj-form irr">bevevano</span></div>
+    </div>
+  </div>
+  <div class="conj-card">
+    <div class="conj-head irr"><div class="conj-htitle">tradurre</div><div class="conj-hsub">traducir — radice: traduce-</div></div>
+    <div class="conj-body">
+      <div class="conj-row"><span class="conj-pro">io</span><span class="conj-form irr">traducevo</span></div>
+      <div class="conj-row"><span class="conj-pro">tu</span><span class="conj-form irr">traducevi</span></div>
+      <div class="conj-row"><span class="conj-pro">lui/lei</span><span class="conj-form irr">traduceva</span></div>
+      <div class="conj-row"><span class="conj-pro">noi</span><span class="conj-form irr">traducevamo</span></div>
+      <div class="conj-row"><span class="conj-pro">voi</span><span class="conj-form irr">traducevate</span></div>
+      <div class="conj-row"><span class="conj-pro">loro</span><span class="conj-form irr">traducevano</span></div>
+    </div>
+  </div>
+  <div class="conj-card">
+    <div class="conj-head irr"><div class="conj-htitle">porre / trarre</div><div class="conj-hsub">radici: pone- / trae-</div></div>
+    <div class="conj-body">
+      <div class="conj-row"><span class="conj-pro">io</span><span class="conj-form irr">ponevo / traevo</span></div>
+      <div class="conj-row"><span class="conj-pro">tu</span><span class="conj-form irr">ponevi / traevi</span></div>
+      <div class="conj-row"><span class="conj-pro">lui/lei</span><span class="conj-form irr">poneva / traeva</span></div>
+      <div class="conj-row"><span class="conj-pro">noi</span><span class="conj-form irr">ponevamo / traevamo</span></div>
+      <div class="conj-row"><span class="conj-pro">voi</span><span class="conj-form irr">ponevate / traevate</span></div>
+      <div class="conj-row"><span class="conj-pro">loro</span><span class="conj-form irr">ponevano / traevano</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="warn"><strong>Regola per gli irregolari:</strong> i verbi con infinito "contratto" (fare ← facere, dire ← dicere, bere ← bevere) recuperano la radice latina estesa. Le desinenze però sono sempre le stesse: <em>-vo · -vi · -va · -vamo · -vate · -vano</em>.</div>
+
+<!-- ===== USI ===== -->
+<h2>I 6 usi dell'imperfetto</h2>
+
+<div class="usi-grid">
+  <div class="uso-card">
+    <div class="uso-head u1">
+      <div class="uso-htitle">Uso 1 — Azione abituale</div>
+      <div class="uso-hsub">lo que hacía siempre / solía hacer</div>
+    </div>
+    <div class="uso-body">
+      <p>Azione che si ripeteva regolarmente nel passato senza un numero preciso di volte.</p>
+      <span class="uso-ex">Da bambino andavo al mare ogni estate.</span>
+      <span class="uso-tr">De niño iba al mar cada verano.</span>
+      <span class="uso-ex">Mangiavamo sempre insieme la domenica.</span>
+      <span class="uso-tr">Siempre comíamos juntos los domingos.</span>
+      <span class="uso-ex">Studiavo fino a mezzanotte.</span>
+      <span class="uso-tr">Estudiaba hasta la medianoche.</span>
+    </div>
+  </div>
+  <div class="uso-card">
+    <div class="uso-head u2">
+      <div class="uso-htitle">Uso 2 — Descrizione</div>
+      <div class="uso-hsub">como era / cómo se veía</div>
+    </div>
+    <div class="uso-body">
+      <p>Descrizione di persone, luoghi, oggetti, atmosfere nel passato.</p>
+      <span class="uso-ex">La casa era grande e luminosa.</span>
+      <span class="uso-tr">La casa era grande y luminosa.</span>
+      <span class="uso-ex">Aveva i capelli lunghi e gli occhi azzurri.</span>
+      <span class="uso-tr">Tenía el pelo largo y los ojos azules.</span>
+      <span class="uso-ex">Il cielo era grigio e faceva freddo.</span>
+      <span class="uso-tr">El cielo estaba gris y hacía frío.</span>
+    </div>
+  </div>
+  <div class="uso-card">
+    <div class="uso-head u3">
+      <div class="uso-htitle">Uso 3 — Azione in corso</div>
+      <div class="uso-hsub">estaba haciendo cuando...</div>
+    </div>
+    <div class="uso-body">
+      <p>Azione che era <strong>già in corso</strong> quando un'altra è accaduta (passato prossimo).</p>
+      <span class="uso-ex">Dormivo quando è suonato il telefono.</span>
+      <span class="uso-tr">Dormía cuando sonó el teléfono.</span>
+      <span class="uso-ex">Guardava la TV quando è entrato Marco.</span>
+      <span class="uso-tr">Miraba la tele cuando entró Marco.</span>
+      <span class="uso-ex">Uscivo di casa quando ha iniziato a piovere.</span>
+      <span class="uso-tr">Salía de casa cuando empezó a llover.</span>
+    </div>
+  </div>
+</div>
+
+<div class="usi-grid">
+  <div class="uso-card">
+    <div class="uso-head u4">
+      <div class="uso-htitle">Uso 4 — Stato mentale / fisico</div>
+      <div class="uso-hsub">cómo me sentía / qué pensaba</div>
+    </div>
+    <div class="uso-body">
+      <p>Verbi di stato (volere, potere, sapere, credere, pensare, sentirsi, avere fame/paura...) si usano quasi sempre all'imperfetto.</p>
+      <span class="uso-ex">Avevo fame e non sapevo cosa fare.</span>
+      <span class="uso-tr">Tenía hambre y no sabía qué hacer.</span>
+      <span class="uso-ex">Pensavo che fosse una buona idea.</span>
+      <span class="uso-tr">Pensaba que era una buena idea.</span>
+      <span class="uso-ex">Non volevo uscire quella sera.</span>
+      <span class="uso-tr">No quería salir esa noche.</span>
+    </div>
+  </div>
+  <div class="uso-card">
+    <div class="uso-head u5">
+      <div class="uso-htitle">Uso 5 — Intenzione nel passato</div>
+      <div class="uso-hsub">iba a... / tenía pensado...</div>
+    </div>
+    <div class="uso-body">
+      <p>Esprime un'intenzione o un piano che esisteva nel passato (ma che può non essersi realizzato).</p>
+      <span class="uso-ex">Volevo chiamarti ma ho perso il telefono.</span>
+      <span class="uso-tr">Quería llamarte pero perdí el celular.</span>
+      <span class="uso-ex">Doveva venire ma si è sentita male.</span>
+      <span class="uso-tr">Iba a venir pero se sintió mal.</span>
+      <span class="uso-ex">Pensavamo di andare in vacanza.</span>
+      <span class="uso-tr">Pensábamos ir de vacaciones.</span>
+    </div>
+  </div>
+  <div class="uso-card">
+    <div class="uso-head u6">
+      <div class="uso-htitle">Uso 6 — Cortesia (presente)</div>
+      <div class="uso-hsub">forma educada para pedir</div>
+    </div>
+    <div class="uso-body">
+      <p>L'imperfetto può essere usato al posto del presente per fare <strong>richieste educate</strong>, anche riferite al momento attuale.</p>
+      <span class="uso-ex">Volevo un caffè, per favore.</span>
+      <span class="uso-tr">Quería un café, por favor.</span>
+      <span class="uso-ex">Scusi, cercavo il reparto scarpe.</span>
+      <span class="uso-tr">Disculpe, buscaba el sector calzado.</span>
+      <span class="uso-ex">Speravo di parlarle un momento.</span>
+      <span class="uso-tr">Esperaba poder hablarle un momento.</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CONIUGAZIONE ALTRI VERBI ===== -->
+<h2>Coniugazione — altri verbi regolari</h2>
+
+<div class="conj-grid">
+  <div class="conj-card">
+    <div class="conj-head are"><div class="conj-htitle">lavorare</div><div class="conj-hsub">trabajar · -ARE regular</div></div>
+    <div class="conj-body">
+      <div class="conj-row"><span class="conj-pro">io</span><span class="conj-form are">lavoravo</span></div>
+      <div class="conj-row"><span class="conj-pro">tu</span><span class="conj-form are">lavoravi</span></div>
+      <div class="conj-row"><span class="conj-pro">lui/lei</span><span class="conj-form are">lavorava</span></div>
+      <div class="conj-row"><span class="conj-pro">noi</span><span class="conj-form are">lavoravamo</span></div>
+      <div class="conj-row"><span class="conj-pro">voi</span><span class="conj-form are">lavoravate</span></div>
+      <div class="conj-row"><span class="conj-pro">loro</span><span class="conj-form are">lavoravano</span></div>
+    </div>
+  </div>
+  <div class="conj-card">
+    <div class="conj-head ere"><div class="conj-htitle">leggere</div><div class="conj-hsub">leer · -ERE regular</div></div>
+    <div class="conj-body">
+      <div class="conj-row"><span class="conj-pro">io</span><span class="conj-form ere">leggevo</span></div>
+      <div class="conj-row"><span class="conj-pro">tu</span><span class="conj-form ere">leggevi</span></div>
+      <div class="conj-row"><span class="conj-pro">lui/lei</span><span class="conj-form ere">leggeva</span></div>
+      <div class="conj-row"><span class="conj-pro">noi</span><span class="conj-form ere">leggevamo</span></div>
+      <div class="conj-row"><span class="conj-pro">voi</span><span class="conj-form ere">leggevate</span></div>
+      <div class="conj-row"><span class="conj-pro">loro</span><span class="conj-form ere">leggevano</span></div>
+    </div>
+  </div>
+  <div class="conj-card">
+    <div class="conj-head ire"><div class="conj-htitle">capire</div><div class="conj-hsub">entender · -IRE (-isc)</div></div>
+    <div class="conj-body">
+      <div class="conj-row"><span class="conj-pro">io</span><span class="conj-form ire">capivo</span></div>
+      <div class="conj-row"><span class="conj-pro">tu</span><span class="conj-form ire">capivi</span></div>
+      <div class="conj-row"><span class="conj-pro">lui/lei</span><span class="conj-form ire">capiva</span></div>
+      <div class="conj-row"><span class="conj-pro">noi</span><span class="conj-form ire">capivamo</span></div>
+      <div class="conj-row"><span class="conj-pro">voi</span><span class="conj-form ire">capivate</span></div>
+      <div class="conj-row"><span class="conj-pro">loro</span><span class="conj-form ire">capivano</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="tip"><strong>I verbi con -ISC- al presente (capire, finire, preferire, pulire...):</strong> all'imperfetto <strong>NON usano -isc-</strong>. Tornano alla radice normale: <em>capire → cap-ivo</em> (non <em>capisc-ivo</em>). L'imperfetto li "normalizza" tutti.</div>
+
+<!-- ===== IMPERFETTO VS PASSATO PROSSIMO ===== -->
+<h2>Imperfetto vs Passato Prossimo — il contrasto fondamentale</h2>
+<p>Questo è il punto più importante e più difficile del tema. La scelta tra imperfetto e passato prossimo cambia completamente il significato della frase.</p>
+
+<div class="vs-grid">
+  <div class="vs-card">
+    <div class="vs-head imp">IMPERFETTO — azione aperta / continua</div>
+    <div class="vs-body">
+      <ul>
+        <li>Azione senza inizio o fine definiti</li>
+        <li>Abitudine ripetuta nel passato</li>
+        <li>Sfondo, contesto, descrizione</li>
+        <li>Stato mentale o fisico</li>
+        <li>Azione in corso quando ne accade un'altra</li>
+        <li>Risponde a: <em>Com'era? Cosa facevi (di solito)?</em></li>
+      </ul>
+    </div>
+  </div>
+  <div class="vs-card">
+    <div class="vs-head pp">PASSATO PROSSIMO — azione chiusa / puntuale</div>
+    <div class="vs-body">
+      <ul>
+        <li>Azione completata, con inizio e fine precisi</li>
+        <li>Evento specifico accaduto una volta</li>
+        <li>Azione che interrompe un'altra</li>
+        <li>Sequenza di eventi (prima... poi... dopo...)</li>
+        <li>Cambiamento improvviso di stato</li>
+        <li>Risponde a: <em>Cosa è successo? Quando?</em></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<h3>Contrasto in frasi — stesso verbo, tempo diverso</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th class="imp">Imperfetto</th><th class="pp">Passato Prossimo</th></tr></thead>
+  <tbody>
+    <tr>
+      <td class="imp"><em>Mangiavo la pizza ogni venerdì.</em><br><span style="font-size:0.8rem;color:#78685a;font-style:italic">Comía pizza cada viernes. (hábito)</span></td>
+      <td class="pp"><em>Ho mangiato la pizza ieri sera.</em><br><span style="font-size:0.8rem;color:#78685a;font-style:italic">Comí pizza anoche. (evento preciso)</span></td>
+    </tr>
+    <tr>
+      <td class="imp"><em>Lavorava in banca.</em><br><span style="font-size:0.8rem;color:#78685a;font-style:italic">Trabajaba en un banco. (descripción, sin límite)</span></td>
+      <td class="pp"><em>Ha lavorato in banca per 10 anni.</em><br><span style="font-size:0.8rem;color:#78685a;font-style:italic">Trabajó en un banco por 10 años. (período cerrado)</span></td>
+    </tr>
+    <tr>
+      <td class="imp"><em>Da piccola aveva paura del buio.</em><br><span style="font-size:0.8rem;color:#78685a;font-style:italic">De pequeña tenía miedo a la oscuridad. (estado)</span></td>
+      <td class="pp"><em>Ha avuto paura quando ha sentito il rumore.</em><br><span style="font-size:0.8rem;color:#78685a;font-style:italic">Tuvo miedo cuando escuchó el ruido. (reacción puntual)</span></td>
+    </tr>
+    <tr>
+      <td class="imp"><em>Dormivo quando è arrivato.</em><br><span style="font-size:0.8rem;color:#78685a;font-style:italic">Dormía cuando llegó. (fondo = imperfetto)</span></td>
+      <td class="pp"><em>È arrivato mentre dormivo.</em><br><span style="font-size:0.8rem;color:#78685a;font-style:italic">Llegó mientras dormía. (evento = passato prossimo)</span></td>
+    </tr>
+    <tr>
+      <td class="imp"><em>Conoscevo già Mario.</em><br><span style="font-size:0.8rem;color:#78685a;font-style:italic">Ya conocía a Mario. (estado previo)</span></td>
+      <td class="pp"><em>Ho conosciuto Mario alla festa.</em><br><span style="font-size:0.8rem;color:#78685a;font-style:italic">Conocí a Mario en la fiesta. (momento preciso)</span></td>
+    </tr>
+    <tr>
+      <td class="imp"><em>Sapevo già la notizia.</em><br><span style="font-size:0.8rem;color:#78685a;font-style:italic">Ya sabía la noticia. (estado)</span></td>
+      <td class="pp"><em>Ho saputo la notizia ieri.</em><br><span style="font-size:0.8rem;color:#78685a;font-style:italic">Me enteré de la noticia ayer. (momento exacto)</span></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="vs"><strong>Verbi di stato al passato:</strong> <em>sapere, conoscere, volere, potere, credere, pensare</em> — usati con il passato prossimo cambiano significato rispetto all'imperfetto. <em>Sapevo</em> = sabía (estado) · <em>Ho saputo</em> = me enteré (momento de descubrimiento). <em>Conoscevo</em> = conocía · <em>Ho conosciuto</em> = conocí por primera vez.</div>
+
+<!-- ===== USO COMBINATO ===== -->
+<h2>Uso combinato — imperfetto + passato prossimo</h2>
+<p>Nelle narrazioni del passato i due tempi si usano spesso insieme. L'imperfetto fa da <strong>sfondo</strong> (background), il passato prossimo narra gli <strong>eventi</strong> in primo piano.</p>
+
+<div class="note"><strong>Schema narrativo:</strong> imperfetto = la scena (era tarda, pioveva, non c'era nessuno) · passato prossimo = gli avvenimenti (è arrivato, ha detto, è andato via).</div>
+
+<div class="ex-grid">
+  <div class="ex-card">
+    <div class="ex-label u1">racconto — sfondo + eventi</div>
+    <div class="ex-item"><div class="ex-it">Era una serata tranquilla. Leggevo un libro quando ha suonato il campanello.</div><div class="ex-es">Era una noche tranquila. Leía un libro cuando sonó el timbre.</div></div>
+    <div class="ex-item"><div class="ex-it">Faceva freddo e nevicava. Abbiamo deciso di restare a casa.</div><div class="ex-es">Hacía frío y nevaba. Decidimos quedarnos en casa.</div></div>
+  </div>
+  <div class="ex-card">
+    <div class="ex-label u2">interruzione</div>
+    <div class="ex-item"><div class="ex-it">Stavo mangiando quando mi ha chiamato il capo.</div><div class="ex-es">Estaba comiendo cuando me llamó el jefe.</div></div>
+    <div class="ex-item"><div class="ex-it">Camminavo per strada e ho incontrato una vecchia amica.</div><div class="ex-es">Caminaba por la calle y me encontré con una vieja amiga.</div></div>
+  </div>
+</div>
+
+<!-- ===== ESEMPI USI ===== -->
+<h2>Esempi per ogni uso</h2>
+
+<div class="ex-grid">
+  <div class="ex-card">
+    <div class="ex-label u1">Uso 1 — Abitudine</div>
+    <div class="ex-item"><div class="ex-it">Quando ero piccolo giocavo sempre a calcio.</div><div class="ex-es">Cuando era pequeño siempre jugaba al fútbol.</div></div>
+    <div class="ex-item"><div class="ex-it">La nonna cucinava ogni domenica.</div><div class="ex-es">La abuela cocinaba todos los domingos.</div></div>
+    <div class="ex-item"><div class="ex-it">D'estate andavamo al lago con i nonni.</div><div class="ex-es">En verano íbamos al lago con los abuelos.</div></div>
+    <div class="ex-item"><div class="ex-it">Si alzavano sempre tardi il sabato.</div><div class="ex-es">Siempre se levantaban tarde los sábados.</div></div>
+  </div>
+  <div class="ex-card">
+    <div class="ex-label u2">Uso 2 — Descrizione</div>
+    <div class="ex-item"><div class="ex-it">Il nonno era un uomo gentile e silenzioso.</div><div class="ex-es">El abuelo era un hombre amable y silencioso.</div></div>
+    <div class="ex-item"><div class="ex-it">Il paese era piccolo, con una piazza e una chiesa.</div><div class="ex-es">El pueblo era pequeño, con una plaza y una iglesia.</div></div>
+    <div class="ex-item"><div class="ex-it">Portava sempre una giacca blu e scarpe eleganti.</div><div class="ex-es">Siempre llevaba una chaqueta azul y zapatos elegantes.</div></div>
+    <div class="ex-item"><div class="ex-it">C'era silenzio e la luce era bassa.</div><div class="ex-es">Había silencio y la luz era tenue.</div></div>
+  </div>
+  <div class="ex-card">
+    <div class="ex-label u3">Uso 3 — Azione in corso</div>
+    <div class="ex-item"><div class="ex-it">Stavo studiando quando è arrivata la notizia.</div><div class="ex-es">Estaba estudiando cuando llegó la noticia.</div></div>
+    <div class="ex-item"><div class="ex-it">Guidavo sull'autostrada quando ho bucato una gomma.</div><div class="ex-es">Conducía en la autopista cuando se me pinchó una rueda.</div></div>
+    <div class="ex-item"><div class="ex-it">Stavo facendo la doccia e non ho sentito il telefono.</div><div class="ex-es">Me estaba duchando y no oí el teléfono.</div></div>
+    <div class="ex-item"><div class="ex-it">Parlava con il direttore quando sono entrata io.</div><div class="ex-es">Hablaba con el director cuando entré yo.</div></div>
+  </div>
+  <div class="ex-card">
+    <div class="ex-label u4">Uso 4 — Stato mentale / fisico</div>
+    <div class="ex-item"><div class="ex-it">Ero stanchissimo e non volevo uscire.</div><div class="ex-es">Estaba agotado y no quería salir.</div></div>
+    <div class="ex-item"><div class="ex-it">Non sapevo che tu eri a Milano!</div><div class="ex-es">¡No sabía que estabas en Milán!</div></div>
+    <div class="ex-item"><div class="ex-it">Credevo che il negozio chiudesse alle otto.</div><div class="ex-es">Creía que la tienda cerraba a las ocho.</div></div>
+    <div class="ex-item"><div class="ex-it">Aveva mal di testa e si sentiva a disagio.</div><div class="ex-es">Tenía dolor de cabeza y se sentía incómoda.</div></div>
+  </div>
+  <div class="ex-card">
+    <div class="ex-label u5">Uso 5 — Intenzione nel passato</div>
+    <div class="ex-item"><div class="ex-it">Volevo venire ma non ho potuto.</div><div class="ex-es">Quería venir pero no pude.</div></div>
+    <div class="ex-item"><div class="ex-it">Dovevo chiamarti ma ho dimenticato.</div><div class="ex-es">Tenía que llamarte pero me olvidé.</div></div>
+    <div class="ex-item"><div class="ex-it">Pensava di laurearsi in giugno.</div><div class="ex-es">Pensaba recibirse en junio.</div></div>
+    <div class="ex-item"><div class="ex-it">Speravamo di trovarla a casa.</div><div class="ex-es">Esperábamos encontrarla en casa.</div></div>
+  </div>
+  <div class="ex-card">
+    <div class="ex-label u6">Uso 6 — Cortesia</div>
+    <div class="ex-item"><div class="ex-it">Volevo chiederti una cosa.</div><div class="ex-es">Quería preguntarte algo.</div></div>
+    <div class="ex-item"><div class="ex-it">Cercavo una camicia taglia M.</div><div class="ex-es">Buscaba una camisa talla M.</div></div>
+    <div class="ex-item"><div class="ex-it">Speravo di avere un appuntamento oggi.</div><div class="ex-es">Esperaba tener una cita hoy.</div></div>
+    <div class="ex-item"><div class="ex-it">Volevo un tavolo per due, grazie.</div><div class="ex-es">Quería una mesa para dos, gracias.</div></div>
+  </div>
+</div>
+
+<!-- ===== ESPRESSIONI TEMPORALI ===== -->
+<h2>Espressioni temporali dell'imperfetto</h2>
+<p>Queste espressioni sono segnali che indicano l'uso dell'imperfetto.</p>
+
+<div class="time-grid">
+  <div class="time-cell"><div class="time-it">da bambino/a</div><div class="time-es">de niño/a</div></div>
+  <div class="time-cell"><div class="time-it">da piccolo/a</div><div class="time-es">de pequeño/a</div></div>
+  <div class="time-cell"><div class="time-it">da giovane</div><div class="time-es">de joven</div></div>
+  <div class="time-cell"><div class="time-it">quando ero...</div><div class="time-es">cuando era...</div></div>
+  <div class="time-cell"><div class="time-it">ogni giorno / settimana</div><div class="time-es">cada día / semana</div></div>
+  <div class="time-cell"><div class="time-it">sempre / spesso</div><div class="time-es">siempre / a menudo</div></div>
+  <div class="time-cell"><div class="time-it">di solito</div><div class="time-es">generalmente / usualmente</div></div>
+  <div class="time-cell"><div class="time-it">tutte le mattine</div><div class="time-es">todas las mañanas</div></div>
+  <div class="time-cell"><div class="time-it">il lunedì / la domenica</div><div class="time-es">los lunes / los domingos</div></div>
+  <div class="time-cell"><div class="time-it">in quel periodo</div><div class="time-es">en esa época</div></div>
+  <div class="time-cell"><div class="time-it">mentre</div><div class="time-es">mientras (azione in corso)</div></div>
+  <div class="time-cell"><div class="time-it">quando (+ imperfetto)</div><div class="time-es">cuando (+ hacía / era)</div></div>
+  <div class="time-cell"><div class="time-it">una volta</div><div class="time-es">antes / en otro tiempo</div></div>
+  <div class="time-cell"><div class="time-it">all'epoca</div><div class="time-es">en aquella época</div></div>
+  <div class="time-cell"><div class="time-it">negli anni '90</div><div class="time-es">en los años 90</div></div>
+</div>
+
+<!-- ===== NEGAZIONE ===== -->
+<h2>Negazione e interrogazione</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Affermativo</th><th style="background:#3a1a1a">Negativo</th><th>Interrogativo</th></tr></thead>
+  <tbody>
+    <tr><td class="imp"><em>Lavorava molto.</em></td><td style="color:#9a3030;font-weight:600;font-family:'Lora',serif"><em>Non lavorava molto.</em></td><td class="imp"><em>Lavorava molto?</em></td></tr>
+    <tr><td class="imp"><em>Andavamo al mare.</em></td><td style="color:#9a3030;font-weight:600;font-family:'Lora',serif"><em>Non andavamo al mare.</em></td><td class="imp"><em>Andavate al mare?</em></td></tr>
+    <tr><td class="imp"><em>Capiva tutto.</em></td><td style="color:#9a3030;font-weight:600;font-family:'Lora',serif"><em>Non capiva tutto.</em></td><td class="imp"><em>Capiva tutto?</em></td></tr>
+    <tr><td class="imp"><em>Era stanca.</em></td><td style="color:#9a3030;font-weight:600;font-family:'Lora',serif"><em>Non era stanca.</em></td><td class="imp"><em>Era stanca?</em></td></tr>
+  </tbody>
+</table>
+</div>
+<div class="note"><strong>La negazione è semplicissima:</strong> <em>non</em> prima del verbo, esattamente come al presente. Non ci sono ausiliari né forme composte.</div>
+
+<!-- ===== ERRORI FREQUENTI ===== -->
+<h2>Errori frequenti</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th style="background:#3a1a1a">❌ Errato</th><th style="background:#1a4a28">✔ Corretto</th><th>Problema</th></tr></thead>
+  <tbody>
+    <tr><td class="wrong">Ieri mangiavo la pizza.</td><td class="right">Ieri ho mangiato la pizza.</td><td class="rule">ieri + evento preciso → passato prossimo</td></tr>
+    <tr><td class="wrong">Ho lavorato ogni giorno in quel periodo.</td><td class="right">Lavoravo ogni giorno in quel periodo.</td><td class="rule">abitudine ripetuta → imperfetto</td></tr>
+    <tr><td class="wrong">Da bambino, ho andato al mare ogni estate.</td><td class="right">Da bambino, andavo al mare ogni estate.</td><td class="rule">abitudine passata → imperfetto</td></tr>
+    <tr><td class="wrong">Dormivo e mi sono svegliato.</td><td class="right">Dormivo quando mi sono svegliato.</td><td class="rule">imperfetto (sfondo) + passato prossimo (evento)</td></tr>
+    <tr><td class="wrong">Era era molto stanca.</td><td class="right">Era molto stanca.</td><td class="rule">essere → imperfetto: era (non ho stato/era era)</td></tr>
+    <tr><td class="wrong">Capiisco-vo tutto.</td><td class="right">Capivo tutto.</td><td class="rule">verbi -isc: all'imperfetto NON usano -isc-</td></tr>
+    <tr><td class="wrong">Facevo caldo quel giorno.</td><td class="right">Faceva caldo quel giorno.</td><td class="rule">fare (tempo) → soggetto implicito 3a sing. → faceva</td></tr>
+    <tr><td class="wrong">Ho conoscuto Maria da 5 anni.</td><td class="right">Conoscevo Maria da 5 anni.</td><td class="rule">stato continuato → imperfetto (conoscevo)</td></tr>
+    <tr><td class="wrong">Sapevo la notizia ieri quando me l'hai detto.</td><td class="right">Ho saputo la notizia ieri quando me l'hai detto.</td><td class="rule">sapere (scoperta) → passato prossimo</td></tr>
+    <tr><td class="wrong">Bevavo-vo il caffè ogni mattina.</td><td class="right">Bevevo il caffè ogni mattina.</td><td class="rule">bere → radice: beve- → bevevo (non berevo)</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ========================= ESPAÑOL ========================= -->
+<div class="lang-badge lang-es" style="margin-top:3rem">🇪🇸 Español</div>
+
+<h2>¿Qué es el imperfetto y cuándo se usa?</h2>
+<p>El imperfetto equivale al <strong>pretérito imperfecto</strong> del español (hablaba, comía, vivía). Expresa acciones pasadas <strong>sin límites precisos de tiempo</strong> — hábitos, descripciones, estados y acciones en curso cuando ocurrió otra cosa.</p>
+
+<h2>Formación — resumen</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Persona</th><th class="are">-ARE (parl-)</th><th class="ere">-ERE (crede-)</th><th class="ire">-IRE (dorme-)</th><th class="imp">essere (irr.)</th><th class="imp">fare (irr.)</th></tr></thead>
+  <tbody>
+    <tr><td class="person">io</td><td class="are">parlavo</td><td class="ere">credevo</td><td class="ire">dormivo</td><td class="imp">ero</td><td class="imp">facevo</td></tr>
+    <tr><td class="person">tu</td><td class="are">parlavi</td><td class="ere">credevi</td><td class="ire">dormivi</td><td class="imp">eri</td><td class="imp">facevi</td></tr>
+    <tr><td class="person">lui/lei</td><td class="are">parlava</td><td class="ere">credeva</td><td class="ire">dormiva</td><td class="imp">era</td><td class="imp">faceva</td></tr>
+    <tr><td class="person">noi</td><td class="are">parlavamo</td><td class="ere">credevamo</td><td class="ire">dormivamo</td><td class="imp">eravamo</td><td class="imp">facevamo</td></tr>
+    <tr><td class="person">voi</td><td class="are">parlavate</td><td class="ere">credevate</td><td class="ire">dormivate</td><td class="imp">eravate</td><td class="imp">facevate</td></tr>
+    <tr><td class="person">loro</td><td class="are">parlavano</td><td class="ere">credevano</td><td class="ire">dormivano</td><td class="imp">erano</td><td class="imp">facevano</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>Los 6 usos — resumen rápido</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>#</th><th>Uso</th><th>Señales</th><th class="imp">Ejemplo</th></tr></thead>
+  <tbody>
+    <tr><td style="font-weight:600;color:#6a3a1a">1</td><td><strong>Hábito pasado</strong></td><td class="rule">ogni, sempre, di solito, da bambino</td><td class="imp"><em>Studiavo ogni giorno.</em></td></tr>
+    <tr><td style="font-weight:600;color:#6a3a1a">2</td><td><strong>Descripción</strong></td><td class="rule">era, aveva, c'era, faceva</td><td class="imp"><em>Era alto e gentile.</em></td></tr>
+    <tr><td style="font-weight:600;color:#6a3a1a">3</td><td><strong>Acción en curso</strong></td><td class="rule">mentre, quando (+ p.prossimo)</td><td class="imp"><em>Dormivo quando è arrivato.</em></td></tr>
+    <tr><td style="font-weight:600;color:#6a3a1a">4</td><td><strong>Estado mental/físico</strong></td><td class="rule">sapere, credere, volere, avere fame...</td><td class="imp"><em>Avevo paura e non sapevo cosa fare.</em></td></tr>
+    <tr><td style="font-weight:600;color:#6a3a1a">5</td><td><strong>Intención pasada</strong></td><td class="rule">volevo, dovevo, pensavo di</td><td class="imp"><em>Volevo chiamarti ma...</em></td></tr>
+    <tr><td style="font-weight:600;color:#6a3a1a">6</td><td><strong>Cortesía</strong></td><td class="rule">volevo, cercavo, speravo</td><td class="imp"><em>Volevo un caffè.</em></td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>Imperfetto vs Passato Prossimo — clave de decisión</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Preguntate...</th><th class="imp">Imperfetto</th><th class="pp">Passato Prossimo</th></tr></thead>
+  <tbody>
+    <tr><td class="rule">¿La acción tiene fin conocido?</td><td class="imp">No (abierta)</td><td class="pp">Sí (cerrada)</td></tr>
+    <tr><td class="rule">¿Es un hábito o un evento puntual?</td><td class="imp">Hábito repetido</td><td class="pp">Evento específico</td></tr>
+    <tr><td class="rule">¿Describe o narra?</td><td class="imp">Describe (sfondo)</td><td class="pp">Narra (primo piano)</td></tr>
+    <tr><td class="rule">¿Es estado o cambio?</td><td class="imp">Estado continuo</td><td class="pp">Cambio / reacción</td></tr>
+    <tr><td class="rule">¿Tiene marcador temporal preciso (ieri, alle 8)?</td><td class="imp">No (ogni, sempre)</td><td class="pp">Sí (ieri, stamattina)</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===== SUMMARY ===== -->
+<div class="summary">
+  <h4>Puntos clave para dominar el imperfetto</h4>
+  <div class="sum-step">
+    <div class="sum-n">1</div>
+    <div class="sum-desc"><strong>Formación regular:</strong> radice (infinito sin -re) + <code>-vo · -vi · -va · -vamo · -vate · -vano</code>. Las desinencias de -ERE e -IRE son idénticas.</div>
+  </div>
+  <div class="sum-step">
+    <div class="sum-n">2</div>
+    <div class="sum-desc"><strong>Irregolari clave:</strong> <code>essere → ero/eri/era/eravamo/eravate/erano</code> · <code>fare → facevo</code> · <code>dire → dicevo</code> · <code>bere → bevevo</code>.</div>
+  </div>
+  <div class="sum-step">
+    <div class="sum-n">3</div>
+    <div class="sum-desc"><strong>6 usos:</strong> hábito · descripción · acción en curso · estado mental/físico · intención pasada · cortesía.</div>
+  </div>
+  <div class="sum-step">
+    <div class="sum-n">4</div>
+    <div class="sum-desc"><strong>Verbi -isc al imperfetto:</strong> NO usan -isc-. <code>capire → capivo</code> · <code>finire → finivo</code> · <code>preferire → preferivo</code>.</div>
+  </div>
+  <div class="sum-step">
+    <div class="sum-n">5</div>
+    <div class="sum-desc"><strong>vs passato prossimo:</strong> imperfetto = sfondo, continuità, abitudine. Passato prossimo = evento preciso, azione completata, interruzione.</div>
+  </div>
+  <div class="sum-step">
+    <div class="sum-n">6</div>
+    <div class="sum-desc"><strong>Verbi di stato:</strong> <code>sapere · conoscere · volere · credere · avere</code> — al passato quasi sempre imperfetto (estado continuo). Al passato prossimo cambia il significato: <code>ho saputo</code> = me enteré.</div>
+  </div>
+</div>
+
+<p style="margin-top:1.5rem; font-size:0.79rem; color:#9a8868; text-align:center;">Imperfetto · Indicativo · A2–B1 · regolare e irregolare · 6 usi · vs passato prossimo</p>
+
+</div>
+</body>
+</html>

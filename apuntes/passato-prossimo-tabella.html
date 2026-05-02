@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Passato Prossimo — 50 Verbi</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: #f4f6f8;
+    color: #1e2228;
+    padding: 1.5rem 1rem 3rem;
+    font-size: 13px;
+  }
+
+  .page { max-width: 1100px; margin: 0 auto; }
+
+  /* ---- COVER ---- */
+  .cover { border-left: 5px solid #1a6a5a; padding-left: 1.2rem; margin-bottom: 1.5rem; }
+  .cover h1 { font-family:'Lora',serif; font-size:1.7rem; font-weight:600; color:#080c18; line-height:1.2; }
+  .cover .sub { font-size:0.87rem; color:#3a5040; margin-top:0.3rem; font-style:italic; }
+  .cover .tags { display:flex; gap:0.4rem; margin-top:0.6rem; flex-wrap:wrap; }
+  .tag { padding:0.12rem 0.55rem; border-radius:4px; font-size:0.74rem; font-weight:600; letter-spacing:0.05em; }
+  .tag-av { background:#1a4a7a; color:#d8e8f8; }
+  .tag-es { background:#1a6a5a; color:#c8f0e8; }
+  .tag-a2 { background:#6a3a1a; color:#f8e8d0; }
+
+  /* ---- CONTROLS ---- */
+  .controls {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+    margin-bottom: 1.2rem;
+    flex-wrap: wrap;
+  }
+  .controls input {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.88rem;
+    padding: 0.38rem 0.75rem;
+    border: 1.5px solid #b0c8d0;
+    border-radius: 6px;
+    background: #fff;
+    color: #1e2228;
+    outline: none;
+    width: 220px;
+  }
+  .controls input:focus { border-color: #1a6a5a; }
+  .f-btn {
+    font-size: 0.75rem; font-weight: 600;
+    padding: 0.32rem 0.7rem; border: none;
+    border-radius: 5px; cursor: pointer;
+    letter-spacing: 0.03em; opacity: 0.5;
+    font-family: 'Source Sans 3', sans-serif;
+  }
+  .f-btn.active { opacity: 1; }
+  .f-btn.all  { background:#2a3a4a; color:#d8e8f0; }
+  .f-btn.av   { background:#1a4a7a; color:#d8e8f8; }
+  .f-btn.es   { background:#1a6a5a; color:#c8f0e8; }
+  .count { font-size:0.8rem; color:#6a8080; margin-left:auto; }
+
+  /* ---- LEGEND ---- */
+  .legend {
+    display: flex; gap: 1.2rem; flex-wrap: wrap;
+    font-size: 0.8rem; margin-bottom: 1rem;
+    padding: 0.6rem 0.9rem;
+    background: #fff;
+    border-radius: 7px;
+    border: 1px solid #c8d8d4;
+  }
+  .leg { display:flex; align-items:center; gap:0.4rem; color:#3a5060; }
+  .leg-dot { width:10px; height:10px; border-radius:2px; }
+
+  /* ---- TABLE ---- */
+  .table-wrap { overflow-x: auto; border-radius: 8px; box-shadow: 0 1px 6px rgba(0,0,0,0.08); }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+    background: #fff;
+    min-width: 900px;
+  }
+
+  thead tr { position: sticky; top: 0; z-index: 2; }
+
+  thead th {
+    padding: 0.5rem 0.6rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    border-bottom: 2px solid #1a5a4a;
+  }
+  thead th.h-num  { background:#0a2018; color:#80c0a8; width:36px; text-align:center; }
+  thead th.h-inf  { background:#0a2018; color:#c8e8e0; min-width:110px; }
+  thead th.h-es   { background:#0a2018; color:#a0c8c0; min-width:120px; font-style:italic; }
+  thead th.h-aux  { background:#0a2018; color:#80c0a8; width:80px; }
+  thead th.h-pp   { background:#0a2018; color:#f0d080; min-width:90px; }
+  thead th.h-io   { background:#1a5a4a; color:#c8f0e8; min-width:120px; }
+  thead th.h-tu   { background:#1a6a5a; color:#c8f0e8; min-width:120px; }
+  thead th.h-lul  { background:#1a7a60; color:#c8f0e8; min-width:130px; }
+  thead th.h-noi  { background:#1a8a6a; color:#c8f0e8; min-width:135px; }
+  thead th.h-voi  { background:#1a9a74; color:#c8f4ec; min-width:130px; }
+  thead th.h-lor  { background:#1aaa7a; color:#d0f8f0; min-width:135px; }
+
+  /* group separator */
+  .group-row td {
+    background: #e8f4f0;
+    padding: 0.32rem 0.7rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #1a5a4a;
+    border-bottom: 1px solid #c0d8d0;
+    border-top: 2px solid #1a6a5a;
+  }
+
+  tbody tr:not(.group-row):nth-child(even) { background: #f0f8f6; }
+  tbody tr:not(.group-row):nth-child(odd)  { background: #ffffff; }
+  tbody tr:not(.group-row):hover { background: #ddf4ec; }
+
+  td {
+    padding: 0.38rem 0.6rem;
+    border-bottom: 1px solid #e0ece8;
+    vertical-align: middle;
+  }
+  td.t-num  { text-align:center; font-size:0.75rem; color:#6a9090; font-weight:600; }
+  td.t-inf  { font-family:'Lora',serif; font-weight:600; color:#0a2018; }
+  td.t-es   { color:#4a6a68; font-style:italic; font-size:0.8rem; }
+  td.t-aux  { text-align:center; }
+  .aux-badge {
+    display:inline-block; padding:0.1rem 0.4rem; border-radius:4px;
+    font-size:0.7rem; font-weight:600; letter-spacing:0.04em;
+  }
+  .aux-av { background:#eaf2fc; color:#1a4a7a; border:1px solid #c0d8f0; }
+  .aux-es { background:#e0f4ec; color:#1a6a5a; border:1px solid #b0dcc8; }
+  td.t-pp   { font-family:'Lora',serif; font-weight:600; color:#8a6000; }
+  td.t-conj { font-family:'Lora',serif; font-size:0.83rem; color:#0a3828; }
+  td.t-conj.es-v { color:#1a5a4a; }
+
+  /* ---- PRINT ---- */
+  @media print {
+    body { background:white; padding:0.5rem; font-size:10px; }
+    .controls, .legend { display:none; }
+    thead th { font-size:0.65rem; padding:0.3rem 0.4rem; }
+    td { padding:0.25rem 0.4rem; font-size:0.75rem; }
+  }
+</style>
+</head>
+<body>
+<div id="site-nav" style="background:#0f1422;padding:0.52rem 1.4rem;display:flex;align-items:center;gap:0.7rem;font-family:'Source Sans 3',sans-serif;font-size:0.82rem;border-bottom:1px solid #1e2c44;position:sticky;top:0;z-index:9999;box-shadow:0 2px 8px rgba(0,0,0,0.25)">
+  <a href="/" style="color:#70b8f8;text-decoration:none;font-weight:600;display:flex;align-items:center;gap:0.35rem;transition:opacity 0.2s" onmouseover="this.style.opacity=0.75" onmouseout="this.style.opacity=1">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#70b8f8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+    Inicio
+  </a>
+  <span style="color:#2a3a54">|</span>
+  <span style="color:#6878a0;letter-spacing:0.03em">Italiano Apuntes</span>
+</div>
+
+<div class="page">
+
+<div class="cover">
+  <h1>Passato Prossimo — 50 Verbi</h1>
+  <p class="sub">Conjugación completa del pasado compuesto · auxiliar · participio · todas las personas</p>
+  <div class="tags">
+    <span class="tag tag-a2">A1 – A2</span>
+    <span class="tag tag-av">AVERE — 38 verbi</span>
+    <span class="tag tag-es">ESSERE — 12 verbi</span>
+  </div>
+</div>
+
+<!-- LEGEND -->
+<div class="legend">
+  <span class="leg"><span class="leg-dot" style="background:#1a4a7a"></span> Verbi con AVERE — participio invariable</span>
+  <span class="leg"><span class="leg-dot" style="background:#1a6a5a"></span> Verbi con ESSERE — participio acuerda en género y número: -o / -a / -i / -e</span>
+  <span class="leg" style="color:#8a6000"><strong>PP</strong> = participio passato</span>
+  <span class="leg" style="color:#7a1a1a">⚠ Con pronomi lo/la/li/le → accordo obbligatorio anche con avere</span>
+</div>
+
+<!-- CONTROLS -->
+<div class="controls">
+  <input type="text" id="searchInput" placeholder="Cerca verbo... (italiano o español)">
+  <button class="f-btn all active" onclick="setFilter('all',this)">Tutti (50)</button>
+  <button class="f-btn av" onclick="setFilter('avere',this)">Solo AVERE</button>
+  <button class="f-btn es" onclick="setFilter('essere',this)">Solo ESSERE</button>
+  <span class="count" id="count">50 verbi</span>
+</div>
+
+<!-- TABLE -->
+<div class="table-wrap">
+<table id="mainTable">
+  <thead>
+    <tr>
+      <th class="h-num">#</th>
+      <th class="h-inf">Infinito</th>
+      <th class="h-es">Español</th>
+      <th class="h-aux">Ausiliare</th>
+      <th class="h-pp">Part. Passato</th>
+      <th class="h-io">io</th>
+      <th class="h-tu">tu</th>
+      <th class="h-lul">lui / lei</th>
+      <th class="h-noi">noi</th>
+      <th class="h-voi">voi</th>
+      <th class="h-lor">loro</th>
+    </tr>
+  </thead>
+  <tbody id="tableBody"></tbody>
+</table>
+</div>
+
+<p style="margin-top:1.2rem;font-size:0.76rem;color:#6a8880;text-align:center;">Passato Prossimo · 50 verbi · A1–A2 · avere e essere</p>
+
+</div>
+
+<script>
+const verbs = [
+  // AVERE
+  {num:1, it:'essere', es:'ser / estar', aux:'essere', pp:'stato',
+   group:'ESSERE — verbi ausiliari e di stato'},
+  {num:2, it:'stare', es:'estar / quedarse', aux:'essere', pp:'stato'},
+
+  {num:3, it:'avere', es:'tener / haber', aux:'avere', pp:'avuto',
+   group:'AVERE — verbos más comunes'},
+  {num:4, it:'fare', es:'hacer', aux:'avere', pp:'fatto'},
+  {num:5, it:'dire', es:'decir', aux:'avere', pp:'detto'},
+  {num:6, it:'sapere', es:'saber', aux:'avere', pp:'saputo'},
+  {num:7, it:'vedere', es:'ver', aux:'avere', pp:'visto'},
+  {num:8, it:'volere', es:'querer', aux:'avere', pp:'voluto'},
+  {num:9, it:'potere', es:'poder', aux:'avere', pp:'potuto'},
+  {num:10, it:'dovere', es:'deber / tener que', aux:'avere', pp:'dovuto'},
+  {num:11, it:'dare', es:'dar', aux:'avere', pp:'dato'},
+  {num:12, it:'parlare', es:'hablar', aux:'avere', pp:'parlato'},
+  {num:13, it:'mangiare', es:'comer', aux:'avere', pp:'mangiato'},
+  {num:14, it:'bere', es:'beber', aux:'avere', pp:'bevuto'},
+  {num:15, it:'dormire', es:'dormir', aux:'avere', pp:'dormito'},
+  {num:16, it:'leggere', es:'leer', aux:'avere', pp:'letto'},
+  {num:17, it:'scrivere', es:'escribir', aux:'avere', pp:'scritto'},
+  {num:18, it:'capire', es:'entender', aux:'avere', pp:'capito'},
+  {num:19, it:'lavorare', es:'trabajar', aux:'avere', pp:'lavorato'},
+  {num:20, it:'studiare', es:'estudiar', aux:'avere', pp:'studiato'},
+  {num:21, it:'abitare', es:'vivir / habitar', aux:'avere', pp:'abitato'},
+  {num:22, it:'amare', es:'amar', aux:'avere', pp:'amato'},
+  {num:23, it:'ascoltare', es:'escuchar', aux:'avere', pp:'ascoltato'},
+  {num:24, it:'chiamare', es:'llamar', aux:'avere', pp:'chiamato'},
+  {num:25, it:'comprare', es:'comprar', aux:'avere', pp:'comprato'},
+  {num:26, it:'guardare', es:'mirar', aux:'avere', pp:'guardato'},
+  {num:27, it:'aspettare', es:'esperar', aux:'avere', pp:'aspettato'},
+  {num:28, it:'trovare', es:'encontrar', aux:'avere', pp:'trovato'},
+  {num:29, it:'prendere', es:'tomar / coger', aux:'avere', pp:'preso'},
+  {num:30, it:'mettere', es:'poner', aux:'avere', pp:'messo'},
+  {num:31, it:'aprire', es:'abrir', aux:'avere', pp:'aperto'},
+  {num:32, it:'chiudere', es:'cerrar', aux:'avere', pp:'chiuso'},
+  {num:33, it:'chiedere', es:'pedir / preguntar', aux:'avere', pp:'chiesto'},
+  {num:34, it:'rispondere', es:'responder', aux:'avere', pp:'risposto'},
+  {num:35, it:'pensare', es:'pensar', aux:'avere', pp:'pensato'},
+  {num:36, it:'credere', es:'creer', aux:'avere', pp:'creduto'},
+  {num:37, it:'sentire', es:'sentir / escuchar', aux:'avere', pp:'sentito'},
+  {num:38, it:'correre', es:'correr', aux:'avere', pp:'corso'},
+  {num:39, it:'vivere', es:'vivir', aux:'avere', pp:'vissuto'},
+  {num:40, it:'conoscere', es:'conocer', aux:'avere', pp:'conosciuto'},
+  {num:41, it:'ricordare', es:'recordar', aux:'avere', pp:'ricordato'},
+  {num:42, it:'finire', es:'terminar', aux:'avere', pp:'finito'},
+  {num:43, it:'cominciare', es:'empezar', aux:'avere', pp:'cominciato'},
+
+  // ESSERE — movimiento
+  {num:44, it:'andare', es:'ir', aux:'essere', pp:'andato',
+   group:'ESSERE — movimento, cambio, stato'},
+  {num:45, it:'venire', es:'venir', aux:'essere', pp:'venuto'},
+  {num:46, it:'tornare', es:'volver', aux:'essere', pp:'tornato'},
+  {num:47, it:'partire', es:'partir / salir', aux:'essere', pp:'partito'},
+  {num:48, it:'uscire', es:'salir', aux:'essere', pp:'uscito'},
+  {num:49, it:'entrare', es:'entrar', aux:'essere', pp:'entrato'},
+  {num:50, it:'arrivare', es:'llegar', aux:'essere', pp:'arrivato'},
+];
+
+const auxAv = ['ho','hai','ha','abbiamo','avete','hanno'];
+const auxEs = ['sono','sei','è','siamo','siete','sono'];
+
+function ppForms(v) {
+  if (v.aux === 'avere') {
+    return auxAv.map(a => `${a} ${v.pp}`);
+  } else {
+    const r = v.pp.slice(0, -1); // remove trailing 'o'
+    return [
+      `sono ${r}o/a`,
+      `sei ${r}o/a`,
+      `è ${r}o/a`,
+      `siamo ${r}i/e`,
+      `siete ${r}i/e`,
+      `sono ${r}i/e`
+    ];
+  }
+}
+
+let currentFilter = 'all';
+
+function setFilter(f, btn) {
+  currentFilter = f;
+  document.querySelectorAll('.f-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderTable();
+}
+
+function renderTable() {
+  const q = document.getElementById('searchInput').value.toLowerCase().trim();
+  const body = document.getElementById('tableBody');
+  body.innerHTML = '';
+
+  let lastGroup = null;
+  let count = 0;
+
+  verbs.forEach(v => {
+    if (currentFilter !== 'all' && v.aux !== currentFilter) return;
+    if (q && !v.it.includes(q) && !v.es.toLowerCase().includes(q)) return;
+
+    if (v.group && v.group !== lastGroup) {
+      const gr = document.createElement('tr');
+      gr.className = 'group-row';
+      gr.innerHTML = `<td colspan="11">${v.aux === 'essere' ? '★ ' : ''}${v.group}</td>`;
+      body.appendChild(gr);
+      lastGroup = v.group;
+    }
+
+    const forms = ppForms(v);
+    const isEs = v.aux === 'essere';
+    const badgeClass = isEs ? 'aux-es' : 'aux-av';
+    const conjClass = isEs ? 'es-v' : '';
+
+    const row = document.createElement('tr');
+    row.dataset.aux = v.aux;
+    row.innerHTML = `
+      <td class="t-num">${v.num}</td>
+      <td class="t-inf">${v.it}</td>
+      <td class="t-es">${v.es}</td>
+      <td class="t-aux"><span class="aux-badge ${badgeClass}">${v.aux}</span></td>
+      <td class="t-pp">${v.pp}</td>
+      ${forms.map(f => `<td class="t-conj ${conjClass}">${f}</td>`).join('')}
+    `;
+    body.appendChild(row);
+    count++;
+  });
+
+  document.getElementById('count').textContent = `${count} verbi`;
+}
+
+document.getElementById('searchInput').addEventListener('input', renderTable);
+
+renderTable();
+</script>
+</body>
+</html>

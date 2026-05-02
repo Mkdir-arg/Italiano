@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verbi Regolari – Presente Indicativo</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: #f9f7f3;
+    color: #2a2820;
+    padding: 2rem 1rem;
+    line-height: 1.65;
+  }
+
+  .page { max-width: 860px; margin: 0 auto; }
+
+  /* ---- Header ---- */
+  .main-title {
+    font-family: 'Lora', serif;
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #1a1810;
+    border-bottom: 2.5px solid #1a4a8a;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
+  }
+  .main-subtitle {
+    font-size: 0.9rem;
+    color: #5a6a8a;
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+
+  /* ---- Section headings ---- */
+  .lang-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #1a3a6a;
+    color: #e8edf8;
+    padding: 0.3rem 0.9rem;
+    border-radius: 4px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    margin: 2.2rem 0 1rem;
+  }
+
+  h2 {
+    font-family: 'Lora', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #1a1810;
+    border-left: 4px solid #1a4a8a;
+    padding-left: 0.7rem;
+    margin: 1.8rem 0 0.6rem;
+  }
+
+  h3 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1a3a6a;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 1.4rem 0 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  h3::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #c8d4e8;
+  }
+
+  p { margin-bottom: 0.7rem; font-size: 0.96rem; }
+
+  ul { margin: 0.4rem 0 0.9rem 1.3rem; }
+  ul li { font-size: 0.95rem; margin-bottom: 0.3rem; }
+
+  /* ---- Tables ---- */
+  .table-wrap { overflow-x: auto; margin-bottom: 1.3rem; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.91rem;
+  }
+
+  thead tr { background: #1a3a6a; color: #dce8f8; }
+  thead th {
+    padding: 0.55rem 0.75rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.83rem;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+  thead th.are { background: #1a6a3a; }
+  thead th.ere { background: #1a4a8a; }
+  thead th.ire { background: #6a1a4a; }
+
+  tbody tr:nth-child(even) { background: #f0eee8; }
+  tbody tr:nth-child(odd) { background: #f9f7f3; }
+  tbody tr:hover { background: #e4e8f4; }
+
+  td {
+    padding: 0.48rem 0.75rem;
+    border-bottom: 1px solid #dddad0;
+    vertical-align: middle;
+  }
+
+  td.person { font-weight: 600; color: #2a2820; font-size: 0.9rem; white-space: nowrap; }
+  td.pronoun { font-size: 0.82rem; color: #7a7060; }
+  td.are { font-family: 'Lora', serif; color: #1a5a30; font-weight: 600; }
+  td.ere { font-family: 'Lora', serif; color: #1a3a7a; font-weight: 600; }
+  td.ire { font-family: 'Lora', serif; color: #5a1a4a; font-weight: 600; }
+  td.des { font-family: 'Lora', serif; font-size: 0.95rem; }
+  td.des-are { color: #1a5a30; font-weight: 600; }
+  td.des-ere { color: #1a3a7a; font-weight: 600; }
+  td.des-ire { color: #5a1a4a; font-weight: 600; }
+
+  /* contrast table for particolarità */
+  td.wrong { color: #b02020; text-decoration: line-through; font-family: 'Lora', serif; }
+  td.right  { color: #1a6a30; font-weight: 600; font-family: 'Lora', serif; }
+  td.rule   { font-size: 0.85rem; color: #5a5040; }
+
+  /* ---- Note box ---- */
+  .note {
+    background: #eef3fb;
+    border-left: 4px solid #4a7acc;
+    border-radius: 0 6px 6px 0;
+    padding: 0.65rem 1rem;
+    font-size: 0.9rem;
+    color: #2a3a5a;
+    margin: 0.7rem 0 1.1rem;
+  }
+  .note strong { color: #1a3a7a; }
+
+  .warn {
+    background: #fdf6e8;
+    border-left: 4px solid #c09020;
+    border-radius: 0 6px 6px 0;
+    padding: 0.65rem 1rem;
+    font-size: 0.9rem;
+    color: #5a4010;
+    margin: 0.7rem 0 1.1rem;
+  }
+
+  /* ---- Conjugation trio ---- */
+  .trio {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.4rem;
+  }
+  @media (max-width: 600px) { .trio { grid-template-columns: 1fr; } }
+
+  .trio-card {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #d8d4c8;
+  }
+  .trio-head {
+    padding: 0.5rem 0.75rem;
+    font-family: 'Lora', serif;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  .trio-head.are { background: #1a6a3a; color: #d8f4e4; }
+  .trio-head.ere { background: #1a4a8a; color: #d0e4f8; }
+  .trio-head.ire { background: #6a1a4a; color: #f0d8ec; }
+  .trio-head span { font-size: 0.8rem; font-weight: 400; font-style: italic; display: block; opacity: 0.85; }
+
+  .trio-body { background: #f9f7f3; }
+  .trio-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.3rem 0.75rem;
+    border-bottom: 1px solid #e8e4da;
+    font-size: 0.92rem;
+  }
+  .trio-row:last-child { border-bottom: none; }
+  .trio-pro { color: #7a7060; font-size: 0.82rem; }
+  .trio-form.are { color: #1a5a30; font-weight: 600; font-family: 'Lora', serif; }
+  .trio-form.ere { color: #1a3a7a; font-weight: 600; font-family: 'Lora', serif; }
+  .trio-form.ire { color: #5a1a4a; font-weight: 600; font-family: 'Lora', serif; }
+
+  /* ---- isc card ---- */
+  .isc-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.2rem; }
+  @media (max-width: 500px) { .isc-wrap { grid-template-columns: 1fr; } }
+
+  .isc-card {
+    background: #f9f7f3;
+    border: 1px solid #d8d4c8;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .isc-head {
+    background: #6a1a4a;
+    color: #f0d8ec;
+    padding: 0.4rem 0.75rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+  .isc-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.3rem 0.75rem;
+    border-bottom: 1px solid #e8e4da;
+    font-size: 0.9rem;
+  }
+  .isc-row:last-child { border-bottom: none; }
+  .isc-pro { color: #7a7060; font-size: 0.82rem; }
+  .isc-form { font-family: 'Lora', serif; font-weight: 600; }
+  .isc-form.yes { color: #5a1a4a; }
+  .isc-form.no  { color: #9a8070; }
+  .isc-mark { font-size: 0.75rem; color: #5a1a4a; font-weight: 600; margin-left: 4px; }
+
+  /* ---- Summary box ---- */
+  .summary {
+    background: #1a3a6a;
+    color: #dce8f8;
+    border-radius: 8px;
+    padding: 1.2rem 1.4rem;
+    margin-top: 2.5rem;
+  }
+  .summary h4 {
+    font-family: 'Lora', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #b8d0f0;
+    margin-bottom: 0.8rem;
+    border-bottom: 1px solid #3a5a8a;
+    padding-bottom: 0.4rem;
+  }
+  .summary ol { margin-left: 1.2rem; }
+  .summary ol li { margin-bottom: 0.4rem; font-size: 0.93rem; }
+  .summary code {
+    background: #2a4a7a;
+    padding: 0.1rem 0.4rem;
+    border-radius: 3px;
+    font-family: monospace;
+    font-size: 0.88rem;
+    color: #a8d0f8;
+  }
+
+  @media print {
+    body { background: white; padding: 1rem; }
+    .trio, .isc-wrap { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div id="site-nav" style="background:#0f1422;padding:0.52rem 1.4rem;display:flex;align-items:center;gap:0.7rem;font-family:'Source Sans 3',sans-serif;font-size:0.82rem;border-bottom:1px solid #1e2c44;position:sticky;top:0;z-index:9999;box-shadow:0 2px 8px rgba(0,0,0,0.25)">
+  <a href="/" style="color:#70b8f8;text-decoration:none;font-weight:600;display:flex;align-items:center;gap:0.35rem;transition:opacity 0.2s" onmouseover="this.style.opacity=0.75" onmouseout="this.style.opacity=1">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#70b8f8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+    Inicio
+  </a>
+  <span style="color:#2a3a54">|</span>
+  <span style="color:#6878a0;letter-spacing:0.03em">Italiano Apuntes</span>
+</div>
+
+<div class="page">
+
+<h1 class="main-title">Verbi Regolari – Presente Indicativo</h1>
+<p class="main-subtitle">Verbos regulares · Presente de indicativo · Nivel A1–A2</p>
+
+<!-- ===================== ITALIANO ===================== -->
+<div class="lang-badge">🇮🇹 Italiano</div>
+
+<h2>Definizione</h2>
+<p>Il presente indicativo presenta l'azione come <strong>reale, oggettiva e sicura</strong>. Si usa per:</p>
+<ul>
+  <li>azioni che avvengono adesso</li>
+  <li>abitudini e routine</li>
+  <li>verità generali</li>
+</ul>
+
+<h2>Struttura del verbo</h2>
+<p>Ogni verbo si divide in <strong>radice + desinenza</strong>:</p>
+<div class="note"><strong>parlare</strong> → <em>parl-</em> (radice) + <em>-are</em> (desinenza infinito)</div>
+
+<h2>Le tre coniugazioni</h2>
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>Tipo</th>
+      <th class="are">1ª — -ARE</th>
+      <th class="ere">2ª — -ERE</th>
+      <th class="ire">3ª — -IRE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td class="pronoun">Esempio</td><td class="are">parlare</td><td class="ere">credere</td><td class="ire">dormire</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>Desinenze (terminazioni)</h2>
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>Persona</th>
+      <th>(yo / you...)</th>
+      <th class="are">-ARE</th>
+      <th class="ere">-ERE</th>
+      <th class="ire">-IRE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td class="person">io</td><td class="pronoun">yo</td><td class="des des-are">-o</td><td class="des des-ere">-o</td><td class="des des-ire">-o</td></tr>
+    <tr><td class="person">tu</td><td class="pronoun">tú</td><td class="des des-are">-i</td><td class="des des-ere">-i</td><td class="des des-ire">-i</td></tr>
+    <tr><td class="person">lui / lei</td><td class="pronoun">él / ella</td><td class="des des-are">-a</td><td class="des des-ere">-e</td><td class="des des-ire">-e</td></tr>
+    <tr><td class="person">noi</td><td class="pronoun">nosotros</td><td class="des des-are">-iamo</td><td class="des des-ere">-iamo</td><td class="des des-ire">-iamo</td></tr>
+    <tr><td class="person">voi</td><td class="pronoun">vosotros</td><td class="des des-are">-ate</td><td class="des des-ere">-ete</td><td class="des des-ire">-ite</td></tr>
+    <tr><td class="person">loro</td><td class="pronoun">ellos/as</td><td class="des des-are">-ano</td><td class="des des-ere">-ono</td><td class="des des-ire">-ono</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="note">
+  <strong>Osservazione:</strong> io / tu / noi sono identici nelle tre coniugazioni. Le differenze sono solo in lui/lei, voi e loro.
+</div>
+
+<h2>Verbi modello (coniugazione completa)</h2>
+
+<div class="trio">
+  <div class="trio-card">
+    <div class="trio-head are">parlare <span>hablar · 1ª -ARE</span></div>
+    <div class="trio-body">
+      <div class="trio-row"><span class="trio-pro">io</span><span class="trio-form are">parlo</span></div>
+      <div class="trio-row"><span class="trio-pro">tu</span><span class="trio-form are">parli</span></div>
+      <div class="trio-row"><span class="trio-pro">lui/lei</span><span class="trio-form are">parla</span></div>
+      <div class="trio-row"><span class="trio-pro">noi</span><span class="trio-form are">parliamo</span></div>
+      <div class="trio-row"><span class="trio-pro">voi</span><span class="trio-form are">parlate</span></div>
+      <div class="trio-row"><span class="trio-pro">loro</span><span class="trio-form are">parlano</span></div>
+    </div>
+  </div>
+  <div class="trio-card">
+    <div class="trio-head ere">credere <span>creer · 2ª -ERE</span></div>
+    <div class="trio-body">
+      <div class="trio-row"><span class="trio-pro">io</span><span class="trio-form ere">credo</span></div>
+      <div class="trio-row"><span class="trio-pro">tu</span><span class="trio-form ere">credi</span></div>
+      <div class="trio-row"><span class="trio-pro">lui/lei</span><span class="trio-form ere">crede</span></div>
+      <div class="trio-row"><span class="trio-pro">noi</span><span class="trio-form ere">crediamo</span></div>
+      <div class="trio-row"><span class="trio-pro">voi</span><span class="trio-form ere">credete</span></div>
+      <div class="trio-row"><span class="trio-pro">loro</span><span class="trio-form ere">credono</span></div>
+    </div>
+  </div>
+  <div class="trio-card">
+    <div class="trio-head ire">dormire <span>dormir · 3ª -IRE</span></div>
+    <div class="trio-body">
+      <div class="trio-row"><span class="trio-pro">io</span><span class="trio-form ire">dormo</span></div>
+      <div class="trio-row"><span class="trio-pro">tu</span><span class="trio-form ire">dormi</span></div>
+      <div class="trio-row"><span class="trio-pro">lui/lei</span><span class="trio-form ire">dorme</span></div>
+      <div class="trio-row"><span class="trio-pro">noi</span><span class="trio-form ire">dormiamo</span></div>
+      <div class="trio-row"><span class="trio-pro">voi</span><span class="trio-form ire">dormite</span></div>
+      <div class="trio-row"><span class="trio-pro">loro</span><span class="trio-form ire">dormono</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- -------- PARTICOLARITÀ -------- -->
+<h2>Particolarità della 1ª coniugazione (-ARE)</h2>
+
+<h3>1 · Verbi in -CARE / -GARE</h3>
+<p>Aggiungono <strong>H</strong> davanti a <em>E</em> o <em>I</em> per mantenere il suono duro della consonante.</p>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Verbo</th><th>Persona</th><th class="wrong" style="background:#f8e8e8;color:#8a2020">❌ Errato</th><th class="right" style="background:#e8f4ec;color:#1a5a2a">✔ Corretto</th><th>Nota</th></tr></thead>
+  <tbody>
+    <tr><td>giocare</td><td>tu</td><td class="wrong">gioci</td><td class="right">giochi</td><td class="rule">suono /k/ → +H</td></tr>
+    <tr><td>giocare</td><td>noi</td><td class="wrong">gioiamo</td><td class="right">giochiamo</td><td class="rule">suono /k/ → +H</td></tr>
+    <tr><td>pregare</td><td>tu</td><td class="wrong">pregi</td><td class="right">preghi</td><td class="rule">suono /g/ → +H</td></tr>
+    <tr><td>pagare</td><td>noi</td><td class="wrong">pagiamo</td><td class="right">paghiamo</td><td class="rule">suono /g/ → +H</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>2 · Verbi in -CIARE / -GIARE</h3>
+<p>La <strong>I cade</strong> davanti a <em>E</em> o <em>I</em> per evitare doppie vocali.</p>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Verbo</th><th>Persona</th><th style="background:#f8e8e8;color:#8a2020">❌ Errato</th><th style="background:#e8f4ec;color:#1a5a2a">✔ Corretto</th></tr></thead>
+  <tbody>
+    <tr><td>lanciare</td><td>tu</td><td class="wrong">lancii</td><td class="right">lanci</td></tr>
+    <tr><td>mangiare</td><td>noi</td><td class="wrong">mangiiamo</td><td class="right">mangiamo</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>3 · Verbi in -IARE</h3>
+<div class="warn">La <strong>I si mantiene solo se è accentata</strong>. Se non è accentata, cade.</div>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Verbo</th><th>I accentata?</th><th>tu</th><th>Regola</th></tr></thead>
+  <tbody>
+    <tr><td>avviare</td><td>✔ sì</td><td class="right">avvii</td><td class="rule">I tonica → si mantiene</td></tr>
+    <tr><td>studiare</td><td>✗ no</td><td class="right">studi</td><td class="rule">I atona → cade</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>4 · Verbi in -GNARE e -GLIARE</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Tipo</th><th>Verbo</th><th>Forma</th><th>Nota</th></tr></thead>
+  <tbody>
+    <tr><td>-GNARE</td><td>insegnare</td><td class="right">insegniamo</td><td class="rule">noi → la I si mantiene (-iamo)</td></tr>
+    <tr><td>-GLIARE</td><td>sbagliare</td><td class="right">sbagli</td><td class="rule">tu → la I cade (evita -ii)</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- -------- 2ª / 3ª -------- -->
+<h2>2ª coniugazione (-ERE)</h2>
+<div class="note">Generalmente regolare nel presente. I cambi di suono (c/g) non alterano la struttura grammaticale.</div>
+
+<h2>3ª coniugazione (-IRE) · Verbi con -ISC-</h2>
+<p>Un gruppo di verbi inserisce <strong>-ISC-</strong> tra radice e desinenza per <em>io, tu, lui/lei</em> e <em>loro</em> (non in <em>noi</em> e <em>voi</em>).</p>
+<div class="note">Non sono irregolari — è una <strong>sottoregola sistematica</strong> della 3ª coniugazione.</div>
+
+<div class="isc-wrap">
+  <div class="isc-card">
+    <div class="isc-head">preferire · con -ISC-</div>
+    <div class="isc-row"><span class="isc-pro">io</span><span class="isc-form yes">prefer<strong>isc</strong>o <span class="isc-mark">✔ ISC</span></span></div>
+    <div class="isc-row"><span class="isc-pro">tu</span><span class="isc-form yes">prefer<strong>isc</strong>i <span class="isc-mark">✔ ISC</span></span></div>
+    <div class="isc-row"><span class="isc-pro">lui/lei</span><span class="isc-form yes">prefer<strong>isc</strong>e <span class="isc-mark">✔ ISC</span></span></div>
+    <div class="isc-row"><span class="isc-pro">noi</span><span class="isc-form no">preferiamo</span></div>
+    <div class="isc-row"><span class="isc-pro">voi</span><span class="isc-form no">preferite</span></div>
+    <div class="isc-row"><span class="isc-pro">loro</span><span class="isc-form yes">prefer<strong>isc</strong>ono <span class="isc-mark">✔ ISC</span></span></div>
+  </div>
+  <div class="isc-card" style="border:1px solid #d8d4c8; border-radius:8px; overflow:hidden;">
+    <div class="isc-head" style="background:#3a4a6a; color:#d0dcf0;">Otros verbos con -ISC-</div>
+    <div style="padding: 0.5rem 0.75rem; background:#f9f7f3;">
+      <div style="font-size:0.9rem; margin-bottom:0.4rem; border-bottom:1px solid #e0dcd0; padding-bottom:0.4rem;"><span style="font-family:'Lora',serif;font-weight:600;color:#5a1a4a">capire</span> <span style="color:#7a7060;font-size:0.82rem">entender</span></div>
+      <div style="font-size:0.9rem; margin-bottom:0.4rem; border-bottom:1px solid #e0dcd0; padding-bottom:0.4rem;"><span style="font-family:'Lora',serif;font-weight:600;color:#5a1a4a">finire</span> <span style="color:#7a7060;font-size:0.82rem">terminar</span></div>
+      <div style="font-size:0.9rem; margin-bottom:0.4rem; border-bottom:1px solid #e0dcd0; padding-bottom:0.4rem;"><span style="font-family:'Lora',serif;font-weight:600;color:#5a1a4a">pulire</span> <span style="color:#7a7060;font-size:0.82rem">limpiar</span></div>
+      <div style="font-size:0.9rem; margin-bottom:0.4rem; border-bottom:1px solid #e0dcd0; padding-bottom:0.4rem;"><span style="font-family:'Lora',serif;font-weight:600;color:#5a1a4a">costruire</span> <span style="color:#7a7060;font-size:0.82rem">construir</span></div>
+      <div style="font-size:0.9rem;"><span style="font-family:'Lora',serif;font-weight:600;color:#5a1a4a">guarire</span> <span style="color:#7a7060;font-size:0.82rem">sanar</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== ESPAÑOL ===================== -->
+<div class="lang-badge" style="margin-top:3rem">🇪🇸 Español</div>
+
+<h2>Definición</h2>
+<p>El presente de indicativo expresa acciones <strong>reales y seguras</strong>: acciones actuales, hábitos y verdades generales.</p>
+
+<h2>Estructura</h2>
+<p>Todo verbo = <strong>raíz + terminación</strong>. Para conjugar: se quita el infinitivo y se agrega la desinencia que corresponde a cada persona.</p>
+<div class="note">
+  <strong>parlare</strong> → parl- + <em>-o</em> → <strong>parlo</strong> (yo hablo)
+</div>
+
+<h2>Resumen de terminaciones</h2>
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr><th>Persona</th><th class="are">-ARE</th><th class="ere">-ERE</th><th class="ire">-IRE</th></tr>
+  </thead>
+  <tbody>
+    <tr><td class="person">io</td><td class="des des-are">-o</td><td class="des des-ere">-o</td><td class="des des-ire">-o</td></tr>
+    <tr><td class="person">tu</td><td class="des des-are">-i</td><td class="des des-ere">-i</td><td class="des des-ire">-i</td></tr>
+    <tr><td class="person">lui/lei</td><td class="des des-are">-a</td><td class="des des-ere">-e</td><td class="des des-ire">-e</td></tr>
+    <tr><td class="person">noi</td><td class="des des-are">-iamo</td><td class="des des-ere">-iamo</td><td class="des des-ire">-iamo</td></tr>
+    <tr><td class="person">voi</td><td class="des des-are">-ate</td><td class="des des-ere">-ete</td><td class="des des-ire">-ite</td></tr>
+    <tr><td class="person">loro</td><td class="des des-are">-ano</td><td class="des des-ere">-ono</td><td class="des des-ire">-ono</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>Reglas ortográficas (resumen)</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Tipo de verbo</th><th>Regla</th><th>Ejemplo</th></tr></thead>
+  <tbody>
+    <tr><td>-care / -gare</td><td class="rule">agregan <strong>H</strong> ante E / I</td><td class="are">giochi, paghiamo</td></tr>
+    <tr><td>-ciare / -giare</td><td class="rule">pierden la <strong>I</strong> ante E / I</td><td class="are">lanci, mangiamo</td></tr>
+    <tr><td>-iare (I no acentuada)</td><td class="rule">la <strong>I cae</strong> en tu / noi</td><td class="are">studi, studiamo</td></tr>
+    <tr><td>-iare (I acentuada)</td><td class="rule">la <strong>I se mantiene</strong></td><td class="are">avvii</td></tr>
+    <tr><td>-gliare</td><td class="rule">pierde <strong>I</strong> en tu</td><td class="are">sbagli</td></tr>
+    <tr><td>-gnare</td><td class="rule">mantiene <strong>I</strong> en noi</td><td class="are">insegniamo</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ---- SUMMARY ---- -->
+<div class="summary">
+  <h4>Clave para conjugar cualquier verbo regular</h4>
+  <ol>
+    <li>Identificar la terminación: <code>-ARE</code> / <code>-ERE</code> / <code>-IRE</code></li>
+    <li>Cortar el infinitivo → obtener la raíz</li>
+    <li>Agregar la desinencia según la persona</li>
+    <li>Revisar si aplica alguna regla ortográfica</li>
+    <li>Para verbos en -IRE: verificar si usa <code>-ISC-</code></li>
+  </ol>
+</div>
+
+<p style="margin-top:1.5rem; font-size:0.8rem; color:#9a8060; text-align:center;">Verbi regolari · Presente indicativo · A1–A2</p>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verbos Irregulares Italiano A1</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: #faf8f4;
+    color: #2c2a24;
+    padding: 2rem 1rem;
+    line-height: 1.6;
+  }
+
+  .page { max-width: 860px; margin: 0 auto; }
+
+  h1 {
+    font-family: 'Lora', serif;
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: #1a180f;
+    border-bottom: 2px solid #b8860b;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
+  }
+  h1 .it { font-style: italic; color: #6b5800; font-size: 1.1rem; display: block; font-weight: 400; margin-top: 0.2rem; }
+
+  h2 {
+    font-family: 'Lora', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1a180f;
+    margin: 2rem 0 0.4rem;
+    border-left: 4px solid #b8860b;
+    padding-left: 0.7rem;
+  }
+  h2 .it { font-style: italic; color: #6b5800; font-weight: 400; font-size: 1rem; margin-left: 0.4rem; }
+
+  h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #5a4a00;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 1.6rem 0 0.6rem;
+  }
+
+  p {
+    margin-bottom: 0.8rem;
+    font-size: 0.97rem;
+    color: #3a3828;
+  }
+
+  ul { margin: 0.5rem 0 1rem 1.4rem; }
+  ul li { font-size: 0.97rem; margin-bottom: 0.3rem; }
+  ul li strong { color: #7a5c00; }
+
+  .note {
+    background: #fffbee;
+    border: 1px solid #e0c97a;
+    border-radius: 6px;
+    padding: 0.7rem 1rem;
+    font-size: 0.9rem;
+    color: #5a4500;
+    margin-bottom: 1rem;
+  }
+
+  .table-wrap { overflow-x: auto; margin-bottom: 1.2rem; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    min-width: 500px;
+  }
+
+  thead tr {
+    background: #3d3200;
+    color: #f5e9c0;
+  }
+  thead th {
+    padding: 0.55rem 0.6rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.83rem;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+  thead th:first-child { border-radius: 4px 0 0 0; }
+  thead th:last-child { border-radius: 0 4px 0 0; }
+
+  thead th.plural { background: #5c4b00; }
+
+  tbody tr:nth-child(even) { background: #f5f0e4; }
+  tbody tr:nth-child(odd) { background: #faf8f2; }
+  tbody tr:hover { background: #f0e8cc; }
+
+  tbody td {
+    padding: 0.48rem 0.6rem;
+    border-bottom: 1px solid #e0d8c0;
+    vertical-align: top;
+  }
+
+  td.inf {
+    font-family: 'Lora', serif;
+    font-weight: 600;
+    color: #1a180f;
+    white-space: nowrap;
+  }
+  td.inf .it { display: block; font-style: italic; font-weight: 400; font-size: 0.82rem; color: #6b5800; }
+  td.num { color: #9a8050; font-size: 0.82rem; padding-right: 0.3rem; }
+
+  td.conj { font-family: 'Lora', serif; color: #1a2f5a; }
+  td.plural { background: #eef2fa !important; font-family: 'Lora', serif; color: #1a2f5a; font-weight: 600; }
+  tbody tr:hover td.plural { background: #dce4f5 !important; }
+
+  .aux-table thead th { text-align: center; }
+  .aux-table td { text-align: center; }
+  .aux-table td:first-child { text-align: left; }
+  .aux-table td.conj, .aux-table td.plural { font-size: 1rem; }
+
+  .header-block { margin-bottom: 2rem; }
+  .part-title {
+    display: inline-block;
+    background: #3d3200;
+    color: #f5e9c0;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .legend {
+    display: flex;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+    font-size: 0.82rem;
+    margin: 0.5rem 0 1.2rem;
+    color: #5a4a00;
+  }
+  .legend span { display: flex; align-items: center; gap: 0.4rem; }
+  .swatch { width: 14px; height: 14px; border-radius: 3px; display: inline-block; }
+  .swatch-s { background: #faf8f2; border: 1px solid #c8c0a0; }
+  .swatch-p { background: #eef2fa; border: 1px solid #b0bcd8; }
+
+  @media print {
+    body { background: white; padding: 1rem; }
+    .table-wrap { overflow: visible; }
+    table { min-width: unset; }
+    tr { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div id="site-nav" style="background:#0f1422;padding:0.52rem 1.4rem;display:flex;align-items:center;gap:0.7rem;font-family:'Source Sans 3',sans-serif;font-size:0.82rem;border-bottom:1px solid #1e2c44;position:sticky;top:0;z-index:9999;box-shadow:0 2px 8px rgba(0,0,0,0.25)">
+  <a href="/" style="color:#70b8f8;text-decoration:none;font-weight:600;display:flex;align-items:center;gap:0.35rem;transition:opacity 0.2s" onmouseover="this.style.opacity=0.75" onmouseout="this.style.opacity=1">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#70b8f8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+    Inicio
+  </a>
+  <span style="color:#2a3a54">|</span>
+  <span style="color:#6878a0;letter-spacing:0.03em">Italiano Apuntes</span>
+</div>
+
+<div class="page">
+
+<div class="header-block">
+  <h1>
+    Verbos Irregulares Italiano — A1
+    <span class="it">Verbi Irregolari Italiano — A1</span>
+  </h1>
+</div>
+
+<div class="legend">
+  <span><span class="swatch swatch-s"></span> Singular (io / tu / lui-lei)</span>
+  <span><span class="swatch swatch-p"></span> Plural (noi / voi / loro)</span>
+</div>
+
+<!-- =================== PARTE 1 =================== -->
+<div class="part-title">Parte 1 · Introduzione e Verbi Ausiliari</div>
+
+<h2>1. El sistema verbal <span class="it">Il Sistema Verbale</span></h2>
+<p>En italiano, los verbos se agrupan en tres familias según su terminación en infinitivo:</p>
+<ul>
+  <li><strong>1ª conjugación:</strong> <em>-ARE</em> (es. <em>parlare</em>)</li>
+  <li><strong>2ª conjugación:</strong> <em>-ERE</em> (es. <em>leggere</em>)</li>
+  <li><strong>3ª conjugación:</strong> <em>-IRE</em> (es. <em>partire</em>)</li>
+</ul>
+
+<h2>2. ¿Qué es un verbo irregular? <span class="it">Cos'è un verbo irregolare?</span></h2>
+<p>Un verbo es irregular cuando no sigue el patrón estándar de su grupo. Puede cambiar su <strong>raíz</strong> (la parte inicial) o su <strong>desinencia</strong> (el final). En el nivel A1, estos son los verbos más importantes porque se usan constantemente para sobrevivir en Italia.</p>
+
+<h2>3. Verbos auxiliares <span class="it">Gli Ausiliari</span></h2>
+<p>Son la base de todo el idioma. Se usan para identificar, describir estados y posesión.</p>
+
+<div class="table-wrap">
+<table class="aux-table">
+  <thead>
+    <tr>
+      <th>Persona</th>
+      <th>ESSERE<br><span style="font-weight:400;font-style:italic">ser / estar</span></th>
+      <th>AVERE<br><span style="font-weight:400;font-style:italic">haber / tener</span></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>io</strong> (yo)</td><td class="conj">sono</td><td class="conj">ho</td></tr>
+    <tr><td><strong>tu</strong> (tú)</td><td class="conj">sei</td><td class="conj">hai</td></tr>
+    <tr><td><strong>lui/lei</strong> (él/ella)</td><td class="conj">è</td><td class="conj">ha</td></tr>
+    <tr><td><strong>noi</strong> (nosotros)</td><td class="plural">siamo</td><td class="plural">abbiamo</td></tr>
+    <tr><td><strong>voi</strong> (vosotros)</td><td class="plural">siete</td><td class="plural">avete</td></tr>
+    <tr><td><strong>loro</strong> (ellos/as)</td><td class="plural">sono</td><td class="plural">hanno</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- =================== PARTE 2 =================== -->
+<div class="part-title" style="margin-top:2rem">Parte 2 · I 40 Verbi Irregolari</div>
+<p>Verbos esenciales organizados por «familias de cambio» para facilitar la memorización.</p>
+
+<h3>A — Verbos «estrella» (los más usados)</h3>
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>#</th><th>Infinitivo</th>
+      <th>io</th><th>tu</th><th>lui/lei</th>
+      <th class="plural">noi</th><th class="plural">voi</th><th class="plural">loro</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td class="num">1</td><td class="inf">Andare<span class="it">ir</span></td><td class="conj">vado</td><td class="conj">vai</td><td class="conj">va</td><td class="plural">andiamo</td><td class="plural">andate</td><td class="plural">vanno</td></tr>
+    <tr><td class="num">2</td><td class="inf">Fare<span class="it">hacer</span></td><td class="conj">faccio</td><td class="conj">fai</td><td class="conj">fa</td><td class="plural">facciamo</td><td class="plural">fate</td><td class="plural">fanno</td></tr>
+    <tr><td class="num">3</td><td class="inf">Venire<span class="it">venir</span></td><td class="conj">vengo</td><td class="conj">vieni</td><td class="conj">viene</td><td class="plural">veniamo</td><td class="plural">venite</td><td class="plural">vengono</td></tr>
+    <tr><td class="num">4</td><td class="inf">Dire<span class="it">decir</span></td><td class="conj">dico</td><td class="conj">dici</td><td class="conj">dice</td><td class="plural">diciamo</td><td class="plural">dite</td><td class="plural">dicono</td></tr>
+    <tr><td class="num">5</td><td class="inf">Stare<span class="it">estar / sentirse</span></td><td class="conj">sto</td><td class="conj">stai</td><td class="conj">sta</td><td class="plural">stiamo</td><td class="plural">state</td><td class="plural">stanno</td></tr>
+    <tr><td class="num">6</td><td class="inf">Dare<span class="it">dar</span></td><td class="conj">do</td><td class="conj">dai</td><td class="conj">dà</td><td class="plural">diamo</td><td class="plural">date</td><td class="plural">danno</td></tr>
+    <tr><td class="num">7</td><td class="inf">Bere<span class="it">beber</span></td><td class="conj">bevo</td><td class="conj">bevi</td><td class="conj">beve</td><td class="plural">beviamo</td><td class="plural">bevete</td><td class="plural">bevono</td></tr>
+    <tr><td class="num">8</td><td class="inf">Uscire<span class="it">salir</span></td><td class="conj">esco</td><td class="conj">esci</td><td class="conj">esce</td><td class="plural">usciamo</td><td class="plural">uscite</td><td class="plural">escono</td></tr>
+    <tr><td class="num">9</td><td class="inf">Sapere<span class="it">saber</span></td><td class="conj">so</td><td class="conj">sai</td><td class="conj">sa</td><td class="plural">sappiamo</td><td class="plural">sapete</td><td class="plural">sanno</td></tr>
+    <tr><td class="num">10</td><td class="inf">Salire<span class="it">subir</span></td><td class="conj">salgo</td><td class="conj">sali</td><td class="conj">sale</td><td class="plural">saliamo</td><td class="plural">salite</td><td class="plural">salgono</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>B — Verbos modales (clave para pedir cosas)</h3>
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>#</th><th>Infinitivo</th>
+      <th>io</th><th>tu</th><th>lui/lei</th>
+      <th class="plural">noi</th><th class="plural">voi</th><th class="plural">loro</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td class="num">11</td><td class="inf">Potere<span class="it">poder</span></td><td class="conj">posso</td><td class="conj">puoi</td><td class="conj">può</td><td class="plural">possiamo</td><td class="plural">potete</td><td class="plural">possono</td></tr>
+    <tr><td class="num">12</td><td class="inf">Volere<span class="it">querer</span></td><td class="conj">voglio</td><td class="conj">vuoi</td><td class="conj">vuole</td><td class="plural">vogliamo</td><td class="plural">volete</td><td class="plural">vogliono</td></tr>
+    <tr><td class="num">13</td><td class="inf">Dovere<span class="it">deber</span></td><td class="conj">devo</td><td class="conj">devi</td><td class="conj">deve</td><td class="plural">dobbiamo</td><td class="plural">dovete</td><td class="plural">devono</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>C — Verbos con "G" o raíz en -GG- / -CC-</h3>
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>#</th><th>Infinitivo</th>
+      <th>io</th><th>tu</th><th>lui/lei</th>
+      <th class="plural">noi</th><th class="plural">voi</th><th class="plural">loro</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td class="num">14</td><td class="inf">Rimanere<span class="it">quedarse</span></td><td class="conj">rimango</td><td class="conj">rimani</td><td class="conj">rimane</td><td class="plural">rimaniamo</td><td class="plural">rimanete</td><td class="plural">rimangono</td></tr>
+    <tr><td class="num">15</td><td class="inf">Tenere<span class="it">tener / sujetar</span></td><td class="conj">tengo</td><td class="conj">tieni</td><td class="conj">tiene</td><td class="plural">teniamo</td><td class="plural">tenete</td><td class="plural">tengono</td></tr>
+    <tr><td class="num">16</td><td class="inf">Scegliere<span class="it">elegir</span></td><td class="conj">scelgo</td><td class="conj">scegli</td><td class="conj">sceglie</td><td class="plural">scegliamo</td><td class="plural">scegliete</td><td class="plural">scelgono</td></tr>
+    <tr><td class="num">17</td><td class="inf">Togliere<span class="it">quitar</span></td><td class="conj">tolgo</td><td class="conj">togli</td><td class="conj">toglie</td><td class="plural">togliamo</td><td class="plural">togliete</td><td class="plural">tolgono</td></tr>
+    <tr><td class="num">18</td><td class="inf">Porre<span class="it">poner</span></td><td class="conj">pongo</td><td class="conj">poni</td><td class="conj">pone</td><td class="plural">poniamo</td><td class="plural">ponete</td><td class="plural">pongono</td></tr>
+    <tr><td class="num">19</td><td class="inf">Tradurre<span class="it">traducir</span></td><td class="conj">traduco</td><td class="conj">traduci</td><td class="conj">traduce</td><td class="plural">traduciamo</td><td class="plural">traducete</td><td class="plural">traducono</td></tr>
+    <tr><td class="num">20</td><td class="inf">Trarre<span class="it">extraer</span></td><td class="conj">traggo</td><td class="conj">trai</td><td class="conj">trae</td><td class="plural">traiamo</td><td class="plural">traete</td><td class="plural">traggono</td></tr>
+    <tr><td class="num">21</td><td class="inf">Piacere<span class="it">gustar</span></td><td class="conj">piaccio</td><td class="conj">piaci</td><td class="conj">piace</td><td class="plural">piacciamo</td><td class="plural">piacete</td><td class="plural">piacciono</td></tr>
+    <tr><td class="num">22</td><td class="inf">Tacere<span class="it">callar</span></td><td class="conj">taccio</td><td class="conj">taci</td><td class="conj">tace</td><td class="plural">tacciamo</td><td class="plural">tacete</td><td class="plural">tacciono</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- =================== PARTE 3 =================== -->
+<div class="part-title" style="margin-top:2rem">Parte 3 · Continuazione e Regole d'Oro</div>
+
+<h3>D — Verbos con cambios vocálicos y otros</h3>
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>#</th><th>Infinitivo</th>
+      <th>io</th><th>tu</th><th>lui/lei</th>
+      <th class="plural">noi</th><th class="plural">voi</th><th class="plural">loro</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td class="num">23</td><td class="inf">Morire<span class="it">morir</span></td><td class="conj">muoio</td><td class="conj">muori</td><td class="conj">muore</td><td class="plural">moriamo</td><td class="plural">morite</td><td class="plural">muoiono</td></tr>
+    <tr><td class="num">24</td><td class="inf">Sedere<span class="it">sentarse</span></td><td class="conj">siedo</td><td class="conj">siedi</td><td class="conj">siede</td><td class="plural">sediamo</td><td class="plural">sedete</td><td class="plural">siedono</td></tr>
+    <tr><td class="num">25</td><td class="inf">Riuscire<span class="it">lograr</span></td><td class="conj">riesco</td><td class="conj">riesci</td><td class="conj">riesce</td><td class="plural">riusciamo</td><td class="plural">riuscite</td><td class="plural">riescono</td></tr>
+    <tr><td class="num">26</td><td class="inf">Apparire<span class="it">aparecer</span></td><td class="conj">appaio</td><td class="conj">appari</td><td class="conj">appare</td><td class="plural">appariamo</td><td class="plural">apparite</td><td class="plural">appaiono</td></tr>
+    <tr><td class="num">27</td><td class="inf">Spegnere<span class="it">apagar</span></td><td class="conj">spengo</td><td class="conj">spegni</td><td class="conj">spegne</td><td class="plural">spegniamo</td><td class="plural">spegnete</td><td class="plural">spengono</td></tr>
+    <tr><td class="num">28</td><td class="inf">Proporre<span class="it">proponer</span></td><td class="conj">propongo</td><td class="conj">proponi</td><td class="conj">propone</td><td class="plural">proponiamo</td><td class="plural">proponete</td><td class="plural">propongono</td></tr>
+    <tr><td class="num">29</td><td class="inf">Compiere<span class="it">cumplir</span></td><td class="conj">compio</td><td class="conj">compi</td><td class="conj">compie</td><td class="plural">compiamo</td><td class="plural">compite</td><td class="plural">compiono</td></tr>
+    <tr><td class="num">30</td><td class="inf">Valere<span class="it">valer</span></td><td class="conj">valgo</td><td class="conj">vali</td><td class="conj">vale</td><td class="plural">valiamo</td><td class="plural">valete</td><td class="plural">valgono</td></tr>
+    <tr><td class="num">31</td><td class="inf">Dolere<span class="it">doler</span></td><td class="conj">dolgo</td><td class="conj">duoli</td><td class="conj">duole</td><td class="plural">doliamo</td><td class="plural">dolete</td><td class="plural">dolgono</td></tr>
+    <tr><td class="num">32</td><td class="inf">Sciogliere<span class="it">disolver</span></td><td class="conj">sciolgo</td><td class="conj">sciogli</td><td class="conj">scioglie</td><td class="plural">sciogliamo</td><td class="plural">sciogliete</td><td class="plural">sciolgono</td></tr>
+    <tr><td class="num">33</td><td class="inf">Cogliere<span class="it">recoger</span></td><td class="conj">colgo</td><td class="conj">cogli</td><td class="conj">coglie</td><td class="plural">cogliamo</td><td class="plural">cogliete</td><td class="plural">colgono</td></tr>
+    <tr><td class="num">34</td><td class="inf">Cuocere<span class="it">cocinar</span></td><td class="conj">cuocio</td><td class="conj">cuoci</td><td class="conj">cuoce</td><td class="plural">cuociamo</td><td class="plural">cuocete</td><td class="plural">cuociono</td></tr>
+    <tr><td class="num">35</td><td class="inf">Mantenere<span class="it">mantener</span></td><td class="conj">mantengo</td><td class="conj">mantieni</td><td class="conj">mantiene</td><td class="plural">manteniamo</td><td class="plural">mantenete</td><td class="plural">mantengono</td></tr>
+    <tr><td class="num">36</td><td class="inf">Ottenere<span class="it">obtener</span></td><td class="conj">ottengo</td><td class="conj">ottieni</td><td class="conj">ottiene</td><td class="plural">otteniamo</td><td class="plural">ottenete</td><td class="plural">ottengono</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>E — Irregularidades gráficas (mantenimiento de sonido)</h3>
+<div class="note">En estos verbos se añade una <strong>«h»</strong> en <em>tu</em> y <em>noi</em> para mantener el sonido fuerte de la «g» o «c».</div>
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>#</th><th>Infinitivo</th>
+      <th>io</th><th>tu</th><th>lui/lei</th>
+      <th class="plural">noi</th><th class="plural">voi</th><th class="plural">loro</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td class="num">37</td><td class="inf">Giocare<span class="it">jugar</span></td><td class="conj">gioco</td><td class="conj">giochi</td><td class="conj">gioca</td><td class="plural">giochiamo</td><td class="plural">giocate</td><td class="plural">giocano</td></tr>
+    <tr><td class="num">38</td><td class="inf">Pagare<span class="it">pagar</span></td><td class="conj">pago</td><td class="conj">paghi</td><td class="conj">paga</td><td class="plural">paghiamo</td><td class="plural">pagate</td><td class="plural">pagano</td></tr>
+    <tr><td class="num">39</td><td class="inf">Cercare<span class="it">buscar</span></td><td class="conj">cerco</td><td class="conj">cerchi</td><td class="conj">cerca</td><td class="plural">cerchiamo</td><td class="plural">cercate</td><td class="plural">cercano</td></tr>
+    <tr><td class="num">40</td><td class="inf">Spiegare<span class="it">explicar</span></td><td class="conj">spiego</td><td class="conj">spieghi</td><td class="conj">spiega</td><td class="plural">spieghiamo</td><td class="plural">spiegate</td><td class="plural">spiegano</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p style="margin-top:2rem; font-size:0.82rem; color:#9a8060; text-align:center;">40 verbos · Nivel A1 · Conjugación presente indicativo completa</p>
+
+</div>
+</body>
+</html>

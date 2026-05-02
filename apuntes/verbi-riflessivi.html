@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verbi Riflessivi, Reciproci e Fraseologici</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: #f6f4f0;
+    color: #24221a;
+    padding: 2rem 1rem;
+    line-height: 1.65;
+  }
+
+  .page { max-width: 940px; margin: 0 auto; }
+
+  /* ---- COVER ---- */
+  .cover { border-left: 5px solid #1a6a5a; padding-left: 1.2rem; margin-bottom: 2.5rem; }
+  .cover h1 { font-family:'Lora',serif; font-size:1.9rem; font-weight:600; color:#10100a; line-height:1.2; }
+  .cover .sub { font-size:0.92rem; color:#4a5040; margin-top:0.4rem; font-style:italic; }
+  .cover .tags { display:flex; gap:0.5rem; margin-top:0.7rem; flex-wrap:wrap; }
+  .tag { padding:0.15rem 0.6rem; border-radius:4px; font-size:0.78rem; font-weight:600; letter-spacing:0.05em; }
+  .tag-teal  { background:#1a6a5a; color:#c8f0e8; }
+  .tag-blue  { background:#1a4a8a; color:#d8e8f8; }
+  .tag-amber { background:#7a4a00; color:#f8e8c0; }
+  .tag-rose  { background:#7a1a4a; color:#f8d8ec; }
+
+  /* ---- LANG BADGE ---- */
+  .lang-badge { display:inline-flex; align-items:center; gap:0.5rem; padding:0.28rem 0.85rem; border-radius:4px; font-size:0.8rem; font-weight:600; letter-spacing:0.07em; text-transform:uppercase; margin:2.5rem 0 1rem; }
+  .lang-it { background:#1a3a1a; color:#c8e8c0; }
+  .lang-es { background:#3a1a1a; color:#e8c8c0; }
+
+  /* ---- HEADINGS ---- */
+  h2 { font-family:'Lora',serif; font-size:1.18rem; font-weight:600; color:#10100a; border-left:4px solid #1a6a5a; padding-left:0.75rem; margin:2rem 0 0.7rem; }
+  h3 { font-size:0.88rem; font-weight:600; color:#1a6a5a; text-transform:uppercase; letter-spacing:0.09em; margin:1.5rem 0 0.5rem; display:flex; align-items:center; gap:0.6rem; }
+  h3::after { content:''; flex:1; height:1px; background:#d0ccc0; }
+
+  p { margin-bottom:0.7rem; font-size:0.95rem; }
+  ul { margin:0.3rem 0 0.9rem 1.3rem; }
+  ul li { font-size:0.94rem; margin-bottom:0.35rem; }
+
+  /* ---- BOXES ---- */
+  .note  { background:#e8f6f2; border-left:4px solid #1a6a5a; border-radius:0 6px 6px 0; padding:0.65rem 1rem; font-size:0.9rem; color:#0a3028; margin:0.6rem 0 1rem; }
+  .note strong { color:#0a5040; }
+  .warn  { background:#fdf4e4; border-left:4px solid #b07820; border-radius:0 6px 6px 0; padding:0.65rem 1rem; font-size:0.9rem; color:#5a3800; margin:0.6rem 0 1rem; }
+  .warn strong { color:#8a5200; }
+  .ok    { background:#e8f4f0; border-left:4px solid #1a7a5a; border-radius:0 6px 6px 0; padding:0.65rem 1rem; font-size:0.9rem; color:#0a3a28; margin:0.6rem 0 1rem; }
+  .tip   { background:#f4e8f8; border-left:4px solid #7a1a8a; border-radius:0 6px 6px 0; padding:0.65rem 1rem; font-size:0.9rem; color:#3a0a4a; margin:0.6rem 0 1rem; }
+  .tip strong { color:#6a0a7a; }
+
+  /* ---- TABLES ---- */
+  .table-wrap { overflow-x:auto; margin-bottom:1.2rem; }
+  table { width:100%; border-collapse:collapse; font-size:0.9rem; }
+  thead tr { background:#0a2018; color:#d0ece4; }
+  thead th { padding:0.55rem 0.7rem; text-align:left; font-weight:600; font-size:0.82rem; letter-spacing:0.04em; white-space:nowrap; }
+  thead th.rif  { background:#1a6a5a; }
+  thead th.rec  { background:#1a4a8a; }
+  thead th.fra  { background:#7a4a00; }
+  thead th.bad  { background:#3a1a1a; }
+  thead th.good { background:#1a4a28; }
+
+  tbody tr:nth-child(even) { background:#ede9e2; }
+  tbody tr:nth-child(odd)  { background:#f6f4f0; }
+  tbody tr:hover { background:#e2ddd6; }
+
+  td { padding:0.46rem 0.7rem; border-bottom:1px solid #d8d2c8; vertical-align:middle; }
+  td.person { font-weight:600; color:#24221a; white-space:nowrap; }
+  td.pro     { font-size:0.8rem; color:#78706a; }
+  td.pron    { font-family:'Lora',serif; font-weight:600; color:#1a6a5a; font-size:1rem; text-align:center; }
+  td.rif     { font-family:'Lora',serif; font-weight:600; color:#1a6a5a; }
+  td.rec     { font-family:'Lora',serif; font-weight:600; color:#1a4a8a; }
+  td.fra     { font-family:'Lora',serif; font-weight:600; color:#8a5a00; }
+  td.inf     { font-family:'Lora',serif; color:#24221a; font-weight:600; }
+  td.ex      { font-size:0.88rem; color:#2a2018; }
+  td.tr      { font-size:0.84rem; color:#78685a; font-style:italic; }
+  td.right   { color:#1a6a28; font-family:'Lora',serif; font-weight:600; }
+  td.wrong   { color:#9a1a1a; text-decoration:line-through; font-family:'Lora',serif; }
+  td.rule    { font-size:0.84rem; color:#5a4a38; }
+
+  /* ---- PRONOMI BOX ---- */
+  .pron-table { display:grid; grid-template-columns:repeat(6,1fr); gap:0.5rem; margin-bottom:1.3rem; }
+  @media(max-width:580px){ .pron-table { grid-template-columns:repeat(3,1fr); } }
+  .pron-cell { border-radius:7px; overflow:hidden; border:2px solid #1a6a5a; text-align:center; }
+  .pron-top  { background:#1a6a5a; color:#c8f0e8; padding:0.3rem 0.2rem; font-family:'Lora',serif; font-size:1.15rem; font-weight:600; }
+  .pron-mid  { background:#f6f4f0; padding:0.28rem 0.2rem; font-size:0.78rem; color:#3a5a50; font-weight:600; }
+  .pron-bot  { background:#f0f8f5; padding:0.22rem 0.2rem; font-size:0.72rem; color:#78706a; font-style:italic; }
+
+  /* ---- FORMULA ---- */
+  .formula { background:#0a2018; color:#d8f0e8; border-radius:8px; padding:1.1rem 1.4rem; margin:0.8rem 0 1.2rem; text-align:center; }
+  .formula .line { font-family:'Lora',serif; font-size:1.1rem; margin-bottom:0.3rem; }
+  .formula .line span.p  { color:#6af0b8; font-weight:600; }
+  .formula .line span.v  { color:#f0e060; font-weight:600; }
+  .formula .line span.e  { color:#60d0f0; font-weight:600; }
+  .formula .line span.pl { color:#80a098; margin:0 0.5rem; }
+  .formula .sub { font-family:'Source Sans 3',sans-serif; font-size:0.82rem; color:#80a898; margin-top:0.4rem; font-style:italic; }
+
+  /* ---- TYPE CARDS ---- */
+  .type-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-bottom:1.4rem; }
+  @media(max-width:640px){ .type-grid { grid-template-columns:1fr; } }
+  .type-card { border-radius:8px; overflow:hidden; border:1px solid #c8c4ba; }
+  .type-head { padding:0.55rem 0.85rem; }
+  .type-head.rif { background:#1a6a5a; color:#c8f0e8; }
+  .type-head.rec { background:#1a4a8a; color:#d8e8f8; }
+  .type-head.fra { background:#7a4a00; color:#f8e8c0; }
+  .type-htitle { font-family:'Lora',serif; font-weight:600; font-size:1rem; }
+  .type-hsub   { font-size:0.78rem; font-style:italic; opacity:0.85; margin-top:0.1rem; }
+  .type-body   { background:#f6f4f0; padding:0.65rem 0.85rem; font-size:0.9rem; }
+  .type-body ul { margin-left:1rem; }
+  .type-body ul li { margin-bottom:0.3rem; }
+
+  /* ---- VERB CARDS ---- */
+  .verb-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-bottom:1.3rem; }
+  @media(max-width:620px){ .verb-grid { grid-template-columns:1fr; } }
+  .verb-grid2 { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin-bottom:1.3rem; }
+  @media(max-width:560px){ .verb-grid2 { grid-template-columns:1fr; } }
+  .verb-card { border-radius:8px; overflow:hidden; border:1px solid #c8c4ba; }
+  .verb-head { padding:0.5rem 0.85rem; }
+  .verb-head.rif { background:#1a6a5a; color:#c8f0e8; }
+  .verb-head.rec { background:#1a4a8a; color:#d8e8f8; }
+  .verb-head.fra { background:#7a4a00; color:#f8e8c0; }
+  .verb-head.mix { background:#5a1a6a; color:#ead8f8; }
+  .verb-htitle   { font-family:'Lora',serif; font-weight:600; font-size:1rem; }
+  .verb-hsub     { font-size:0.78rem; font-style:italic; opacity:0.85; }
+  .verb-body     { background:#f6f4f0; }
+  .verb-row      { display:flex; justify-content:space-between; align-items:baseline; padding:0.3rem 0.85rem; border-bottom:1px solid #e0dbd0; font-size:0.88rem; }
+  .verb-row:last-child { border-bottom:none; }
+  .verb-inf      { color:#3a3028; font-family:'Lora',serif; }
+  .verb-pron     { font-family:'Lora',serif; font-weight:600; color:#1a6a5a; font-size:0.82rem; }
+  .verb-pron.rec { color:#1a4a8a; }
+  .verb-pron.fra { color:#8a5a00; }
+  .verb-tr       { font-size:0.78rem; color:#98887a; font-style:italic; }
+
+  /* ---- CONJ CARD ---- */
+  .conj-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-bottom:1.3rem; }
+  @media(max-width:620px){ .conj-grid { grid-template-columns:1fr; } }
+  .conj-card { border-radius:8px; overflow:hidden; border:1px solid #c8c4ba; }
+  .conj-head { padding:0.5rem 0.85rem; }
+  .conj-head.rif { background:#1a6a5a; color:#c8f0e8; }
+  .conj-head.rec { background:#1a4a8a; color:#d8e8f8; }
+  .conj-head.fra { background:#7a4a00; color:#f8e8c0; }
+  .conj-htitle { font-family:'Lora',serif; font-weight:600; font-size:1rem; }
+  .conj-hsub   { font-size:0.78rem; font-style:italic; opacity:0.82; }
+  .conj-body   { background:#f6f4f0; }
+  .conj-row    { display:flex; justify-content:space-between; align-items:baseline; padding:0.3rem 0.85rem; border-bottom:1px solid #e0dbd0; font-size:0.88rem; }
+  .conj-row:last-child { border-bottom:none; }
+  .conj-pro    { color:#78706a; font-size:0.8rem; flex:0 0 55px; }
+  .conj-pron   { font-family:'Lora',serif; font-weight:600; }
+  .conj-pron.rif { color:#1a6a5a; }
+  .conj-pron.rec { color:#1a4a8a; }
+  .conj-pron.fra { color:#8a5a00; }
+  .conj-verb   { font-family:'Lora',serif; color:#24221a; }
+  .conj-plus   { color:#b0a898; font-size:0.8rem; margin:0 0.2rem; }
+
+  /* ---- EX GRID ---- */
+  .ex-grid { display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin-bottom:1.2rem; }
+  @media(max-width:540px){ .ex-grid { grid-template-columns:1fr; } }
+  .ex-card { background:#f6f4f0; border:1px solid #c8c4ba; border-radius:8px; padding:0.7rem 0.9rem; }
+  .ex-label { font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.5rem; padding-bottom:0.3rem; border-bottom:1px solid #e0dbd0; }
+  .ex-label.rif { color:#1a6a5a; }
+  .ex-label.rec { color:#1a4a8a; }
+  .ex-label.fra { color:#8a5a00; }
+  .ex-label.mix { color:#5a1a6a; }
+  .ex-item { margin-bottom:0.4rem; }
+  .ex-it { font-family:'Lora',serif; font-size:0.91rem; color:#10100a; font-weight:600; }
+  .ex-es { font-size:0.82rem; color:#78685a; font-style:italic; }
+
+  /* ---- CONTRAST ---- */
+  .contrast-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1.3rem; }
+  @media(max-width:560px){ .contrast-grid { grid-template-columns:1fr; } }
+  .contrast-card { border-radius:8px; overflow:hidden; border:1px solid #c8c4ba; }
+  .contrast-head { padding:0.45rem 0.8rem; font-size:0.8rem; font-weight:600; text-transform:uppercase; letter-spacing:0.06em; }
+  .contrast-head.rif { background:#1a6a5a; color:#c8f0e8; }
+  .contrast-head.nor { background:#2a3a2a; color:#c8e8c0; }
+  .contrast-body { background:#f6f4f0; padding:0.6rem 0.85rem; font-size:0.88rem; }
+  .contrast-body .ci { font-family:'Lora',serif; font-weight:600; color:#10100a; display:block; margin-bottom:0.15rem; }
+  .contrast-body .ct { font-size:0.8rem; color:#78685a; font-style:italic; }
+
+  /* ---- PASSATO BOX ---- */
+  .pass-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.7rem; margin-bottom:1.3rem; }
+  @media(max-width:600px){ .pass-grid { grid-template-columns:1fr; } }
+  .pass-card { border-radius:7px; overflow:hidden; border:1px solid #c8c4ba; }
+  .pass-head { padding:0.35rem 0.7rem; font-size:0.78rem; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; }
+  .pass-head.rif { background:#1a6a5a; color:#c8f0e8; }
+  .pass-head.rec { background:#1a4a8a; color:#d8e8f8; }
+  .pass-head.fra { background:#7a4a00; color:#f8e8c0; }
+  .pass-body { background:#f6f4f0; padding:0.5rem 0.7rem; font-size:0.85rem; }
+  .pass-body .pi { font-family:'Lora',serif; font-weight:600; color:#10100a; display:block; margin-bottom:0.15rem; }
+  .pass-body .pt { font-size:0.78rem; color:#78685a; font-style:italic; }
+
+  /* ---- SUMMARY ---- */
+  .summary { background:#0a2018; color:#d8e8e0; border-radius:8px; padding:1.3rem 1.5rem; margin-top:3rem; }
+  .summary h4 { font-family:'Lora',serif; font-size:1.05rem; color:#7af0c0; margin-bottom:1rem; border-bottom:1px solid #1a4030; padding-bottom:0.5rem; }
+  .sum-step { display:grid; grid-template-columns:28px 1fr; gap:0.5rem; margin-bottom:0.65rem; align-items:start; }
+  .sum-n { width:28px; height:28px; border-radius:50%; background:#1a6a5a; color:#c8f0e8; font-weight:600; font-size:0.88rem; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .sum-desc { font-size:0.9rem; color:#b0c8c0; padding-top:0.25rem; }
+  .sum-desc code { background:#0a3028; padding:0.1rem 0.4rem; border-radius:3px; font-family:monospace; font-size:0.85rem; color:#7af0c0; }
+  .sum-desc strong { color:#d8f0e8; }
+
+  @media print {
+    body { background:white; padding:1rem; }
+    .type-grid,.verb-grid,.verb-grid2,.conj-grid,.ex-grid,.pass-grid { page-break-inside:avoid; }
+  }
+</style>
+</head>
+<body>
+<div id="site-nav" style="background:#0f1422;padding:0.52rem 1.4rem;display:flex;align-items:center;gap:0.7rem;font-family:'Source Sans 3',sans-serif;font-size:0.82rem;border-bottom:1px solid #1e2c44;position:sticky;top:0;z-index:9999;box-shadow:0 2px 8px rgba(0,0,0,0.25)">
+  <a href="/" style="color:#70b8f8;text-decoration:none;font-weight:600;display:flex;align-items:center;gap:0.35rem;transition:opacity 0.2s" onmouseover="this.style.opacity=0.75" onmouseout="this.style.opacity=1">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#70b8f8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+    Inicio
+  </a>
+  <span style="color:#2a3a54">|</span>
+  <span style="color:#6878a0;letter-spacing:0.03em">Italiano Apuntes</span>
+</div>
+
+<div class="page">
+
+<!-- COVER -->
+<div class="cover">
+  <h1>Verbi Riflessivi, Reciproci<br>e Fraseologici</h1>
+  <p class="sub">Verbos reflexivos, recíprocos y fraseológicos · uso con pronombres · presente e passato prossimo</p>
+  <div class="tags">
+    <span class="tag tag-teal">A2</span>
+    <span class="tag tag-blue">Pronomi Riflessivi</span>
+    <span class="tag tag-amber">Fraseologici</span>
+    <span class="tag tag-rose">Essere al passato</span>
+  </div>
+</div>
+
+<div class="lang-badge lang-it">🇮🇹 Italiano</div>
+
+<!-- ===== TRE TIPI ===== -->
+<h2>I tre tipi di verbi</h2>
+
+<div class="type-grid">
+  <div class="type-card">
+    <div class="type-head rif">
+      <div class="type-htitle">Riflessivi</div>
+      <div class="type-hsub">el sujeto actúa sobre sí mismo</div>
+    </div>
+    <div class="type-body">
+      <p>L'azione del soggetto <strong>ricade su sé stesso</strong>. Il verbo termina in <strong>-si</strong> all'infinito.</p>
+      <ul>
+        <li><em>Io mi lavo.</em> — Yo me lavo.</li>
+        <li><em>Marco si alza alle 7.</em> — Marco se levanta a las 7.</li>
+        <li><em>Ci vestiamo in fretta.</em> — Nos vestimos rápido.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="type-card">
+    <div class="type-head rec">
+      <div class="type-htitle">Reciproci</div>
+      <div class="type-hsub">dos o más sujetos actúan entre sí</div>
+    </div>
+    <div class="type-body">
+      <p>L'azione è scambiata tra <strong>due o più persone</strong>. Usano gli stessi pronomi dei riflessivi ma <strong>solo al plurale</strong>.</p>
+      <ul>
+        <li><em>Ci amiamo.</em> — Nos amamos.</li>
+        <li><em>Vi conoscete?</em> — ¿Se conocen?</li>
+        <li><em>Si scrivono ogni giorno.</em> — Se escriben todos los días.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="type-card">
+    <div class="type-head fra">
+      <div class="type-htitle">Fraseologici</div>
+      <div class="type-hsub">expresan aspecto verbal (inicio, duración, fin)</div>
+    </div>
+    <div class="type-body">
+      <p>Verbi che si combinano con un <strong>infinito</strong> per indicare la fase dell'azione: inizio, continuazione o fine.</p>
+      <ul>
+        <li><em>Sto per uscire.</em> — Estoy a punto de salir.</li>
+        <li><em>Continua a piovere.</em> — Sigue lloviendo.</li>
+        <li><em>Smette di fumare.</em> — Deja de fumar.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PRONOMI RIFLESSIVI ===== -->
+<h2>I pronomi riflessivi</h2>
+<p>Ogni persona ha il suo pronome riflessivo che si mette <strong>prima del verbo</strong> (o attaccato all'infinito).</p>
+
+<div class="pron-table">
+  <div class="pron-cell">
+    <div class="pron-top">mi</div>
+    <div class="pron-mid">io</div>
+    <div class="pron-bot">me / yo</div>
+  </div>
+  <div class="pron-cell">
+    <div class="pron-top">ti</div>
+    <div class="pron-mid">tu</div>
+    <div class="pron-bot">te / tú</div>
+  </div>
+  <div class="pron-cell">
+    <div class="pron-top">si</div>
+    <div class="pron-mid">lui/lei/Lei</div>
+    <div class="pron-bot">se / él-ella</div>
+  </div>
+  <div class="pron-cell">
+    <div class="pron-top">ci</div>
+    <div class="pron-mid">noi</div>
+    <div class="pron-bot">nos / nosotros</div>
+  </div>
+  <div class="pron-cell">
+    <div class="pron-top">vi</div>
+    <div class="pron-mid">voi</div>
+    <div class="pron-bot">os / vosotros</div>
+  </div>
+  <div class="pron-cell">
+    <div class="pron-top">si</div>
+    <div class="pron-mid">loro</div>
+    <div class="pron-bot">se / ellos</div>
+  </div>
+</div>
+
+<div class="formula">
+  <div class="line"><span class="p">pronome riflessivo</span> <span class="pl">+</span> <span class="v">verbo coniugato</span></div>
+  <div class="sub">mi · ti · si · ci · vi · si — sempre prima del verbo (tranne all'infinito)</div>
+</div>
+
+<!-- ===== CONIUGAZIONE RIFLESSIVI ===== -->
+<h2>Coniugazione al presente — verbi riflessivi</h2>
+
+<div class="conj-grid">
+  <div class="conj-card">
+    <div class="conj-head rif">
+      <div class="conj-htitle">alzarsi</div>
+      <div class="conj-hsub">levantarse</div>
+    </div>
+    <div class="conj-body">
+      <div class="conj-row"><span class="conj-pro">io</span><span class="conj-pron rif">mi</span><span class="conj-plus"> </span><span class="conj-verb">alzo</span></div>
+      <div class="conj-row"><span class="conj-pro">tu</span><span class="conj-pron rif">ti</span><span class="conj-plus"> </span><span class="conj-verb">alzi</span></div>
+      <div class="conj-row"><span class="conj-pro">lui/lei</span><span class="conj-pron rif">si</span><span class="conj-plus"> </span><span class="conj-verb">alza</span></div>
+      <div class="conj-row"><span class="conj-pro">noi</span><span class="conj-pron rif">ci</span><span class="conj-plus"> </span><span class="conj-verb">alziamo</span></div>
+      <div class="conj-row"><span class="conj-pro">voi</span><span class="conj-pron rif">vi</span><span class="conj-plus"> </span><span class="conj-verb">alzate</span></div>
+      <div class="conj-row"><span class="conj-pro">loro</span><span class="conj-pron rif">si</span><span class="conj-plus"> </span><span class="conj-verb">alzano</span></div>
+    </div>
+  </div>
+  <div class="conj-card">
+    <div class="conj-head rif">
+      <div class="conj-htitle">vestirsi</div>
+      <div class="conj-hsub">vestirse</div>
+    </div>
+    <div class="conj-body">
+      <div class="conj-row"><span class="conj-pro">io</span><span class="conj-pron rif">mi</span><span class="conj-plus"> </span><span class="conj-verb">vesto</span></div>
+      <div class="conj-row"><span class="conj-pro">tu</span><span class="conj-pron rif">ti</span><span class="conj-plus"> </span><span class="conj-verb">vesti</span></div>
+      <div class="conj-row"><span class="conj-pro">lui/lei</span><span class="conj-pron rif">si</span><span class="conj-plus"> </span><span class="conj-verb">veste</span></div>
+      <div class="conj-row"><span class="conj-pro">noi</span><span class="conj-pron rif">ci</span><span class="conj-plus"> </span><span class="conj-verb">vestiamo</span></div>
+      <div class="conj-row"><span class="conj-pro">voi</span><span class="conj-pron rif">vi</span><span class="conj-plus"> </span><span class="conj-verb">vestite</span></div>
+      <div class="conj-row"><span class="conj-pro">loro</span><span class="conj-pron rif">si</span><span class="conj-plus"> </span><span class="conj-verb">vestono</span></div>
+    </div>
+  </div>
+  <div class="conj-card">
+    <div class="conj-head rif">
+      <div class="conj-htitle">sedersi</div>
+      <div class="conj-hsub">sentarse (irregular)</div>
+    </div>
+    <div class="conj-body">
+      <div class="conj-row"><span class="conj-pro">io</span><span class="conj-pron rif">mi</span><span class="conj-plus"> </span><span class="conj-verb">siedo</span></div>
+      <div class="conj-row"><span class="conj-pro">tu</span><span class="conj-pron rif">ti</span><span class="conj-plus"> </span><span class="conj-verb">siedi</span></div>
+      <div class="conj-row"><span class="conj-pro">lui/lei</span><span class="conj-pron rif">si</span><span class="conj-plus"> </span><span class="conj-verb">siede</span></div>
+      <div class="conj-row"><span class="conj-pro">noi</span><span class="conj-pron rif">ci</span><span class="conj-plus"> </span><span class="conj-verb">sediamo</span></div>
+      <div class="conj-row"><span class="conj-pro">voi</span><span class="conj-pron rif">vi</span><span class="conj-plus"> </span><span class="conj-verb">sedete</span></div>
+      <div class="conj-row"><span class="conj-pro">loro</span><span class="conj-pron rif">si</span><span class="conj-plus"> </span><span class="conj-verb">siedono</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== LISTA RIFLESSIVI ===== -->
+<h2>Lista verbi riflessivi — routine quotidiana e altri</h2>
+
+<div class="verb-grid">
+  <div class="verb-card">
+    <div class="verb-head rif"><div class="verb-htitle">Routine mattutina</div></div>
+    <div class="verb-body">
+      <div class="verb-row"><span class="verb-inf">svegliarsi</span><span class="verb-pron">mi sveglio</span><span class="verb-tr">despertarse</span></div>
+      <div class="verb-row"><span class="verb-inf">alzarsi</span><span class="verb-pron">mi alzo</span><span class="verb-tr">levantarse</span></div>
+      <div class="verb-row"><span class="verb-inf">lavarsi</span><span class="verb-pron">mi lavo</span><span class="verb-tr">lavarse</span></div>
+      <div class="verb-row"><span class="verb-inf">farsi la doccia</span><span class="verb-pron">mi faccio la doccia</span><span class="verb-tr">ducharse</span></div>
+      <div class="verb-row"><span class="verb-inf">pettinarsi</span><span class="verb-pron">mi pettino</span><span class="verb-tr">peinarse</span></div>
+      <div class="verb-row"><span class="verb-inf">radersi</span><span class="verb-pron">mi rado</span><span class="verb-tr">afeitarse</span></div>
+      <div class="verb-row"><span class="verb-inf">truccarsi</span><span class="verb-pron">mi trucco</span><span class="verb-tr">maquillarse</span></div>
+      <div class="verb-row"><span class="verb-inf">vestirsi</span><span class="verb-pron">mi vesto</span><span class="verb-tr">vestirse</span></div>
+      <div class="verb-row"><span class="verb-inf">mettersi</span><span class="verb-pron">mi metto</span><span class="verb-tr">ponerse (ropa)</span></div>
+    </div>
+  </div>
+  <div class="verb-card">
+    <div class="verb-head rif"><div class="verb-htitle">Stato / posizione</div></div>
+    <div class="verb-body">
+      <div class="verb-row"><span class="verb-inf">sedersi</span><span class="verb-pron">mi siedo</span><span class="verb-tr">sentarse</span></div>
+      <div class="verb-row"><span class="verb-inf">sdraiarsi</span><span class="verb-pron">mi sdraio</span><span class="verb-tr">tumbarse</span></div>
+      <div class="verb-row"><span class="verb-inf">addormentarsi</span><span class="verb-pron">mi addormento</span><span class="verb-tr">dormirse</span></div>
+      <div class="verb-row"><span class="verb-inf">coricarsi</span><span class="verb-pron">mi corico</span><span class="verb-tr">acostarse</span></div>
+      <div class="verb-row"><span class="verb-inf">fermarsi</span><span class="verb-pron">mi fermo</span><span class="verb-tr">detenerse</span></div>
+      <div class="verb-row"><span class="verb-inf">spostarsi</span><span class="verb-pron">mi sposto</span><span class="verb-tr">desplazarse</span></div>
+      <div class="verb-row"><span class="verb-inf">avvicinarsi</span><span class="verb-pron">mi avvicino</span><span class="verb-tr">acercarse</span></div>
+      <div class="verb-row"><span class="verb-inf">allontanarsi</span><span class="verb-pron">mi allontano</span><span class="verb-tr">alejarse</span></div>
+      <div class="verb-row"><span class="verb-inf">trovarsi</span><span class="verb-pron">mi trovo</span><span class="verb-tr">encontrarse / estar</span></div>
+    </div>
+  </div>
+  <div class="verb-card">
+    <div class="verb-head rif"><div class="verb-htitle">Sentimenti / cambiamento</div></div>
+    <div class="verb-body">
+      <div class="verb-row"><span class="verb-inf">sentirsi</span><span class="verb-pron">mi sento</span><span class="verb-tr">sentirse</span></div>
+      <div class="verb-row"><span class="verb-inf">annoiarsi</span><span class="verb-pron">mi annoio</span><span class="verb-tr">aburrirse</span></div>
+      <div class="verb-row"><span class="verb-inf">divertirsi</span><span class="verb-pron">mi diverto</span><span class="verb-tr">divertirse</span></div>
+      <div class="verb-row"><span class="verb-inf">preoccuparsi</span><span class="verb-pron">mi preoccupo</span><span class="verb-tr">preocuparse</span></div>
+      <div class="verb-row"><span class="verb-inf">arrabbiarsi</span><span class="verb-pron">mi arrabbio</span><span class="verb-tr">enojarse</span></div>
+      <div class="verb-row"><span class="verb-inf">calmarsi</span><span class="verb-pron">mi calmo</span><span class="verb-tr">calmarse</span></div>
+      <div class="verb-row"><span class="verb-inf">stancarsi</span><span class="verb-pron">mi stanco</span><span class="verb-tr">cansarse</span></div>
+      <div class="verb-row"><span class="verb-inf">abituarsi</span><span class="verb-pron">mi abituo</span><span class="verb-tr">acostumbrarse</span></div>
+      <div class="verb-row"><span class="verb-inf">ricordarsi</span><span class="verb-pron">mi ricordo</span><span class="verb-tr">acordarse</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== RECIPROCI ===== -->
+<h2>Verbi reciproci</h2>
+<p>Usano gli stessi pronomi riflessivi (<em>ci / vi / si</em>) ma esprimono un'azione <strong>scambiata tra due o più persone</strong>. Il soggetto è sempre <strong>plurale</strong>.</p>
+
+<div class="note"><strong>Regola:</strong> i verbi reciproci usano solo le forme plurali — <em>ci</em> (noi), <em>vi</em> (voi), <em>si</em> (loro). Non esistono forme singolari reciproche.</div>
+
+<div class="verb-grid2">
+  <div class="verb-card">
+    <div class="verb-head rec"><div class="verb-htitle">Relazioni e comunicazione</div></div>
+    <div class="verb-body">
+      <div class="verb-row"><span class="verb-inf">amarsi</span><span class="verb-pron rec">ci amiamo</span><span class="verb-tr">amarse mutuamente</span></div>
+      <div class="verb-row"><span class="verb-inf">conoscersi</span><span class="verb-pron rec">ci conosciamo</span><span class="verb-tr">conocerse</span></div>
+      <div class="verb-row"><span class="verb-inf">vedersi</span><span class="verb-pron rec">ci vediamo</span><span class="verb-tr">verse</span></div>
+      <div class="verb-row"><span class="verb-inf">incontrarsi</span><span class="verb-pron rec">ci incontriamo</span><span class="verb-tr">encontrarse</span></div>
+      <div class="verb-row"><span class="verb-inf">salutarsi</span><span class="verb-pron rec">ci salutiamo</span><span class="verb-tr">saludarse</span></div>
+      <div class="verb-row"><span class="verb-inf">abbracciarsi</span><span class="verb-pron rec">ci abbracciamo</span><span class="verb-tr">abrazarse</span></div>
+      <div class="verb-row"><span class="verb-inf">baciarsi</span><span class="verb-pron rec">ci baciamo</span><span class="verb-tr">besarse</span></div>
+      <div class="verb-row"><span class="verb-inf">parlarsi</span><span class="verb-pron rec">ci parliamo</span><span class="verb-tr">hablarse</span></div>
+    </div>
+  </div>
+  <div class="verb-card">
+    <div class="verb-head rec"><div class="verb-htitle">Scambio / interazione</div></div>
+    <div class="verb-body">
+      <div class="verb-row"><span class="verb-inf">scriversi</span><span class="verb-pron rec">ci scriviamo</span><span class="verb-tr">escribirse</span></div>
+      <div class="verb-row"><span class="verb-inf">chiamarsi</span><span class="verb-pron rec">ci chiamiamo</span><span class="verb-tr">llamarse</span></div>
+      <div class="verb-row"><span class="verb-inf">mandarsi</span><span class="verb-pron rec">ci mandiamo</span><span class="verb-tr">mandarse</span></div>
+      <div class="verb-row"><span class="verb-inf">aiutarsi</span><span class="verb-pron rec">ci aiutiamo</span><span class="verb-tr">ayudarse</span></div>
+      <div class="verb-row"><span class="verb-inf">capirsi</span><span class="verb-pron rec">ci capiamo</span><span class="verb-tr">entenderse</span></div>
+      <div class="verb-row"><span class="verb-inf">rispondersi</span><span class="verb-pron rec">ci rispondiamo</span><span class="verb-tr">responderse</span></div>
+      <div class="verb-row"><span class="verb-inf">odiarsi</span><span class="verb-pron rec">si odiano</span><span class="verb-tr">odiarse</span></div>
+      <div class="verb-row"><span class="verb-inf">litigare</span><span class="verb-pron rec">si litigano</span><span class="verb-tr">pelearse</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== RIFLESSIVO vs NON RIFLESSIVO ===== -->
+<h2>Riflessivo vs Non riflessivo — la distinzione fondamentale</h2>
+<p>Molti verbi esistono in versione normale e riflessiva. Il significato cambia secondo se l'azione ricade <strong>sul soggetto o su un altro oggetto</strong>.</p>
+
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Verbo base</th><th>Esempio non riflessivo</th><th class="rif">Verbo riflessivo</th><th>Esempio riflessivo</th></tr></thead>
+  <tbody>
+    <tr><td class="inf">lavare</td><td class="ex"><em>Lavo il cane.</em> — Lavo al perro.</td><td class="rif">lavarsi</td><td class="ex"><em>Mi lavo le mani.</em> — Me lavo las manos.</td></tr>
+    <tr><td class="inf">alzare</td><td class="ex"><em>Alza la mano.</em> — Levanta la mano.</td><td class="rif">alzarsi</td><td class="ex"><em>Mi alzo alle 7.</em> — Me levanto a las 7.</td></tr>
+    <tr><td class="inf">vestire</td><td class="ex"><em>Veste la bambina.</em> — Viste a la niña.</td><td class="rif">vestirsi</td><td class="ex"><em>Mi vesto in fretta.</em> — Me visto rápido.</td></tr>
+    <tr><td class="inf">chiamare</td><td class="ex"><em>Chiamo Marco.</em> — Llamo a Marco.</td><td class="rif">chiamarsi</td><td class="ex"><em>Mi chiamo Luca.</em> — Me llamo Luca.</td></tr>
+    <tr><td class="inf">sentire</td><td class="ex"><em>Sento un rumore.</em> — Escucho un ruido.</td><td class="rif">sentirsi</td><td class="ex"><em>Mi sento stanco.</em> — Me siento cansado.</td></tr>
+    <tr><td class="inf">fermare</td><td class="ex"><em>Ferma il treno.</em> — Para el tren.</td><td class="rif">fermarsi</td><td class="ex"><em>Mi fermo qui.</em> — Me detengo aquí.</td></tr>
+    <tr><td class="inf">trovare</td><td class="ex"><em>Trovo le chiavi.</em> — Encuentro las llaves.</td><td class="rif">trovarsi</td><td class="ex"><em>Mi trovo bene qui.</em> — Me encuentro bien aquí.</td></tr>
+    <tr><td class="inf">ricordare</td><td class="ex"><em>Ricordo quel giorno.</em> — Recuerdo ese día.</td><td class="rif">ricordarsi</td><td class="ex"><em>Mi ricordo di te.</em> — Me acuerdo de ti.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===== FRASEOLOGICI ===== -->
+<h2>Verbi fraseologici</h2>
+<p>I verbi fraseologici (chiamati anche <em>aspettuali</em>) si combinano con un <strong>infinito</strong> per esprimere la <strong>fase dell'azione</strong>: se sta per cominciare, se è in corso, se è appena finita o se si interrompe.</p>
+
+<div class="verb-grid">
+  <div class="verb-card">
+    <div class="verb-head fra"><div class="verb-htitle">Inizio — COMINCIARE / INIZIARE</div><div class="verb-hsub">+ a + infinito</div></div>
+    <div class="verb-body">
+      <div class="verb-row"><span class="verb-inf">cominciare a</span><span class="verb-pron fra">+ infinito</span><span class="verb-tr">empezar a</span></div>
+      <div class="verb-row"><span class="verb-inf">iniziare a</span><span class="verb-pron fra">+ infinito</span><span class="verb-tr">comenzar a</span></div>
+      <div class="verb-row"><span class="verb-inf">mettersi a</span><span class="verb-pron fra">+ infinito</span><span class="verb-tr">ponerse a (de golpe)</span></div>
+      <div class="verb-row"><span class="verb-inf">stare per</span><span class="verb-pron fra">+ infinito</span><span class="verb-tr">estar a punto de</span></div>
+      <div class="verb-row"><span class="verb-inf" style="font-style:italic">Es: Comincio a capire.</span><span class="verb-tr" style="width:100%">Empiezo a entender.</span></div>
+      <div class="verb-row"><span class="verb-inf" style="font-style:italic">Es: Sto per partire.</span><span class="verb-tr" style="width:100%">Estoy a punto de partir.</span></div>
+    </div>
+  </div>
+  <div class="verb-card">
+    <div class="verb-head fra"><div class="verb-htitle">Continuazione — CONTINUARE / STARE</div><div class="verb-hsub">+ a + infinito / + gerundio</div></div>
+    <div class="verb-body">
+      <div class="verb-row"><span class="verb-inf">continuare a</span><span class="verb-pron fra">+ infinito</span><span class="verb-tr">seguir / continuar</span></div>
+      <div class="verb-row"><span class="verb-inf">stare + gerundio</span><span class="verb-pron fra">sto -ando/-endo</span><span class="verb-tr">estar + gerundio</span></div>
+      <div class="verb-row"><span class="verb-inf">seguitare a</span><span class="verb-pron fra">+ infinito</span><span class="verb-tr">seguir haciendo (literario)</span></div>
+      <div class="verb-row"><span class="verb-inf" style="font-style:italic">Es: Continua a piovere.</span><span class="verb-tr" style="width:100%">Sigue lloviendo.</span></div>
+      <div class="verb-row"><span class="verb-inf" style="font-style:italic">Es: Sto mangiando.</span><span class="verb-tr" style="width:100%">Estoy comiendo.</span></div>
+      <div class="verb-row"><span class="verb-inf" style="font-style:italic">Es: Sta dormendo.</span><span class="verb-tr" style="width:100%">Está durmiendo.</span></div>
+    </div>
+  </div>
+  <div class="verb-card">
+    <div class="verb-head fra"><div class="verb-htitle">Fine / interruzione — SMETTERE / FINIRE</div><div class="verb-hsub">+ di + infinito</div></div>
+    <div class="verb-body">
+      <div class="verb-row"><span class="verb-inf">smettere di</span><span class="verb-pron fra">+ infinito</span><span class="verb-tr">dejar de</span></div>
+      <div class="verb-row"><span class="verb-inf">finire di</span><span class="verb-pron fra">+ infinito</span><span class="verb-tr">terminar de</span></div>
+      <div class="verb-row"><span class="verb-inf">cessare di</span><span class="verb-pron fra">+ infinito</span><span class="verb-tr">cesar de (formal)</span></div>
+      <div class="verb-row"><span class="verb-inf">tornare a</span><span class="verb-pron fra">+ infinito</span><span class="verb-tr">volver a</span></div>
+      <div class="verb-row"><span class="verb-inf" style="font-style:italic">Es: Ha smesso di fumare.</span><span class="verb-tr" style="width:100%">Dejó de fumar.</span></div>
+      <div class="verb-row"><span class="verb-inf" style="font-style:italic">Es: Finisco di lavorare.</span><span class="verb-tr" style="width:100%">Termino de trabajar.</span></div>
+    </div>
+  </div>
+</div>
+
+<h3>Preposizioni con i verbi fraseologici</h3>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Fase</th><th class="fra">Verbo fraseologico</th><th>Prep.</th><th>Esempio</th><th>Tradución</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Inizio</strong></td><td class="fra">cominciare / iniziare / mettersi</td><td style="font-weight:600;color:#1a6a5a">a</td><td class="ex"><em>Inizia a studiare.</em></td><td class="tr">Empieza a estudiar.</td></tr>
+    <tr><td><strong>Inizio improvviso</strong></td><td class="fra">stare per</td><td style="font-weight:600;color:#1a6a5a">per</td><td class="ex"><em>Sto per uscire.</em></td><td class="tr">Estoy a punto de salir.</td></tr>
+    <tr><td><strong>Continuazione</strong></td><td class="fra">continuare / seguitare</td><td style="font-weight:600;color:#1a6a5a">a</td><td class="ex"><em>Continua a parlare.</em></td><td class="tr">Sigue hablando.</td></tr>
+    <tr><td><strong>Progresso (gerundio)</strong></td><td class="fra">stare</td><td style="font-weight:600;color:#1a6a5a">—</td><td class="ex"><em>Sto lavorando.</em></td><td class="tr">Estoy trabajando.</td></tr>
+    <tr><td><strong>Fine</strong></td><td class="fra">smettere / finire / cessare</td><td style="font-weight:600;color:#8a5a00">di</td><td class="ex"><em>Smette di urlare.</em></td><td class="tr">Deja de gritar.</td></tr>
+    <tr><td><strong>Ripetizione</strong></td><td class="fra">tornare / ricominciare</td><td style="font-weight:600;color:#1a6a5a">a</td><td class="ex"><em>È tornato a studiare.</em></td><td class="tr">Volvió a estudiar.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="warn"><strong>Attenzione alla preposizione:</strong> cominciare/continuare usano <em>a</em> · smettere/finire usano <em>di</em>. È uno degli errori più frequenti. ❌ <em>Smette a fumare</em> → ✔ <em>Smette di fumare</em>.</div>
+
+<!-- ===== PASSATO PROSSIMO ===== -->
+<h2>Passato prossimo — riflessivi e reciproci</h2>
+<p>I verbi riflessivi e reciproci usano <strong>sempre ESSERE</strong> al passato prossimo. Il participio <strong>concorda</strong> con il soggetto.</p>
+
+<div class="formula">
+  <div class="line"><span class="p">pronome</span> <span class="pl">+</span> <span class="e">ESSERE</span> <span class="pl">+</span> <span class="v">participio passato</span> <span class="pl">(concordato)</span></div>
+  <div class="sub">mi sono · ti sei · si è · ci siamo · vi siete · si sono — sempre ESSERE, mai AVERE</div>
+</div>
+
+<div class="pass-grid">
+  <div class="pass-card">
+    <div class="pass-head rif">alzarsi (masc.)</div>
+    <div class="pass-body">
+      <span class="pi">Mi sono alzato.</span><span class="pt">Me levanté. (m.)</span>
+      <span class="pi" style="margin-top:0.3rem">Ti sei alzato.</span>
+      <span class="pi">Si è alzato.</span>
+      <span class="pi">Ci siamo alzati.</span>
+      <span class="pi">Vi siete alzati.</span>
+      <span class="pi">Si sono alzati.</span>
+    </div>
+  </div>
+  <div class="pass-card">
+    <div class="pass-head rif">alzarsi (fem.)</div>
+    <div class="pass-body">
+      <span class="pi">Mi sono alzata.</span><span class="pt">Me levanté. (f.)</span>
+      <span class="pi" style="margin-top:0.3rem">Ti sei alzata.</span>
+      <span class="pi">Si è alzata.</span>
+      <span class="pi">Ci siamo alzate.</span>
+      <span class="pi">Vi siete alzate.</span>
+      <span class="pi">Si sono alzate.</span>
+    </div>
+  </div>
+  <div class="pass-card">
+    <div class="pass-head rec">vedersi (reciproco)</div>
+    <div class="pass-body">
+      <span class="pi">Ci siamo visti.</span><span class="pt">Nos vimos. (m./mix.)</span>
+      <span class="pi" style="margin-top:0.3rem">Ci siamo viste.</span><span class="pt">Nos vimos. (f.)</span>
+      <span class="pi" style="margin-top:0.3rem">Vi siete incontrati.</span><span class="pt">Se encontraron.</span>
+      <span class="pi" style="margin-top:0.3rem">Si sono salutati.</span><span class="pt">Se saludaron.</span>
+      <span class="pi" style="margin-top:0.3rem">Si sono baciati.</span><span class="pt">Se besaron.</span>
+    </div>
+  </div>
+</div>
+
+<div class="ok"><strong>Regola di accordo:</strong> il participio passato concorda con il soggetto esattamente come con essere nei verbi di movimento. Marco si è alzat<strong>o</strong> · Maria si è alzat<strong>a</strong> · Loro si sono alzat<strong>i/e</strong>.</div>
+
+<h3>Passato prossimo — verbi fraseologici</h3>
+<p>I verbi fraseologici al passato prossimo usano generalmente l'ausiliare del <strong>verbo infinito che accompagnano</strong>.</p>
+
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Verbo fraseologico</th><th class="fra">+ infinito (es.)</th><th>Aus. usato</th><th>Forma passato</th><th>Traduzione</th></tr></thead>
+  <tbody>
+    <tr><td class="fra">cominciare a</td><td class="ex">lavorare (avere)</td><td style="color:#1a4a7a;font-weight:600">avere</td><td class="ex"><em>Ho cominciato a lavorare.</em></td><td class="tr">Empecé a trabajar.</td></tr>
+    <tr><td class="fra">cominciare a</td><td class="ex">partire (essere)</td><td style="color:#1a6a5a;font-weight:600">essere</td><td class="ex"><em>È cominciato a partire.</em></td><td class="tr">Empezó a partir.</td></tr>
+    <tr><td class="fra">smettere di</td><td class="ex">fumare (avere)</td><td style="color:#1a4a7a;font-weight:600">avere</td><td class="ex"><em>Ha smesso di fumare.</em></td><td class="tr">Dejó de fumar.</td></tr>
+    <tr><td class="fra">continuare a</td><td class="ex">studiare (avere)</td><td style="color:#1a4a7a;font-weight:600">avere</td><td class="ex"><em>Ha continuato a studiare.</em></td><td class="tr">Continuó estudiando.</td></tr>
+    <tr><td class="fra">finire di</td><td class="ex">mangiare (avere)</td><td style="color:#1a4a7a;font-weight:600">avere</td><td class="ex"><em>Ho finito di mangiare.</em></td><td class="tr">Terminé de comer.</td></tr>
+    <tr><td class="fra">stare per</td><td class="ex">qualsiasi</td><td style="color:#8a5a00;font-weight:600">stava per</td><td class="ex"><em>Stava per partire.</em></td><td class="tr">Estaba a punto de partir.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===== ESEMPI ===== -->
+<h2>Esempi per contesto</h2>
+
+<div class="ex-grid">
+  <div class="ex-card">
+    <div class="ex-label rif">routine del mattino</div>
+    <div class="ex-item"><div class="ex-it">Mi sveglio sempre alle sette.</div><div class="ex-es">Siempre me despierto a las siete.</div></div>
+    <div class="ex-item"><div class="ex-it">Si fa la doccia e poi si veste.</div><div class="ex-es">Se ducha y luego se viste.</div></div>
+    <div class="ex-item"><div class="ex-it">Ci alziamo tardi il fine settimana.</div><div class="ex-es">Nos levantamos tarde el fin de semana.</div></div>
+    <div class="ex-item"><div class="ex-it">Vi siete già vestiti?</div><div class="ex-es">¿Ya se vistieron?</div></div>
+  </div>
+  <div class="ex-card">
+    <div class="ex-label rif">sentimenti e stati</div>
+    <div class="ex-item"><div class="ex-it">Mi sento molto stanca oggi.</div><div class="ex-es">Me siento muy cansada hoy.</div></div>
+    <div class="ex-item"><div class="ex-it">Si è annoiato alla riunione.</div><div class="ex-es">Se aburrió en la reunión.</div></div>
+    <div class="ex-item"><div class="ex-it">Si preoccupa sempre per tutto.</div><div class="ex-es">Se preocupa siempre por todo.</div></div>
+    <div class="ex-item"><div class="ex-it">Mi sono divertita moltissimo.</div><div class="ex-es">Me divertí muchísimo.</div></div>
+  </div>
+  <div class="ex-card">
+    <div class="ex-label rec">reciproci — relazioni</div>
+    <div class="ex-item"><div class="ex-it">Ci conosciamo da dieci anni.</div><div class="ex-es">Nos conocemos hace diez años.</div></div>
+    <div class="ex-item"><div class="ex-it">Si sono incontrati per caso.</div><div class="ex-es">Se encontraron por casualidad.</div></div>
+    <div class="ex-item"><div class="ex-it">Vi siete visti ieri?</div><div class="ex-es">¿Se vieron ayer?</div></div>
+    <div class="ex-item"><div class="ex-it">Si scrivono messaggi tutto il giorno.</div><div class="ex-es">Se mandan mensajes todo el día.</div></div>
+  </div>
+  <div class="ex-card">
+    <div class="ex-label fra">fraseologici</div>
+    <div class="ex-item"><div class="ex-it">Sto per finire, aspetta un attimo.</div><div class="ex-es">Estoy a punto de terminar, espera un momento.</div></div>
+    <div class="ex-item"><div class="ex-it">Ha smesso di piovere finalmente.</div><div class="ex-es">Por fin dejó de llover.</div></div>
+    <div class="ex-item"><div class="ex-it">Continua a fare rumore.</div><div class="ex-es">Sigue haciendo ruido.</div></div>
+    <div class="ex-item"><div class="ex-it">Comincia a fare freddo.</div><div class="ex-es">Empieza a hacer frío.</div></div>
+  </div>
+  <div class="ex-card">
+    <div class="ex-label rif">passato prossimo — riflessivi</div>
+    <div class="ex-item"><div class="ex-it">Stamattina mi sono alzata alle sei.</div><div class="ex-es">Esta mañana me levanté a las seis. (f.)</div></div>
+    <div class="ex-item"><div class="ex-it">Si è addormentato sul divano.</div><div class="ex-es">Se durmió en el sofá.</div></div>
+    <div class="ex-item"><div class="ex-it">Vi siete divertiti alla festa?</div><div class="ex-es">¿Se divirtieron en la fiesta?</div></div>
+    <div class="ex-item"><div class="ex-it">Ci siamo fermati davanti al museo.</div><div class="ex-es">Nos detuvimos frente al museo.</div></div>
+  </div>
+  <div class="ex-card">
+    <div class="ex-label mix">misti — tutti i tipi</div>
+    <div class="ex-item"><div class="ex-it">Sto cercando di capire.</div><div class="ex-es">Estoy tratando de entender. (fraseologico)</div></div>
+    <div class="ex-item"><div class="ex-it">Ci siamo salutati e poi ci siamo separati.</div><div class="ex-es">Nos saludamos y luego nos separamos.</div></div>
+    <div class="ex-item"><div class="ex-it">Ha finito di lavorare e si è rilassato.</div><div class="ex-es">Terminó de trabajar y se relajó.</div></div>
+    <div class="ex-item"><div class="ex-it">Si stavano per sposare quando si sono lasciati.</div><div class="ex-es">Estaban a punto de casarse cuando se dejaron.</div></div>
+  </div>
+</div>
+
+<!-- ===== NEGAZIONE ===== -->
+<h2>Negazione</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Affermativo</th><th style="background:#3a1a1a">Negativo</th><th>Traduzione</th></tr></thead>
+  <tbody>
+    <tr><td class="rif"><em>Mi alzo presto.</em></td><td style="color:#9a3030;font-weight:600;font-family:'Lora',serif"><em>Non mi alzo presto.</em></td><td class="tr">No me levanto temprano.</td></tr>
+    <tr><td class="rif"><em>Si è vestita.</em></td><td style="color:#9a3030;font-weight:600;font-family:'Lora',serif"><em>Non si è vestita.</em></td><td class="tr">No se vistió.</td></tr>
+    <tr><td class="rec"><em>Ci vediamo spesso.</em></td><td style="color:#9a3030;font-weight:600;font-family:'Lora',serif"><em>Non ci vediamo spesso.</em></td><td class="tr">No nos vemos seguido.</td></tr>
+    <tr><td class="fra"><em>Continua a lavorare.</em></td><td style="color:#9a3030;font-weight:600;font-family:'Lora',serif"><em>Non continua a lavorare.</em></td><td class="tr">No sigue trabajando.</td></tr>
+    <tr><td class="fra"><em>Ha smesso di fumare.</em></td><td style="color:#9a3030;font-weight:600;font-family:'Lora',serif"><em>Non ha smesso di fumare.</em></td><td class="tr">No dejó de fumar.</td></tr>
+  </tbody>
+</table>
+</div>
+<div class="note"><strong>Posizione del non:</strong> nei riflessivi il <em>non</em> va prima del pronome riflessivo. <em>Non</em> + mi/ti/si/ci/vi/si + verbo.</div>
+
+<!-- ===== ERRORI ===== -->
+<h2>Errori frequenti</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th style="background:#3a1a1a">❌ Errato</th><th style="background:#1a4a28">✔ Corretto</th><th>Problema</th></tr></thead>
+  <tbody>
+    <tr><td class="wrong">Ho alzato stamattina.</td><td class="right">Mi sono alzato stamattina.</td><td class="rule">riflessivo → pronome + essere</td></tr>
+    <tr><td class="wrong">Mi ho lavato.</td><td class="right">Mi sono lavato.</td><td class="rule">riflessivi → sempre essere, mai avere</td></tr>
+    <tr><td class="wrong">Si sono alzato. (lui)</td><td class="right">Si è alzato.</td><td class="rule">lui/lei → si è (sing.), non si sono</td></tr>
+    <tr><td class="wrong">Ci siamo visto. (masc. pl.)</td><td class="right">Ci siamo visti.</td><td class="rule">accordo participio → masc. pl. -i</td></tr>
+    <tr><td class="wrong">Si sono incontrata. (loro f.)</td><td class="right">Si sono incontrate.</td><td class="rule">fem. plurale → participio -e</td></tr>
+    <tr><td class="wrong">Smette a fumare.</td><td class="right">Smette di fumare.</td><td class="rule">smettere → + di + infinito</td></tr>
+    <tr><td class="wrong">Continua di lavorare.</td><td class="right">Continua a lavorare.</td><td class="rule">continuare → + a + infinito</td></tr>
+    <tr><td class="wrong">Comincia di piovere.</td><td class="right">Comincia a piovere.</td><td class="rule">cominciare → + a + infinito</td></tr>
+    <tr><td class="wrong">Finisce a mangiare.</td><td class="right">Finisce di mangiare.</td><td class="rule">finire → + di + infinito</td></tr>
+    <tr><td class="wrong">Io si lavo.</td><td class="right">Io mi lavo.</td><td class="rule">io → pronome mi, non si</td></tr>
+    <tr><td class="wrong">Mi si chiamo Luca.</td><td class="right">Mi chiamo Luca.</td><td class="rule">chiamarsi → un solo pronome</td></tr>
+    <tr><td class="wrong">Loro si è salutati.</td><td class="right">Loro si sono salutati.</td><td class="rule">loro → si sono (non si è)</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ========================= ESPAÑOL ========================= -->
+<div class="lang-badge lang-es" style="margin-top:3rem">🇪🇸 Español</div>
+
+<h2>Los tres tipos</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Tipo</th><th>Definición</th><th>Pronombres</th><th>Ejemplo</th></tr></thead>
+  <tbody>
+    <tr><td class="rif"><strong>Riflessivi</strong></td><td class="rule">El sujeto actúa sobre sí mismo</td><td class="rif">mi · ti · si · ci · vi · si</td><td class="ex"><em>Mi lavo. Me lavo.</em></td></tr>
+    <tr><td class="rec"><strong>Reciproci</strong></td><td class="rule">Dos o más sujetos actúan entre sí (solo plural)</td><td class="rec">ci · vi · si</td><td class="ex"><em>Ci amiamo. Nos amamos.</em></td></tr>
+    <tr><td class="fra"><strong>Fraseologici</strong></td><td class="rule">Expresan la fase de la acción (inicio, duración, fin)</td><td class="fra">+ a/di/per + infinito</td><td class="ex"><em>Smette di fumare. Deja de fumar.</em></td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>Pronombres reflexivos</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Persona</th><th class="rif">Pronome</th><th>Ejemplo presente</th><th>Ejemplo passato prossimo</th></tr></thead>
+  <tbody>
+    <tr><td class="person">io</td><td class="rif">mi</td><td class="ex"><em>mi alzo</em></td><td class="ex"><em>mi sono alzato/a</em></td></tr>
+    <tr><td class="person">tu</td><td class="rif">ti</td><td class="ex"><em>ti alzi</em></td><td class="ex"><em>ti sei alzato/a</em></td></tr>
+    <tr><td class="person">lui/lei</td><td class="rif">si</td><td class="ex"><em>si alza</em></td><td class="ex"><em>si è alzato/a</em></td></tr>
+    <tr><td class="person">noi</td><td class="rif">ci</td><td class="ex"><em>ci alziamo</em></td><td class="ex"><em>ci siamo alzati/e</em></td></tr>
+    <tr><td class="person">voi</td><td class="rif">vi</td><td class="ex"><em>vi alzate</em></td><td class="ex"><em>vi siete alzati/e</em></td></tr>
+    <tr><td class="person">loro</td><td class="rif">si</td><td class="ex"><em>si alzano</em></td><td class="ex"><em>si sono alzati/e</em></td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>Preposiciones de los verbos fraseológicos</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Fase</th><th class="fra">Verbo</th><th>Preposición</th><th>Ejemplo</th></tr></thead>
+  <tbody>
+    <tr><td>Inicio</td><td class="fra">cominciare / iniziare / mettersi</td><td style="font-weight:600;color:#1a6a5a;text-align:center">a</td><td class="ex"><em>Comincia <strong>a</strong> piovere.</em></td></tr>
+    <tr><td>A punto de</td><td class="fra">stare per</td><td style="font-weight:600;color:#1a6a5a;text-align:center">per</td><td class="ex"><em>Sto <strong>per</strong> uscire.</em></td></tr>
+    <tr><td>Continuación</td><td class="fra">continuare / seguitare</td><td style="font-weight:600;color:#1a6a5a;text-align:center">a</td><td class="ex"><em>Continua <strong>a</strong> studiare.</em></td></tr>
+    <tr><td>En progreso</td><td class="fra">stare + gerundio</td><td style="font-weight:600;color:#8a5a00;text-align:center">—</td><td class="ex"><em>Sto mangiando.</em></td></tr>
+    <tr><td>Fin / interrupción</td><td class="fra">smettere / finire / cessare</td><td style="font-weight:600;color:#8a5a00;text-align:center">di</td><td class="ex"><em>Smette <strong>di</strong> fumare.</em></td></tr>
+    <tr><td>Repetición</td><td class="fra">tornare / ricominciare</td><td style="font-weight:600;color:#1a6a5a;text-align:center">a</td><td class="ex"><em>Torna <strong>a</strong> studiare.</em></td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===== SUMMARY ===== -->
+<div class="summary">
+  <h4>Puntos clave para dominar estos verbos</h4>
+  <div class="sum-step">
+    <div class="sum-n">1</div>
+    <div class="sum-desc"><strong>Pronombres:</strong> <code>mi · ti · si · ci · vi · si</code> — siempre antes del verbo conjugado. Al infinito van unidos: <code>alzarsi · lavarsi · vestirsi</code></div>
+  </div>
+  <div class="sum-step">
+    <div class="sum-n">2</div>
+    <div class="sum-desc"><strong>Passato prossimo → siempre ESSERE:</strong> <code>mi sono alzato/a · ci siamo visti/e · si è fermata</code> — nunca avere con riflessivi o reciproci.</div>
+  </div>
+  <div class="sum-step">
+    <div class="sum-n">3</div>
+    <div class="sum-desc"><strong>Accordo del participio:</strong> concorda con el sujeto — <code>-o</code> (m.sg.) · <code>-a</code> (f.sg.) · <code>-i</code> (m.pl./mix.) · <code>-e</code> (f.pl.)</div>
+  </div>
+  <div class="sum-step">
+    <div class="sum-n">4</div>
+    <div class="sum-desc"><strong>Reciproci = solo plurale:</strong> <code>ci amiamo · vi conoscete · si scrivono</code>. No existen formas singulares recíprocas.</div>
+  </div>
+  <div class="sum-step">
+    <div class="sum-n">5</div>
+    <div class="sum-desc"><strong>Fraseologici — preposición clave:</strong> inicio/continuación → <code>a + infinito</code> · fin/interrupción → <code>di + infinito</code> · a punto de → <code>per + infinito</code></div>
+  </div>
+  <div class="sum-step">
+    <div class="sum-n">6</div>
+    <div class="sum-desc"><strong>Negación:</strong> el <code>non</code> va antes del pronome riflessivo: <code>non mi alzo · non si è vestita · non ci siamo visti</code></div>
+  </div>
+</div>
+
+<p style="margin-top:1.5rem; font-size:0.79rem; color:#9a8868; text-align:center;">Verbi riflessivi · reciproci · fraseologici · A2 · pronomi · presente e passato prossimo</p>
+
+</div>
+</body>
+</html>

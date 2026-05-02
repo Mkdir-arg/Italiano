@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Apuntes completos de gramática italiana. Verbos, tiempos y conjugaciones desde A1 hasta B1.">
+<title>Italiano — Apuntes Completos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue:   #1a4a8a;
+    --teal:   #1a6a5a;
+    --indigo: #3a1a8a;
+    --amber:  #7a4800;
+    --rose:   #7a1a5a;
+    --blue-l:   #eaf0fc;
+    --teal-l:   #e0f4ec;
+    --indigo-l: #f0ecfc;
+    --amber-l:  #fdf0e0;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: #f4f6f8;
+    color: #1e2228;
+    min-height: 100vh;
+  }
+
+  /* ===================== HERO ===================== */
+  .hero {
+    background: #0a0f1c;
+    background-image:
+      radial-gradient(ellipse at 20% 50%, rgba(26,74,138,0.35) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(58,26,138,0.25) 0%, transparent 55%),
+      radial-gradient(ellipse at 60% 80%, rgba(26,106,90,0.2) 0%, transparent 50%);
+    padding: 0 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Italian flag stripe */
+  .flag-stripe {
+    display: flex;
+    height: 4px;
+    position: absolute;
+    top: 0; left: 0; right: 0;
+  }
+  .flag-stripe span { flex: 1; }
+  .flag-stripe span:nth-child(1) { background: #009246; }
+  .flag-stripe span:nth-child(2) { background: #fff; }
+  .flag-stripe span:nth-child(3) { background: #ce2b37; }
+
+  .hero-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 4rem 0 4.5rem;
+    text-align: center;
+    position: relative;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 20px;
+    padding: 0.3rem 1rem;
+    font-size: 0.78rem;
+    color: #90a8c8;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+
+  .hero h1 {
+    font-family: 'Lora', serif;
+    font-size: clamp(2.8rem, 8vw, 5rem);
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero h1 span {
+    background: linear-gradient(135deg, #70b8f8, #7af0c0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    color: #7090b0;
+    margin-bottom: 2.5rem;
+    font-style: italic;
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+  }
+  .stat-num {
+    font-family: 'Lora', serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #70b8f8;
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.75rem;
+    color: #5a7090;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .stat-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(255,255,255,0.08);
+    align-self: center;
+  }
+
+  /* ===================== FILTERS ===================== */
+  .filters-wrap {
+    background: #fff;
+    border-bottom: 1px solid #e0e4ec;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  .filters-inner {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .filter-label {
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: #8898b0;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-right: 0.3rem;
+  }
+
+  .f-btn {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.32rem 0.85rem;
+    border: 1.5px solid transparent;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+
+  .f-btn.all    { background:#f0f2f8; color:#3a4870; border-color:#d8dce8; }
+  .f-btn.pres   { background:#eaf0fc; color:var(--blue); border-color:#c0d4f0; }
+  .f-btn.pass   { background:#e0f4ec; color:var(--teal); border-color:#b0dcc8; }
+  .f-btn.fut    { background:#f0ecfc; color:var(--indigo); border-color:#c8c0e8; }
+  .f-btn.rif    { background:var(--amber-l); color:var(--amber); border-color:#dcc898; }
+
+  .f-btn.active { color:#fff; }
+  .f-btn.all.active    { background:#2a3a5a; border-color:#2a3a5a; }
+  .f-btn.pres.active   { background:var(--blue); border-color:var(--blue); }
+  .f-btn.pass.active   { background:var(--teal); border-color:var(--teal); }
+  .f-btn.fut.active    { background:var(--indigo); border-color:var(--indigo); }
+  .f-btn.rif.active    { background:var(--amber); border-color:var(--amber); }
+
+  .f-btn:hover:not(.active) { filter: brightness(0.95); transform: translateY(-1px); }
+
+  .filter-count {
+    margin-left: auto;
+    font-size: 0.78rem;
+    color: #8898b0;
+    font-weight: 600;
+  }
+
+  /* ===================== MAIN CONTENT ===================== */
+  .main-content {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+  }
+
+  /* category section */
+  .category-section { margin-bottom: 2.8rem; }
+
+  .cat-header {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .cat-line {
+    flex: 1;
+    height: 1px;
+    background: #e0e4ec;
+  }
+
+  .cat-title {
+    font-family: 'Lora', serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 0.28rem 0.9rem;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  .cat-title.pres  { background:var(--blue-l); color:var(--blue); }
+  .cat-title.pass  { background:var(--teal-l); color:var(--teal); }
+  .cat-title.fut   { background:var(--indigo-l); color:var(--indigo); }
+  .cat-title.rif   { background:var(--amber-l); color:var(--amber); }
+
+  /* cards grid */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+
+  /* ===================== CARD ===================== */
+  .card {
+    background: #fff;
+    border: 1px solid #dce2ec;
+    border-radius: 12px;
+    padding: 1.3rem 1.3rem 1rem;
+    cursor: pointer;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    border-radius: 12px 0 0 12px;
+    transition: width 0.18s ease;
+  }
+
+  .card.pres::before  { background: var(--blue); }
+  .card.pass::before  { background: var(--teal); }
+  .card.fut::before   { background: var(--indigo); }
+  .card.rif::before   { background: var(--amber); }
+
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  }
+  .card:hover::before { width: 6px; }
+  .card.pres:hover  { border-color: #c0d4f0; }
+  .card.pass:hover  { border-color: #b0dcc8; }
+  .card.fut:hover   { border-color: #c8c0e8; }
+  .card.rif:hover   { border-color: #dcc898; }
+
+  /* card top */
+  .card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 0.7rem;
+    gap: 0.5rem;
+  }
+
+  .card-icon {
+    font-size: 1.6rem;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .card-level {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    white-space: nowrap;
+    align-self: flex-start;
+  }
+
+  .pres .card-level  { background:var(--blue-l); color:var(--blue); }
+  .pass .card-level  { background:var(--teal-l); color:var(--teal); }
+  .fut  .card-level  { background:var(--indigo-l); color:var(--indigo); }
+  .rif  .card-level  { background:var(--amber-l); color:var(--amber); }
+
+  /* card content */
+  .card-title {
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #0a0f1c;
+    line-height: 1.25;
+    margin-bottom: 0.2rem;
+  }
+
+  .card-subtitle {
+    font-size: 0.8rem;
+    color: #6878a0;
+    font-style: italic;
+    margin-bottom: 0.65rem;
+  }
+
+  .card-desc {
+    font-size: 0.83rem;
+    color: #4a5870;
+    line-height: 1.55;
+    margin-bottom: 0.85rem;
+    flex: 1;
+  }
+
+  /* tags */
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin-bottom: 1rem;
+  }
+
+  .tag {
+    font-size: 0.68rem;
+    font-weight: 600;
+    padding: 0.12rem 0.45rem;
+    border-radius: 4px;
+    letter-spacing: 0.03em;
+    background: #f0f2f8;
+    color: #4a5870;
+    border: 1px solid #d8dce8;
+  }
+
+  /* card footer */
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.75rem;
+    border-top: 1px solid #f0f2f8;
+  }
+
+  .card-num {
+    font-size: 0.7rem;
+    color: #c0c8d8;
+    font-weight: 600;
+  }
+
+  .card-cta {
+    font-size: 0.78rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: gap 0.15s ease;
+  }
+
+  .card.pres .card-cta  { color: var(--blue); }
+  .card.pass .card-cta  { color: var(--teal); }
+  .card.fut  .card-cta  { color: var(--indigo); }
+  .card.rif  .card-cta  { color: var(--amber); }
+
+  .card:hover .card-cta { gap: 0.55rem; }
+
+  /* ===================== FOOTER ===================== */
+  footer {
+    background: #0a0f1c;
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+
+  .footer-inner { max-width: 600px; margin: 0 auto; }
+
+  .footer-logo {
+    font-family: 'Lora', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.4rem;
+  }
+  .footer-logo span { color: #70b8f8; }
+
+  .footer-sub {
+    font-size: 0.78rem;
+    color: #4a6080;
+    margin-bottom: 1rem;
+  }
+
+  .footer-flag {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin: 0 auto;
+    width: 48px;
+    height: 6px;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+  .footer-flag span { flex: 1; }
+  .footer-flag span:nth-child(1) { background: #009246; }
+  .footer-flag span:nth-child(2) { background: #fff; }
+  .footer-flag span:nth-child(3) { background: #ce2b37; }
+
+  .footer-copy {
+    font-size: 0.72rem;
+    color: #3a4a5a;
+  }
+
+  /* ===================== RESPONSIVE ===================== */
+  @media(max-width:600px) {
+    .hero-inner { padding: 2.5rem 0 3rem; }
+    .hero-stats { gap: 1.2rem; }
+    .stat-divider { display: none; }
+    .main-content { padding: 1.5rem 1rem 3rem; }
+    .filters-inner { padding: 0.6rem 1rem; gap: 0.35rem; }
+    .filter-label { display: none; }
+  }
+
+  /* hidden class for filter */
+  .card-wrap.hidden { display: none; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="flag-stripe">
+    <span></span><span></span><span></span>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-badge">
+      🇮🇹 &nbsp; Gramática Italiana
+    </div>
+    <h1><span>Italiano</span></h1>
+    <p class="hero-sub">Apuntes completos de gramática · verbos · tiempos · conjugaciones</p>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">11</span>
+        <span class="stat-label">Temas</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">5</span>
+        <span class="stat-label">Tiempos verbales</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">50</span>
+        <span class="stat-label">Verbos conjugados</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">A1→B1</span>
+        <span class="stat-label">Nivel</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- FILTERS -->
+<div class="filters-wrap">
+  <div class="filters-inner">
+    <span class="filter-label">Filtrar</span>
+    <button class="f-btn all active" onclick="filter('all',this)">Todos</button>
+    <button class="f-btn pres" onclick="filter('pres',this)">🔵 Presente</button>
+    <button class="f-btn pass" onclick="filter('pass',this)">🟢 Passato</button>
+    <button class="f-btn fut" onclick="filter('fut',this)">🟣 Futuro</button>
+    <button class="f-btn rif" onclick="filter('rif',this)">🟡 Riferimento</button>
+    <span class="filter-count" id="filterCount">11 temas</span>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main class="main-content" id="main">
+
+  <!-- ===== PRESENTE ===== -->
+  <section class="category-section" data-cat="pres">
+    <div class="cat-header">
+      <div class="cat-line"></div>
+      <span class="cat-title pres">Presente Indicativo</span>
+      <div class="cat-line"></div>
+    </div>
+    <div class="cards-grid">
+
+      <div class="card-wrap" data-cat="pres">
+        <a class="card pres" href="apuntes/verbi-regolari-presente.html">
+          <div class="card-top">
+            <span class="card-icon">📐</span>
+            <span class="card-level">A1</span>
+          </div>
+          <div class="card-title">Verbi Regolari — Presente</div>
+          <div class="card-subtitle">Verbos regulares en presente</div>
+          <div class="card-desc">Las 3 conjugaciones (-are/-ere/-ire), desinencias completas, particolarità ortograficas y verbos con -isc-.</div>
+          <div class="card-tags">
+            <span class="tag">-ARE</span>
+            <span class="tag">-ERE</span>
+            <span class="tag">-IRE</span>
+            <span class="tag">Desinenze</span>
+            <span class="tag">-ISC-</span>
+          </div>
+          <div class="card-footer">
+            <span class="card-num">01</span>
+            <span class="card-cta">Apri <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
+          </div>
+        </a>
+      </div>
+
+      <div class="card-wrap" data-cat="pres">
+        <a class="card pres" href="apuntes/verbi-irregolari-presente.html">
+          <div class="card-top">
+            <span class="card-icon">⚡</span>
+            <span class="card-level">A1–A2</span>
+          </div>
+          <div class="card-title">40 Verbi Irregolari — Presente</div>
+          <div class="card-subtitle">40 verbos irregulares en presente</div>
+          <div class="card-desc">Los 40 verbos irregolari esenciales organizados por familias de cambio, con todas las 6 personas y traducción.</div>
+          <div class="card-tags">
+            <span class="tag">40 Verbi</span>
+            <span class="tag">Famiglie</span>
+            <span class="tag">Andare</span>
+            <span class="tag">Fare</span>
+            <span class="tag">Venire</span>
+          </div>
+          <div class="card-footer">
+            <span class="card-num">02</span>
+            <span class="card-cta">Apri <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
+          </div>
+        </a>
+      </div>
+
+      <div class="card-wrap" data-cat="pres">
+        <a class="card pres" href="apuntes/verbi-modali.html">
+          <div class="card-top">
+            <span class="card-icon">🎯</span>
+            <span class="card-level">A1–A2</span>
+          </div>
+          <div class="card-title">Verbi Modali</div>
+          <div class="card-subtitle">Verbos modales</div>
+          <div class="card-desc">Potere, dovere, volere, sapere. Conjugación, 6 usos detallados, diferencias clave y 50 combinaciones frecuentes.</div>
+          <div class="card-tags">
+            <span class="tag">Potere</span>
+            <span class="tag">Dovere</span>
+            <span class="tag">Volere</span>
+            <span class="tag">Sapere</span>
+            <span class="tag">Vorrei</span>
+          </div>
+          <div class="card-footer">
+            <span class="card-num">03</span>
+            <span class="card-cta">Apri <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
+          </div>
+        </a>
+      </div>
+
+      <div class="card-wrap" data-cat="pres">
+        <a class="card pres" href="apuntes/verbi-riflessivi.html">
+          <div class="card-top">
+            <span class="card-icon">🔄</span>
+            <span class="card-level">A2</span>
+          </div>
+          <div class="card-title">Verbi Riflessivi, Reciproci e Fraseologici</div>
+          <div class="card-subtitle">Reflexivos, recíprocos y fraseológicos</div>
+          <div class="card-desc">Pronomi riflessivi, routine quotidiana, verbi reciproci y fraseológicos (cominciare a, smettere di, stare per...).</div>
+          <div class="card-tags">
+            <span class="tag">Riflessivi</span>
+            <span class="tag">Reciproci</span>
+            <span class="tag">Fraseologici</span>
+            <span class="tag">mi/ti/si/ci/vi</span>
+          </div>
+          <div class="card-footer">
+            <span class="card-num">04</span>
+            <span class="card-cta">Apri <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== PASSATO ===== -->
+  <section class="category-section" data-cat="pass">
+    <div class="cat-header">
+      <div class="cat-line"></div>
+      <span class="cat-title pass">Il Passato</span>
+      <div class="cat-line"></div>
+    </div>
+    <div class="cards-grid">
+
+      <div class="card-wrap" data-cat="pass">
+        <a class="card pass" href="apuntes/passato-prossimo-completo.html">
+          <div class="card-top">
+            <span class="card-icon">📚</span>
+            <span class="card-level">A1–A2</span>
+          </div>
+          <div class="card-title">Passato Prossimo — Completo</div>
+          <div class="card-subtitle">Pasado compuesto completo</div>
+          <div class="card-desc">Estructura, elección avere/essere, acuerdo del participio, pronombres lo/la/li/le, verbos modales al passato y verbos de doble auxiliar.</div>
+          <div class="card-tags">
+            <span class="tag">Avere</span>
+            <span class="tag">Essere</span>
+            <span class="tag">Accordo</span>
+            <span class="tag">Pronomi</span>
+            <span class="tag">Modali</span>
+          </div>
+          <div class="card-footer">
+            <span class="card-num">05</span>
+            <span class="card-cta">Apri <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
+          </div>
+        </a>
+      </div>
+
+      <div class="card-wrap" data-cat="pass">
+        <a class="card pass" href="apuntes/passato-prossimo-irregolari.html">
+          <div class="card-top">
+            <span class="card-icon">🧩</span>
+            <span class="card-level">A2</span>
+          </div>
+          <div class="card-title">Passato Prossimo — Participi Irregolari</div>
+          <div class="card-subtitle">Participios pasados irregulares</div>
+          <div class="card-desc">7 familias de participios irregolari (fatto, detto, scritto, preso...) con más de 50 ejemplos y conjugaciones completas.</div>
+          <div class="card-tags">
+            <span class="tag">7 Famiglie</span>
+            <span class="tag">50+ Participi</span>
+            <span class="tag">Fatto</span>
+            <span class="tag">Detto</span>
+            <span class="tag">Visto</span>
+          </div>
+          <div class="card-footer">
+            <span class="card-num">06</span>
+            <span class="card-cta">Apri <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
+          </div>
+        </a>
+      </div>
+
+      <div class="card-wrap" data-cat="pass">
+        <a class="card pass" href="apuntes/passato-prossimo-tabella.html">
+          <div class="card-top">
+            <span class="card-icon">📊</span>
+            <span class="card-level">A1–A2</span>
+          </div>
+          <div class="card-title">Tabella Passato Prossimo</div>
+          <div class="card-subtitle">Tabla completa — 50 verbos</div>
+          <div class="card-desc">Los 50 verbos más usados en passato prossimo en una sola tabla. Buscador integrado y filtro por avere/essere.</div>
+          <div class="card-tags">
+            <span class="tag">50 Verbi</span>
+            <span class="tag">Tabella</span>
+            <span class="tag">Ricerca</span>
+            <span class="tag">6 Persone</span>
+          </div>
+          <div class="card-footer">
+            <span class="card-num">07</span>
+            <span class="card-cta">Apri <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
+          </div>
+        </a>
+      </div>
+
+      <div class="card-wrap" data-cat="pass">
+        <a class="card pass" href="apuntes/imperfetto.html">
+          <div class="card-top">
+            <span class="card-icon">⏳</span>
+            <span class="card-level">A2</span>
+          </div>
+          <div class="card-title">Imperfetto</div>
+          <div class="card-subtitle">Pretérito imperfecto</div>
+          <div class="card-desc">6 usos (hábito, descripción, acción en curso, estados...), formación regular e irregular, contrasto con il passato prossimo.</div>
+          <div class="card-tags">
+            <span class="tag">6 Usi</span>
+            <span class="tag">Abitudine</span>
+            <span class="tag">Descrizione</span>
+            <span class="tag">vs P. Prossimo</span>
+          </div>
+          <div class="card-footer">
+            <span class="card-num">08</span>
+            <span class="card-cta">Apri <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== FUTURO ===== -->
+  <section class="category-section" data-cat="fut">
+    <div class="cat-header">
+      <div class="cat-line"></div>
+      <span class="cat-title fut">Futuro e Condizionale</span>
+      <div class="cat-line"></div>
+    </div>
+    <div class="cards-grid">
+
+      <div class="card-wrap" data-cat="fut">
+        <a class="card fut" href="apuntes/futuro-semplice.html">
+          <div class="card-top">
+            <span class="card-icon">🚀</span>
+            <span class="card-level">A2–B1</span>
+          </div>
+          <div class="card-title">Futuro Semplice</div>
+          <div class="card-subtitle">Futuro simple</div>
+          <div class="card-desc">Formación, 7 familias de irregolari, 6 usos incluyendo el futuro epistemico, y la regla obligatoria de quando/se/appena.</div>
+          <div class="card-tags">
+            <span class="tag">6 Usi</span>
+            <span class="tag">Irregolari</span>
+            <span class="tag">Futuro Epistemico</span>
+            <span class="tag">Quando/Se</span>
+            <span class="tag">Condizionale</span>
+          </div>
+          <div class="card-footer">
+            <span class="card-num">09</span>
+            <span class="card-cta">Apri <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== RIFERIMENTO ===== -->
+  <section class="category-section" data-cat="rif">
+    <div class="cat-header">
+      <div class="cat-line"></div>
+      <span class="cat-title rif">Riferimento Rapido</span>
+      <div class="cat-line"></div>
+    </div>
+    <div class="cards-grid">
+
+      <div class="card-wrap" data-cat="rif">
+        <a class="card rif" href="apuntes/50-verbi-coniugazioni.html">
+          <div class="card-top">
+            <span class="card-icon">📋</span>
+            <span class="card-level">A1–B1</span>
+          </div>
+          <div class="card-title">50 Verbi — Tutte le Coniugazioni</div>
+          <div class="card-subtitle">50 verbos en todos los tiempos</div>
+          <div class="card-desc">Los 50 verbos más usados conjugados en 5 tiempos: presente, passato prossimo, imperfetto, futuro y condizionale. Con búsqueda y filtros.</div>
+          <div class="card-tags">
+            <span class="tag">50 Verbi</span>
+            <span class="tag">5 Tempi</span>
+            <span class="tag">Ricerca</span>
+            <span class="tag">Avere/Essere</span>
+          </div>
+          <div class="card-footer">
+            <span class="card-num">10</span>
+            <span class="card-cta">Apri <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
+          </div>
+        </a>
+      </div>
+
+      <div class="card-wrap" data-cat="rif">
+        <a class="card rif" href="apuntes/riassunto-tempi.html">
+          <div class="card-top">
+            <span class="card-icon">🗺️</span>
+            <span class="card-level">A1–B1</span>
+          </div>
+          <div class="card-title">Riassunto dei Tempi</div>
+          <div class="card-subtitle">Resumen de todos los tiempos</div>
+          <div class="card-desc">Guía rápida de los 5 tiempos: cómo identificar cada uno, cómo formarlo y cuándo usarlo. Incluye árbol de decisión y tabla comparativa.</div>
+          <div class="card-tags">
+            <span class="tag">5 Tempi</span>
+            <span class="tag">Riassunto</span>
+            <span class="tag">Regole</span>
+            <span class="tag">Confronto</span>
+          </div>
+          <div class="card-footer">
+            <span class="card-num">11</span>
+            <span class="card-cta">Apri <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Italiano <span>Apuntes</span></div>
+    <div class="footer-sub">Gramática italiana · A1 → B1</div>
+    <div class="footer-flag">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="footer-copy">11 temas · 5 tiempos verbales · 200+ ejemplos</div>
+  </div>
+</footer>
+
+<script>
+  function filter(cat, btn) {
+    // update buttons
+    document.querySelectorAll('.f-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    // show/hide cards
+    const wraps = document.querySelectorAll('.card-wrap');
+    let visible = 0;
+    wraps.forEach(w => {
+      if (cat === 'all' || w.dataset.cat === cat) {
+        w.classList.remove('hidden');
+        visible++;
+      } else {
+        w.classList.add('hidden');
+      }
+    });
+
+    // show/hide sections
+    document.querySelectorAll('.category-section').forEach(s => {
+      if (cat === 'all' || s.dataset.cat === cat) {
+        s.style.display = '';
+      } else {
+        s.style.display = 'none';
+      }
+    });
+
+    document.getElementById('filterCount').textContent = `${visible} tema${visible !== 1 ? 's' : ''}`;
+  }
+</script>
+</body>
+</html>

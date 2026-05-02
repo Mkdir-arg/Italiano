@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Futuro Semplice – Indicativo</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: #f4f6f8;
+    color: #1e2228;
+    padding: 2rem 1rem;
+    line-height: 1.65;
+  }
+
+  .page { max-width: 940px; margin: 0 auto; }
+
+  /* ---- COVER ---- */
+  .cover { border-left: 5px solid #1a4a8a; padding-left: 1.2rem; margin-bottom: 2.5rem; }
+  .cover h1 { font-family:'Lora',serif; font-size:1.9rem; font-weight:600; color:#080c18; line-height:1.2; }
+  .cover .sub { font-size:0.92rem; color:#3a4060; margin-top:0.4rem; font-style:italic; }
+  .cover .tags { display:flex; gap:0.5rem; margin-top:0.7rem; flex-wrap:wrap; }
+  .tag { padding:0.15rem 0.6rem; border-radius:4px; font-size:0.78rem; font-weight:600; letter-spacing:0.05em; }
+  .tag-blue   { background:#1a3a8a; color:#d8e4f8; }
+  .tag-indigo { background:#3a1a8a; color:#e0d8f8; }
+  .tag-teal   { background:#1a5a6a; color:#c8f0f4; }
+  .tag-amber  { background:#7a4800; color:#f8e8c0; }
+  .tag-rose   { background:#7a1a4a; color:#f8d8ec; }
+
+  /* ---- LANG BADGE ---- */
+  .lang-badge { display:inline-flex; align-items:center; gap:0.5rem; padding:0.28rem 0.85rem; border-radius:4px; font-size:0.8rem; font-weight:600; letter-spacing:0.07em; text-transform:uppercase; margin:2.5rem 0 1rem; }
+  .lang-it { background:#1a3a1a; color:#c8e8c0; }
+  .lang-es { background:#3a1a1a; color:#e8c8c0; }
+
+  /* ---- HEADINGS ---- */
+  h2 { font-family:'Lora',serif; font-size:1.18rem; font-weight:600; color:#080c18; border-left:4px solid #1a4a8a; padding-left:0.75rem; margin:2rem 0 0.7rem; }
+  h3 { font-size:0.88rem; font-weight:600; color:#1a4a8a; text-transform:uppercase; letter-spacing:0.09em; margin:1.5rem 0 0.5rem; display:flex; align-items:center; gap:0.6rem; }
+  h3::after { content:''; flex:1; height:1px; background:#c4ccd8; }
+
+  p { margin-bottom:0.7rem; font-size:0.95rem; }
+  ul { margin:0.3rem 0 0.9rem 1.3rem; }
+  ul li { font-size:0.94rem; margin-bottom:0.35rem; }
+
+  /* ---- BOXES ---- */
+  .note  { background:#eaf0fb; border-left:4px solid #1a4a8a; border-radius:0 6px 6px 0; padding:0.65rem 1rem; font-size:0.9rem; color:#101a3a; margin:0.6rem 0 1rem; }
+  .note strong { color:#0a2a6a; }
+  .warn  { background:#fdf4e4; border-left:4px solid #b07820; border-radius:0 6px 6px 0; padding:0.65rem 1rem; font-size:0.9rem; color:#5a3800; margin:0.6rem 0 1rem; }
+  .warn strong { color:#8a5200; }
+  .ok    { background:#e8f4ec; border-left:4px solid #1a7a3a; border-radius:0 6px 6px 0; padding:0.65rem 1rem; font-size:0.9rem; color:#0a3a18; margin:0.6rem 0 1rem; }
+  .ok strong { color:#1a6a28; }
+  .tip   { background:#f0eafa; border-left:4px solid #5a2a9a; border-radius:0 6px 6px 0; padding:0.65rem 1rem; font-size:0.9rem; color:#280a48; margin:0.6rem 0 1rem; }
+  .tip strong { color:#4a1a8a; }
+
+  /* ---- TABLES ---- */
+  .table-wrap { overflow-x:auto; margin-bottom:1.2rem; }
+  table { width:100%; border-collapse:collapse; font-size:0.9rem; }
+  thead tr { background:#080c18; color:#d8e4f0; }
+  thead th { padding:0.55rem 0.7rem; text-align:left; font-weight:600; font-size:0.82rem; letter-spacing:0.04em; white-space:nowrap; }
+  thead th.fut { background:#1a4a8a; }
+  thead th.are { background:#5a2a8a; }
+  thead th.ere { background:#1a4a8a; }
+  thead th.ire { background:#1a6a5a; }
+  thead th.irr { background:#6a3a1a; }
+  thead th.bad { background:#3a1a1a; }
+  thead th.good{ background:#1a4a28; }
+
+  tbody tr:nth-child(even) { background:#eaecf2; }
+  tbody tr:nth-child(odd)  { background:#f4f6f8; }
+  tbody tr:hover { background:#dde4f0; }
+
+  td { padding:0.46rem 0.7rem; border-bottom:1px solid #d0d8e4; vertical-align:middle; }
+  td.person { font-weight:600; color:#1e2228; white-space:nowrap; }
+  td.pro    { font-size:0.8rem; color:#6878a0; }
+  td.fut    { font-family:'Lora',serif; font-weight:600; color:#1a4a8a; }
+  td.are    { font-family:'Lora',serif; font-weight:600; color:#5a2a8a; }
+  td.ere    { font-family:'Lora',serif; font-weight:600; color:#1a4a8a; }
+  td.ire    { font-family:'Lora',serif; font-weight:600; color:#1a6a5a; }
+  td.irr    { font-family:'Lora',serif; font-weight:600; color:#8a4a00; }
+  td.inf    { font-family:'Lora',serif; color:#1e2228; font-weight:600; }
+  td.ex     { font-size:0.88rem; color:#1e2228; }
+  td.tr     { font-size:0.84rem; color:#6878a0; font-style:italic; }
+  td.right  { color:#1a6a28; font-family:'Lora',serif; font-weight:600; }
+  td.wrong  { color:#9a1a1a; text-decoration:line-through; font-family:'Lora',serif; }
+  td.rule   { font-size:0.84rem; color:#4a5a78; }
+  td.time   { font-family:'Lora',serif; font-weight:600; color:#1a4a8a; }
+
+  /* ---- FORMULA ---- */
+  .formula { background:#080c18; color:#d8e8f8; border-radius:8px; padding:1.1rem 1.4rem; margin:0.8rem 0 1.2rem; text-align:center; }
+  .formula .line { font-family:'Lora',serif; font-size:1.1rem; margin-bottom:0.3rem; }
+  .formula .line span.r  { color:#70b8f8; font-weight:600; }
+  .formula .line span.d  { color:#f0e060; font-weight:600; }
+  .formula .line span.pl { color:#607090; margin:0 0.5rem; }
+  .formula .sub { font-family:'Source Sans 3',sans-serif; font-size:0.82rem; color:#607090; margin-top:0.4rem; font-style:italic; }
+
+  /* ---- DES GRID ---- */
+  .des-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-bottom:1.3rem; }
+  @media(max-width:620px){ .des-grid { grid-template-columns:1fr; } }
+  .des-card { border-radius:8px; overflow:hidden; border:1px solid #c0cce0; }
+  .des-head { padding:0.55rem 0.85rem; font-family:'Lora',serif; font-weight:600; font-size:1rem; }
+  .des-head .arrow { font-size:0.85rem; font-weight:400; margin:0 0.4rem; opacity:0.7; }
+  .des-head .note-small { font-size:0.75rem; font-weight:400; font-style:italic; display:block; opacity:0.85; margin-top:0.1rem; }
+  .des-head.are { background:#5a2a8a; color:#ede0f8; }
+  .des-head.ere { background:#1a4a8a; color:#d8e8f8; }
+  .des-head.ire { background:#1a6a5a; color:#d0f4e8; }
+  .des-body { background:#f4f6f8; }
+  .des-row { display:flex; justify-content:space-between; align-items:baseline; padding:0.32rem 0.85rem; border-bottom:1px solid #dde4f0; font-size:0.9rem; }
+  .des-row:last-child { border-bottom:none; }
+  .des-pro  { color:#6878a0; font-size:0.8rem; }
+  .des-form { font-family:'Lora',serif; font-weight:600; font-size:1rem; }
+  .des-form.are { color:#5a2a8a; }
+  .des-form.ere { color:#1a4a8a; }
+  .des-form.ire { color:#1a6a5a; }
+  .des-tr   { font-size:0.8rem; color:#8898b8; font-style:italic; }
+
+  /* ---- CONJ CARDS ---- */
+  .conj-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-bottom:1.3rem; }
+  @media(max-width:620px){ .conj-grid { grid-template-columns:1fr; } }
+  .conj-grid2 { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin-bottom:1.3rem; }
+  @media(max-width:560px){ .conj-grid2 { grid-template-columns:1fr; } }
+  .conj-card { border-radius:8px; overflow:hidden; border:1px solid #c0cce0; }
+  .conj-head { padding:0.5rem 0.85rem; }
+  .conj-head.are { background:#5a2a8a; color:#ede0f8; }
+  .conj-head.ere { background:#1a4a8a; color:#d8e8f8; }
+  .conj-head.ire { background:#1a6a5a; color:#d0f4e8; }
+  .conj-head.irr { background:#6a3a1a; color:#f8e8d0; }
+  .conj-head.irr2{ background:#3a1a6a; color:#e0d8f8; }
+  .conj-htitle { font-family:'Lora',serif; font-weight:600; font-size:1rem; }
+  .conj-hsub   { font-size:0.78rem; font-style:italic; opacity:0.82; }
+  .conj-body   { background:#f4f6f8; }
+  .conj-row    { display:flex; justify-content:space-between; align-items:baseline; padding:0.3rem 0.85rem; border-bottom:1px solid #dde4f0; font-size:0.88rem; }
+  .conj-row:last-child { border-bottom:none; }
+  .conj-pro    { color:#6878a0; font-size:0.8rem; flex:0 0 55px; }
+  .conj-form   { font-family:'Lora',serif; font-weight:600; }
+  .conj-form.are  { color:#5a2a8a; }
+  .conj-form.ere  { color:#1a4a8a; }
+  .conj-form.ire  { color:#1a6a5a; }
+  .conj-form.irr  { color:#8a4a00; }
+  .conj-form.irr2 { color:#4a1a8a; }
+
+  /* ---- USI GRID ---- */
+  .usi-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-bottom:1.3rem; }
+  @media(max-width:640px){ .usi-grid { grid-template-columns:1fr; } }
+  .usi-grid2 { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin-bottom:1.3rem; }
+  @media(max-width:560px){ .usi-grid2 { grid-template-columns:1fr; } }
+  .uso-card { border-radius:8px; overflow:hidden; border:1px solid #c0cce0; }
+  .uso-head { padding:0.5rem 0.85rem; }
+  .uso-head.u1 { background:#1a4a8a; color:#d8e8f8; }
+  .uso-head.u2 { background:#3a1a8a; color:#e0d8f8; }
+  .uso-head.u3 { background:#1a5a6a; color:#c8f0f4; }
+  .uso-head.u4 { background:#5a4800; color:#f8f0c0; }
+  .uso-head.u5 { background:#5a1a4a; color:#f8d8ec; }
+  .uso-head.u6 { background:#2a5a1a; color:#d0f0c8; }
+  .uso-htitle { font-family:'Lora',serif; font-weight:600; font-size:0.95rem; }
+  .uso-hsub   { font-size:0.76rem; font-style:italic; opacity:0.85; margin-top:0.1rem; }
+  .uso-body   { background:#f4f6f8; padding:0.65rem 0.85rem; }
+  .uso-body p { font-size:0.88rem; margin-bottom:0.5rem; color:#202830; }
+  .uso-ex { font-family:'Lora',serif; font-weight:600; font-size:0.9rem; color:#080c18; display:block; margin-bottom:0.15rem; }
+  .uso-tr { font-size:0.8rem; color:#6878a0; font-style:italic; margin-bottom:0.35rem; display:block; }
+
+  /* ---- IRR FAMILIES ---- */
+  .fam-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-bottom:1.3rem; }
+  @media(max-width:620px){ .fam-grid { grid-template-columns:1fr; } }
+  .fam-card { border-radius:8px; overflow:hidden; border:1px solid #c0cce0; }
+  .fam-head { padding:0.5rem 0.85rem; }
+  .fam-head.f1 { background:#6a2a1a; color:#f8e0d0; }
+  .fam-head.f2 { background:#1a3a6a; color:#d0e0f8; }
+  .fam-head.f3 { background:#2a5a2a; color:#d0f0d0; }
+  .fam-head.f4 { background:#4a1a6a; color:#e8d8f8; }
+  .fam-head.f5 { background:#1a5a5a; color:#c8f0f0; }
+  .fam-htitle { font-family:'Lora',serif; font-weight:600; font-size:0.95rem; }
+  .fam-hsub   { font-size:0.76rem; font-style:italic; opacity:0.85; }
+  .fam-body   { background:#f4f6f8; }
+  .fam-row    { display:flex; justify-content:space-between; padding:0.3rem 0.85rem; border-bottom:1px solid #dde4f0; font-size:0.88rem; }
+  .fam-row:last-child { border-bottom:none; }
+  .fam-inf    { color:#404858; }
+  .fam-fut    { font-family:'Lora',serif; font-weight:600; color:#1a4a8a; }
+  .fam-tr     { font-size:0.78rem; color:#8898b8; font-style:italic; }
+
+  /* ---- EX GRID ---- */
+  .ex-grid { display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin-bottom:1.2rem; }
+  @media(max-width:540px){ .ex-grid { grid-template-columns:1fr; } }
+  .ex-card { background:#f4f6f8; border:1px solid #c0cce0; border-radius:8px; padding:0.7rem 0.9rem; }
+  .ex-label { font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.5rem; padding-bottom:0.3rem; border-bottom:1px solid #dde4f0; }
+  .ex-label.u1 { color:#1a4a8a; }
+  .ex-label.u2 { color:#3a1a8a; }
+  .ex-label.u3 { color:#1a5a6a; }
+  .ex-label.u4 { color:#7a6000; }
+  .ex-label.u5 { color:#7a1a4a; }
+  .ex-label.u6 { color:#2a5a1a; }
+  .ex-item { margin-bottom:0.4rem; }
+  .ex-it { font-family:'Lora',serif; font-size:0.91rem; color:#080c18; font-weight:600; }
+  .ex-es { font-size:0.82rem; color:#6878a0; font-style:italic; }
+
+  /* ---- TIME GRID ---- */
+  .time-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0.6rem; margin-bottom:1.3rem; }
+  @media(max-width:520px){ .time-grid { grid-template-columns:repeat(2,1fr); } }
+  .time-cell { background:#f4f6f8; border:1px solid #c0cce0; border-radius:6px; padding:0.5rem 0.65rem; }
+  .time-it { font-family:'Lora',serif; font-weight:600; color:#1a4a8a; font-size:0.95rem; }
+  .time-es { font-size:0.82rem; color:#6878a0; font-style:italic; }
+
+  /* ---- PRON CHIP ---- */
+  .chip { display:inline-block; background:#1a4a8a; color:#d8e8f8; padding:0.1rem 0.5rem; border-radius:4px; font-family:'Lora',serif; font-size:0.85rem; font-weight:600; margin:0.15rem; }
+  .chip.irr { background:#6a3a1a; color:#f8e8d0; }
+
+  /* ---- SUMMARY ---- */
+  .summary { background:#080c18; color:#d8e8f0; border-radius:8px; padding:1.3rem 1.5rem; margin-top:3rem; }
+  .summary h4 { font-family:'Lora',serif; font-size:1.05rem; color:#70c8f8; margin-bottom:1rem; border-bottom:1px solid #1a2840; padding-bottom:0.5rem; }
+  .sum-step { display:grid; grid-template-columns:28px 1fr; gap:0.5rem; margin-bottom:0.65rem; align-items:start; }
+  .sum-n { width:28px; height:28px; border-radius:50%; background:#1a4a8a; color:#d8e8f8; font-weight:600; font-size:0.88rem; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .sum-desc { font-size:0.9rem; color:#a8c0d8; padding-top:0.25rem; }
+  .sum-desc code { background:#0a1828; padding:0.1rem 0.4rem; border-radius:3px; font-family:monospace; font-size:0.85rem; color:#70c8f8; }
+  .sum-desc strong { color:#d8f0f8; }
+
+  @media print {
+    body { background:white; padding:1rem; }
+    .des-grid,.conj-grid,.usi-grid,.fam-grid,.ex-grid { page-break-inside:avoid; }
+  }
+</style>
+</head>
+<body>
+<div id="site-nav" style="background:#0f1422;padding:0.52rem 1.4rem;display:flex;align-items:center;gap:0.7rem;font-family:'Source Sans 3',sans-serif;font-size:0.82rem;border-bottom:1px solid #1e2c44;position:sticky;top:0;z-index:9999;box-shadow:0 2px 8px rgba(0,0,0,0.25)">
+  <a href="/" style="color:#70b8f8;text-decoration:none;font-weight:600;display:flex;align-items:center;gap:0.35rem;transition:opacity 0.2s" onmouseover="this.style.opacity=0.75" onmouseout="this.style.opacity=1">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#70b8f8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+    Inicio
+  </a>
+  <span style="color:#2a3a54">|</span>
+  <span style="color:#6878a0;letter-spacing:0.03em">Italiano Apuntes</span>
+</div>
+
+<div class="page">
+
+<!-- COVER -->
+<div class="cover">
+  <h1>Futuro Semplice — Indicativo</h1>
+  <p class="sub">Futuro simple · predicciones · planes · promesas · hipótesis · futuro con "quando"</p>
+  <div class="tags">
+    <span class="tag tag-blue">A2 – B1</span>
+    <span class="tag tag-indigo">Indicativo Futuro</span>
+    <span class="tag tag-teal">Regolare + Irregolare</span>
+    <span class="tag tag-amber">6 Usi</span>
+    <span class="tag tag-rose">Futuro epistemico</span>
+  </div>
+</div>
+
+<div class="lang-badge lang-it">🇮🇹 Italiano</div>
+
+<!-- ===== DEFINIZIONE ===== -->
+<h2>Che cos'è il futuro semplice?</h2>
+<p>Il futuro semplice esprime azioni o eventi che accadranno <strong>dopo il momento in cui si parla</strong>. In italiano ha usi più ampi che in spagnolo: oltre ai piani futuri, si usa per <strong>ipotesi</strong>, <strong>probabilità nel presente</strong> e obbligatoriamente dopo certi connettivi temporali.</p>
+<ul>
+  <li>Indica azioni che accadranno nel futuro.</li>
+  <li>Esprime <strong>previsioni</strong> e <strong>probabilità</strong> (anche nel presente).</li>
+  <li>Indica <strong>promesse</strong> e intenzioni formali.</li>
+  <li>Si usa obbligatoriamente dopo <em>quando, appena, se</em> con valore futuro.</li>
+</ul>
+
+<div class="note"><strong>Attenzione:</strong> in italiano parlato il futuro si sostituisce spesso con il <strong>presente indicativo</strong> per azioni future programmate. <em>Domani vado al cinema</em> = <em>Domani andrò al cinema</em>. Il futuro semplice è obbligatorio per ipotesi e probabilità.</div>
+
+<!-- ===== STRUTTURA ===== -->
+<h2>Struttura — come si forma</h2>
+
+<div class="formula">
+  <div class="line"><span class="r">radice del futuro</span> <span class="pl">+</span> <span class="d">desinenza</span></div>
+  <div class="sub">Per -ARE: si sostituisce la A finale con E prima di aggiungere la desinenza · parlare → parler- · -ERE e -IRE: si toglie solo -e</div>
+</div>
+
+<div class="note"><strong>La chiave del futuro regolare:</strong> tutte e tre le coniugazioni usano le <strong>stesse desinenze</strong>: <em>-ò · -ai · -à · -emo · -ete · -anno</em>. La differenza è solo nella radice: <em>-ARE</em> perde la <em>A</em> → <em>parler-</em>; <em>-ERE / -IRE</em> perdono la <em>E</em> finale → <em>creder- / dormir-</em>.</div>
+
+<h3>Desinenze complete</h3>
+
+<div class="des-grid">
+  <div class="des-card">
+    <div class="des-head are">-ARE <span class="arrow">→</span> parler-<span class="note-small">la A diventa E: parl<strong>a</strong>re → parl<strong>e</strong>r-</span></div>
+    <div class="des-body">
+      <div class="des-row"><span class="des-pro">io</span><span class="des-form are">parlerò</span><span class="des-tr">hablaré</span></div>
+      <div class="des-row"><span class="des-pro">tu</span><span class="des-form are">parlerai</span><span class="des-tr">hablarás</span></div>
+      <div class="des-row"><span class="des-pro">lui/lei</span><span class="des-form are">parlerà</span><span class="des-tr">hablará</span></div>
+      <div class="des-row"><span class="des-pro">noi</span><span class="des-form are">parleremo</span><span class="des-tr">hablaremos</span></div>
+      <div class="des-row"><span class="des-pro">voi</span><span class="des-form are">parlerete</span><span class="des-tr">hablaréis</span></div>
+      <div class="des-row"><span class="des-pro">loro</span><span class="des-form are">parleranno</span><span class="des-tr">hablarán</span></div>
+    </div>
+  </div>
+  <div class="des-card">
+    <div class="des-head ere">-ERE <span class="arrow">→</span> creder-<span class="note-small">solo cade la -e finale: creder<strike>e</strike></span></div>
+    <div class="des-body">
+      <div class="des-row"><span class="des-pro">io</span><span class="des-form ere">crederò</span><span class="des-tr">creeré</span></div>
+      <div class="des-row"><span class="des-pro">tu</span><span class="des-form ere">crederai</span><span class="des-tr">creerás</span></div>
+      <div class="des-row"><span class="des-pro">lui/lei</span><span class="des-form ere">crederà</span><span class="des-tr">creerá</span></div>
+      <div class="des-row"><span class="des-pro">noi</span><span class="des-form ere">crederemo</span><span class="des-tr">creeremos</span></div>
+      <div class="des-row"><span class="des-pro">voi</span><span class="des-form ere">crederete</span><span class="des-tr">creeréis</span></div>
+      <div class="des-row"><span class="des-pro">loro</span><span class="des-form ere">crederanno</span><span class="des-tr">creerán</span></div>
+    </div>
+  </div>
+  <div class="des-card">
+    <div class="des-head ire">-IRE <span class="arrow">→</span> dormir-<span class="note-small">solo cade la -e finale: dormir<strike>e</strike></span></div>
+    <div class="des-body">
+      <div class="des-row"><span class="des-pro">io</span><span class="des-form ire">dormirò</span><span class="des-tr">dormiré</span></div>
+      <div class="des-row"><span class="des-pro">tu</span><span class="des-form ire">dormirai</span><span class="des-tr">dormirás</span></div>
+      <div class="des-row"><span class="des-pro">lui/lei</span><span class="des-form ire">dormirà</span><span class="des-tr">dormirá</span></div>
+      <div class="des-row"><span class="des-pro">noi</span><span class="des-form ire">dormiremo</span><span class="des-tr">dormiremos</span></div>
+      <div class="des-row"><span class="des-pro">voi</span><span class="des-form ire">dormirete</span><span class="des-tr">dormiréis</span></div>
+      <div class="des-row"><span class="des-pro">loro</span><span class="des-form ire">dormiranno</span><span class="des-tr">dormirán</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="ok"><strong>Osservazione:</strong> le desinenze sono <strong>identiche</strong> per -ARE, -ERE e -IRE. Basta imparare un solo schema: <span class="chip">-ò</span><span class="chip">-ai</span><span class="chip">-à</span><span class="chip">-emo</span><span class="chip">-ete</span><span class="chip">-anno</span>. Nota gli accenti su io (<em>-ò</em>) e lui/lei (<em>-à</em>).</div>
+
+<!-- ===== PARTICOLARITÀ ORTOGRAFICHE ===== -->
+<h2>Particolarità ortografiche — verbi in -CARE / -GARE / -CIARE / -GIARE</h2>
+
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Tipo</th><th>Regola</th><th class="fut">Forma futuro (tu / noi)</th><th>Spiegazione</th></tr></thead>
+  <tbody>
+    <tr>
+      <td class="inf">-CARE (cercare, giocare)</td>
+      <td class="rule">aggiungono <strong>H</strong> davanti alle desinenze -ai / -emo</td>
+      <td class="fut">cercherai · cercheremo<br>giocherai · giocheremo</td>
+      <td class="rule">per mantenere il suono /k/</td>
+    </tr>
+    <tr>
+      <td class="inf">-GARE (pagare, spiegare)</td>
+      <td class="rule">aggiungono <strong>H</strong> davanti alle desinenze -ai / -emo</td>
+      <td class="fut">pagherai · pagheremo<br>spiegherai · spiegheremo</td>
+      <td class="rule">per mantenere il suono /g/</td>
+    </tr>
+    <tr>
+      <td class="inf">-CIARE (cominciare, baciare)</td>
+      <td class="rule">perdono la <strong>I</strong> dalla radice</td>
+      <td class="fut">comincerò · cominceremo<br>bacerò · baceremo</td>
+      <td class="rule">la CI diventa solo C davanti a E</td>
+    </tr>
+    <tr>
+      <td class="inf">-GIARE (mangiare, viaggiare)</td>
+      <td class="rule">perdono la <strong>I</strong> dalla radice</td>
+      <td class="fut">mangerò · mangeremo<br>viaggerò · viaggeremo</td>
+      <td class="rule">la GI diventa solo G davanti a E</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===== VERBI IRREGOLARI ===== -->
+<h2>Verbi irregolari al futuro semplice</h2>
+<p>I verbi irregolari al futuro hanno radici proprie ma usano <strong>sempre le stesse desinenze regolari</strong>. Si raggruppano in famiglie per facilitare la memorizzazione.</p>
+
+<h3>Famiglie di irregolari</h3>
+
+<div class="fam-grid">
+  <div class="fam-card">
+    <div class="fam-head f1">
+      <div class="fam-htitle">Famiglia 1 — radice in -RR-</div>
+      <div class="fam-hsub">doppia R caratteristica</div>
+    </div>
+    <div class="fam-body">
+      <div class="fam-row"><span class="fam-inf">essere</span><span class="fam-fut">sarò / sarai / sarà...</span><span class="fam-tr">seré</span></div>
+      <div class="fam-row"><span class="fam-inf">avere</span><span class="fam-fut">avrò / avrai / avrà...</span><span class="fam-tr">tendré</span></div>
+      <div class="fam-row"><span class="fam-inf">andare</span><span class="fam-fut">andrò / andrai / andrà...</span><span class="fam-tr">iré</span></div>
+      <div class="fam-row"><span class="fam-inf">venire</span><span class="fam-fut">verrò / verrai / verrà...</span><span class="fam-tr">vendré</span></div>
+      <div class="fam-row"><span class="fam-inf">volere</span><span class="fam-fut">vorrò / vorrai / vorrà...</span><span class="fam-tr">querré</span></div>
+      <div class="fam-row"><span class="fam-inf">potere</span><span class="fam-fut">potrò / potrai / potrà...</span><span class="fam-tr">podré</span></div>
+      <div class="fam-row"><span class="fam-inf">dovere</span><span class="fam-fut">dovrò / dovrai / dovrà...</span><span class="fam-tr">deberé</span></div>
+      <div class="fam-row"><span class="fam-inf">sapere</span><span class="fam-fut">saprò / saprai / saprà...</span><span class="fam-tr">sabré</span></div>
+    </div>
+  </div>
+  <div class="fam-card">
+    <div class="fam-head f2">
+      <div class="fam-htitle">Famiglia 2 — caduta della vocale</div>
+      <div class="fam-hsub">cade la vocale prima di -r-</div>
+    </div>
+    <div class="fam-body">
+      <div class="fam-row"><span class="fam-inf">vedere</span><span class="fam-fut">vedrò / vedrai / vedrà...</span><span class="fam-tr">veré</span></div>
+      <div class="fam-row"><span class="fam-inf">cadere</span><span class="fam-fut">cadrò / cadrai / cadrà...</span><span class="fam-tr">caeré</span></div>
+      <div class="fam-row"><span class="fam-inf">vivere</span><span class="fam-fut">vivrò / vivrai / vivrà...</span><span class="fam-tr">viviré</span></div>
+      <div class="fam-row"><span class="fam-inf">tenere</span><span class="fam-fut">terrò / terrai / terrà...</span><span class="fam-tr">tendré</span></div>
+      <div class="fam-row"><span class="fam-inf">rimanere</span><span class="fam-fut">rimarrò / rimarrai...</span><span class="fam-tr">me quedaré</span></div>
+      <div class="fam-row"><span class="fam-inf">bere</span><span class="fam-fut">berrò / berrai / berrà...</span><span class="fam-tr">beberé</span></div>
+      <div class="fam-row"><span class="fam-inf">porre</span><span class="fam-fut">porrò / porrai / porrà...</span><span class="fam-tr">pondré</span></div>
+      <div class="fam-row"><span class="fam-inf">trarre</span><span class="fam-fut">trarrò / trarrai / trarrà...</span><span class="fam-tr">extraeré</span></div>
+    </div>
+  </div>
+  <div class="fam-card">
+    <div class="fam-head f3">
+      <div class="fam-htitle">Famiglia 3 — fare / dire / stare / dare</div>
+      <div class="fam-hsub">radici propias</div>
+    </div>
+    <div class="fam-body">
+      <div class="fam-row"><span class="fam-inf">fare</span><span class="fam-fut">farò / farai / farà...</span><span class="fam-tr">haré</span></div>
+      <div class="fam-row"><span class="fam-inf">dire</span><span class="fam-fut">dirò / dirai / dirà...</span><span class="fam-tr">diré</span></div>
+      <div class="fam-row"><span class="fam-inf">stare</span><span class="fam-fut">starò / starai / starà...</span><span class="fam-tr">estaré</span></div>
+      <div class="fam-row"><span class="fam-inf">dare</span><span class="fam-fut">darò / darai / darà...</span><span class="fam-tr">daré</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="fam-grid">
+  <div class="fam-card">
+    <div class="fam-head f4">
+      <div class="fam-htitle">Derivati di venire / tenere</div>
+      <div class="fam-hsub">heredan la raíz del verbo base</div>
+    </div>
+    <div class="fam-body">
+      <div class="fam-row"><span class="fam-inf">ottenere</span><span class="fam-fut">otterrò</span><span class="fam-tr">obtendré</span></div>
+      <div class="fam-row"><span class="fam-inf">mantenere</span><span class="fam-fut">manterrò</span><span class="fam-tr">mantendré</span></div>
+      <div class="fam-row"><span class="fam-inf">contenere</span><span class="fam-fut">conterrò</span><span class="fam-tr">contendré</span></div>
+      <div class="fam-row"><span class="fam-inf">diventare</span><span class="fam-fut">diventerò</span><span class="fam-tr">me convertiré</span></div>
+      <div class="fam-row"><span class="fam-inf">convenire</span><span class="fam-fut">converrò</span><span class="fam-tr">convendrá</span></div>
+    </div>
+  </div>
+  <div class="fam-card">
+    <div class="fam-head f5">
+      <div class="fam-htitle">Derivati di porre / trarre</div>
+      <div class="fam-hsub">heredan la raíz -porr- / -trarr-</div>
+    </div>
+    <div class="fam-body">
+      <div class="fam-row"><span class="fam-inf">proporre</span><span class="fam-fut">proporrò</span><span class="fam-tr">propondré</span></div>
+      <div class="fam-row"><span class="fam-inf">comporre</span><span class="fam-fut">comporrò</span><span class="fam-tr">compondré</span></div>
+      <div class="fam-row"><span class="fam-inf">esporre</span><span class="fam-fut">esporrò</span><span class="fam-tr">expondré</span></div>
+      <div class="fam-row"><span class="fam-inf">attrarre</span><span class="fam-fut">attrarrò</span><span class="fam-tr">atraeré</span></div>
+      <div class="fam-row"><span class="fam-inf">distrarre</span><span class="fam-fut">distrarrò</span><span class="fam-tr">distraeré</span></div>
+    </div>
+  </div>
+  <div class="fam-card">
+    <div class="fam-head f1">
+      <div class="fam-htitle">Tradurre / produrre / ridurre</div>
+      <div class="fam-hsub">radice: tradurr- / produrr-</div>
+    </div>
+    <div class="fam-body">
+      <div class="fam-row"><span class="fam-inf">tradurre</span><span class="fam-fut">tradurrò / tradurrai...</span><span class="fam-tr">traduciré</span></div>
+      <div class="fam-row"><span class="fam-inf">produrre</span><span class="fam-fut">produrrò / produrrai...</span><span class="fam-tr">produciré</span></div>
+      <div class="fam-row"><span class="fam-inf">ridurre</span><span class="fam-fut">ridurrò / ridurrai...</span><span class="fam-tr">reduciré</span></div>
+      <div class="fam-row"><span class="fam-inf">introdurre</span><span class="fam-fut">introdurrò / introdurrai...</span><span class="fam-tr">introduciré</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CONIUGAZIONI COMPLETE ===== -->
+<h2>Coniugazione completa — verbi chiave</h2>
+
+<div class="conj-grid">
+  <div class="conj-card">
+    <div class="conj-head irr"><div class="conj-htitle">essere</div><div class="conj-hsub">ser/estar · radice: sar-</div></div>
+    <div class="conj-body">
+      <div class="conj-row"><span class="conj-pro">io</span><span class="conj-form irr">sarò</span></div>
+      <div class="conj-row"><span class="conj-pro">tu</span><span class="conj-form irr">sarai</span></div>
+      <div class="conj-row"><span class="conj-pro">lui/lei</span><span class="conj-form irr">sarà</span></div>
+      <div class="conj-row"><span class="conj-pro">noi</span><span class="conj-form irr">saremo</span></div>
+      <div class="conj-row"><span class="conj-pro">voi</span><span class="conj-form irr">sarete</span></div>
+      <div class="conj-row"><span class="conj-pro">loro</span><span class="conj-form irr">saranno</span></div>
+    </div>
+  </div>
+  <div class="conj-card">
+    <div class="conj-head irr"><div class="conj-htitle">avere</div><div class="conj-hsub">tener · radice: avr-</div></div>
+    <div class="conj-body">
+      <div class="conj-row"><span class="conj-pro">io</span><span class="conj-form irr">avrò</span></div>
+      <div class="conj-row"><span class="conj-pro">tu</span><span class="conj-form irr">avrai</span></div>
+      <div class="conj-row"><span class="conj-pro">lui/lei</span><span class="conj-form irr">avrà</span></div>
+      <div class="conj-row"><span class="conj-pro">noi</span><span class="conj-form irr">avremo</span></div>
+      <div class="conj-row"><span class="conj-pro">voi</span><span class="conj-form irr">avrete</span></div>
+      <div class="conj-row"><span class="conj-pro">loro</span><span class="conj-form irr">avranno</span></div>
+    </div>
+  </div>
+  <div class="conj-card">
+    <div class="conj-head irr"><div class="conj-htitle">fare</div><div class="conj-hsub">hacer · radice: far-</div></div>
+    <div class="conj-body">
+      <div class="conj-row"><span class="conj-pro">io</span><span class="conj-form irr">farò</span></div>
+      <div class="conj-row"><span class="conj-pro">tu</span><span class="conj-form irr">farai</span></div>
+      <div class="conj-row"><span class="conj-pro">lui/lei</span><span class="conj-form irr">farà</span></div>
+      <div class="conj-row"><span class="conj-pro">noi</span><span class="conj-form irr">faremo</span></div>
+      <div class="conj-row"><span class="conj-pro">voi</span><span class="conj-form irr">farete</span></div>
+      <div class="conj-row"><span class="conj-pro">loro</span><span class="conj-form irr">faranno</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="conj-grid">
+  <div class="conj-card">
+    <div class="conj-head irr"><div class="conj-htitle">venire</div><div class="conj-hsub">venir · radice: verr-</div></div>
+    <div class="conj-body">
+      <div class="conj-row"><span class="conj-pro">io</span><span class="conj-form irr">verrò</span></div>
+      <div class="conj-row"><span class="conj-pro">tu</span><span class="conj-form irr">verrai</span></div>
+      <div class="conj-row"><span class="conj-pro">lui/lei</span><span class="conj-form irr">verrà</span></div>
+      <div class="conj-row"><span class="conj-pro">noi</span><span class="conj-form irr">verremo</span></div>
+      <div class="conj-row"><span class="conj-pro">voi</span><span class="conj-form irr">verrete</span></div>
+      <div class="conj-row"><span class="conj-pro">loro</span><span class="conj-form irr">verranno</span></div>
+    </div>
+  </div>
+  <div class="conj-card">
+    <div class="conj-head irr"><div class="conj-htitle">potere / dovere</div><div class="conj-hsub">poder / deber · potr- / dovr-</div></div>
+    <div class="conj-body">
+      <div class="conj-row"><span class="conj-pro">io</span><span class="conj-form irr">potrò / dovrò</span></div>
+      <div class="conj-row"><span class="conj-pro">tu</span><span class="conj-form irr">potrai / dovrai</span></div>
+      <div class="conj-row"><span class="conj-pro">lui/lei</span><span class="conj-form irr">potrà / dovrà</span></div>
+      <div class="conj-row"><span class="conj-pro">noi</span><span class="conj-form irr">potremo / dovremo</span></div>
+      <div class="conj-row"><span class="conj-pro">voi</span><span class="conj-form irr">potrete / dovrete</span></div>
+      <div class="conj-row"><span class="conj-pro">loro</span><span class="conj-form irr">potranno / dovranno</span></div>
+    </div>
+  </div>
+  <div class="conj-card">
+    <div class="conj-head irr2"><div class="conj-htitle">volere / sapere</div><div class="conj-hsub">querer / saber · vorr- / sapr-</div></div>
+    <div class="conj-body">
+      <div class="conj-row"><span class="conj-pro">io</span><span class="conj-form irr2">vorrò / saprò</span></div>
+      <div class="conj-row"><span class="conj-pro">tu</span><span class="conj-form irr2">vorrai / saprai</span></div>
+      <div class="conj-row"><span class="conj-pro">lui/lei</span><span class="conj-form irr2">vorrà / saprà</span></div>
+      <div class="conj-row"><span class="conj-pro">noi</span><span class="conj-form irr2">vorremo / sapremo</span></div>
+      <div class="conj-row"><span class="conj-pro">voi</span><span class="conj-form irr2">vorrete / saprete</span></div>
+      <div class="conj-row"><span class="conj-pro">loro</span><span class="conj-form irr2">vorranno / sapranno</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== USI ===== -->
+<h2>I 6 usi del futuro semplice</h2>
+
+<div class="usi-grid">
+  <div class="uso-card">
+    <div class="uso-head u1">
+      <div class="uso-htitle">Uso 1 — Evento futuro</div>
+      <div class="uso-hsub">lo que ocurrirá</div>
+    </div>
+    <div class="uso-body">
+      <p>Azione o evento che accadrà <strong>dopo il momento presente</strong>.</p>
+      <span class="uso-ex">Domani partiremo per Roma.</span>
+      <span class="uso-tr">Mañana partiremos para Roma.</span>
+      <span class="uso-ex">Il prossimo anno finirò l'università.</span>
+      <span class="uso-tr">El año que viene terminaré la universidad.</span>
+      <span class="uso-ex">Tra due anni vivrò all'estero.</span>
+      <span class="uso-tr">En dos años viviré en el extranjero.</span>
+    </div>
+  </div>
+  <div class="uso-card">
+    <div class="uso-head u2">
+      <div class="uso-htitle">Uso 2 — Previsione / ipotesi</div>
+      <div class="uso-hsub">lo que probablemente es / será</div>
+    </div>
+    <div class="uso-body">
+      <p>Esprime una <strong>supposizione o probabilità</strong> — anche riferita al presente. È il "futuro epistemico".</p>
+      <span class="uso-ex">Saranno le tre di notte.</span>
+      <span class="uso-tr">Serán las tres de la noche. (supongo)</span>
+      <span class="uso-ex">Avrà trent'anni, forse.</span>
+      <span class="uso-tr">Tendrá unos treinta años.</span>
+      <span class="uso-ex">Starà dormendo adesso.</span>
+      <span class="uso-tr">Estará durmiendo ahora.</span>
+    </div>
+  </div>
+  <div class="uso-card">
+    <div class="uso-head u3">
+      <div class="uso-htitle">Uso 3 — Promessa / intenzione</div>
+      <div class="uso-hsub">me comprometo a...</div>
+    </div>
+    <div class="uso-body">
+      <p>Esprime un <strong>impegno formale</strong> o una promessa solenne.</p>
+      <span class="uso-ex">Ti prometto che tornerò presto.</span>
+      <span class="uso-tr">Te prometo que volveré pronto.</span>
+      <span class="uso-ex">Non lo dirò a nessuno.</span>
+      <span class="uso-tr">No se lo diré a nadie.</span>
+      <span class="uso-ex">Studierò di più d'ora in poi.</span>
+      <span class="uso-tr">Estudiaré más de ahora en adelante.</span>
+    </div>
+  </div>
+</div>
+
+<div class="usi-grid">
+  <div class="uso-card">
+    <div class="uso-head u4">
+      <div class="uso-htitle">Uso 4 — Futuro con QUANDO / SE / APPENA</div>
+      <div class="uso-hsub">regla obligatoria en italiano</div>
+    </div>
+    <div class="uso-body">
+      <p>Dopo <em>quando, appena, se</em> con valore futuro, l'italiano usa <strong>obbligatoriamente il futuro</strong> (a differenza dello spagnolo che usa il presente).</p>
+      <span class="uso-ex">Quando arriverò, ti chiamerò.</span>
+      <span class="uso-tr">Cuando llegue, te llamaré.</span>
+      <span class="uso-ex">Appena finirò, usciremo.</span>
+      <span class="uso-tr">En cuanto termine, saldremos.</span>
+      <span class="uso-ex">Se verrà, sarò contento.</span>
+      <span class="uso-tr">Si viene, estaré contento.</span>
+    </div>
+  </div>
+  <div class="uso-card">
+    <div class="uso-head u5">
+      <div class="uso-htitle">Uso 5 — Ordine / obbligo futuro</div>
+      <div class="uso-hsub">tono formal / autoritario</div>
+    </div>
+    <div class="uso-body">
+      <p>Il futuro può esprimere un <strong>ordine deciso o una norma</strong>, con tono più formale e distaccato dell'imperativo.</p>
+      <span class="uso-ex">Non ucciderai. Non ruberai.</span>
+      <span class="uso-tr">No matarás. No robarás. (mandamientos)</span>
+      <span class="uso-ex">Gli studenti presenteranno il progetto venerdì.</span>
+      <span class="uso-tr">Los estudiantes presentarán el proyecto el viernes.</span>
+      <span class="uso-ex">I partecipanti rispetteranno il regolamento.</span>
+      <span class="uso-tr">Los participantes respetarán el reglamento.</span>
+    </div>
+  </div>
+  <div class="uso-card">
+    <div class="uso-head u6">
+      <div class="uso-htitle">Uso 6 — Concessione / riformulazione</div>
+      <div class="uso-hsub">aunque sea... / puede que...</div>
+    </div>
+    <div class="uso-body">
+      <p>Il futuro può esprimere una <strong>concessione</strong> o un'accettazione parziale di un fatto.</p>
+      <span class="uso-ex">Sarà anche bello, ma non mi piace.</span>
+      <span class="uso-tr">Será bonito, puede ser, pero no me gusta.</span>
+      <span class="uso-ex">Avrà le sue ragioni, ma non sono d'accordo.</span>
+      <span class="uso-tr">Tendrá sus razones, pero no estoy de acuerdo.</span>
+      <span class="uso-ex">Saranno bravi, ma noi siamo meglio.</span>
+      <span class="uso-tr">Serán buenos, pero nosotros somos mejores.</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== FUTURO EPISTEMICO ===== -->
+<h2>Il futuro epistemico — probabilità nel presente</h2>
+<p>Uno degli usi più caratteristici e difficili del futuro italiano: si usa per esprimere <strong>supposizioni su qualcosa che sta accadendo ora</strong>, non necessariamente nel futuro. Non esiste in spagnolo con questa funzione (in spagnolo si usa "debe de" + infinitivo o "probablemente" + presente).</p>
+
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>Situazione</th>
+      <th class="fut">Futuro epistemico (it.)</th>
+      <th>Equivalente spagnolo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td class="rule">Qualcuno bussa alla porta</td><td class="fut"><em>Sarà il postino.</em></td><td class="tr">Será el cartero. / Debe de ser el cartero.</td></tr>
+    <tr><td class="rule">Non sai l'età di qualcuno</td><td class="fut"><em>Avrà quarant'anni.</em></td><td class="tr">Tendrá cuarenta años. / Debe de tener...</td></tr>
+    <tr><td class="rule">Il telefono non risponde</td><td class="fut"><em>Starà dormendo.</em></td><td class="tr">Estará durmiendo. / Debe de estar durmiendo.</td></tr>
+    <tr><td class="rule">Non trovi le chiavi</td><td class="fut"><em>Le avrò lasciate in macchina.</em></td><td class="tr">Las habré dejado en el coche.</td></tr>
+    <tr><td class="rule">Qualcuno arriva in ritardo</td><td class="fut"><em>Ci sarà stato traffico.</em></td><td class="tr">Habrá habido tráfico.</td></tr>
+    <tr><td class="rule">Non sai dove sia qualcuno</td><td class="fut"><em>Sarà in ufficio a quest'ora.</em></td><td class="tr">Estará en la oficina a esta hora.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="tip"><strong>Trucco per riconoscerlo:</strong> se puoi sostituire il futuro con <em>"probabilmente" + presente</em>, è un futuro epistemico. <em>Sarà stanco</em> = <em>Probabilmente è stanco</em> = Probablemente está cansado.</div>
+
+<!-- ===== QUANDO / SE / APPENA ===== -->
+<h2>Futuro dopo QUANDO, APPENA, SE, FINO A CHE — regola italiana</h2>
+<p>Questa è una delle differenze più importanti tra italiano e spagnolo. Dopo i connettivi temporali con valore futuro, l'italiano usa il <strong>futuro in entrambe le proposizioni</strong>; lo spagnolo usa il <strong>presente</strong> nella subordinata.</p>
+
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>Connettivo</th>
+      <th class="fut">Italiano — futuro</th>
+      <th>Spagnolo — presente</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="time">quando</td>
+      <td class="fut"><em>Quando <strong>arriverai</strong>, chiamami.</em></td>
+      <td class="tr">Cuando <strong>llegues</strong>, llámame.</td>
+    </tr>
+    <tr>
+      <td class="time">appena</td>
+      <td class="fut"><em>Appena <strong>finirò</strong>, uscirò.</em></td>
+      <td class="tr">En cuanto <strong>termine</strong>, saldré.</td>
+    </tr>
+    <tr>
+      <td class="time">se</td>
+      <td class="fut"><em>Se <strong>verrà</strong>, sarò felice.</em></td>
+      <td class="tr">Si <strong>viene</strong>, estaré feliz.</td>
+    </tr>
+    <tr>
+      <td class="time">fino a quando / finché</td>
+      <td class="fut"><em>Aspetterò finché <strong>non tornerai</strong>.</em></td>
+      <td class="tr">Esperaré hasta que <strong>vuelvas</strong>.</td>
+    </tr>
+    <tr>
+      <td class="time">non appena</td>
+      <td class="fut"><em>Non appena <strong>saprò</strong>, ti dirò.</em></td>
+      <td class="tr">En cuanto <strong>sepa</strong>, te diré.</td>
+    </tr>
+    <tr>
+      <td class="time">dopo che</td>
+      <td class="fut"><em>Dopo che <strong>mangeremo</strong>, partiremo.</em></td>
+      <td class="tr">Después de que <strong>comamos</strong>, partiremos.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="warn"><strong>Errore frequente degli ispanofoni:</strong> usare il presente italiano dove serve il futuro. ❌ <em>Quando arrivo, ti chiamo.</em> → ✔ <em>Quando <strong>arriverò</strong>, ti chiamerò.</em></div>
+
+<!-- ===== ESEMPI CONTESTO ===== -->
+<h2>Esempi per contesto</h2>
+
+<div class="ex-grid">
+  <div class="ex-card">
+    <div class="ex-label u1">piani e programmi</div>
+    <div class="ex-item"><div class="ex-it">Quest'estate andremo in Sicilia.</div><div class="ex-es">Este verano iremos a Sicilia.</div></div>
+    <div class="ex-item"><div class="ex-it">Dopo la laurea cercherò lavoro a Milano.</div><div class="ex-es">Después de graduarme buscaré trabajo en Milán.</div></div>
+    <div class="ex-item"><div class="ex-it">L'anno prossimo imparerò il giapponese.</div><div class="ex-es">El año que viene aprenderé japonés.</div></div>
+    <div class="ex-item"><div class="ex-it">Ci trasferiremo in un appartamento più grande.</div><div class="ex-es">Nos mudaremos a un apartamento más grande.</div></div>
+  </div>
+  <div class="ex-card">
+    <div class="ex-label u2">ipotesi e probabilità</div>
+    <div class="ex-item"><div class="ex-it">Chi sarà a quest'ora? Saranno le undici.</div><div class="ex-es">¿Quién será a esta hora? Serán las once.</div></div>
+    <div class="ex-item"><div class="ex-it">Marco non risponde — starà dormendo.</div><div class="ex-es">Marco no contesta — estará durmiendo.</div></div>
+    <div class="ex-item"><div class="ex-it">Quanto costerà questo appartamento?</div><div class="ex-es">¿Cuánto costará este apartamento?</div></div>
+    <div class="ex-item"><div class="ex-it">Sarà stanca dopo quel viaggio lungo.</div><div class="ex-es">Estará cansada después de ese viaje largo.</div></div>
+  </div>
+  <div class="ex-card">
+    <div class="ex-label u3">promesse</div>
+    <div class="ex-item"><div class="ex-it">Giuro che non lo farò mai più.</div><div class="ex-es">Juro que no lo haré nunca más.</div></div>
+    <div class="ex-item"><div class="ex-it">Ti prometto: ci sarò sempre per te.</div><div class="ex-es">Te prometo: siempre estaré para ti.</div></div>
+    <div class="ex-item"><div class="ex-it">Non racconterò il tuo segreto a nessuno.</div><div class="ex-es">No contaré tu secreto a nadie.</div></div>
+    <div class="ex-item"><div class="ex-it">Tornerò entro le otto, parola mia.</div><div class="ex-es">Volveré antes de las ocho, palabra.</div></div>
+  </div>
+  <div class="ex-card">
+    <div class="ex-label u4">quando / se / appena</div>
+    <div class="ex-item"><div class="ex-it">Quando sarò pronto, ti avviserò.</div><div class="ex-es">Cuando esté listo, te aviso.</div></div>
+    <div class="ex-item"><div class="ex-it">Appena arriverà il treno, saliremo.</div><div class="ex-es">En cuanto llegue el tren, subiremos.</div></div>
+    <div class="ex-item"><div class="ex-it">Se non studierai, non passerai l'esame.</div><div class="ex-es">Si no estudias, no pasarás el examen.</div></div>
+    <div class="ex-item"><div class="ex-it">Aspetterò finché non torneranno.</div><div class="ex-es">Esperaré hasta que vuelvan.</div></div>
+  </div>
+  <div class="ex-card">
+    <div class="ex-label u5">ordini formali</div>
+    <div class="ex-item"><div class="ex-it">I candidati presenteranno i documenti entro lunedì.</div><div class="ex-es">Los candidatos presentarán los documentos antes del lunes.</div></div>
+    <div class="ex-item"><div class="ex-it">Gli ospiti rispetteranno il silenzio dopo le 22.</div><div class="ex-es">Los huéspedes respetarán el silencio después de las 22.</div></div>
+    <div class="ex-item"><div class="ex-it">Non farete rumore durante la cerimonia.</div><div class="ex-es">No haréis ruido durante la ceremonia.</div></div>
+  </div>
+  <div class="ex-card">
+    <div class="ex-label u6">concessione</div>
+    <div class="ex-item"><div class="ex-it">Sarà intelligente, ma è molto arrogante.</div><div class="ex-es">Será inteligente, puede ser, pero es muy arrogante.</div></div>
+    <div class="ex-item"><div class="ex-it">Avranno ragione, ma io non cambio idea.</div><div class="ex-es">Tendrán razón, pero yo no cambio de opinión.</div></div>
+    <div class="ex-item"><div class="ex-it">Sarà costoso, eppure vale la pena.</div><div class="ex-es">Será caro, y sin embargo vale la pena.</div></div>
+  </div>
+</div>
+
+<!-- ===== ESPRESSIONI TEMPORALI ===== -->
+<h2>Espressioni temporali del futuro</h2>
+
+<div class="time-grid">
+  <div class="time-cell"><div class="time-it">domani</div><div class="time-es">mañana</div></div>
+  <div class="time-cell"><div class="time-it">dopodomani</div><div class="time-es">pasado mañana</div></div>
+  <div class="time-cell"><div class="time-it">tra poco</div><div class="time-es">dentro de poco</div></div>
+  <div class="time-cell"><div class="time-it">tra un'ora / un giorno</div><div class="time-es">en una hora / un día</div></div>
+  <div class="time-cell"><div class="time-it">la settimana prossima</div><div class="time-es">la semana que viene</div></div>
+  <div class="time-cell"><div class="time-it">il mese prossimo</div><div class="time-es">el mes que viene</div></div>
+  <div class="time-cell"><div class="time-it">l'anno prossimo</div><div class="time-es">el año que viene</div></div>
+  <div class="time-cell"><div class="time-it">quest'estate / inverno</div><div class="time-es">este verano / invierno</div></div>
+  <div class="time-cell"><div class="time-it">in futuro / un giorno</div><div class="time-es">en el futuro / algún día</div></div>
+  <div class="time-cell"><div class="time-it">presto</div><div class="time-es">pronto</div></div>
+  <div class="time-cell"><div class="time-it">alla fine</div><div class="time-es">al final</div></div>
+  <div class="time-cell"><div class="time-it">da domani / da lunedì</div><div class="time-es">a partir de mañana / del lunes</div></div>
+</div>
+
+<!-- ===== NEGAZIONE ===== -->
+<h2>Negazione e interrogazione</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Affermativo</th><th style="background:#3a1a1a">Negativo</th><th>Interrogativo</th></tr></thead>
+  <tbody>
+    <tr><td class="fut"><em>Partirò domani.</em></td><td style="color:#9a3030;font-weight:600;font-family:'Lora',serif"><em>Non partirò domani.</em></td><td class="fut"><em>Partirai domani?</em></td></tr>
+    <tr><td class="fut"><em>Andrà tutto bene.</em></td><td style="color:#9a3030;font-weight:600;font-family:'Lora',serif"><em>Non andrà tutto bene.</em></td><td class="fut"><em>Andrà tutto bene?</em></td></tr>
+    <tr><td class="fut"><em>Avrò tempo.</em></td><td style="color:#9a3030;font-weight:600;font-family:'Lora',serif"><em>Non avrò tempo.</em></td><td class="fut"><em>Avrai tempo?</em></td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===== ERRORI FREQUENTI ===== -->
+<h2>Errori frequenti</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th style="background:#3a1a1a">❌ Errato</th><th style="background:#1a4a28">✔ Corretto</th><th>Problema</th></tr></thead>
+  <tbody>
+    <tr><td class="wrong">Quando arrivo, ti chiamo. (futuro)</td><td class="right">Quando arriverò, ti chiamerò.</td><td class="rule">dopo "quando" con futuro → futuro obbligatorio</td></tr>
+    <tr><td class="wrong">Se viene, sarò felice.</td><td class="right">Se verrà, sarò felice.</td><td class="rule">se + futuro → futuro anche nella subordinata</td></tr>
+    <tr><td class="wrong">Parlerò con lui domani (parlerò → parlerò ✔ ma…)</td><td class="right">Domani parlerò con lui. ✔</td><td class="rule">(correto — solo verificar acento en parlerò)</td></tr>
+    <tr><td class="wrong">Andarò in Italia.</td><td class="right">Andrò in Italia.</td><td class="rule">andare → futuro irregolare: andrò</td></tr>
+    <tr><td class="wrong">Volerò venire.</td><td class="right">Vorrò venire.</td><td class="rule">volere → futuro: vorrò (doppia R)</td></tr>
+    <tr><td class="wrong">Potò farlo.</td><td class="right">Potrò farlo.</td><td class="rule">potere → futuro: potrò</td></tr>
+    <tr><td class="wrong">Starà bello domani.</td><td class="right">Farà bello domani.</td><td class="rule">il tempo meteo → fare, non stare</td></tr>
+    <tr><td class="wrong">Sono sicuro che venga.</td><td class="right">Sono sicuro che verrà.</td><td class="rule">certezza futura → futuro indicativo, non congiuntivo</td></tr>
+    <tr><td class="wrong">Cercherò-ho un lavoro.</td><td class="right">Cercherò un lavoro.</td><td class="rule">-care → cerch- (non cerc-): cercherò</td></tr>
+    <tr><td class="wrong">Mangiaro domani.</td><td class="right">Mangerò domani.</td><td class="rule">mangiare → manger- (perde la I): mangerò</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ========================= ESPAÑOL ========================= -->
+<div class="lang-badge lang-es" style="margin-top:3rem">🇪🇸 Español</div>
+
+<h2>El futuro semplice — ¿cuándo se usa?</h2>
+<p>Equivale al <strong>futuro simple</strong> del español (hablaré, comeré, viviré) pero tiene un uso adicional muy importante: expresa <strong>probabilidad o suposición en el presente</strong>, función que en español se cubre con "debe de" + infinitivo o "probablemente" + presente.</p>
+
+<h2>Formación — tabla resumen</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Persona</th><th class="are">-ARE (parler-)</th><th class="ere">-ERE (creder-)</th><th class="ire">-IRE (dormir-)</th><th class="irr">essere (sar-)</th><th class="irr">fare (far-)</th></tr></thead>
+  <tbody>
+    <tr><td class="person">io</td><td class="are">parlerò</td><td class="ere">crederò</td><td class="ire">dormirò</td><td class="irr">sarò</td><td class="irr">farò</td></tr>
+    <tr><td class="person">tu</td><td class="are">parlerai</td><td class="ere">crederai</td><td class="ire">dormirai</td><td class="irr">sarai</td><td class="irr">farai</td></tr>
+    <tr><td class="person">lui/lei</td><td class="are">parlerà</td><td class="ere">crederà</td><td class="ire">dormirà</td><td class="irr">sarà</td><td class="irr">farà</td></tr>
+    <tr><td class="person">noi</td><td class="are">parleremo</td><td class="ere">crederemo</td><td class="ire">dormiremo</td><td class="irr">saremo</td><td class="irr">faremo</td></tr>
+    <tr><td class="person">voi</td><td class="are">parlerete</td><td class="ere">crederete</td><td class="ire">dormirete</td><td class="irr">sarete</td><td class="irr">farete</td></tr>
+    <tr><td class="person">loro</td><td class="are">parleranno</td><td class="ere">crederanno</td><td class="ire">dormiranno</td><td class="irr">saranno</td><td class="irr">faranno</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>Los 6 usos — tabla resumen</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>#</th><th>Uso</th><th>Señales</th><th class="fut">Ejemplo</th></tr></thead>
+  <tbody>
+    <tr><td style="font-weight:600;color:#1a4a8a">1</td><td><strong>Evento futuro</strong></td><td class="rule">domani, tra poco, prossimo</td><td class="fut"><em>Domani partirò.</em></td></tr>
+    <tr><td style="font-weight:600;color:#1a4a8a">2</td><td><strong>Hipótesis / probabilidad</strong></td><td class="rule">forse, probabilmente (implícito)</td><td class="fut"><em>Saranno le tre.</em></td></tr>
+    <tr><td style="font-weight:600;color:#1a4a8a">3</td><td><strong>Promesa</strong></td><td class="rule">prometto, giuro, parola</td><td class="fut"><em>Non lo dirò a nessuno.</em></td></tr>
+    <tr><td style="font-weight:600;color:#1a4a8a">4</td><td><strong>Dopo quando/se/appena</strong></td><td class="rule">quando, se, appena, finché</td><td class="fut"><em>Quando arriverò, chiamerò.</em></td></tr>
+    <tr><td style="font-weight:600;color:#1a4a8a">5</td><td><strong>Orden formal</strong></td><td class="rule">documenti, regolamento, norme</td><td class="fut"><em>I candidati presenteranno.</em></td></tr>
+    <tr><td style="font-weight:600;color:#1a4a8a">6</td><td><strong>Concesión</strong></td><td class="rule">sarà anche..., avrà..., ma</td><td class="fut"><em>Sarà bravo, ma...</em></td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>Irregolari imprescindibili</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Infinito</th><th class="irr">Futuro (io)</th><th>Infinito</th><th class="irr">Futuro (io)</th></tr></thead>
+  <tbody>
+    <tr><td class="inf">essere</td><td class="irr">sarò</td><td class="inf">avere</td><td class="irr">avrò</td></tr>
+    <tr><td class="inf">fare</td><td class="irr">farò</td><td class="inf">dire</td><td class="irr">dirò</td></tr>
+    <tr><td class="inf">andare</td><td class="irr">andrò</td><td class="inf">venire</td><td class="irr">verrò</td></tr>
+    <tr><td class="inf">potere</td><td class="irr">potrò</td><td class="inf">dovere</td><td class="irr">dovrò</td></tr>
+    <tr><td class="inf">volere</td><td class="irr">vorrò</td><td class="inf">sapere</td><td class="irr">saprò</td></tr>
+    <tr><td class="inf">vedere</td><td class="irr">vedrò</td><td class="inf">tenere</td><td class="irr">terrò</td></tr>
+    <tr><td class="inf">rimanere</td><td class="irr">rimarrò</td><td class="inf">bere</td><td class="irr">berrò</td></tr>
+    <tr><td class="inf">vivere</td><td class="irr">vivrò</td><td class="inf">cadere</td><td class="irr">cadrò</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===== SUMMARY ===== -->
+<div class="summary">
+  <h4>Puntos clave para dominar el futuro semplice</h4>
+  <div class="sum-step">
+    <div class="sum-n">1</div>
+    <div class="sum-desc"><strong>Desinencias iguales para las 3 conjugaciones:</strong> <code>-ò · -ai · -à · -emo · -ete · -anno</code>. Solo cambia la raíz: -ARE pierde la A → <code>parler-</code>.</div>
+  </div>
+  <div class="sum-step">
+    <div class="sum-n">2</div>
+    <div class="sum-desc"><strong>Irregolari con -RR-:</strong> <code>essere→sarò · avere→avrò · venire→verrò · volere→vorrò · tenere→terrò · rimanere→rimarrò · bere→berrò</code></div>
+  </div>
+  <div class="sum-step">
+    <div class="sum-n">3</div>
+    <div class="sum-desc"><strong>Irregolari con vocal caída:</strong> <code>andare→andrò · vedere→vedrò · potere→potrò · dovere→dovrò · sapere→saprò · vivere→vivrò</code></div>
+  </div>
+  <div class="sum-step">
+    <div class="sum-n">4</div>
+    <div class="sum-desc"><strong>Regla cuando/se/appena:</strong> después de estos conectores con valor futuro → <strong>futuro obligatorio</strong> en italiano. <code>Quando arriverò · se verrà · appena finirò</code></div>
+  </div>
+  <div class="sum-step">
+    <div class="sum-n">5</div>
+    <div class="sum-desc"><strong>Futuro epistemico:</strong> para expresar probabilidad o suposición en el presente. <code>Sarà stanco</code> = probablemente está cansado. <code>Avrà trent'anni</code> = tendrá unos treinta años.</div>
+  </div>
+  <div class="sum-step">
+    <div class="sum-n">6</div>
+    <div class="sum-desc"><strong>Ortografía -care/-gare:</strong> agregan H → <code>cercherò · pagherò</code>. Verbos -ciare/-giare pierden la I → <code>mangerò · comincerò</code>.</div>
+  </div>
+</div>
+
+<p style="margin-top:1.5rem; font-size:0.79rem; color:#8898b8; text-align:center;">Futuro semplice · Indicativo · A2–B1 · regolare e irregolare · 6 usi · futuro epistemico</p>
+
+</div>
+</body>
+</html>

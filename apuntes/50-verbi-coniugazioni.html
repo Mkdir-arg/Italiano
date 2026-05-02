@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>50 Verbi Italiani — Tutte le Coniugazioni</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: #f4f5f7;
+    color: #1e2028;
+    padding: 1.5rem 1rem 3rem;
+    font-size: 13px;
+  }
+
+  .page { max-width: 980px; margin: 0 auto; }
+
+  /* ---- COVER ---- */
+  .cover {
+    border-left: 5px solid #1a3a8a;
+    padding-left: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  .cover h1 { font-family:'Lora',serif; font-size:1.7rem; font-weight:600; color:#080c18; line-height:1.2; }
+  .cover .sub { font-size:0.88rem; color:#3a4060; margin-top:0.35rem; font-style:italic; }
+  .cover .tags { display:flex; gap:0.4rem; margin-top:0.6rem; flex-wrap:wrap; }
+  .tag { padding:0.12rem 0.55rem; border-radius:4px; font-size:0.74rem; font-weight:600; letter-spacing:0.05em; }
+  .tag-blue   { background:#1a3a8a; color:#d8e4f8; }
+  .tag-teal   { background:#1a5a6a; color:#c8f0f4; }
+  .tag-amber  { background:#7a4800; color:#f8e8c0; }
+  .tag-indigo { background:#3a1a8a; color:#e0d8f8; }
+  .tag-rose   { background:#7a1a4a; color:#f8d8ec; }
+
+  /* ---- SEARCH ---- */
+  .search-bar {
+    margin-bottom: 1.5rem;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .search-bar input {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+    border: 1.5px solid #c0cce0;
+    border-radius: 6px;
+    background: #fff;
+    color: #1e2028;
+    outline: none;
+    width: 240px;
+  }
+  .search-bar input:focus { border-color: #1a4a8a; }
+  .filter-btns { display:flex; gap:0.35rem; flex-wrap:wrap; }
+  .f-btn {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.76rem;
+    font-weight: 600;
+    padding: 0.3rem 0.7rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    letter-spacing: 0.03em;
+  }
+  .f-btn.all    { background:#1a3a8a; color:#d8e8f8; }
+  .f-btn.av     { background:#1a4a7a; color:#d8e8f8; }
+  .f-btn.es     { background:#1a6a5a; color:#c8f0e8; }
+  .f-btn.active { opacity:1; }
+  .f-btn:not(.active) { opacity:0.55; }
+  .count { font-size:0.8rem; color:#6878a0; margin-left:auto; }
+
+  /* ---- VERB BLOCK ---- */
+  .verb-block {
+    background: #ffffff;
+    border-radius: 8px;
+    border: 1px solid #d0d8e8;
+    margin-bottom: 1.2rem;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+
+  .verb-title {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    padding: 0.55rem 0.9rem;
+    flex-wrap: wrap;
+    background: #f8f9fc;
+    border-bottom: 1px solid #d0d8e8;
+  }
+  .v-num  { font-size:0.75rem; color:#8898c0; font-weight:600; flex-shrink:0; min-width:22px; }
+  .v-it   { font-family:'Lora',serif; font-size:1.05rem; font-weight:600; color:#080c18; }
+  .v-slash{ color:#c0c8d8; }
+  .v-es   { font-size:0.85rem; color:#4a5870; font-style:italic; }
+  .v-aux  {
+    margin-left:auto;
+    font-size:0.72rem;
+    font-weight:600;
+    padding:0.1rem 0.5rem;
+    border-radius:4px;
+    letter-spacing:0.04em;
+    white-space:nowrap;
+  }
+  .v-aux.av { background:#eaf2fc; color:#1a4a7a; border:1px solid #c0d8f0; }
+  .v-aux.es { background:#e0f4ec; color:#1a6a5a; border:1px solid #b0dcc8; }
+
+  /* ---- TABLE ---- */
+  .table-wrap { overflow-x: auto; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+    min-width: 700px;
+  }
+
+  thead tr { background: #12182a; }
+  thead th {
+    padding: 0.38rem 0.6rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: #c8d4f0;
+  }
+  thead th.t-per { background:#1e2840; width:72px; }
+  thead th.t-pr  { background:#1a4a7a; }
+  thead th.t-pp  { background:#1a6a5a; }
+  thead th.t-im  { background:#6a3a1a; }
+  thead th.t-fu  { background:#3a1a8a; }
+  thead th.t-co  { background:#6a1a5a; }
+
+  tbody tr:nth-child(even) { background:#f0f4fa; }
+  tbody tr:nth-child(odd)  { background:#ffffff; }
+  tbody tr:hover { background:#e4ecf8; }
+
+  td {
+    padding: 0.32rem 0.6rem;
+    border-bottom: 1px solid #e0e8f0;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  td.persona {
+    font-weight: 600;
+    color: #3a4870;
+    font-size: 0.78rem;
+    background: #f4f6fc;
+    border-right: 2px solid #d0d8ee;
+  }
+  td.c-pr  { font-family:'Lora',serif; color:#1a4a7a; font-weight:600; }
+  td.c-pp  { font-family:'Lora',serif; color:#1a6a5a; font-weight:600; }
+  td.c-im  { font-family:'Lora',serif; color:#7a4800; }
+  td.c-fu  { font-family:'Lora',serif; color:#3a1a8a; font-weight:600; }
+  td.c-co  { font-family:'Lora',serif; color:#7a1a5a; }
+
+  /* ---- INDEX ---- */
+  .index-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin-bottom: 1.5rem;
+    padding: 0.8rem 1rem;
+    background: #fff;
+    border: 1px solid #d0d8e8;
+    border-radius: 8px;
+  }
+  .idx-link {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #1a4a8a;
+    text-decoration: none;
+    padding: 0.1rem 0.35rem;
+    border-radius: 3px;
+    background: #eaf0fc;
+    border: 1px solid #c0d4f0;
+    font-family: 'Lora', serif;
+  }
+  .idx-link:hover { background: #1a4a8a; color: #fff; }
+  .idx-link.es-verb { background:#e0f4ec; border-color:#b0dcc8; color:#1a6a5a; }
+  .idx-link.es-verb:hover { background:#1a6a5a; color:#fff; }
+
+  /* ---- LEGEND ---- */
+  .legend {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-size: 0.78rem;
+    margin-bottom: 1.2rem;
+    align-items: center;
+  }
+  .leg { display:flex; align-items:center; gap:0.35rem; }
+  .leg-dot { width:10px; height:10px; border-radius:2px; display:inline-block; }
+
+  @media print {
+    body { background:white; padding:0.5rem; }
+    .search-bar, .index-bar { display:none; }
+    .verb-block { page-break-inside:avoid; margin-bottom:0.8rem; }
+  }
+</style>
+</head>
+<body>
+<div id="site-nav" style="background:#0f1422;padding:0.52rem 1.4rem;display:flex;align-items:center;gap:0.7rem;font-family:'Source Sans 3',sans-serif;font-size:0.82rem;border-bottom:1px solid #1e2c44;position:sticky;top:0;z-index:9999;box-shadow:0 2px 8px rgba(0,0,0,0.25)">
+  <a href="/" style="color:#70b8f8;text-decoration:none;font-weight:600;display:flex;align-items:center;gap:0.35rem;transition:opacity 0.2s" onmouseover="this.style.opacity=0.75" onmouseout="this.style.opacity=1">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#70b8f8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+    Inicio
+  </a>
+  <span style="color:#2a3a54">|</span>
+  <span style="color:#6878a0;letter-spacing:0.03em">Italiano Apuntes</span>
+</div>
+
+<div class="page">
+
+<!-- COVER -->
+<div class="cover">
+  <h1>50 Verbi Italiani — Tutte le Coniugazioni</h1>
+  <p class="sub">I 50 verbi più usati · Presente · Passato Prossimo · Imperfetto · Futuro · Condizionale</p>
+  <div class="tags">
+    <span class="tag tag-blue">A1 – B1</span>
+    <span class="tag tag-teal">50 Verbi</span>
+    <span class="tag tag-amber">5 Tempi</span>
+    <span class="tag tag-indigo">Regolari + Irregolari</span>
+    <span class="tag tag-rose">Avere + Essere</span>
+  </div>
+</div>
+
+<!-- LEGEND -->
+<div class="legend">
+  <span class="leg"><span class="leg-dot" style="background:#1a4a7a"></span> Presente</span>
+  <span class="leg"><span class="leg-dot" style="background:#1a6a5a"></span> Passato Prossimo</span>
+  <span class="leg"><span class="leg-dot" style="background:#7a4800"></span> Imperfetto</span>
+  <span class="leg"><span class="leg-dot" style="background:#3a1a8a"></span> Futuro Semplice</span>
+  <span class="leg"><span class="leg-dot" style="background:#7a1a5a"></span> Condizionale</span>
+  <span class="leg" style="margin-left:0.5rem"><span class="leg-dot" style="background:#1a4a7a;border:1px solid #1a4a7a"></span> avere</span>
+  <span class="leg"><span class="leg-dot" style="background:#1a6a5a;border:1px solid #1a6a5a"></span> essere</span>
+</div>
+
+<!-- SEARCH -->
+<div class="search-bar">
+  <input type="text" id="searchInput" placeholder="Cerca verbo... (es: essere, fare, andare)">
+  <div class="filter-btns">
+    <button class="f-btn all active" onclick="filterAux('all',this)">Tutti</button>
+    <button class="f-btn av" onclick="filterAux('avere',this)">Solo avere</button>
+    <button class="f-btn es" onclick="filterAux('essere',this)">Solo essere</button>
+  </div>
+  <span class="count" id="count">50 verbi</span>
+</div>
+
+<!-- INDEX -->
+<div class="index-bar" id="indexBar"></div>
+
+<!-- VERBS -->
+<div id="app"></div>
+
+<script>
+const personas = ['io','tu','lui/lei','noi','voi','loro'];
+
+function ppEssere(pp) {
+  const r = pp.slice(0,-1);
+  return [`sono ${r}o/a`,`sei ${r}o/a`,`è ${r}o/a`,`siamo ${r}i/e`,`siete ${r}i/e`,`sono ${r}i/e`];
+}
+function ppAvere(pp) {
+  return [`ho ${pp}`,`hai ${pp}`,`ha ${pp}`,`abbiamo ${pp}`,`avete ${pp}`,`hanno ${pp}`];
+}
+
+const verbs = [
+  {num:1,it:'essere',es:'ser / estar',aux:'essere',pp:'stato',
+   presente:['sono','sei','è','siamo','siete','sono'],
+   imperfetto:['ero','eri','era','eravamo','eravate','erano'],
+   futuro:['sarò','sarai','sarà','saremo','sarete','saranno'],
+   condizionale:['sarei','saresti','sarebbe','saremmo','sareste','sarebbero']},
+
+  {num:2,it:'avere',es:'tener / haber',aux:'avere',pp:'avuto',
+   presente:['ho','hai','ha','abbiamo','avete','hanno'],
+   imperfetto:['avevo','avevi','aveva','avevamo','avevate','avevano'],
+   futuro:['avrò','avrai','avrà','avremo','avrete','avranno'],
+   condizionale:['avrei','avresti','avrebbe','avremmo','avreste','avrebbero']},
+
+  {num:3,it:'fare',es:'hacer',aux:'avere',pp:'fatto',
+   presente:['faccio','fai','fa','facciamo','fate','fanno'],
+   imperfetto:['facevo','facevi','faceva','facevamo','facevate','facevano'],
+   futuro:['farò','farai','farà','faremo','farete','faranno'],
+   condizionale:['farei','faresti','farebbe','faremmo','fareste','farebbero']},
+
+  {num:4,it:'dire',es:'decir',aux:'avere',pp:'detto',
+   presente:['dico','dici','dice','diciamo','dite','dicono'],
+   imperfetto:['dicevo','dicevi','diceva','dicevamo','dicevate','dicevano'],
+   futuro:['dirò','dirai','dirà','diremo','direte','diranno'],
+   condizionale:['direi','diresti','direbbe','diremmo','direste','direbbero']},
+
+  {num:5,it:'andare',es:'ir',aux:'essere',pp:'andato',
+   presente:['vado','vai','va','andiamo','andate','vanno'],
+   imperfetto:['andavo','andavi','andava','andavamo','andavate','andavano'],
+   futuro:['andrò','andrai','andrà','andremo','andrete','andranno'],
+   condizionale:['andrei','andresti','andrebbe','andremmo','andreste','andrebbero']},
+
+  {num:6,it:'venire',es:'venir',aux:'essere',pp:'venuto',
+   presente:['vengo','vieni','viene','veniamo','venite','vengono'],
+   imperfetto:['venivo','venivi','veniva','venivamo','venivate','venivano'],
+   futuro:['verrò','verrai','verrà','verremo','verrete','verranno'],
+   condizionale:['verrei','verresti','verrebbe','verremmo','verreste','verrebbero']},
+
+  {num:7,it:'sapere',es:'saber',aux:'avere',pp:'saputo',
+   presente:['so','sai','sa','sappiamo','sapete','sanno'],
+   imperfetto:['sapevo','sapevi','sapeva','sapevamo','sapevate','sapevano'],
+   futuro:['saprò','saprai','saprà','sapremo','saprete','sapranno'],
+   condizionale:['saprei','sapresti','saprebbe','sapremmo','sapreste','saprebbero']},
+
+  {num:8,it:'vedere',es:'ver',aux:'avere',pp:'visto',
+   presente:['vedo','vedi','vede','vediamo','vedete','vedono'],
+   imperfetto:['vedevo','vedevi','vedeva','vedevamo','vedevate','vedevano'],
+   futuro:['vedrò','vedrai','vedrà','vedremo','vedrete','vedranno'],
+   condizionale:['vedrei','vedresti','vedrebbe','vedremmo','vedreste','vedrebbero']},
+
+  {num:9,it:'volere',es:'querer',aux:'avere',pp:'voluto',
+   presente:['voglio','vuoi','vuole','vogliamo','volete','vogliono'],
+   imperfetto:['volevo','volevi','voleva','volevamo','volevate','volevano'],
+   futuro:['vorrò','vorrai','vorrà','vorremo','vorrete','vorranno'],
+   condizionale:['vorrei','vorresti','vorrebbe','vorremmo','vorreste','vorrebbero']},
+
+  {num:10,it:'potere',es:'poder',aux:'avere',pp:'potuto',
+   presente:['posso','puoi','può','possiamo','potete','possono'],
+   imperfetto:['potevo','potevi','poteva','potevamo','potevate','potevano'],
+   futuro:['potrò','potrai','potrà','potremo','potrete','potranno'],
+   condizionale:['potrei','potresti','potrebbe','potremmo','potreste','potrebbero']},
+
+  {num:11,it:'dovere',es:'deber / tener que',aux:'avere',pp:'dovuto',
+   presente:['devo','devi','deve','dobbiamo','dovete','devono'],
+   imperfetto:['dovevo','dovevi','doveva','dovevamo','dovevate','dovevano'],
+   futuro:['dovrò','dovrai','dovrà','dovremo','dovrete','dovranno'],
+   condizionale:['dovrei','dovresti','dovrebbe','dovremmo','dovreste','dovrebbero']},
+
+  {num:12,it:'dare',es:'dar',aux:'avere',pp:'dato',
+   presente:['do','dai','dà','diamo','date','danno'],
+   imperfetto:['davo','davi','dava','davamo','davate','davano'],
+   futuro:['darò','darai','darà','daremo','darete','daranno'],
+   condizionale:['darei','daresti','darebbe','daremmo','dareste','darebbero']},
+
+  {num:13,it:'stare',es:'estar / quedarse',aux:'essere',pp:'stato',
+   presente:['sto','stai','sta','stiamo','state','stanno'],
+   imperfetto:['stavo','stavi','stava','stavamo','stavate','stavano'],
+   futuro:['starò','starai','starà','staremo','starete','staranno'],
+   condizionale:['starei','staresti','starebbe','staremmo','stareste','starebbero']},
+
+  {num:14,it:'parlare',es:'hablar',aux:'avere',pp:'parlato',
+   presente:['parlo','parli','parla','parliamo','parlate','parlano'],
+   imperfetto:['parlavo','parlavi','parlava','parlavamo','parlavate','parlavano'],
+   futuro:['parlerò','parlerai','parlerà','parleremo','parlerete','parleranno'],
+   condizionale:['parlerei','parleresti','parlerebbe','parleremmo','parlereste','parlerebbero']},
+
+  {num:15,it:'mangiare',es:'comer',aux:'avere',pp:'mangiato',
+   presente:['mangio','mangi','mangia','mangiamo','mangiate','mangiano'],
+   imperfetto:['mangiavo','mangiavi','mangiava','mangiavamo','mangiavate','mangiavano'],
+   futuro:['mangerò','mangerai','mangerà','mangeremo','mangerete','mangeranno'],
+   condizionale:['mangerei','mangeresti','mangerebbe','mangeremmo','mangereste','mangerebbero']},
+
+  {num:16,it:'bere',es:'beber',aux:'avere',pp:'bevuto',
+   presente:['bevo','bevi','beve','beviamo','bevete','bevono'],
+   imperfetto:['bevevo','bevevi','beveva','bevevamo','bevevate','bevevano'],
+   futuro:['berrò','berrai','berrà','berremo','berrete','berranno'],
+   condizionale:['berrei','berresti','berrebbe','berremmo','berreste','berrebbero']},
+
+  {num:17,it:'dormire',es:'dormir',aux:'avere',pp:'dormito',
+   presente:['dormo','dormi','dorme','dormiamo','dormite','dormono'],
+   imperfetto:['dormivo','dormivi','dormiva','dormivamo','dormivate','dormivano'],
+   futuro:['dormirò','dormirai','dormirà','dormiremo','dormirete','dormiranno'],
+   condizionale:['dormirei','dormiresti','dormirebbe','dormiremmo','dormireste','dormirebbero']},
+
+  {num:18,it:'leggere',es:'leer',aux:'avere',pp:'letto',
+   presente:['leggo','leggi','legge','leggiamo','leggete','leggono'],
+   imperfetto:['leggevo','leggevi','leggeva','leggevamo','leggevate','leggevano'],
+   futuro:['leggerò','leggerai','leggerà','leggeremo','leggerete','leggeranno'],
+   condizionale:['leggerei','leggeresti','leggerebbe','leggeremmo','leggereste','leggerebbero']},
+
+  {num:19,it:'scrivere',es:'escribir',aux:'avere',pp:'scritto',
+   presente:['scrivo','scrivi','scrive','scriviamo','scrivete','scrivono'],
+   imperfetto:['scrivevo','scrivevi','scriveva','scrivevamo','scrivevate','scrivevano'],
+   futuro:['scriverò','scriverai','scriverà','scriveremo','scriverete','scriveranno'],
+   condizionale:['scriverei','scriveresti','scriverebbe','scriveremmo','scrivereste','scriverebbero']},
+
+  {num:20,it:'capire',es:'entender',aux:'avere',pp:'capito',
+   presente:['capisco','capisci','capisce','capiamo','capite','capiscono'],
+   imperfetto:['capivo','capivi','capiva','capivamo','capivate','capivano'],
+   futuro:['capirò','capirai','capirà','capiremo','capirete','capiranno'],
+   condizionale:['capirei','capiresti','capirebbe','capiremmo','capireste','capirebbero']},
+
+  {num:21,it:'lavorare',es:'trabajar',aux:'avere',pp:'lavorato',
+   presente:['lavoro','lavori','lavora','lavoriamo','lavorate','lavorano'],
+   imperfetto:['lavoravo','lavoravi','lavorava','lavoravamo','lavoravate','lavoravano'],
+   futuro:['lavorerò','lavorerai','lavorerà','lavoreremo','lavorerete','lavoreranno'],
+   condizionale:['lavorerei','lavoreresti','lavorerebbe','lavoreremmo','lavorereste','lavorerebbero']},
+
+  {num:22,it:'studiare',es:'estudiar',aux:'avere',pp:'studiato',
+   presente:['studio','studi','studia','studiamo','studiate','studiano'],
+   imperfetto:['studiavo','studiavi','studiava','studiavamo','studiavate','studiavano'],
+   futuro:['studierò','studierai','studierà','studieremo','studierete','studieranno'],
+   condizionale:['studierei','studieresti','studierebbe','studieremmo','studiereste','studierebbero']},
+
+  {num:23,it:'abitare',es:'vivir / habitar',aux:'avere',pp:'abitato',
+   presente:['abito','abiti','abita','abitiamo','abitate','abitano'],
+   imperfetto:['abitavo','abitavi','abitava','abitavamo','abitavate','abitavano'],
+   futuro:['abiterò','abiterai','abiterà','abiteremo','abiterete','abiteranno'],
+   condizionale:['abiterei','abiteresti','abiterebbe','abiteremmo','abitereste','abiterebbero']},
+
+  {num:24,it:'amare',es:'amar',aux:'avere',pp:'amato',
+   presente:['amo','ami','ama','amiamo','amate','amano'],
+   imperfetto:['amavo','amavi','amava','amavamo','amavate','amavano'],
+   futuro:['amerò','amerai','amerà','ameremo','amerete','ameranno'],
+   condizionale:['amerei','ameresti','amerebbe','ameremmo','amereste','amerebbero']},
+
+  {num:25,it:'ascoltare',es:'escuchar',aux:'avere',pp:'ascoltato',
+   presente:['ascolto','ascolti','ascolta','ascoltiamo','ascoltate','ascoltano'],
+   imperfetto:['ascoltavo','ascoltavi','ascoltava','ascoltavamo','ascoltavate','ascoltavano'],
+   futuro:['ascolterò','ascolterai','ascolterà','ascolteremo','ascolterete','ascolteranno'],
+   condizionale:['ascolterei','ascolteresti','ascolterebbe','ascolteremmo','ascoltereste','ascolterebbero']},
+
+  {num:26,it:'chiamare',es:'llamar',aux:'avere',pp:'chiamato',
+   presente:['chiamo','chiami','chiama','chiamiamo','chiamate','chiamano'],
+   imperfetto:['chiamavo','chiamavi','chiamava','chiamavamo','chiamavate','chiamavano'],
+   futuro:['chiamerò','chiamerai','chiamerà','chiameremo','chiamerete','chiameranno'],
+   condizionale:['chiamerei','chiameresti','chiamerebbe','chiameremmo','chiamereste','chiamerebbero']},
+
+  {num:27,it:'comprare',es:'comprar',aux:'avere',pp:'comprato',
+   presente:['compro','compri','compra','compriamo','comprate','comprano'],
+   imperfetto:['compravo','compravi','comprava','compravamo','compravate','compravano'],
+   futuro:['comprerò','comprerai','comprerà','compreremo','comprerete','compreranno'],
+   condizionale:['comprerei','compreresti','comprerebbe','compreremmo','comprereste','comprerebbero']},
+
+  {num:28,it:'guardare',es:'mirar',aux:'avere',pp:'guardato',
+   presente:['guardo','guardi','guarda','guardiamo','guardate','guardano'],
+   imperfetto:['guardavo','guardavi','guardava','guardavamo','guardavate','guardavano'],
+   futuro:['guarderò','guarderai','guarderà','guarderemo','guarderete','guarderanno'],
+   condizionale:['guarderei','guarderesti','guarderebbe','guarderemmo','guardereste','guarderebbero']},
+
+  {num:29,it:'aspettare',es:'esperar',aux:'avere',pp:'aspettato',
+   presente:['aspetto','aspetti','aspetta','aspettiamo','aspettate','aspettano'],
+   imperfetto:['aspettavo','aspettavi','aspettava','aspettavamo','aspettavate','aspettavano'],
+   futuro:['aspetterò','aspetterai','aspetterà','aspetteremo','aspetterete','aspetteranno'],
+   condizionale:['aspetterei','aspetteresti','aspetterebbe','aspetteremmo','aspettereste','aspetterebbero']},
+
+  {num:30,it:'trovare',es:'encontrar',aux:'avere',pp:'trovato',
+   presente:['trovo','trovi','trova','troviamo','trovate','trovano'],
+   imperfetto:['trovavo','trovavi','trovava','trovavamo','trovavate','trovavano'],
+   futuro:['troverò','troverai','troverà','troveremo','troverete','troveranno'],
+   condizionale:['troverei','troveresti','troverebbe','troveremmo','trovereste','troverebbero']},
+
+  {num:31,it:'tornare',es:'volver',aux:'essere',pp:'tornato',
+   presente:['torno','torni','torna','torniamo','tornate','tornano'],
+   imperfetto:['tornavo','tornavi','tornava','tornavamo','tornavate','tornavano'],
+   futuro:['tornerò','tornerai','tornerà','torneremo','tornerete','torneranno'],
+   condizionale:['tornerei','torneresti','tornerebbe','torneremmo','tornereste','tornerebbero']},
+
+  {num:32,it:'partire',es:'partir / salir',aux:'essere',pp:'partito',
+   presente:['parto','parti','parte','partiamo','partite','partono'],
+   imperfetto:['partivo','partivi','partiva','partivamo','partivate','partivano'],
+   futuro:['partirò','partirai','partirà','partiremo','partirete','partiranno'],
+   condizionale:['partirei','partiresti','partirebbe','partiremmo','partireste','partirebbero']},
+
+  {num:33,it:'uscire',es:'salir',aux:'essere',pp:'uscito',
+   presente:['esco','esci','esce','usciamo','uscite','escono'],
+   imperfetto:['uscivo','uscivi','usciva','uscivamo','uscivate','uscivano'],
+   futuro:['uscirò','uscirai','uscirà','usciremo','uscirete','usciranno'],
+   condizionale:['uscirei','usciresti','uscirebbe','usciremmo','uscireste','uscirebbero']},
+
+  {num:34,it:'entrare',es:'entrar',aux:'essere',pp:'entrato',
+   presente:['entro','entri','entra','entriamo','entrate','entrano'],
+   imperfetto:['entravo','entravi','entrava','entravamo','entravate','entravano'],
+   futuro:['entrerò','entrerai','entrerà','entreremo','entrerete','entreranno'],
+   condizionale:['entrerei','entreresti','entrerebbe','entreremmo','entrereste','entrerebbero']},
+
+  {num:35,it:'arrivare',es:'llegar',aux:'essere',pp:'arrivato',
+   presente:['arrivo','arrivi','arriva','arriviamo','arrivate','arrivano'],
+   imperfetto:['arrivavo','arrivavi','arrivava','arrivavamo','arrivavate','arrivavano'],
+   futuro:['arriverò','arriverai','arriverà','arriveremo','arriverete','arriveranno'],
+   condizionale:['arriverei','arriveresti','arriverebbe','arriveremmo','arrivereste','arriverebbero']},
+
+  {num:36,it:'prendere',es:'tomar / coger',aux:'avere',pp:'preso',
+   presente:['prendo','prendi','prende','prendiamo','prendete','prendono'],
+   imperfetto:['prendevo','prendevi','prendeva','prendevamo','prendevate','prendevano'],
+   futuro:['prenderò','prenderai','prenderà','prenderemo','prenderete','prenderanno'],
+   condizionale:['prenderei','prenderesti','prenderebbe','prenderemmo','prendereste','prenderebbero']},
+
+  {num:37,it:'mettere',es:'poner',aux:'avere',pp:'messo',
+   presente:['metto','metti','mette','mettiamo','mettete','mettono'],
+   imperfetto:['mettevo','mettevi','metteva','mettevamo','mettevate','mettevano'],
+   futuro:['metterò','metterai','metterà','metteremo','metterete','metteranno'],
+   condizionale:['metterei','metteresti','metterebbe','metteremmo','mettereste','metterebbero']},
+
+  {num:38,it:'aprire',es:'abrir',aux:'avere',pp:'aperto',
+   presente:['apro','apri','apre','apriamo','aprite','aprono'],
+   imperfetto:['aprivo','aprivi','apriva','aprivamo','aprivate','aprivano'],
+   futuro:['aprirò','aprirai','aprirà','apriremo','aprirete','apriranno'],
+   condizionale:['aprirei','apriresti','aprirebbe','apriremmo','aprireste','aprirebbero']},
+
+  {num:39,it:'chiudere',es:'cerrar',aux:'avere',pp:'chiuso',
+   presente:['chiudo','chiudi','chiude','chiudiamo','chiudete','chiudono'],
+   imperfetto:['chiudevo','chiudevi','chiudeva','chiudevamo','chiudevate','chiudevano'],
+   futuro:['chiuderò','chiuderai','chiuderà','chiuderemo','chiuderete','chiuderanno'],
+   condizionale:['chiuderei','chiuderesti','chiuderebbe','chiuderemmo','chiudereste','chiuderebbero']},
+
+  {num:40,it:'chiedere',es:'pedir / preguntar',aux:'avere',pp:'chiesto',
+   presente:['chiedo','chiedi','chiede','chiediamo','chiedete','chiedono'],
+   imperfetto:['chiedevo','chiedevi','chiedeva','chiedevamo','chiedevate','chiedevano'],
+   futuro:['chiederò','chiederai','chiederà','chiederemo','chiederete','chiederanno'],
+   condizionale:['chiederei','chiederesti','chiederebbe','chiederemmo','chiedereste','chiederebbero']},
+
+  {num:41,it:'rispondere',es:'responder',aux:'avere',pp:'risposto',
+   presente:['rispondo','rispondi','risponde','rispondiamo','rispondete','rispondono'],
+   imperfetto:['rispondevo','rispondevi','rispondeva','rispondevamo','rispondevate','rispondevano'],
+   futuro:['risponderò','risponderai','risponderà','risponderemo','risponderete','risponderanno'],
+   condizionale:['risponderei','risponderesti','risponderebbe','risponderemmo','rispondereste','risponderebbero']},
+
+  {num:42,it:'pensare',es:'pensar',aux:'avere',pp:'pensato',
+   presente:['penso','pensi','pensa','pensiamo','pensate','pensano'],
+   imperfetto:['pensavo','pensavi','pensava','pensavamo','pensavate','pensavano'],
+   futuro:['penserò','penserai','penserà','penseremo','penserete','penseranno'],
+   condizionale:['penserei','penseresti','penserebbe','penseremmo','pensereste','penserebbero']},
+
+  {num:43,it:'credere',es:'creer',aux:'avere',pp:'creduto',
+   presente:['credo','credi','crede','crediamo','credete','credono'],
+   imperfetto:['credevo','credevi','credeva','credevamo','credevate','credevano'],
+   futuro:['crederò','crederai','crederà','crederemo','crederete','crederanno'],
+   condizionale:['crederei','crederesti','crederebbe','crederemmo','credereste','crederebbero']},
+
+  {num:44,it:'sentire',es:'sentir / escuchar',aux:'avere',pp:'sentito',
+   presente:['sento','senti','sente','sentiamo','sentite','sentono'],
+   imperfetto:['sentivo','sentivi','sentiva','sentivamo','sentivate','sentivano'],
+   futuro:['sentirò','sentirai','sentirà','sentiremo','sentirete','sentiranno'],
+   condizionale:['sentirei','sentiresti','sentirebbe','sentiremmo','sentireste','sentirebbero']},
+
+  {num:45,it:'correre',es:'correr',aux:'avere',pp:'corso',
+   presente:['corro','corri','corre','corriamo','correte','corrono'],
+   imperfetto:['correvo','correvi','correva','correvamo','correvate','correvano'],
+   futuro:['correrò','correrai','correrà','correremo','correrete','correranno'],
+   condizionale:['correrei','correresti','correrebbe','correremmo','correreste','correrebbero']},
+
+  {num:46,it:'vivere',es:'vivir',aux:'avere',pp:'vissuto',
+   presente:['vivo','vivi','vive','viviamo','vivete','vivono'],
+   imperfetto:['vivevo','vivevi','viveva','vivevamo','vivevate','vivevano'],
+   futuro:['vivrò','vivrai','vivrà','vivremo','vivrete','vivranno'],
+   condizionale:['vivrei','vivresti','vivrebbe','vivremmo','vivreste','vivrebbero']},
+
+  {num:47,it:'conoscere',es:'conocer',aux:'avere',pp:'conosciuto',
+   presente:['conosco','conosci','conosce','conosciamo','conoscete','conoscono'],
+   imperfetto:['conoscevo','conoscevi','conosceva','conoscevamo','conoscevate','conoscevano'],
+   futuro:['conoscerò','conoscerai','conoscerà','conosceremo','conoscerete','conosceranno'],
+   condizionale:['conoscerei','conosceresti','conoscerebbe','conosceremmo','conoscereste','conoscerebbero']},
+
+  {num:48,it:'ricordare',es:'recordar',aux:'avere',pp:'ricordato',
+   presente:['ricordo','ricordi','ricorda','ricordiamo','ricordate','ricordano'],
+   imperfetto:['ricordavo','ricordavi','ricordava','ricordavamo','ricordavate','ricordavano'],
+   futuro:['ricorderò','ricorderai','ricorderà','ricorderemo','ricorderete','ricorderanno'],
+   condizionale:['ricorderei','ricorderesti','ricorderebbe','ricorderemmo','ricordereste','ricorderebbero']},
+
+  {num:49,it:'finire',es:'terminar',aux:'avere',pp:'finito',
+   presente:['finisco','finisci','finisce','finiamo','finite','finiscono'],
+   imperfetto:['finivo','finivi','finiva','finivamo','finivate','finivano'],
+   futuro:['finirò','finirai','finirà','finiremo','finirete','finiranno'],
+   condizionale:['finirei','finiresti','finirebbe','finiremmo','finireste','finirebbero']},
+
+  {num:50,it:'cominciare',es:'empezar',aux:'avere',pp:'cominciato',
+   presente:['comincio','cominci','comincia','cominciamo','cominciate','cominciano'],
+   imperfetto:['cominciavo','cominciavi','cominciava','cominciavamo','cominciavate','cominciavano'],
+   futuro:['comincerò','comincerai','comincerà','cominceremo','comincerete','cominceranno'],
+   condizionale:['comincerei','cominceresti','comincerebbe','cominceremmo','comincereste','comincerebbero']}
+];
+
+// Build index
+const indexBar = document.getElementById('indexBar');
+verbs.forEach(v => {
+  const a = document.createElement('a');
+  a.href = `#v-${v.num}`;
+  a.className = 'idx-link' + (v.aux === 'essere' ? ' es-verb' : '');
+  a.textContent = `${v.num}. ${v.it}`;
+  indexBar.appendChild(a);
+});
+
+// Render
+function renderVerbs(list) {
+  const app = document.getElementById('app');
+  app.innerHTML = '';
+  document.getElementById('count').textContent = `${list.length} verbi`;
+
+  list.forEach(v => {
+    const pp = v.aux === 'essere' ? ppEssere(v.pp) : ppAvere(v.pp);
+    const rows = personas.map((p,i) => `
+      <tr>
+        <td class="persona">${p}</td>
+        <td class="c-pr">${v.presente[i]}</td>
+        <td class="c-pp">${pp[i]}</td>
+        <td class="c-im">${v.imperfetto[i]}</td>
+        <td class="c-fu">${v.futuro[i]}</td>
+        <td class="c-co">${v.condizionale[i]}</td>
+      </tr>`).join('');
+
+    const block = document.createElement('div');
+    block.className = 'verb-block';
+    block.id = `v-${v.num}`;
+    block.dataset.aux = v.aux;
+    block.dataset.it = v.it.toLowerCase();
+    block.dataset.es = v.es.toLowerCase();
+    block.innerHTML = `
+      <div class="verb-title">
+        <span class="v-num">${v.num}.</span>
+        <span class="v-it">${v.it}</span>
+        <span class="v-slash">/</span>
+        <span class="v-es">${v.es}</span>
+        <span class="v-aux ${v.aux === 'essere' ? 'es' : 'av'}">${v.aux} · pp: ${v.pp}</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th class="t-per">Persona</th>
+            <th class="t-pr">Presente</th>
+            <th class="t-pp">Passato Prossimo</th>
+            <th class="t-im">Imperfetto</th>
+            <th class="t-fu">Futuro Semplice</th>
+            <th class="t-co">Condizionale</th>
+          </tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>`;
+    app.appendChild(block);
+  });
+}
+
+renderVerbs(verbs);
+
+// Search
+let currentAux = 'all';
+document.getElementById('searchInput').addEventListener('input', function() {
+  applyFilters();
+});
+
+function filterAux(aux, btn) {
+  currentAux = aux;
+  document.querySelectorAll('.f-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  applyFilters();
+}
+
+function applyFilters() {
+  const q = document.getElementById('searchInput').value.toLowerCase().trim();
+  const filtered = verbs.filter(v => {
+    const matchAux = currentAux === 'all' || v.aux === currentAux;
+    const matchQ = !q || v.it.toLowerCase().includes(q) || v.es.toLowerCase().includes(q) || String(v.num).includes(q);
+    return matchAux && matchQ;
+  });
+  renderVerbs(filtered);
+}
+</script>
+
+<p style="margin-top:2rem; font-size:0.77rem; color:#8898c0; text-align:center;">50 verbi · 5 tempi · Presente · Passato Prossimo · Imperfetto · Futuro · Condizionale · A1–B1</p>
+
+</div>
+</body>
+</html>
