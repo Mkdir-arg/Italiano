@@ -17,23 +17,22 @@
 </script>
 <style>
   :root {
-    --bg: #fbf6ef;
-    --paper: rgba(255, 255, 255, 0.7);
-    --paper-strong: rgba(255, 255, 255, 0.9);
-    --ink: #18202d;
-    --muted: #657286;
-    --line: rgba(24, 32, 45, 0.12);
-    --green: #1b6b54;
-    --green-deep: #123c34;
-    --green-soft: #d7eee6;
-    --amber: #d6a85d;
-    --amber-soft: #f6e9cf;
-    --terracotta: #b76a52;
-    --terracotta-soft: #f3dfd8;
-    --navy: #1d2f4d;
-    --navy-soft: #dfe7f8;
-    --shadow-xl: 0 34px 100px rgba(19, 25, 35, 0.18);
-    --shadow-md: 0 18px 48px rgba(19, 25, 35, 0.12);
+    --bg: #eef4fb;
+    --paper: rgba(255, 255, 255, 0.72);
+    --paper-strong: rgba(255, 255, 255, 0.92);
+    --ink: #17263d;
+    --muted: #61728e;
+    --line: rgba(23, 50, 79, 0.12);
+    --blue: #17324f;
+    --blue-bright: #275886;
+    --blue-deep: #102843;
+    --blue-soft: #dfeaf8;
+    --sky-soft: #edf4ff;
+    --cyan-soft: #d9edf8;
+    --amber: #d9ae61;
+    --amber-soft: #f6ecd8;
+    --shadow-xl: 0 34px 100px rgba(17, 30, 56, 0.18);
+    --shadow-md: 0 18px 48px rgba(17, 30, 56, 0.12);
     --radius-xl: 36px;
     --radius-lg: 24px;
   }
@@ -53,10 +52,10 @@
     font-family: 'Sora', sans-serif;
     color: var(--ink);
     background:
-      radial-gradient(circle at 12% 8%, rgba(214, 168, 93, 0.26), transparent 24%),
-      radial-gradient(circle at 88% 10%, rgba(27, 107, 84, 0.18), transparent 22%),
-      radial-gradient(circle at 50% 100%, rgba(183, 106, 82, 0.18), transparent 24%),
-      linear-gradient(180deg, #fbf6ef 0%, #f4ece0 52%, #faf8f3 100%);
+      radial-gradient(circle at 12% 8%, rgba(39, 88, 134, 0.24), transparent 26%),
+      radial-gradient(circle at 88% 10%, rgba(23, 50, 79, 0.18), transparent 24%),
+      radial-gradient(circle at 50% 100%, rgba(217, 174, 97, 0.12), transparent 22%),
+      linear-gradient(180deg, #f4f8fd 0%, #e9f0f8 52%, #f7fbff 100%);
     overflow-x: hidden;
   }
 
@@ -65,8 +64,8 @@
     position: fixed;
     inset: 0;
     background:
-      linear-gradient(rgba(255, 255, 255, 0.14) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.14) 1px, transparent 1px);
+      linear-gradient(rgba(39, 88, 134, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(39, 88, 134, 0.08) 1px, transparent 1px);
     background-size: 28px 28px;
     mask-image: radial-gradient(circle at center, black 46%, transparent 88%);
     pointer-events: none;
@@ -96,8 +95,8 @@
     position: relative;
     z-index: 15;
     padding: 0.7rem 0;
-    border-bottom: 1px solid rgba(24, 32, 45, 0.06);
-    background: rgba(255, 255, 255, 0.36);
+    border-bottom: 1px solid rgba(23, 50, 79, 0.08);
+    background: linear-gradient(90deg, rgba(223, 234, 248, 0.76), rgba(237, 244, 255, 0.62));
     backdrop-filter: blur(14px);
   }
 
@@ -123,8 +122,8 @@
     align-items: center;
     padding: 0.38rem 0.72rem;
     border-radius: 999px;
-    background: rgba(24, 32, 45, 0.08);
-    color: var(--navy);
+    background: var(--blue-soft);
+    color: var(--blue);
     font-size: 0.74rem;
     font-weight: 700;
     letter-spacing: 0.08em;
@@ -134,7 +133,7 @@
   .notice-link {
     border: none;
     background: transparent;
-    color: var(--green);
+    color: var(--blue-bright);
     font-size: 0.84rem;
     font-weight: 700;
     cursor: pointer;
@@ -145,8 +144,8 @@
     top: 0;
     z-index: 20;
     backdrop-filter: blur(18px);
-    background: rgba(251, 246, 239, 0.74);
-    border-bottom: 1px solid rgba(24, 32, 45, 0.08);
+    background: rgba(244, 248, 253, 0.76);
+    border-bottom: 1px solid rgba(23, 50, 79, 0.08);
   }
 
   .topbar-inner {
@@ -169,10 +168,10 @@
     border-radius: 18px;
     display: grid;
     place-items: center;
-    background: linear-gradient(145deg, #184537, #275d4a);
-    color: #fff8ef;
+    background: linear-gradient(145deg, #17324f, #275886);
+    color: #f5f9ff;
     font-weight: 800;
-    box-shadow: 0 14px 32px rgba(27, 107, 84, 0.22);
+    box-shadow: 0 14px 32px rgba(23, 50, 79, 0.22);
   }
 
   .brand-copy strong,
@@ -182,6 +181,7 @@
 
   .brand-copy strong {
     font-size: 1rem;
+    color: var(--blue);
   }
 
   .brand-copy span {
@@ -194,6 +194,11 @@
     justify-content: center;
     gap: 0.55rem;
     flex-wrap: wrap;
+    padding: 0.32rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.48);
+    border: 1px solid rgba(23, 50, 79, 0.08);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
   }
 
   .top-link {
@@ -207,8 +212,8 @@
 
   .top-link:hover {
     transform: translateY(-1px);
-    background: rgba(255, 255, 255, 0.56);
-    color: var(--ink);
+    background: rgba(223, 234, 248, 0.78);
+    color: var(--blue);
   }
 
   .top-actions {
@@ -230,16 +235,16 @@
 
   .btn-primary {
     padding: 0.95rem 1.38rem;
-    background: linear-gradient(135deg, #184537, #2f6b57);
+    background: linear-gradient(135deg, #17324f, #275886);
     color: #fff;
-    box-shadow: 0 18px 36px rgba(27, 107, 84, 0.22);
+    box-shadow: 0 18px 36px rgba(23, 50, 79, 0.24);
   }
 
   .btn-secondary {
     padding: 0.95rem 1.38rem;
     background: rgba(255, 255, 255, 0.58);
     color: var(--ink);
-    border: 1px solid rgba(24, 32, 45, 0.1);
+    border: 1px solid rgba(23, 50, 79, 0.1);
   }
 
   .hero {
@@ -252,8 +257,9 @@
     border-radius: 42px;
     padding: 1.1rem;
     background:
-      linear-gradient(135deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.08)),
-      linear-gradient(135deg, rgba(24, 32, 45, 0.04), rgba(255, 255, 255, 0));
+      radial-gradient(circle at top right, rgba(39, 88, 134, 0.24), transparent 24%),
+      linear-gradient(135deg, rgba(255, 255, 255, 0.34), rgba(223, 234, 248, 0.2)),
+      linear-gradient(135deg, rgba(23, 50, 79, 0.06), rgba(255, 255, 255, 0));
     border: 1px solid rgba(255, 255, 255, 0.48);
     box-shadow: var(--shadow-xl);
   }
@@ -272,7 +278,7 @@
     height: 260px;
     right: -56px;
     top: -48px;
-    background: radial-gradient(circle, rgba(214, 168, 93, 0.28), transparent 64%);
+    background: radial-gradient(circle, rgba(39, 88, 134, 0.28), transparent 64%);
     animation: floatSlow 12s ease-in-out infinite;
   }
 
@@ -281,7 +287,7 @@
     height: 240px;
     left: -90px;
     bottom: -100px;
-    background: radial-gradient(circle, rgba(27, 107, 84, 0.22), transparent 62%);
+    background: radial-gradient(circle, rgba(23, 50, 79, 0.2), transparent 62%);
     animation: floatSlow 14s ease-in-out infinite reverse;
   }
 
@@ -301,10 +307,44 @@
   .preview-card,
   .cta-panel,
   .modal-card {
-    background: var(--paper);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.62));
     backdrop-filter: blur(18px);
     border: 1px solid rgba(255, 255, 255, 0.56);
     box-shadow: var(--shadow-md);
+  }
+
+  .hero-copy,
+  .hero-stage,
+  .preview-card,
+  .audience-card {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-copy::before,
+  .preview-card::before,
+  .audience-card::after {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+  }
+
+  .hero-copy::before {
+    width: 220px;
+    height: 220px;
+    right: -70px;
+    top: -90px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(39, 88, 134, 0.18), transparent 68%);
+  }
+
+  .hero-copy::after {
+    content: '';
+    position: absolute;
+    inset: 1rem;
+    border-radius: 28px;
+    border: 1px solid rgba(39, 88, 134, 0.08);
+    pointer-events: none;
   }
 
   .hero-copy,
@@ -317,19 +357,55 @@
     padding: 1.7rem;
   }
 
+  .hero-copy {
+    display: grid;
+    gap: 0.9rem;
+    align-content: start;
+  }
+
+  .eyebrow-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+  }
+
   .eyebrow {
     display: inline-flex;
     align-items: center;
     gap: 0.55rem;
-    margin-bottom: 1rem;
     padding: 0.5rem 0.9rem;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.7);
-    color: var(--green);
+    background: rgba(223, 234, 248, 0.82);
+    color: var(--blue-bright);
     font-size: 0.75rem;
     font-weight: 800;
     letter-spacing: 0.09em;
     text-transform: uppercase;
+  }
+
+  .hero-availability {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.52rem 0.9rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid rgba(39, 88, 134, 0.14);
+    color: var(--blue);
+    font-size: 0.78rem;
+    font-weight: 700;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78);
+  }
+
+  .hero-availability::before {
+    content: '';
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #275886, #7cb0e4);
+    box-shadow: 0 0 0 6px rgba(39, 88, 134, 0.1);
   }
 
   h1,
@@ -341,16 +417,16 @@
   }
 
   h1 {
-    font-size: clamp(3.3rem, 7vw, 6rem);
-    line-height: 0.92;
-    margin-bottom: 1rem;
-    max-width: 10ch;
+    font-size: clamp(2.9rem, 5.2vw, 4.7rem);
+    line-height: 0.96;
+    margin-bottom: 0.15rem;
+    max-width: 12ch;
   }
 
   h1 .highlight {
     display: inline-block;
-    color: var(--green-deep);
-    text-shadow: 0 10px 30px rgba(27, 107, 84, 0.1);
+    color: var(--blue);
+    text-shadow: 0 10px 30px rgba(23, 50, 79, 0.14);
   }
 
   .hero-copy p,
@@ -365,22 +441,60 @@
   }
 
   .hero-lead {
-    font-size: 1.04rem;
-    max-width: 60ch;
+    font-size: 1.03rem;
+    max-width: 58ch;
+  }
+
+  .hero-note {
+    position: relative;
+    padding: 1rem 1rem 1rem 1.22rem;
+    border-radius: 26px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(237, 244, 255, 0.8));
+    border: 1px solid rgba(39, 88, 134, 0.12);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82);
+  }
+
+  .hero-note::before {
+    content: '';
+    position: absolute;
+    left: 0.9rem;
+    top: 1rem;
+    bottom: 1rem;
+    width: 3px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, #275886, rgba(39, 88, 134, 0.1));
+  }
+
+  .hero-note-label {
+    display: inline-flex;
+    margin-left: 0.55rem;
+    margin-bottom: 0.42rem;
+    padding: 0.34rem 0.68rem;
+    border-radius: 999px;
+    background: rgba(223, 234, 248, 0.9);
+    color: var(--blue);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .hero-note p {
+    margin-left: 0.55rem;
   }
 
   .hero-actions {
     display: flex;
     flex-wrap: wrap;
     gap: 0.8rem;
-    margin-top: 1.45rem;
+    margin-top: 0.25rem;
   }
 
   .hero-points {
     display: flex;
     flex-wrap: wrap;
     gap: 0.55rem;
-    margin-top: 1rem;
+    margin-top: 0.2rem;
   }
 
   .hero-point {
@@ -389,31 +503,53 @@
     gap: 0.45rem;
     padding: 0.55rem 0.85rem;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.66);
-    border: 1px solid rgba(24, 32, 45, 0.08);
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid rgba(39, 88, 134, 0.12);
     color: var(--muted);
     font-size: 0.8rem;
     font-weight: 600;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78);
+  }
+
+  .hero-point::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #17324f, #7cb0e4);
   }
 
   .hero-stats {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.8rem;
-    margin-top: 1.6rem;
+    margin-top: 0.15rem;
   }
 
   .stat-card {
+    position: relative;
+    overflow: hidden;
     border-radius: 24px;
-    padding: 1rem;
-    background: rgba(255, 255, 255, 0.72);
-    border: 1px solid rgba(24, 32, 45, 0.08);
+    padding: 1.05rem 1rem 1rem;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(237, 244, 255, 0.72));
+    border: 1px solid rgba(39, 88, 134, 0.1);
+  }
+
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #17324f, #7cb0e4 72%, transparent);
   }
 
   .stat-card strong {
     display: block;
-    font-size: 1.4rem;
+    font-size: 1.55rem;
     margin-bottom: 0.18rem;
+    color: var(--blue-deep);
   }
 
   .stat-card span {
@@ -430,6 +566,8 @@
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.85rem;
+    align-content: start;
+    padding: 1rem;
   }
 
   .hero-stage::before {
@@ -439,7 +577,19 @@
     width: 260px;
     height: 260px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(214, 168, 93, 0.18), transparent 66%);
+    background: radial-gradient(circle, rgba(39, 88, 134, 0.18), transparent 66%);
+  }
+
+  .hero-stage::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    background-size: 26px 26px;
+    opacity: 0.26;
+    mask-image: linear-gradient(180deg, black 32%, transparent 100%);
   }
 
   .stage-main {
@@ -449,8 +599,8 @@
     padding: 1.45rem;
     border-radius: 30px;
     background:
-      radial-gradient(circle at top right, rgba(214, 168, 93, 0.12), transparent 26%),
-      linear-gradient(145deg, rgba(16, 36, 53, 0.96), rgba(24, 65, 53, 0.92));
+      radial-gradient(circle at top right, rgba(116, 168, 229, 0.18), transparent 26%),
+      linear-gradient(145deg, rgba(15, 35, 60, 0.98), rgba(23, 50, 79, 0.96));
     color: #fbf8f1;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
   }
@@ -458,6 +608,7 @@
   .stage-top {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     gap: 0.75rem;
     flex-wrap: wrap;
   }
@@ -476,20 +627,49 @@
   }
 
   .stage-main h2 {
-    font-size: clamp(2.25rem, 4.2vw, 3.3rem);
-    line-height: 0.93;
+    font-size: clamp(2rem, 3vw, 2.85rem);
+    line-height: 1.02;
     margin: 1rem 0 0.7rem;
-    max-width: 8.5ch;
+    max-width: 11.5ch;
   }
 
   .stage-main p {
     color: rgba(251, 248, 241, 0.82);
+    max-width: 48ch;
+  }
+
+  .stage-proof {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin-top: 1rem;
+  }
+
+  .stage-proof span {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.48rem 0.78rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: rgba(251, 248, 241, 0.9);
+    font-size: 0.76rem;
+    font-weight: 600;
+  }
+
+  .stage-proof span::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    margin-right: 0.5rem;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.86);
   }
 
   .stage-list {
     display: grid;
     gap: 0.8rem;
-    margin-top: 1.3rem;
+    margin-top: 1.15rem;
   }
 
   .stage-item {
@@ -531,8 +711,8 @@
     min-width: 0;
     padding: 0.95rem;
     border-radius: 22px;
-    background: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(24, 32, 45, 0.08);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(233, 240, 248, 0.74));
+    border: 1px solid rgba(39, 88, 134, 0.1);
     box-shadow: 0 18px 40px rgba(19, 25, 35, 0.14);
     animation: floatCard 8s ease-in-out infinite;
   }
@@ -556,13 +736,16 @@
 
   .floating-card.one {
     grid-column: 1 / -1;
+    background: linear-gradient(180deg, rgba(223, 234, 248, 0.94), rgba(255, 255, 255, 0.82));
   }
 
   .floating-card.two {
+    background: linear-gradient(180deg, rgba(237, 244, 255, 0.92), rgba(255, 255, 255, 0.78));
     animation-delay: -2s;
   }
 
   .floating-card.three {
+    background: linear-gradient(180deg, rgba(246, 236, 216, 0.9), rgba(255, 255, 255, 0.78));
     animation-delay: -4s;
   }
 
@@ -584,8 +767,8 @@
     gap: 0.7rem;
     padding: 0.86rem 1.1rem;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.48);
-    border: 1px solid rgba(24, 32, 45, 0.08);
+    background: rgba(237, 244, 255, 0.64);
+    border: 1px solid rgba(39, 88, 134, 0.08);
     color: var(--muted);
     white-space: nowrap;
     backdrop-filter: blur(10px);
@@ -595,7 +778,7 @@
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--amber), var(--terracotta));
+    background: linear-gradient(135deg, var(--blue-bright), #74a8e5);
   }
 
   .section {
@@ -621,9 +804,9 @@
     margin-bottom: 0.8rem;
     padding: 0.38rem 0.72rem;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.66);
-    border: 1px solid rgba(24, 32, 45, 0.08);
-    color: var(--muted);
+    background: rgba(223, 234, 248, 0.82);
+    border: 1px solid rgba(39, 88, 134, 0.1);
+    color: var(--blue);
     font-size: 0.74rem;
     font-weight: 700;
     letter-spacing: 0.08em;
@@ -648,8 +831,8 @@
 
   .method-card.featured {
     background:
-      radial-gradient(circle at top right, rgba(214, 168, 93, 0.18), transparent 22%),
-      linear-gradient(145deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.58));
+      radial-gradient(circle at top right, rgba(116, 168, 229, 0.2), transparent 24%),
+      linear-gradient(145deg, rgba(244, 248, 253, 0.92), rgba(255, 255, 255, 0.66));
   }
 
   .quote-mark {
@@ -660,8 +843,8 @@
     height: 50px;
     margin-bottom: 1rem;
     border-radius: 18px;
-    background: var(--green-soft);
-    color: var(--green);
+    background: var(--blue-soft);
+    color: var(--blue);
     font-size: 1.5rem;
     font-weight: 700;
   }
@@ -686,8 +869,8 @@
     align-items: start;
     padding: 0.92rem 1rem;
     border-radius: 20px;
-    background: rgba(255, 255, 255, 0.56);
-    border: 1px solid rgba(24, 32, 45, 0.08);
+    background: rgba(237, 244, 255, 0.7);
+    border: 1px solid rgba(39, 88, 134, 0.08);
   }
 
   .method-bullet-index {
@@ -696,8 +879,8 @@
     border-radius: 50%;
     display: grid;
     place-items: center;
-    background: rgba(24, 32, 45, 0.08);
-    color: var(--navy);
+    background: rgba(39, 88, 134, 0.12);
+    color: var(--blue);
     font-size: 0.82rem;
     font-weight: 700;
   }
@@ -718,8 +901,8 @@
     gap: 0.95rem;
     padding: 1rem;
     border-radius: 20px;
-    background: rgba(255, 255, 255, 0.58);
-    border: 1px solid rgba(24, 32, 45, 0.08);
+    background: rgba(255, 255, 255, 0.68);
+    border: 1px solid rgba(39, 88, 134, 0.08);
   }
 
   .step-index {
@@ -728,8 +911,8 @@
     border-radius: 14px;
     display: grid;
     place-items: center;
-    background: linear-gradient(135deg, rgba(29, 47, 77, 0.12), rgba(214, 168, 93, 0.18));
-    color: var(--navy);
+    background: linear-gradient(135deg, rgba(39, 88, 134, 0.16), rgba(223, 234, 248, 0.72));
+    color: var(--blue);
     font-size: 0.82rem;
     font-weight: 700;
   }
@@ -757,8 +940,14 @@
     width: 180px;
     height: 180px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(214, 168, 93, 0.22), transparent 68%);
+    background: radial-gradient(circle, rgba(39, 88, 134, 0.18), transparent 68%);
     transition: transform 0.22s ease;
+  }
+
+  .audience-card::after {
+    inset: 0 0 auto 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--blue), #74a8e5);
   }
 
   .audience-card:hover,
@@ -778,8 +967,8 @@
     align-items: center;
     padding: 0.38rem 0.72rem;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.72);
-    border: 1px solid rgba(24, 32, 45, 0.08);
+    background: rgba(237, 244, 255, 0.78);
+    border: 1px solid rgba(39, 88, 134, 0.08);
     color: var(--muted);
     font-size: 0.74rem;
     font-weight: 700;
@@ -806,6 +995,12 @@
     min-height: 100%;
   }
 
+  .preview-card::before {
+    inset: 0 0 auto 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--blue), #74a8e5 58%, var(--amber));
+  }
+
   .preview-top {
     display: flex;
     align-items: start;
@@ -819,8 +1014,8 @@
     border-radius: 16px;
     display: grid;
     place-items: center;
-    background: rgba(255, 255, 255, 0.78);
-    border: 1px solid rgba(24, 32, 45, 0.08);
+    background: rgba(223, 234, 248, 0.86);
+    border: 1px solid rgba(39, 88, 134, 0.08);
     font-size: 1.12rem;
   }
 
@@ -831,7 +1026,7 @@
     gap: 0.8rem;
     margin-top: auto;
     padding-top: 0.9rem;
-    border-top: 1px solid rgba(24, 32, 45, 0.08);
+    border-top: 1px solid rgba(39, 88, 134, 0.08);
     color: var(--muted);
     font-size: 0.8rem;
     font-weight: 600;
@@ -850,8 +1045,8 @@
     gap: 1rem;
     align-items: center;
     background:
-      radial-gradient(circle at top right, rgba(214, 168, 93, 0.16), transparent 24%),
-      linear-gradient(145deg, rgba(17, 28, 42, 0.96), rgba(24, 69, 55, 0.94));
+      radial-gradient(circle at top right, rgba(116, 168, 229, 0.2), transparent 24%),
+      linear-gradient(145deg, rgba(16, 40, 67, 0.98), rgba(23, 50, 79, 0.96));
     color: #fbf8f1;
   }
 
@@ -923,6 +1118,15 @@
     animation: modalIn 0.28s ease;
   }
 
+  .modal-card::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 5px;
+    border-radius: 34px 34px 0 0;
+    background: linear-gradient(90deg, var(--blue), #74a8e5, var(--amber));
+  }
+
   .close-modal {
     position: absolute;
     top: 1rem;
@@ -952,12 +1156,12 @@
   .access-card {
     border-radius: 24px;
     padding: 1rem 1.05rem;
-    background: rgba(255, 255, 255, 0.72);
-    border: 1px solid rgba(24, 32, 45, 0.08);
+    background: rgba(255, 255, 255, 0.76);
+    border: 1px solid rgba(39, 88, 134, 0.08);
   }
 
   .access-card.admin {
-    background: linear-gradient(145deg, rgba(27, 107, 84, 0.08), rgba(255, 255, 255, 0.78));
+    background: linear-gradient(145deg, rgba(39, 88, 134, 0.12), rgba(255, 255, 255, 0.8));
   }
 
   .access-card strong,
@@ -1019,8 +1223,8 @@
   }
 
   .feedback.success {
-    background: rgba(27, 107, 84, 0.12);
-    color: var(--green);
+    background: rgba(39, 88, 134, 0.12);
+    color: var(--blue);
   }
 
   .has-motion [data-reveal] {
@@ -1164,7 +1368,7 @@
 
     h1 {
       max-width: none;
-      font-size: clamp(2.8rem, 12vw, 4rem);
+      font-size: clamp(2.6rem, 11vw, 3.7rem);
     }
 
     .hero-point,
@@ -1187,10 +1391,10 @@
   <div class="notice-bar">
     <div class="shell notice-inner">
       <div class="notice-copy">
-        <span class="notice-pill">Nuevas inscripciones</span>
-        <span>Italiano para hispanohablantes con una propuesta mas actual, clara y lista para sostener el estudio.</span>
+        <span class="notice-pill">Clases online</span>
+        <span>Italiano claro, guiado y con biblioteca privada para estudiar con continuidad.</span>
       </div>
-      <button class="notice-link" type="button" data-open-login>Reservar acceso</button>
+      <button class="notice-link" type="button" data-open-login>Pedir acceso</button>
     </div>
   </div>
 
@@ -1220,18 +1424,24 @@
       <div class="hero-shell">
         <div class="hero-grid">
           <article class="hero-copy" data-reveal>
-            <div class="eyebrow">Italiano vivo desde Italia</div>
-            <h1>Una forma <span class="highlight">mas moderna</span> de aprender italiano.</h1>
-            <p class="hero-lead">Soy Veronica y enseño italiano para hispanohablantes con una mezcla que hoy cuesta encontrar: explicacion clara en espanol, sensibilidad real del idioma vivido en Italia y una biblioteca privada que ordena el estudio para no perderse.</p>
-            <p>No es una landing generica. Es una entrada pensada para atraer mejor, transmitir criterio y mostrar desde el primer segundo una experiencia mas premium, mas humana y mas facil de seguir.</p>
+            <div class="eyebrow-row">
+              <div class="eyebrow">Italiano para hispanohablantes</div>
+              <div class="hero-availability">Ruta guiada + acceso privado</div>
+            </div>
+            <h1>Aprende italiano con una guia clara, real y mucho mas facil de seguir.</h1>
+            <p class="hero-lead">Si hoy estudias salteado, te cuesta ordenar la gramatica o no sabes por donde seguir, aca encuentras una propuesta pensada para entender mejor, practicar con sentido y avanzar sin perderte.</p>
+            <div class="hero-note">
+              <span class="hero-note-label">Con Veronica</span>
+              <p>Vive en Italia hace mas de 20 anos y ensena con explicaciones en espanol, ejemplos reales y una biblioteca privada que te muestra que estudiar primero, que sigue y como retomar.</p>
+            </div>
             <div class="hero-actions">
-              <button class="btn btn-primary" type="button" data-open-login>Quiero entrar</button>
-              <a class="btn btn-secondary" href="#metodo">Descubrir el metodo</a>
+              <button class="btn btn-primary" type="button" data-open-login>Quiero mi acceso</button>
+              <a class="btn btn-secondary" href="#metodo">Ver como funciona</a>
             </div>
             <div class="hero-points">
-              <span class="hero-point">Italiano real</span>
-              <span class="hero-point">Explicado para hispanohablantes</span>
-              <span class="hero-point">Biblioteca privada ordenada</span>
+              <span class="hero-point">Gramatica sin vueltas</span>
+              <span class="hero-point">Italiano de uso real</span>
+              <span class="hero-point">Ruta paso a paso</span>
             </div>
             <div class="hero-stats" id="heroStats"></div>
           </article>
@@ -1239,50 +1449,55 @@
           <aside class="hero-stage" data-reveal style="--reveal-delay: 120ms;">
             <article class="stage-main">
               <div class="stage-top">
-                <span class="stage-kicker">Landing publica</span>
-                <span class="stage-badge">Veronica desde Italia</span>
+                <span class="stage-kicker">Lo que te llevas al entrar</span>
+                <span class="stage-badge">Metodo Veronica</span>
               </div>
-              <h2>Entrar, entender y volver a estudiar sin ruido.</h2>
-              <p>La primera impresion ahora tiene mas fuerza: header editorial, capas visuales, movimiento suave y un mensaje mas atractivo para gente nueva que todavia no conoce tu propuesta.</p>
+              <h2>Entras y ya sabes que estudiar, por que y en que orden.</h2>
+              <p>No se trata de sumar contenido por sumar. La idea es que tengas una base clara para hablar mejor, entender la gramatica y sostener el estudio con una ruta que se siente simple desde el primer dia.</p>
+              <div class="stage-proof">
+                <span>11 modulos listos</span>
+                <span>4 bloques guiados</span>
+                <span>A1-B1 con continuidad</span>
+              </div>
               <div class="stage-list">
                 <div class="stage-item">
                   <div class="stage-number">01</div>
                   <div>
-                    <strong>Explicacion clara</strong>
-                    <small>Reglas bien contadas, sin tecnicismos innecesarios y con comparaciones utiles.</small>
+                    <strong>Entiendes mas rapido</strong>
+                    <small>Explicaciones en espanol, comparaciones utiles y ejemplos que destraban dudas de verdad.</small>
                   </div>
                 </div>
                 <div class="stage-item">
                   <div class="stage-number">02</div>
                   <div>
-                    <strong>Italiano cotidiano</strong>
-                    <small>No solo gramatica: contexto, vida diaria y uso real para sonar mejor.</small>
+                    <strong>Estudias con continuidad</strong>
+                    <small>Todo queda ordenado en una base privada para retomar sin empezar otra vez desde cero.</small>
                   </div>
                 </div>
                 <div class="stage-item">
                   <div class="stage-number">03</div>
                   <div>
-                    <strong>Ruta privada</strong>
-                    <small>Entrar a la home, filtrar bloques y estudiar con continuidad en una sola base.</small>
+                    <strong>Llevas el idioma a la vida real</strong>
+                    <small>No solo reglas: tambien contexto, uso cotidiano y criterio para sonar mejor al hablar.</small>
                   </div>
                 </div>
               </div>
             </article>
 
             <div class="floating-card one">
-              <span>20+ anos</span>
-              <strong>Experiencia real</strong>
-              <em>viviendo en Italia y enseñando con contexto humano.</em>
+              <span>Ideal para vos</span>
+              <strong>Si quieres dejar de estudiar a ciegas</strong>
+              <em>y pasar a una ruta clara, humana y pensada para hispanohablantes.</em>
             </div>
             <div class="floating-card two">
-              <span>Acceso privado</span>
-              <strong>Biblioteca ordenada</strong>
-              <em>material por bloques para estudiar con ritmo y continuidad.</em>
+              <span>Desde Italia</span>
+              <strong>Experiencia real</strong>
+              <em>mas de 20 anos viviendo el idioma todos los dias.</em>
             </div>
             <div class="floating-card three">
               <span>Metodo</span>
-              <strong>Menos ruido, mas criterio</strong>
-              <em>una propuesta mas elegante para atraer a publico nuevo.</em>
+              <strong>Acceso privado y ordenado</strong>
+              <em>entras, filtras por bloques y sigues desde donde lo dejaste.</em>
             </div>
           </aside>
         </div>
@@ -1495,19 +1710,19 @@
       heroStats.innerHTML = `
         <div class="stat-card">
           <strong>20+ anos</strong>
-          <span>viviendo en Italia y enseñando con contexto real.</span>
+          <span>viviendo en Italia y ensenando con mirada real del idioma.</span>
         </div>
         <div class="stat-card">
           <strong>${stats.totalTopics}</strong>
-          <span>modulos ya listos dentro de la home privada.</span>
+          <span>modulos listos para empezar a estudiar hoy mismo.</span>
         </div>
         <div class="stat-card">
           <strong>${stats.categories}</strong>
-          <span>rutas para organizar presente, passato, futuro y repaso.</span>
+          <span>bloques para avanzar con orden y sin mezclar temas.</span>
         </div>
         <div class="stat-card">
           <strong>A1-B1</strong>
-          <span>recorrido pensado para avanzar sin saltos raros.</span>
+          <span>ruta pensada para progresar sin saltos y con continuidad.</span>
         </div>
       `;
     }
